@@ -4,52 +4,43 @@ Date: 2026-03-20
 
 ## Current state
 
-research_mcp v1 is shipped. The agentic backtest loop has a working MCP surface.
+research_mcp v1 is shipped and stress-tested. Runbook is updated and accurate.
+Backend has a new `/authorize` pre-flight endpoint.
 
 Completed since last checkpoint:
-- MON-78 — MCP server built and operational (Done)
-- MON-79 — v1 contract locked (Done)
-- MON-80 — MCP skeleton + backend auth path (Done)
-- MON-81 — Strategy discovery + single-run backtest tools (Done)
-- MON-82 — Saved-run retrieval + evaluation tooling (Done)
-- MON-83 — Safety guardrails, audit logging, kill switch (Done)
-- MON-72 — v1 contract for agentic backtest loop (Done)
-- AGENT.md + doc/runbook.md added to research_mcp
-- list_assets, system_status, enriched strategy registry shipped
-- get_strategy_registry now returns {name, id} pairs so agents can call run_backtest without raw backend calls
-- 30+ passing tests across backend client and MCP tooling
+- MON-78 through MON-83 — all Done (MCP server, tools, guardrails, docs)
+- MON-72, 79, 80 — Done
+- Stress test of research_mcp by cold agent simulation — loop works end to end
+- Runbook updated: stdio model explained, correct health-check route, /authorize prereq, type corrections, interval type mismatch documented
+- MON-84 — POST /api/v1/authorize endpoint added to backend (Done)
+- MON-85 — type annotations for research_mcp tools (open, Ready)
 
 ## Current truth
 
 research_mcp v1 is a working loop:
-  check system_status → list_assets → get_strategy_registry → run_backtest → get_saved_run
+  GET /api/v1/utils/health-check/ (no auth)
+  POST /api/v1/authorize (confirms token valid)
+  system_status → list_assets → get_strategy_registry → get_strategy_params_and_config → run_backtest → get_saved_run
 
-The MCP surface is self-sufficient for an agent to run backtests without touching the backend directly.
+Runbook is in research_mcp/doc/runbook.md and is accurate as of 2026-03-20.
 
-Known gaps surfaced from dogfooding:
-- Zero artifact count when success=True is ambiguous (no-trades vs error) — not yet resolved
-- No mcp-level health check beyond system_status
-- Authentication: backend is single-user, signed JWT required; research_mcp uses env config for auth
+Known open items:
+- MON-85: MCP tool layer has zero type annotations; interval is list[str] in saved run responses but str in run_backtest input — document and fix
+- Docker: backend runs with --reload inside container; docker cp triggers watchfiles loop on macOS Docker Desktop. Workaround: docker compose build + up to deploy backend changes cleanly.
 
 ## Next items to pick up
 
-1. GitHub <> Linear sync (operational polish)
-   - GitHub connected in Linear UI — branch names are auto-generated per issue
-   - Working pattern: cut branches using Linear's suggested name, include MON-XX in PR title
-   - PRs then auto-link to issues; state automation is conservative (manual moves preferred)
-   - Need to validate this works on next PR against the repo
+1. MON-85 — Add type annotations to research_mcp tools
+   - Audit all tool return shapes vs actual backend responses
+   - Add TypedDicts or type annotations to tools/
+   - Update runbook field types where needed
 
-2. Stress-test MCP with a fresh agent session
-   - Spin up a fresh Claude Code instance with only the runbook
-   - Run the full loop: system_status → list_assets → get_strategy_registry → run_backtest → get_saved_run
-   - Document any friction or gaps found
-   - This is the integration test that validates whether the runbook is actually complete
+2. GitHub <> Linear sync (operational polish)
+   - Connected in Linear UI
+   - Working pattern: use Linear's suggested branch name, include MON-XX in PR title
+   - Need to validate on next real PR
 
-3. Resolve ambiguous zero-artifact runs
-   - Distinguish "no trades generated" from "error/empty result"
-   - Either surface a trades_count field or add a no_trades flag to run result
-
-4. Operating cadence (still open)
+3. Operating cadence (still open)
    - daily control pass
    - twice-weekly backlog grooming
    - weekly planning/review
@@ -58,6 +49,6 @@ Known gaps surfaced from dogfooding:
 ## Recommended restart prompt
 
 When resuming, start from:
-- Stress-test MCP with a fresh agent (item 2 above)
+- MON-85 (type annotations + interval type fix)
 - Then GitHub/PR sync validation on next real PR
 - Then operating cadence formalization

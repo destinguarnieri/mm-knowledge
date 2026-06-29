@@ -55,6 +55,7 @@ wiki/                 # synthesized Obsidian-compatible markdown graph
   decisions/          # decision records and supersession chains
   projects/           # active initiatives and project-level context
   sessions/           # compact session summaries/checkpoints promoted from chat
+  vendor/             # vendor specifications and documentation
 ```
 
 Canonical markdown belongs under `wiki/`. Do not keep duplicate top-level `company/`, `ops/`, `engineering/`, `quant/`, or `trading/` markdown trees. If old/source material should be retained but not treated as canonical, move it under `archive/` or `raw/` with a note.

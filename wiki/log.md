@@ -2,6 +2,10 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-06-29
+
+- Moved agent/worker/coding-manager prompt templates under `wiki/agents/templates/`, updated [[index|Money Machine Knowledge Index]], and cleaned copied project skill pointers in `mm_v04/.cursor/skills/` to target the Money Machine KB.
+
 ## 2026-06-28
 
 - Redirected session continuity from `mm_v04/docs/work/*` to `wiki/ops/current-checkpoint.md` and `wiki/ops/session-change-log.md` so the repo `docs/` tree can be removed without losing agent continuity.

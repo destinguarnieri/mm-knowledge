@@ -1,5 +1,12 @@
 # Session Change Log
 
+## 2026-06-29 02:04 EDT
+
+- Normalized copied agent templates into `wiki/agents/templates/` and updated `wiki/index.md` routing for the template directory.
+- Updated `mm_v04/.cursor/skills/` pointers away from source-repo `docs/meta/...` paths to Money Machine KB template paths where matching files exist.
+- Cleaned stale `docs/meta/...` references inside the agent templates themselves.
+- Missing brought-over source docs/templates were identified in `wiki/ops/current-checkpoint.md`; no Money Machine runtime/product code was edited.
+
 ## 2026-06-29 01:04 EDT
 
 - Coding-manager orientation resumed MON-97 from dirty files and `wiki/projects/MON-97-backtest-metrics-plan.md`; no `mm_v04` code edits were made.

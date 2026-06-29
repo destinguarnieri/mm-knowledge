@@ -15,7 +15,8 @@ Purpose:
 - the worker handoff comment
 - the relevant diff / code / verification evidence
 - the `coding-manager` skill
-- `docs/meta/coding-manager/coding-manager-review-checklist.md`
+- Use this template plus direct ticket-local inspection of relevant code, tests, invariants, and verification evidence.
+- Note: `coding-manager-review-checklist.md` was referenced in the source repo but is not present in the Money Machine KB yet.
 
 ## Rule
 

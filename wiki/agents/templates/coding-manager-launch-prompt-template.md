@@ -78,7 +78,7 @@ Return exactly:
 - What is the smallest edit needed before launch?
 
 ## Worker Kickoff Prompt
-- If `Ready`, draft the exact worker kickoff prompt using `docs/meta/chief-of-staff/worker-kickoff-prompt-template.md`.
+- If `Ready`, draft the exact worker kickoff prompt using `/Users/destinguarnieri/Desktop/codebase/mm-knowledge/wiki/agents/templates/worker-kickoff-prompt-template.md`.
 - If `Tighten` or `Stop`, say `Do not launch yet`.
 
 Decision rule:

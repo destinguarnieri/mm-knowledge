@@ -53,7 +53,7 @@ Expected output:
 
 - Complete the ticket slice if it is cleanly achievable within scope.
 - If blocked, stop at the clean boundary and explain the blocker.
-- Leave a final handoff using `docs/meta/chief-of-staff/worker-handoff-template.md`.
+- Leave a final handoff using `/Users/destinguarnieri/Desktop/codebase/mm-knowledge/wiki/agents/templates/worker-handoff-template.md`.
 
 Handoff requirements:
 

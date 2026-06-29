@@ -1,8 +1,37 @@
 # Current Checkpoint
 
-Date: 2026-06-29 01:04 EDT
+Date: 2026-06-29 02:04 EDT
 
 ## Current State
+
+Money Machine project skills and agent templates were normalized after being copied from another repo. The durable agent templates now live under `wiki/agents/templates/`, and project skill pointers in `mm_v04/.cursor/skills/` were updated away from source-repo `docs/meta/...` paths. No Money Machine product/runtime code was edited.
+
+Known missing brought-over template/source docs:
+
+- `coding-manager-review-checklist.md`
+- `chief-of-staff.md`
+- `founder-operating-system.md`
+- `session-start-triage.md`
+- `drift-check.md`
+- `session-end-review.md`
+- `weekly-review.md`
+- `product-lead.md`
+- `product-brief-template.md`
+- `founder-session-brief.md`
+- `current-strategic-stances.md`
+- `lead-engineer.md`
+- `engineering-brief-template.md`
+- `cofounder-review-cadence.md`
+- `strategic-stance-template.md`
+- `cofounder-weekly-review.md`
+- `cofounder-monthly-review.md`
+- `cofounder-event-review.md`
+
+Verification: scanned project skills and KB templates for old `docs/meta`, `docs/product`, `docs/archive`, `docs/architecture`, and `AutoForce` references. Only intentional missing-file notes remain.
+
+Next action: return to MON-97 acceptance cleanup if continuing the prior coding-manager thread.
+
+## Previous Checkpoint
 
 Coding-manager orientation resumed MON-97 from prior agent changes. Dirty MON-97 files currently implement chunks 1-3 of `wiki/projects/MON-97-backtest-metrics-plan.md`: explicit `trade_pnls`, fill-level trade outcome classification, and unit/helper coverage. No code edits were made during this orientation pass.
 

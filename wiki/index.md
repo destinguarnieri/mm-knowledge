@@ -14,6 +14,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 Canonical markdown lives under `wiki/`:
 
 - `wiki/company/` — company overview, 360 context, narrative.
+- `wiki/agents/templates/` — reusable agent, worker, and coding-manager prompt templates for Money Machine execution.
 - `wiki/ops/` — operating runbooks, process notes, Linear operating system.
 - `wiki/engineering/` — engineering plans, architecture, implementation context.
 - `wiki/quant/` — quantitative research notes.

@@ -1,49 +1,56 @@
 # mm-knowledge
 
-Version-controlled knowledge base of Money Machine Labs, indexed with QMD.
+Version-controlled knowledge base for Money Machine Labs.
 
-## Agents
+This repo is an agent-readable, Obsidian-compatible markdown wiki with QMD indexing/search over it.
 
-### QMD
+## Canonical Structure
 
-Create collections for your notes, docs, and meeting transcripts
-    qmd collection add ~/notes --name notes
-    qmd collection add ~/Documents/meetings --name meetings
-    qmd collection add ~/work/docs --name docs
+```text
+AGENTS.md             # operating contract for agents
+README.md             # this overview
+raw/                  # immutable or lightly-normalized source dumps
+archive/              # historical/deprecated material, not canonical routing
+scripts/              # maintenance scripts
+wiki/                 # canonical linked markdown graph
+  index.md            # start here: routing map and page inventory
+  log.md              # chronological KB operation log
+  company/            # company context and narrative
+  ops/                # operating procedures and process docs
+  engineering/        # architecture and implementation context
+  quant/              # quantitative research notes
+  trading/            # strategy/research/trading concepts
+  concepts/           # cross-cutting concepts and domain language
+  decisions/          # decision records and supersession chains
+  projects/           # active initiatives and project context
+  sessions/           # promoted session summaries/checkpoints
+```
 
-    # Add context to help with search results, each piece of context will be returned when matching sub documents are returned. This works as a tree. This is the key feature of QMD as it allows LLMs to make much better contextual choices when selecting documents. Don't sleep on it!
-    qmd context add qmd://notes "Personal notes and ideas"
-    qmd context add qmd://meetings "Meeting transcripts and notes"
-    qmd context add qmd://docs "Work documentation"
+Canonical markdown belongs under `wiki/`. Avoid duplicate top-level category folders.
 
-    # Generate embeddings for semantic search
-    qmd embed
+## How to Use
 
-    # Search across everything
-    qmd search "project timeline"           # Fast keyword search
-    qmd vsearch "how to deploy"             # Semantic search
-    qmd query "quarterly planning process"  # Hybrid + reranking (best quality)
+1. Read `AGENTS.md` for the operating contract.
+2. Start navigation from `wiki/index.md`.
+3. Follow Obsidian-style `[[wikilinks]]` for graph traversal.
+4. Use QMD for search/retrieval when exact routing is unclear.
 
-    # Get a specific document
-    qmd get "meetings/2024-01-15.md"
+## QMD
 
-    # Get a document by docid (shown in search results)
-    qmd get "#abc123"
+QMD binary:
 
-    # Get multiple documents by glob pattern
-    qmd multi-get "journals/2025-05*.md"
+```bash
+/Users/destinguarnieri/.bun/bin/qmd
+```
 
-    # Search within a specific collection
-    qmd search "API" -c notes
+Common commands:
 
-    # Export all matches for an agent
-    qmd search "API" --all --files --min-score 0.3
+```bash
+/Users/destinguarnieri/.bun/bin/qmd status
+/Users/destinguarnieri/.bun/bin/qmd update
+/Users/destinguarnieri/.bun/bin/qmd query "backtesting correctness"
+/Users/destinguarnieri/.bun/bin/qmd search "Linear" -c mm-ops
+/Users/destinguarnieri/.bun/bin/qmd get "wiki/index.md"
+```
 
-    # Get structured results for an LLM
-    qmd search "authentication" --json -n 10
-
-    # List all relevant files above a threshold
-    qmd query "error handling" --all --files --min-score 0.4
-
-    # Retrieve full document content
-    qmd get "docs/api-reference.md" --full
+QMD indexes the wiki and archived/supporting markdown. It does not validate wikilinks; use the link checker for that.

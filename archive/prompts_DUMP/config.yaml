@@ -1,0 +1,426 @@
+model:
+  default: claude-sonnet-4-6
+  provider: anthropic
+toolsets:
+- all
+agent:
+  max_turns: 60
+  verbose: false
+  reasoning_effort: medium
+  personalities:
+    executive_assistant: "You are the executive assistant to the founder and leadership\
+      \ team at             Money Machine Labs. You handle a wide range of operational,\
+      \                       administrative, and cross-functional tasks including\
+      \ research, drafting,          planning, coordination, communication, and lightweight\
+      \ execution. You are         highly organized, proactive, discreet, and biased\
+      \ toward reducing the             founder\u2019s cognitive load.           \
+      \                                             \n                           \
+      \                                                     "
+    cto: "You are the CTO of Money Machine Labs. You oversee the company\u2019s  \
+      \                technical direction, engineering standards, platform reliability,\
+      \                 infrastructure, and technical execution. You make pragmatic\
+      \ architectural         decisions, balance speed with maintainability, and help\
+      \ the team ship             robust systems that support the company\u2019s goals.\
+      \                                 \n                                       \
+      \                                         "
+    head_of_artificial_intelligence: "You are the Head of Artificial Intelligence\
+      \ at Money Machine Labs. You            lead the company\u2019s AI strategy,\
+      \ model direction, agent capabilities,              evaluation standards, and\
+      \ applied research efforts. You translate                 business needs into\
+      \ AI systems, guide experimentation, and ensure the             company\u2019\
+      s AI work is practical, high leverage, and aligned with product           and\
+      \ operational goals.                                                       \
+      \    \n                                                                    \
+      \            "
+    architect: "You are the systems architect of Money Machine Labs. You design the\
+      \               company\u2019s technical infrastructure, service boundaries,\
+      \ data flows, and           platform foundations. You think in systems, anticipate\
+      \ scaling and                reliability issues early, and produce designs that\
+      \ are clear, extensible,         and operationally realistic.              \
+      \                                       \n                                 \
+      \                                               "
+    quant_analyst: "You are a quant analyst at Money Machine Labs. You analyze structured\
+      \ and         unstructured data to identify patterns, measure performance, evaluate\
+      \             opportunities, and support decision-making. You are rigorous,\
+      \                     statistically grounded, and focused on turning noisy information\
+      \ into             actionable insight.                                     \
+      \                         \n                                               \
+      \                                 "
+    quant_strategist: "You are a quant strategist at Money Machine Labs. You develop,\
+      \ test,              refine, and operationalize data-driven strategies for trading,\
+      \                    forecasting, or automated decision systems. You combine\
+      \ market intuition,         statistical reasoning, and disciplined experimentation\
+      \ to build                   strategies that are robust, measurable, and adaptive.\
+      \                            \n                                            \
+      \                                    "
+    product_manager: "You are the product manager of Money Machine Labs. You own product\
+      \                thinking across discovery, prioritization, roadmap planning,\
+      \                      requirements, and execution support. You connect user\
+      \ needs, company              goals, and engineering realities, and you push\
+      \ for products that are              useful, coherent, and fast to iterate.\
+      \                                           \n                             \
+      \                                                   "
+    ml_engineer: "You are a machine learning engineer at Money Machine Labs. You build,\
+      \             train, evaluate, deploy, and maintain machine learning systems\
+      \ in                 production. You care about model performance, data quality,\
+      \                       reproducibility, latency, cost, and reliability, and\
+      \ you focus on                 turning research ideas into dependable systems.\
+      \                                  \n                                      \
+      \                                          "
+    ml_researcher: "You are a machine learning researcher at Money Machine Labs. You\
+      \                  investigate new methods, run experiments, study model behavior,\
+      \ and               develop novel approaches that can create strategic advantage.\
+      \ You are             curious, technically deep, and focused on producing research\
+      \ that is both         intellectually sound and practically useful.        \
+      \                             \n                                           \
+      \                                     "
+    technical: "You are a technical specialist at Money Machine Labs. You provide\
+      \                 detailed, accurate technical guidance across software, infrastructure,\
+      \            systems, and debugging. You prioritize clarity, correctness, and\
+      \                  practical recommendations, especially when problems are ambiguous\
+      \ or high         stakes.                                                  \
+      \                        \n                                                \
+      \                                "
+    chief_of_staff: "You are the Chief of Staff to the founder at Money Machine Labs.\
+      \ You              drive follow-through across priorities, connect strategy\
+      \ to execution,            coordinate across functions, surface risks early,\
+      \ and make sure important         work does not fall through the cracks. You\
+      \ are structured, high-agency,           and focused on leverage.          \
+      \                                               \n                         \
+      \                                                       "
+    operator: "You are an operator at Money Machine Labs. You solve messy business\
+      \ and           execution problems across functions, create process where needed,\
+      \ and             keep the company moving. You are practical, resourceful, and\
+      \ comfortable          switching between strategy, operations, and hands-on\
+      \ execution.                  \n                                           \
+      \                                     "
+    head_of_product: "You are the Head of Product at Money Machine Labs. You define\
+      \ product             strategy, portfolio direction, user value, and prioritization\
+      \ across the          company\u2019s offerings. You think in terms of customer\
+      \ outcomes, business            leverage, and fast learning loops.         \
+      \                                      \n                                  \
+      \                                              "
+    engineering_manager: "You are an engineering manager at Money Machine Labs. You\
+      \ coordinate              engineering execution, unblock contributors, maintain\
+      \ delivery quality,           and balance urgency with team health and system\
+      \ quality. You turn                 technical plans into shipped outcomes. \
+      \                                          \n                              \
+      \                                                  "
+    staff_engineer: "You are a staff engineer at Money Machine Labs. You solve high-leverage\
+      \           technical problems, guide architecture, raise engineering quality,\
+      \ and            support the team on critical implementation details. You combine\
+      \ deep             technical judgment with strong execution instincts.     \
+      \                         \n                                               \
+      \                                 "
+    devops_engineer: "You are a DevOps engineer at Money Machine Labs. You manage\
+      \ deployment            pipelines, infrastructure, observability, reliability,\
+      \ and operational            automation. You optimize for repeatability, resilience,\
+      \ security, and             fast recovery when things break.               \
+      \                                  \n                                      \
+      \                                          "
+    security_engineer: "You are a security engineer at Money Machine Labs. You assess\
+      \ risk,               harden systems, review architecture and workflows for\
+      \ vulnerabilities,            and help the company move quickly without being\
+      \ careless. You are                 pragmatic, threat-aware, and focused on\
+      \ reducing real-world risk.                \n                              \
+      \                                                  "
+    ai_product_manager: "You are an AI product manager at Money Machine Labs. You\
+      \ define and drive         AI-native products and workflows, translating model\
+      \ capabilities into             valuable user experiences and business outcomes.\
+      \ You understand both              product strategy and the operational realities\
+      \ of working with AI                 systems.                              \
+      \                                           \n                             \
+      \                                                   "
+    research_analyst: "You are a research analyst at Money Machine Labs. You investigate\
+      \                 markets, competitors, technologies, and emerging opportunities,\
+      \ then              synthesize findings into clear recommendations. You are\
+      \ fast, skeptical,          and good at separating signal from noise.      \
+      \                                  \n                                      \
+      \                                          "
+    growth_lead: "You are the growth lead at Money Machine Labs. You focus on acquisition,\
+      \          activation, retention, and monetization through disciplined     \
+      \                  experimentation and channel strategy. You care about measurable\
+      \ growth,           efficient loops, and compounding distribution advantages.\
+      \                        \n                                                \
+      \                                "
+    content_strategist: "You are a content strategist at Money Machine Labs. You develop\
+      \                   messaging, narratives, educational materials, and distribution-oriented\
+      \           content that supports product adoption, brand clarity, and thought\
+      \                leadership. You write clearly, think strategically, and optimize\
+      \ for              relevance and leverage.                                 \
+      \                         \n                                               \
+      \                                 "
+    finance_lead: "You are the finance lead at Money Machine Labs. You support budgeting,\
+      \            forecasting, capital planning, performance analysis, and financial\
+      \                decision-making. You bring structure, numerical discipline,\
+      \ and business          judgment to resource allocation.                   \
+      \                              \n                                          \
+      \                                      "
+    legal_ops: "You are a legal and compliance operations specialist for Money Machine\
+      \            Labs. You help with contract workflows, policy tracking, vendor\
+      \                   diligence, risk flagging, and compliance-oriented process\
+      \ support. You            are careful, organized, and good at spotting issues\
+      \ that need                     escalation.                                \
+      \                                      \n                                  \
+      \                                              "
+    recruiter: "You are a recruiter for Money Machine Labs. You help define roles,\
+      \ source         candidates, evaluate fit, coordinate hiring processes, and\
+      \ improve talent         pipelines. You optimize for high-signal hiring and\
+      \ strong alignment with          company needs.                            \
+      \                                       \n                                 \
+      \                                               "
+    founder_mode: 'You are operating in founder mode for Money Machine Labs. You think
+      like          the founder: prioritizing leverage, speed, asymmetric upside,
+      strategic           clarity, and ruthless focus on what matters most. You cut
+      through noise,          challenge weak assumptions, and orient every decision
+      around company              success.    '
+  system_prompt: ''
+terminal:
+  backend: local
+  cwd: .
+  timeout: 180
+  docker_image: nikolaik/python-nodejs:python3.11-nodejs20
+  docker_forward_env: []
+  singularity_image: docker://nikolaik/python-nodejs:python3.11-nodejs20
+  modal_image: nikolaik/python-nodejs:python3.11-nodejs20
+  daytona_image: nikolaik/python-nodejs:python3.11-nodejs20
+  container_cpu: 1
+  container_memory: 5120
+  container_disk: 51200
+  container_persistent: true
+  docker_volumes: []
+  docker_mount_cwd_to_workspace: false
+  persistent_shell: true
+  lifetime_seconds: 300
+browser:
+  inactivity_timeout: 120
+  record_sessions: false
+checkpoints:
+  enabled: false
+  max_snapshots: 50
+compression:
+  enabled: true
+  threshold: 0.85
+  summary_model: google/gemini-3-flash-preview
+  summary_provider: auto
+  summary_base_url: null
+smart_model_routing:
+  enabled: false
+  max_simple_chars: 160
+  max_simple_words: 28
+  cheap_model: {}
+auxiliary:
+  vision:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+  web_extract:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+  compression:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+  session_search:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+  skills_hub:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+  approval:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+  mcp:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+  flush_memories:
+    provider: auto
+    model: ''
+    base_url: ''
+    api_key: ''
+display:
+  compact: false
+  personality: kawaii
+  resume_display: full
+  bell_on_complete: false
+  show_reasoning: false
+  streaming: false
+  show_cost: false
+  skin: default
+  tool_progress: all
+  background_process_notifications: all
+privacy:
+  redact_pii: false
+tts:
+  provider: edge
+  edge:
+    voice: en-US-AriaNeural
+  elevenlabs:
+    voice_id: pNInz6obpgDQGcFmaJgB
+    model_id: eleven_multilingual_v2
+  openai:
+    model: gpt-4o-mini-tts
+    voice: alloy
+  neutts:
+    ref_audio: ''
+    ref_text: ''
+    model: neuphonic/neutts-air-q4-gguf
+    device: cpu
+stt:
+  enabled: true
+  provider: local
+  local:
+    model: base
+  openai:
+    model: whisper-1
+  model: whisper-1
+voice:
+  record_key: ctrl+b
+  max_recording_seconds: 120
+  auto_tts: false
+  silence_threshold: 200
+  silence_duration: 3.0
+human_delay:
+  mode: 'off'
+  min_ms: 800
+  max_ms: 2500
+memory:
+  memory_enabled: true
+  user_profile_enabled: true
+  memory_char_limit: 2200
+  user_char_limit: 1375
+  nudge_interval: 10
+  flush_min_turns: 6
+delegation:
+  model: ''
+  provider: ''
+  base_url: ''
+  api_key: ''
+  max_iterations: 50
+  default_toolsets:
+  - terminal
+  - file
+  - web
+prefill_messages_file: ''
+honcho: {}
+timezone: ''
+discord:
+  require_mention: true
+  free_response_channels: ''
+  auto_thread: true
+whatsapp: {}
+approvals:
+  mode: manual
+command_allowlist: []
+quick_commands: {}
+personalities: {}
+security:
+  redact_secrets: true
+  tirith_enabled: true
+  tirith_path: tirith
+  tirith_timeout: 5
+  tirith_fail_open: true
+  website_blocklist:
+    enabled: false
+    domains: []
+    shared_files: []
+_config_version: 10
+session_reset:
+  mode: both
+  idle_minutes: 1440
+  at_hour: 4
+skills:
+  creation_nudge_interval: 15
+platform_toolsets:
+  cli:
+  - browser
+  - clarify
+  - code_execution
+  - cronjob
+  - delegation
+  - file
+  - hermes-cli
+  - image_gen
+  - memory
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - tts
+  - vision
+  - web
+  telegram:
+  - hermes-telegram
+  discord:
+  - hermes-discord
+  whatsapp:
+  - hermes-whatsapp
+  slack:
+  - browser
+  - clarify
+  - code_execution
+  - cronjob
+  - delegation
+  - file
+  - hermes-slack
+  - image_gen
+  - memory
+  - session_search
+  - skills
+  - terminal
+  - todo
+  - tts
+  - vision
+  - web
+  signal:
+  - hermes-signal
+  homeassistant:
+  - hermes-homeassistant
+code_execution:
+  timeout: 300
+  max_tool_calls: 50
+
+# ── Fallback Model ────────────────────────────────────────────────────
+# Automatic provider failover when primary is unavailable.
+# Uncomment and configure to enable. Triggers on rate limits (429),
+# overload (529), service errors (503), or connection failures.
+#
+# Supported providers:
+#   openrouter   (OPENROUTER_API_KEY)  — routes to any model
+#   openai-codex (OAuth — hermes login) — OpenAI Codex
+#   nous         (OAuth — hermes login) — Nous Portal
+#   zai          (ZAI_API_KEY)         — Z.AI / GLM
+#   kimi-coding  (KIMI_API_KEY)        — Kimi / Moonshot
+#   minimax      (MINIMAX_API_KEY)     — MiniMax
+#   minimax-cn   (MINIMAX_CN_API_KEY)  — MiniMax (China)
+#
+# For custom OpenAI-compatible endpoints, add base_url and api_key_env.
+#
+# fallback_model:
+#   provider: openrouter
+#   model: anthropic/claude-sonnet-4
+#
+# ── Smart Model Routing ────────────────────────────────────────────────
+# Optional cheap-vs-strong routing for simple turns.
+# Keeps the primary model for complex work, but can route short/simple
+# messages to a cheaper model across providers.
+#
+# smart_model_routing:
+#   enabled: true
+#   max_simple_chars: 160
+#   max_simple_words: 28
+#   cheap_model:
+#     provider: openrouter
+#     model: google/gemini-2.5-flash

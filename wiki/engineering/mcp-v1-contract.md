@@ -33,7 +33,7 @@ Enable a minimal autonomous research loop with the smallest safe tool surface:
 1. discover a backtestable strategy
 2. inspect params/config defaults and schemas
 3. run a single backtest
-4. inspect the saved result
+4. inspect the saved result and one saved run asset when artifact detail is needed
 5. repeat with revised inputs
 
 ## Explicitly out of scope for v1
@@ -235,12 +235,39 @@ MCP normalization requirements:
 - add a concise `result_summary` block extracted from `performance_metrics`
 - avoid unnecessary large payload expansion at top level
 
+### 7. `get_saved_run_asset`
+Purpose:
+- retrieve artifact-bearing detail for one asset in a saved single-run backtest
+
+Backend route:
+- `GET /api/v1/backtest/run/saved/{run_id}/asset/{asset_id}`
+
+Minimal input:
+- `run_id: UUID`
+- `asset_id: UUID`
+
+Expected output:
+- `run_id`
+- `asset_id`
+- `symbol`
+- `success`
+- `message`
+- `interval`
+- `performance_metrics`
+- `artifact_counts`
+- `result_summary`
+- `raw`
+
+MCP restriction:
+- only use this for saved single-run asset inspection
+- do not add batch saved-run tools under this scope
+
 ## Recommended MCP-side guardrails
 
 These are stricter than the backend where useful.
 
 ### Global rules
-- deny by default; only the six tools above are routable
+- deny by default; only the seven tools above are routable
 - if a request can map to a batch or live-trading surface, reject it
 - tool handlers should validate input before backend calls
 - all tool calls must carry a request ID

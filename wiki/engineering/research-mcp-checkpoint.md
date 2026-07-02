@@ -22,10 +22,11 @@ Current v1 tool surface:
 - `run_backtest`
 - `list_saved_runs`
 - `get_saved_run`
+- `get_saved_run_asset`
 
 Current local validation status:
-- `research_mcp` test suite is green
-- latest count at checkpoint time: 35 passing tests
+- `research_mcp` focused changed-tool suite is green as of 2026-07-02: 18 passing tests for run-backtest, saved-run, and allowlist surfaces.
+- earlier baseline count at checkpoint time: 35 passing tests
 
 ## Key implementation decisions already made
 
@@ -56,8 +57,12 @@ The next real step is not more speculative polishing.
 The next real step is:
 1. decide the backend auth model for `research_mcp`
 2. connect `research_mcp` to a real backend instance
-3. test the 6 v1 tools against live backend responses
+3. test the 7 v1 tools against live backend responses
 4. fix any contract or auth mismatches
+
+2026-07-02 implementation note:
+- `run_backtest` now passes the backend `assets` field through for per-run asset settings such as `max_position_percent`.
+- `get_saved_run_asset` now reads persisted artifact-bearing detail for one saved single-run asset.
 
 ## Recommended next discussion
 

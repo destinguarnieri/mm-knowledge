@@ -8,6 +8,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[Agent Knowledge Discipline]] — how agents should use the wiki, QMD, Linear, checkpoints, and changelogs.
 - [[Backtesting and Evaluation]] — backtest/research loop, correctness issues, and evaluation tooling.
 - [[MON-97-backtest-metrics-plan]] — implementation plan for excluding fee-only/no-trade rows from backtest win-rate accounting.
+- [[MON-98-backtest-sizing-smoking-gun]] — canonical 10/50/100 BTC `emac` repro showing 100% return underperforming 50% while risk/costs rise.
 
 ## Wiki Areas
 

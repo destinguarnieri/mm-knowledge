@@ -2,6 +2,11 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-07-02
+
+- Added [[MON-98-backtest-sizing-smoking-gun]] with the canonical BTC `emac` 30m/1000-candle 10/50/100 Research MCP repro settings, run IDs, UI headline metrics, and next investigation hypothesis.
+- Updated [[index|Money Machine Knowledge Index]] routing for the MON-98 sizing evidence page.
+
 ## 2026-06-29
 
 - Moved agent/worker/coding-manager prompt templates under `wiki/agents/templates/`, updated [[index|Money Machine Knowledge Index]], and cleaned copied project skill pointers in `mm_v04/.cursor/skills/` to target the Money Machine KB.

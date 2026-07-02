@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-02 17:25 EDT
+Date: 2026-07-02 17:45 EDT
 
 ## Current State
 
@@ -20,6 +20,47 @@ Verification:
 - QMD index update succeeded outside the sandbox after KB edits.
 
 Next action: restart/reload the Research MCP server/tool descriptors if needed, then use `list_saved_runs`, `get_saved_run`, `get_saved_run_asset`, and `run_backtest` with explicit `assets` to characterize the real 10/50/100 strategy runs.
+
+Real-strategy 10/50/100 characterization started:
+
+- Research MCP restart picked up the new `assets` input and `get_saved_run_asset` tool.
+- Ran controlled BTC `emac` backtests with identical defaults (`1h`, `min_candles=500`, `initial_capital=10000`, `fees=0.0005`, `slippage=0.0005`, `leverage=1`, cross margin) and explicit `max_position_percent` settings.
+- Initial 10% run landed on a different 941-signal window, so it was discarded for proportional comparison.
+- Clean saved runs:
+  - 10%: `4e1f099f-6345-419e-a53e-398fd21a12d3`
+  - 50%: `8268a502-28e5-490a-9529-156ff6c14084`
+  - 100%: `b893ef8f-ef43-4b9c-8f82-dae259c5a701`
+- Clean artifact counts match across all three: 500 candles and 940 orders/fills/positions/signals/PnL points.
+- Signals match exactly across all three clean runs, so the first divergence is not signal generation.
+- High-level realized PnL/return scales close to expected: final realized PnL ratios are about 5.08x, 10.13x, and 1.99x for 50/10, 100/10, and 100/50.
+- Exposure/order deltas are highly nonlinear at the per-order level: many adjustment sizes do not scale cleanly because small 10% and 50% deltas hit precision/min-adjustment behavior; aggregate volume/fees scale less cleanly than PnL.
+
+Next action: create a focused deterministic probe around `emac` position adjustment sizing after identical signals, isolating `calc_position_adj_size` / exchange precision / `MIN_ADJUSTMENT_VALUE` behavior from metrics and candle selection.
+
+Corrected canonical repro runs after Destin supplied actual UI settings:
+
+- Durable evidence page: [[MON-98-backtest-sizing-smoking-gun]]
+- Settings: BTC `emac`, `30m`, `min_candles=1000`, `initial_capital=100000`, `fees=0.00015`, `slippage=0.05`, `leverage=10`, cross margin, default strategy config/trade config, explicit `max_position_percent`.
+- Docker backend was initially also serving `localhost:8000`, causing stale artifact behavior. After compose down, local-only full-detail diagnostic emitted correct `leverage_value=10` and `margin_used=value/10`.
+- Valid local-only run IDs:
+  - 10%: `9596d52b-6d38-4357-858a-97f876eda686`
+  - 50%: `98369b3f-072e-4476-912d-98492d8eaaf9`
+  - 100%: `4f636dd5-308f-4891-bc54-9c00d55fb4e1`
+- All three summary responses returned `n_bars=1940`; trades differ after corrected trade-outcome filtering (`1015`, `1017`, `996`).
+- Headline metrics still show the UI concern on the valid local-only backend: 50% total return is `20.05%`; 100% total return is `18.69%`, while volatility, drawdown, fees, and win-rate/in-money degrade at 100%.
+- Artifact drill-down hydrated all three valid saved runs with `get_saved_run_asset`.
+- Signals match exactly across 10/50/100, and position artifacts correctly show `leverage_value=10` with `margin_used=value/10`; the divergence is not stale backend leverage behavior or signal generation.
+- 100% total volume is `69.81M` versus 50% volume of `27.20M` (`2.57x`), and fees scale the same way (`-10,471.26` versus `-4,079.47`).
+- Zero-cost 50/100 isolation (`fees=0`, `slippage=0`) removes the inversion: 50% returns `23.32%`; 100% returns `26.23%`.
+- Fee-only 50/100 isolation (`fees=0.00015`, `slippage=0`) reproduces the inversion: 50% returns `19.34%`; 100% returns `17.31%`.
+- Slippage-only 50/100 isolation (`fees=0`, `slippage=0.05`) does not reproduce the inversion: 50% returns `23.18%`; 100% returns `25.92%`.
+- Final turnover drill: actual 100%/50% exposure ratio tracks the compounded equity-base ratio almost exactly. Average actual exposure ratio is about `2.22x`, matching the implied `2 * equity100/equity50` target-base ratio. Around bar `641`, 100% equity is about `1.323x` 50% equity, so the 100%/50% target base reaches about `2.645x`.
+- A fixed `2x` version of the 50% signed exposure path would imply about `52.52M` of signed exposure movement; actual 100% movement is about `67.56M` (`1.286x` higher). The changing compounded multiplier contributes about `10.28M` of absolute path movement magnitude.
+- Current conclusion: the canonical 50% > 100% headline inversion is primarily fee drag applied to path-dependent, superlinear turnover caused by current-equity compounding plus continuous rebalancing.
+- Created follow-up Linear tickets under MON-98:
+  - `MON-105 Add fixed-capital sizing mode to backtests` — adds explicit `current_equity` vs `initial_capital` backtest sizing semantics and focused regressions.
+  - `MON-106 Add backtest exposure and cost decomposition metrics` — exposes gross/net/cost/turnover metrics in backend/saved-run data and the existing Data tab; blocked by MON-105 for clean sequencing.
+- Next action: run coding-manager launch review for MON-105 when ready to execute; keep MON-106 queued behind or parallel only if the worker treats sizing-mode display as optional.
 
 MON-104 implementation is complete locally:
 

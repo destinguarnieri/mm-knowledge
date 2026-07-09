@@ -25,8 +25,8 @@ Before answering project/context questions or doing Money Machine work:
 After meaningful work:
 
 1. Update or create the relevant page(s) under `wiki/`.
-2. Update `wiki/ops/current-checkpoint.md` with objective, current state, decisions, blockers, verification, and next action.
-3. Append a concise entry to `wiki/ops/session-change-log.md` after ticketing, implementation, verification, or durable product/engineering decisions.
+2. Update `wiki/sessions/current-checkpoint.md` with objective, current state, decisions, blockers, verification, and next action.
+3. Append a concise entry to `wiki/sessions/session-change-log.md` after ticketing, implementation, verification, or durable product/engineering decisions.
 4. Update `wiki/index.md` when routing, page inventory, or key topics change.
 5. Append a concise KB-structure entry to `wiki/log.md` when the KB itself changes.
 6. Run `/Users/destinguarnieri/.bun/bin/qmd update` so search reflects the new markdown.

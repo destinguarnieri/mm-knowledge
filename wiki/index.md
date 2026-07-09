@@ -7,8 +7,9 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[Money Machine Operating Context]] — durable company/system/project frame.
 - [[Agent Knowledge Discipline]] — how agents should use the wiki, QMD, Linear, checkpoints, and changelogs.
 - [[Backtesting and Evaluation]] — backtest/research loop, correctness issues, and evaluation tooling.
-- [[MON-97-backtest-metrics-plan]] — implementation plan for excluding fee-only/no-trade rows from backtest win-rate accounting.
-- [[MON-98-backtest-sizing-smoking-gun]] — canonical 10/50/100 BTC `emac` repro showing 100% return underperforming 50% while risk/costs rise.
+- [[research/trading/research_process_v1|Research Process V1]] — repeatable quant strategy research protocol from idea card through candidate handoff.
+- [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] — style reference for structured research files with timestamped write logs.
+
 
 ## Wiki Areas
 
@@ -19,15 +20,16 @@ Canonical markdown lives under `wiki/`:
 - `wiki/ops/` — operating runbooks, process notes, Linear operating system.
 - `wiki/engineering/` — engineering plans, architecture, implementation context.
 - `wiki/quant/` — quantitative research notes.
+- `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v1`, example research directory).
 - `wiki/trading/` — trading language and discretionary/strategy context.
 - `wiki/concepts/` — cross-cutting domain concepts and agent procedures.
 - `wiki/projects/` — active initiative context and project-level synthesis.
 - `wiki/decisions/` — durable decision records.
-- `wiki/sessions/` — promoted session summaries.
+- `wiki/sessions/` — promoted session summaries and current checkpoint / change log.
 
 ## Routing Rules
 
-- For current execution state, check `wiki/ops/current-checkpoint.md` and `wiki/ops/session-change-log.md`.
+- For current execution state, check `wiki/sessions/current-checkpoint.md` and `wiki/sessions/session-change-log.md`.
 - For execution/backlog truth, check Linear.
 - For durable project synthesis, update this wiki.
 - For broad retrieval, use QMD over the wiki, then retrieve the matching markdown pages before answering.

@@ -2,6 +2,10 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-07-08
+
+- Corrected [[index|Money Machine Knowledge Index]] research routing from stale `wiki/quant/research*` paths to [[research/trading/research_process_v1|Research Process V1]] and [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] under `wiki/research/trading/`. Also pointed session continuity routing at `wiki/sessions/` (not `wiki/ops/`). Earlier same-day index entries that pointed at `wiki/quant/research*` are superseded by this routing.
+
 ## 2026-07-02
 
 - Added [[MON-98-backtest-sizing-smoking-gun]] with the canonical BTC `emac` 30m/1000-candle 10/50/100 Research MCP repro settings, run IDs, UI headline metrics, and next investigation hypothesis.

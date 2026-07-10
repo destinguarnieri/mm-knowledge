@@ -58,7 +58,7 @@ wiki/                 # synthesized Obsidian-compatible markdown graph
   vendor/             # vendor specifications and documentation
 ```
 
-Canonical markdown belongs under `wiki/`. Do not keep duplicate top-level `company/`, `ops/`, `engineering/`, `quant/`, or `trading/` markdown trees. If old/source material should be retained but not treated as canonical, move it under `archive/` or `raw/` with a note.
+Canonical markdown belongs under `wiki/`. Do not keep duplicate top-level `company/`, `ops/`, `engineering/`, `research/`, or `trading/` markdown trees. If old/source material should be retained but not treated as canonical, move it under `archive/` or `raw/` with a note.
 
 ## Wiki Rules
 

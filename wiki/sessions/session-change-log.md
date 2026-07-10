@@ -1,3 +1,28 @@
+## 2026-07-09 22:46 EDT
+
+- Deleted accidental `MON-122` Research MCP suite implementation from the working tree (not a git revert of `0f44d698`). Removed `models/suite.py`, suite/batch client tests, and stripped suite tools/validation/allowlist/docs/client batch helpers back to pre-ticket state. Remaining research_mcp smoke/bounds tests **13 passed**. Destin rejected MCP-owned cartesian grid orchestration as the wrong ownership boundary; ticket will be re-read/re-specced backend-first before any re-implementation. Linear stays open / not Done. Working-tree deletion is uncommitted.
+- Coding-manager ticket-quality re-read of `MON-122`: **Stop / not launchable**. Core defect is ownership: ticket + brief lock “MCP expands grid; no backend grid/suite job table,” which puts durable multi-config orchestration in the wrong layer. Keepable: batch≠grid identity, no fake parent UUID, no auto-register, bounds. Needs re-spec before any worker.
+
+## 2026-07-09 18:51 EDT
+
+- Completed a one-hour `n_bar_breakout` strategy/research-loop dogfood session. Added typed persistent N-bar breakout code with a 5% default rebalance buffer and 7 passing focused tests. Ran BTC lookback/fee smokes, reviewed saved artifacts, and recorded workflow gaps. A 49-asset UI universe smoke completed 49/49 with 27 positive returns, 26 Sharpe >=1, median return `+7.57%`, median Sharpe `1.30`, and high leveraged risk (median max DD `-21.18%`; 15 assets at/below `-30%`). Results are exploratory only: rolling window, 10x-or-max/default asset settings, no exposed saved batch UUID, and ETH/SOL holdout quarantine consumed.
+
+## 2026-07-09 18:32 EDT
+
+- Created Linear ticket `MON-131` in BackTest v2: Saved-run Trades & Fills Inspector (synchronized chart markers + ledger). Backend-canonical trade/fill grouping; frontend render only; orange = avg position price. Reference AC: 23 fills / 18 trades / 5 rebalances / fees $264.66 / max winner $8,567.16. Status Triage, High priority. Launch gate required before worker.
+
+## 2026-07-08 21:05 EDT
+
+- Coding-manager light re-check of `MON-122` Narrow fix (post-enqueue poll/timeout preserves `backend_run_id` on SuiteResult cells; standalone batch returns one-cell envelope). Decision: **Accept**. Targeted tests 27 passed. Commit `0f44d698` on `feat/research_loop`. Notes: `MON-122-light-recheck.md`, `MON-122-acceptance.md`.
+
+## 2026-07-08 21:00 EDT
+
+- Worker implemented `MON-122` Research MCP suite tools: `run_batch_backtest`, `get_batch_status`, `run_grid_backtest`, `run_fee_slippage_stress_suite` + `SuiteResult` helpers/validation/allowlist/docs. Backend unchanged. Targeted tests 30 passed. Handoff at `mm_v04/.cursor/handoffs/MON-122-handoff.md`. Awaiting coding-manager Accept + commit (no worker commit).
+
+## 2026-07-08 20:50 EDT
+
+- Coding-manager packaged `Brief: MON-122 Batch/grid/suite execution` (Linear doc + local handoff) after worker handback for missing brief. Locked batch→SuiteResult one-cell mapping, assets/cell ≤8, max_cells/variants ≤32, stress `variants[{fees,slippage}]`, best-effort mid-suite failure, `get_saved_batch_run` out, label-only `split`/`purpose`. Removed incorrect Linear `blockedBy: MON-126`. Launch decision: **Ready**. Kickoff at `mm_v04/.cursor/handoffs/MON-122-worker-kickoff.md`. Parent may re-spawn worker.
+
 ## 2026-07-08 20:15 EDT
 
 - Coding-manager accepted `MON-130` after narrow recovery follow-up. Committed `6367c63c` on `bug/backtest` (explicit `[start_ms, end_ms)` on single/batch, persist/retrieve, MCP forward, fail-closed asymmetric/incomplete recovery). Marked Linear Done. Migration `c2d8e9f0a1b3` still needs apply per env.

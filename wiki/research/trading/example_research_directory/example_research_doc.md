@@ -6,7 +6,7 @@ Use this style for files under `/mm-knowledge/wiki/quant/research/`. Keep struct
 
 This doc has a matching artifact folder at `/mm-knowledge/wiki/quant/research/trend-continuation-slope-filter/`, holding `configs/`, `artifacts/[run-id]/`, and `review/` as described in the process doc. Paths below are relative to that folder unless already prefixed with `research/`.
 
-Related process: [[quant/research_process_v1|Research Process V1]]
+Related process: [[research/trading/research_process_v1|Research Process V1]]
 
 ## Status
 

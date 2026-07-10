@@ -1,3 +1,107 @@
+## 2026-07-10 18:48 EDT
+
+- Completed the lean-agent second pass: consolidated the company north star into [[company/money-machine-360|Money Machine Operating Context]], repaired index/checkpoint routing, reduced mandatory startup context, made chief-of-staff and coding-manager explicit-only, retired overlapping agent roles, and collapsed ten worker/review templates into two optional managed-execution references. Direct execution is now the default; capital safety and invariant-first correctness remain always on. No Linear, runtime, trading, account, strategy lifecycle, deployment, secret, commit, or push action was performed.
+
+## 2026-07-10 02:48 EDT
+
+- Reset the agent operating system around trading revenue: positive net realized live P&L after costs over a founder-set proof period. Added an always-applied revenue-closure rule; changed Linear intake, role skills, worker/coding-manager templates, and KB hygiene to require current-system evidence, no-build alternatives, work deletion, risk-proportional ceremony, and terminal closure instead of automatic tickets/follow-ups. Capital authorization and high-risk correctness gates remain hard constraints. No Linear issues were mutated.
+
+## 2026-07-10 02:06 EDT
+
+- Coding-manager accepted `MON-134` after delta 3 plus a final manager correction to the public/stored identity type boundary. Plain `dict[str, pydantic.JsonValue]` input is validated before recursively frozen storage; unsupported caller containers and malformed non-JSON identity fields are rejected; strict mypy, changed-file compile, IDE lints, and an independent identity smoke passed. Worker baseline: `46` foundation + `144` remaining backtest tests. Sandboxed pytest rerun was blocked by repo `.env` permissions, so secret access was not requested. Committed as `5a659548` (`Add durable backtest persistence foundation`).
+
+## 2026-07-10 01:58 EDT
+
+- Coding-manager re-reviewed MON-134 delta 2: still **Narrow**, not committed. Recursive freezing now blocks nested mutation and stabilizes repeated hashes, but the frozen representation is incorrectly annotated as `pydantic.JsonValue`; strict mypy independently reproduces 2 incompatible-return errors. Caller-supplied tuple and `MappingProxyType` values are also accepted and hashed as arrays/objects instead of rejected as unsupported input; a direct probe showed tuple input hashes identically to list input. Require pre-freeze input validation, an accurate recursive frozen-JSON type, unsupported-type negatives, and green strict mypy.
+
+## 2026-07-10 01:49 EDT
+
+- Coding-manager delta acceptance re-review of `MON-134`: still **Narrow**, not committed. Signed-zero identity, `Any`, BacktestStrategy coverage, full NUMERIC matrix, database cascade proof, and migration restoration were corrected (`40` focused + `144` other backtest tests reported). Remaining invariant bug: only top-level identity mappings are proxied; nested dict/list mutation still succeeds and direct verification changes the same object’s hash. Replacing Pydantic with a dataclass also removed runtime field validation. Require recursive immutable canonical storage, restored runtime validation, and nested-mutation/repeated-hash tests.
+
+## 2026-07-10 01:39 EDT
+
+- Coding-manager deep acceptance review of `MON-134`: **Narrow**, not committed. The additive schema/migration is directionally correct and reported suites passed, but `Decimal("0")` and `Decimal("-0")` currently produce different Variant keys; the identity helper uses prohibited `Any` and is only shallow-frozen. Brief-required tests are incomplete for BacktestStrategy snapshot/deletion, every NUMERIC special value, and database-level cascade behavior; the migration round-trip also needs guaranteed restoration/isolation. Return contained corrections to the worker and require a delta handoff.
+
+## 2026-07-10 01:39 EDT
+
+- Created MON-133 child chain in Linear and attached issue-linked briefs: `MON-135` typed Trial results/attempt artifacts blocked by `MON-134`; `MON-136` durable scheduler/recovery blocked by `MON-135`; `MON-137` API/MCP/frontend compatibility blocked by `MON-136`; `MON-138` saved research/signal-deciles migration blocked by `MON-137`; `MON-139` destructive legacy removal blocked by `MON-138` and blocking `MON-132`. All remain Triage; no downstream worker launch before predecessor acceptance and ticket-local coding-manager review.
+
+## 2026-07-10 01:29 EDT
+
+- Packaged the remaining MON-133 architecture into five dependency-ordered child briefs under `wiki/engineering/`: typed Trial results/attempt artifacts; durable scheduler/lifecycle/recovery; API/MCP/frontend compatibility projections; saved research/signal-deciles migration; and final destructive legacy removal. Each brief locks scope, identities, failure/retry behavior, file ownership, negative tests, anti-goals, stop conditions, and hard predecessor gates. Updated the parent plan and wiki routing; only the results/artifacts child is eligible for launch review after MON-134 acceptance.
+
+## 2026-07-10 01:21 EDT
+
+- Applied the final MON-134 launch-review tightening: corrected the brief header, added named checks binding each present navigational strategy FK to its immutable snapshot, changed `variant_key` to `VARCHAR(64)` with a lowercase SHA-256 hex regex check, and added PostgreSQL negative tests for mismatched navigation/snapshot IDs and malformed hashes. Ready for another launch-review pass; no worker launched.
+
+## 2026-07-10 01:17 EDT
+
+- Tightened the MON-134 foundation brief after coding-manager review: added immutable non-FK `strategy_id_snapshot` / `backtest_strategy_id_snapshot` fields while retaining nullable source FKs only for navigation; canonical hashing now excludes mutable FKs. Added explicit PostgreSQL checks excluding `NaN`/`±Infinity` from every V2 NUMERIC field, `jsonb_typeof(...) = 'object'` checks for all Variant config blobs, and negative tests for both constraint families plus source-deletion identity stability. Ready for launch-review rerun; no worker launched.
+
+## 2026-07-10 01:24 EDT
+
+- Final coding-manager launch review of `MON-134`: **Ready**. Linear now embeds the fully tightened foundation brief (new upload and ticket update confirmed). The additive four-table schema, immutable Variant identity, database constraints, PostgreSQL negative tests, file ownership, downgrade, anti-goal, and stop condition are explicit enough for a cold-start worker. Worker kickoff packaged; broad `MON-133` remains non-worker architecture.
+
+## 2026-07-10 01:23 EDT
+
+- Coding-manager re-review found the updated local `MON-134` brief technically launch-ready: FK/snapshot consistency, digest format, finite NUMERIC, JSON shape, and matching negative tests are explicit. Final decision remains **Tighten** only because Linear still embeds the earlier immutable upload (unchanged ticket timestamp/attachment size), so a cold worker would receive stale instructions. Replace the attachment, then perform the final launch packaging check.
+
+## 2026-07-10 01:19 EDT
+
+- Coding-manager re-reviewed the tightened `MON-134` brief: prior immutable-snapshot, finite-NUMERIC, and JSON-object blockers are resolved; decision remains **Tighten** for one final identity-constraint pass. Add named checks requiring each present navigational strategy FK to equal its immutable snapshot and requiring `variant_key` to be lowercase 64-character SHA-256 hex; add matching PostgreSQL negative tests and replace the stale `MON-TBD` brief header. No worker kickoff yet.
+
+## 2026-07-10 01:15 EDT
+
+- Coding-manager launch review of `MON-134` and its foundation brief: **Tighten**. The slice boundary, file ownership, schema identities, downgrade, and negative constraint coverage are otherwise launchable. Required correction: mutable source FKs using `ON DELETE SET NULL` cannot also be immutable `variant_key` inputs; preserve separate immutable snapshot IDs or define a different stable identity. Also require DB-level finite `NUMERIC` constraints and PostgreSQL negative tests for non-object Variant JSON. No worker kickoff yet.
+
+## 2026-07-10 01:04 EDT
+
+- Applied the MON-133 Stop review tightening: MON-133 stays the non-worker architecture parent. Drafted `wiki/engineering/MON-133-bt-foundation-slice-brief.md` for the only next launchable child—additive `BtStudy` / `BtVariant` / `BtTrial` / `BtTrialAttempt` models, exact constraints, immutable strategy/config identity, pure canonical key helper, and negative contract tests. Split results/artifacts, scheduler/lifecycle, compatibility, research migration, legacy deletion, and grid into ordered follow-on tickets; no implementation launched.
+
+## 2026-07-10 01:01 EDT
+
+- Coding-manager launch review of `MON-133` and attached Backtest Persistence V2 plan: **Stop**. Study → Variant → Trial → Attempt direction and clean-cutover stance are coherent, but the brief is not yet migration-ready or worker-launchable. It still leaves complete metric/artifact DDL, strategy snapshot identity, lifecycle transition/idempotency/concurrency guards, exact failure mapping, compatibility projections, rollback points, bounds/config sources, and launch-reviewable implementation slices/file ownership to worker invention. No implementation launch or kickoff prompt.
+
+## 2026-07-10 00:25 EDT
+
+- Paused `MON-132` after first-principles review found its nested grid parent → cell → single/batch leaf model compounded ambiguity in `BtBacktestRun` / `BtBacktestRunAsset` / batch aggregates. Created high-priority `MON-133` to redesign durable backtest persistence around Study → Variant → Trial, with explicit identity, lifecycle, retry, partial-failure, artifact ownership, compatibility, migration, and rollback contracts. `MON-132` is Blocked by `MON-133`; no schema implementation launches before a coding-manager review.
+
+## 2026-07-10 00:34 EDT
+
+- Expanded [[vendors/binance-market-data-access|Binance Market Data Access]] with spot `/api/v3/klines` request/response schema (12-field array), intervals, `limit` default/max 500/1000, weight 2, live `exchangeInfo` rateLimits (`REQUEST_WEIGHT` 6000/1m, `RAW_REQUESTS` 300000/5m), 429/418 semantics, and futures `/fapi/v1/klines` limit/weight table (max 1500; weight scales with limit).
+
+## 2026-07-09 23:25 EDT
+
+- `MON-122` worker handoff: Research MCP thin batch wrap landed (`run_batch_backtest`, `get_batch_status`, `get_saved_batch_run`). Assets ≤8 after dedupe; compact backend-shaped status/result; partial-asset `errors[]` preserved; `start_ms`/`end_ms` forwarded; no SuiteResult/grid/stress; no backend changes. Full research_mcp suite **67 passed**. Uncommitted — coding manager Accept + commit next.
+
+## 2026-07-09 23:43 EDT
+
+- Folded MON-122 Accept follow-ups into the ticket and closed for real: `get_saved_batch_run` → `saved_runs.py`; batch status `raw` + saved `run_type=batch`; reject assets rows missing `asset_id`; system-tool copy mentions batch. Commit `8f9bec76` on `feat/research_loop`. Linear Done.
+
+## 2026-07-09 23:29 EDT
+
+- Coding-manager accepted `MON-122` (batch wrap only) after deep review + Narrow identity fix. Commit `82fbcd94` on `feat/research_loop`. Tools: `run_batch_backtest`, `get_batch_status`, `get_saved_batch_run`. Post-enqueue poll failures now carry structured `BackendRequestError.run_id`. Linear Done. Non-blocking cohesion follow-ups noted.
+
+## 2026-07-09 23:22 EDT
+
+- Coding-manager launch-gated `MON-122` (respecced batch wrap only): **Ready**. Locked MCP assets ≤8 after dedupe (backend has no hard max). No SuiteResult/grid/stress. Optional `get_saved_batch_run` if clean. Status → In Progress; money-machine-coding worker spawned. Awaiting Linear handoff for acceptance review.
+
+## 2026-07-09 23:12 EDT
+
+- Captured Binance market-data access research in [[vendors/binance-market-data-access|Binance Market Data Access]]. Live US probe: `api.binance.com` / `fapi` → 451; `data-api.binance.vision` spot klines → 200. MM posture: use vision host for backtest/research spot immediacy; trading servers already JP; research backend may need JP (or local VPN) for perp/`fapi` data. Binance.US explicitly out of scope. Renamed `wiki/vendor/` → `wiki/vendors/` because QMD hard-excludes directories named `vendor`.
+
+## 2026-07-10 00:00 EDT
+
+- Locked `MON-132` persistence on the ticket/brief (no migration/code): parent `BtBacktestRun` `run_type=grid` with nullable `grid_spec_json`; real leaf `BtBacktestRun` per cell (single or nested batch); new `bt_backtest_grid_cell` edge table; do not reuse `BtBacktestRunAsset` for cells. Bounds + saved-list default still open for launch review.
+
+## 2026-07-09 23:17 EDT
+
+- Locked `MON-132` V1 input to **cartesian `grid_spec` only** (explicit `cells[]` deferred). Persistence left open for design: same-table parent `run_type=grid` is a lean, but parent→leaf cell edges cannot reuse `BtBacktestRunAsset`. Bounds still open. No worker launch until persistence model is chosen.
+
+## 2026-07-09 22:57 EDT
+
+- Respecced overstuffed `MON-122` into two tickets after Destin ownership decisions: (1) `MON-122` = Research MCP thin wrap of existing backend batch only; (2) new `MON-132` = backend durable grid/suite job (real parent `run_id`) + thin MCP wrap; no UI. Fee/slippage stress deferred to `MON-124`. Updated `MON-122` brief; attached `MON-132` brief. Both Triage pending Destin implied-behavior review. Prior MCP-owned SuiteResult/grid design remains withdrawn.
+
 ## 2026-07-09 22:46 EDT
 
 - Deleted accidental `MON-122` Research MCP suite implementation from the working tree (not a git revert of `0f44d698`). Removed `models/suite.py`, suite/batch client tests, and stripped suite tools/validation/allowlist/docs/client batch helpers back to pre-ticket state. Remaining research_mcp smoke/bounds tests **13 passed**. Destin rejected MCP-owned cartesian grid orchestration as the wrong ownership boundary; ticket will be re-read/re-specced backend-first before any re-implementation. Linear stays open / not Done. Working-tree deletion is uncommitted.
@@ -193,11 +297,11 @@
 - 16:52 EDT: Tightened the MON-104 harness after review. Changed the price path to distinct hold and close prices (`100 -> 95 -> 90`), made `total_volume` oracle explicit as open fill notional plus close fill notional, and removed/documented unused ledger-row fields by moving checked account/metric expectations into a summary oracle. Verification remains green: focused + adjacent anchor pytest `14 passed, 2 warnings`, py_compile passed, and Cursor lints are clean.
 - 17:25 EDT: Read MCP engineering docs and made a narrow `research_mcp` patch for the real 10/50/100 backtest characterization loop. `run_backtest` now passes through `assets` for per-run settings like `max_position_percent`, and new read-only `get_saved_run_asset(run_id, asset_id)` hydrates artifact-bearing saved single-run asset detail. Updated Research MCP runbook and KB MCP contract/checkpoint docs. Verification: focused Research MCP suite passed outside sandbox (`18 passed`); sandboxed run is blocked by `.env` access.
 - 17:42 EDT: Used refreshed Research MCP to run controlled BTC `emac` 10/50/100 backtests with explicit asset settings. Discarded the first 10% run because it used a different 941-signal candle window. Clean runs (`10=4e1f099f-6345-419e-a53e-398fd21a12d3`, `50=8268a502-28e5-490a-9529-156ff6c14084`, `100=b893ef8f-ef43-4b9c-8f82-dae259c5a701`) share identical signals and artifact counts. PnL/return scale close to expected, while order/exposure deltas are nonlinear due to precision/min-adjustment behavior; next probe should isolate EMAC adjustment sizing before metrics.
-- 18:07 EDT: Saved the corrected canonical MON-98 smoking-gun repro to [[MON-98-backtest-sizing-smoking-gun]]. This captures Destin-confirmed settings, run IDs, and UI headline metrics showing 100% total return underperforming 50% while risk/costs rise.
+- 18:07 EDT: Saved the corrected canonical `MON-98` smoking-gun repro. This captures Destin-confirmed settings, run IDs, and UI headline metrics showing 100% total return underperforming 50% while risk/costs rise. The original note is no longer present in the canonical wiki.
 - 18:20 EDT: Artifact drill found strategy sizing does receive leverage/position settings, but the running backend emits position artifacts with `leverage_value=1` and `margin_used=value`. Direct local `MockTradingService` sanity check emits `lev_value=10` and `margin_used=value/10`, so the next check is to restart/reload FastAPI and rerun the small full-detail leverage diagnostic.
-- 18:24 EDT: Destin found Docker backend was also running and likely serving MCP traffic. After Docker compose down, Research MCP full-detail diagnostic emitted `leverage_value=10` and `margin_used=value/10`, confirming the previous diagnostic/canonical run set was stale Docker-backed. Marked [[MON-98-backtest-sizing-smoking-gun]] run IDs as stale pending local-only rerun.
+- 18:24 EDT: Destin found Docker backend was also running and likely serving MCP traffic. After Docker compose down, Research MCP full-detail diagnostic emitted `leverage_value=10` and `margin_used=value/10`, confirming the previous diagnostic/canonical run set was stale Docker-backed. Marked the `MON-98` run IDs as stale pending local-only rerun.
 - 18:28 EDT: Reran canonical BTC `emac` 10/50/100 set against local-only backend. Valid run IDs: `10=9596d52b-6d38-4357-858a-97f876eda686`, `50=98369b3f-072e-4476-912d-98492d8eaaf9`, `100=4f636dd5-308f-4891-bc54-9c00d55fb4e1`. Smoking gun persists: 50% total return `20.05%` beats 100% total return `18.69%` while 100% has higher volatility, drawdown, fees, and worse win/in-money rates.
-- 18:35 EDT: Drilled into the valid local-only MON-98 canonical BTC `emac` 10/50/100 runs. Hydrated artifacts showed identical signals and correct leverage artifacts, but 100% generated `2.57x` the 50% turnover/fees rather than `2x`. Zero-cost 50/100 isolation removed the return inversion (`26.23%` vs `23.32%`), fee-only reproduced it (`17.31%` vs `19.34%`), and slippage-only did not. Updated [[MON-98-backtest-sizing-smoking-gun]] and checkpoint with the current conclusion: fee drag on path-dependent superlinear turnover is the main mechanism behind the smoking gun.
+- 18:35 EDT: Drilled into the valid local-only MON-98 canonical BTC `emac` 10/50/100 runs. Hydrated artifacts showed identical signals and correct leverage artifacts, but 100% generated `2.57x` the 50% turnover/fees rather than `2x`. Zero-cost 50/100 isolation removed the return inversion (`26.23%` vs `23.32%`), fee-only reproduced it (`17.31%` vs `19.34%`), and slippage-only did not. Updated the historical `MON-98` note and checkpoint with the current conclusion: fee drag on path-dependent superlinear turnover is the main mechanism behind the smoking gun.
 - 18:52 EDT: Completed final MON-98 turnover mechanism drill. Actual 100%/50% exposure ratio tracks compounded equity-base ratio almost exactly (avg about `2.22x` for both); during the profitable middle, 100% equity reaches about `1.323x` 50% equity, creating a `2.645x` max target-base ratio. A fixed `2x` 50% exposure path would imply about `52.52M` signed exposure movement, while actual 100% movement is about `67.56M`; changing compounded multiplier magnitude accounts for about `10.28M` of path movement. Updated evidence/checkpoint.
 - 18:56 EDT: Created MON-98 follow-up tickets in Linear: `MON-105 Add fixed-capital sizing mode to backtests` for explicit `current_equity` vs `initial_capital` sizing semantics, and `MON-106 Add backtest exposure and cost decomposition metrics` for backend/saved-run/Data-tab decomposition of exposure, turnover, gross/net returns, fee drag, and cost drag. MON-106 is blocked by MON-105 for clean sequencing.
 

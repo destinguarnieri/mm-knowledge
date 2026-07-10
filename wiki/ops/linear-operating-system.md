@@ -10,6 +10,8 @@ Purpose: keep Linear usable as the operating surface for Money Machine Labs acro
 4. State = execution stage
 5. Backlog is storage, not an action queue
 6. Agents should pull from Ready, not from raw Backlog or Triage
+7. Positive net realized live P&L is the objective; tickets are costs incurred only when they unblock it
+8. Closing, canceling, merging, and deferring work are positive outcomes
 
 ## Current team
 
@@ -68,13 +70,17 @@ A Ready issue should answer:
 - what outcome is desired
 - what system it touches
 - what done looks like
+- which active revenue experiment it blocks
+- what current-system attempt demonstrated the blocker
+- why the no-build path is insufficient
 
 ### In Progress
 Actively being worked.
 
 Rule:
 - keep WIP low
-- target 1–3 active issues at a time across the whole system unless explicitly expanding capacity
+- keep one primary revenue outcome active unless Destin explicitly expands WIP
+- allow multiple bounded execution tasks only when they serve that outcome and do not create dependency or file collisions
 
 ### Blocked
 Cannot move because of a dependency, missing information, or waiting event.
@@ -83,7 +89,7 @@ Rule:
 - every Blocked issue must say what it is blocked on
 
 ### Done
-Finished and good enough to close.
+The requested outcome was accepted and closed. Non-blocking ideas do not keep it open and do not automatically become follow-up issues.
 
 ### Canceled
 Intentionally not doing.
@@ -173,15 +179,29 @@ Do not create projects just because a repo or subsystem exists.
 ## Intake rules
 
 ### Default intake path
-1. Capture new work
-2. Put it in `Triage` unless it is already clear
-3. Classify with labels
-4. Move to `Backlog` if valid but not next
-5. Move to `Ready` if actionable now
+1. Record a discovery on the active outcome when it affects current execution.
+2. Try the current system or no-build path before proposing infrastructure.
+3. Close or ignore non-blocking ideas; conversation does not imply durable work.
+4. Create an issue only after the work-creation gate passes and Destin approves the tradeoff.
+5. Put approved work in `Triage`, `Backlog`, or `Ready` based on its actual state.
 
 ### Skip Triage only when
 - the issue is already clear enough for Backlog or Ready
-- Hermes is creating it from an already-structured conversation
+- the observed blocker, revenue link, no-build alternative, and acceptance boundary are already explicit
+
+### Work-creation gate
+
+Apply this gate when creating an issue or expanding an issue's scope. Do not re-run it for ordinary execution inside an already approved boundary.
+
+Before asking Destin to approve new work, present:
+
+1. the attempted revenue experiment and observed failure
+2. the causal blocker, not a hypothetical future concern
+3. the no-build or manual alternative
+4. the smallest fix
+5. which active or queued work should be killed, merged, or deferred in exchange
+
+If the current system has not been attempted, default to attempting it. Do not use `Critical` unless the issue names the revenue experiment that cannot proceed and shows the blocking evidence.
 
 ## Definition of Ready
 
@@ -197,7 +217,8 @@ Minimum bar:
 ## WIP rules
 
 - Prefer 1 active human-led issue at a time
-- Keep total `In Progress` low
+- Keep one primary revenue outcome in progress unless Destin explicitly expands WIP
+- Adding another primary outcome requires closing, canceling, or demoting the current one first
 - Agents should generally pull from `Ready`
 - Do not start many things to feel productive
 
@@ -211,16 +232,17 @@ Review:
 - what should be deprioritized
 
 Output:
-- 1–3 clear active issues
+- 1 primary revenue outcome
 - clean Ready queue
 - stale items corrected
+- work closed, canceled, merged, or deferred
 
 ### Twice-weekly backlog grooming (15–30 min)
 Review:
 - Triage -> classify or kill
-- Backlog -> improve labels / project placement
-- split oversized issues
-- promote a few items to Ready
+- Backlog -> kill, merge, defer, or justify against the current revenue path
+- split only when one accepted outcome truly requires independent execution boundaries
+- promote at most the next blocking issue to Ready
 
 ### Weekly planning / review (30–45 min)
 Review:
@@ -248,7 +270,8 @@ It is for:
 - executes human-required work
 
 ### Hermes
-- creates and normalizes issues
+- challenges whether an issue should exist before creating it
+- presents the failed attempt, no-build path, smallest fix, and deletion tradeoff
 - applies labels, states, and project placement
 - keeps the board clean
 - proposes what should be Ready / In Progress / Blocked
@@ -268,6 +291,9 @@ Title
 - specific and action-oriented
 
 Body
+- Revenue experiment blocked
+- Evidence from the current-system attempt
+- No-build alternative
 - Problem
 - Goal
 - Constraints / notes
@@ -305,7 +331,8 @@ Use `Exec/Agent` when:
 ## Current practical rule
 
 If a new task comes up in conversation, Hermes should:
-1. create or update the issue
-2. classify it correctly
-3. put it in Triage, Backlog, or Ready
-4. keep the workspace consistent without requiring Destin to remember the taxonomy
+1. test whether it blocks the active revenue outcome
+2. update the active issue when it is execution context, not separate work
+3. default to no ticket for hypothetical, non-blocking, duplicate, or merely attractive work
+4. ask for issue approval only with the work-creation-gate evidence and deletion tradeoff
+5. classify approved work without requiring Destin to manage the taxonomy

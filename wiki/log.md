@@ -2,13 +2,21 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-07-10
+
+- Consolidated company routing around [[company/money-machine-360|Money Machine Operating Context]], removed the conflicting company overview, repaired the core index links, and reduced the agent template inventory to the managed [[agents/templates/worker-brief-template|Worker Brief]] and [[agents/templates/managed-coding-execution|Coding Execution]] references.
+
+## 2026-07-09
+
+- Added [[vendors/binance-market-data-access|Binance Market Data Access]]: global Binance spot/futures host semantics, US 451 geo block, official `data-api.binance.vision` for public spot candles, MM posture (vision for backtest/research immediacy; JP trading servers; research/perps may need JP egress or VPN). Renamed wiki folder `vendor/` → `vendors/` so QMD indexes it (QMD hard-excludes dirs named `vendor`). Updated [[index|Money Machine Knowledge Index]] vendor routing. Follow-up same day: documented spot klines schema, caps (`limit` max 1000, weight 2), live rateLimits, and futures klines weight-by-limit table.
+
 ## 2026-07-08
 
 - Corrected [[index|Money Machine Knowledge Index]] research routing from stale `wiki/quant/research*` paths to [[research/trading/research_process_v1|Research Process V1]] and [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] under `wiki/research/trading/`. Also pointed session continuity routing at `wiki/sessions/` (not `wiki/ops/`). Earlier same-day index entries that pointed at `wiki/quant/research*` are superseded by this routing.
 
 ## 2026-07-02
 
-- Added [[MON-98-backtest-sizing-smoking-gun]] with the canonical BTC `emac` 30m/1000-candle 10/50/100 Research MCP repro settings, run IDs, UI headline metrics, and next investigation hypothesis.
+- Added the historical `MON-98` backtest sizing smoking-gun note with the canonical BTC `emac` 30m/1000-candle 10/50/100 Research MCP repro settings, run IDs, UI headline metrics, and next investigation hypothesis. The note is no longer present in the canonical wiki.
 - Updated [[index|Money Machine Knowledge Index]] routing for the MON-98 sizing evidence page.
 
 ## 2026-06-29
@@ -23,5 +31,5 @@ Chronological log of meaningful KB changes. Keep entries concise and link change
 - Removed duplicate top-level category trees and moved historical prompt dumps to `archive/prompts_DUMP/`.
 - Added `scripts/check_wikilinks.py` and verified current wiki links resolve.
 - Initialized `wiki/` graph spine and clarified operating model: wiki graph is durable context, QMD is retrieval/index over it, Linear is execution truth.
-- Added/updated: [[index|Money Machine Knowledge Index]], [[Agent Knowledge Discipline]], [[Backtesting and Evaluation]], [[Money Machine Operating Context]].
+- Added/updated the initial knowledge index and operating-context routing; the 2026-07-10 consolidation supersedes the original phantom page names.
 - Follow-up: add QMD collection contexts and continue promoting active docs into linked wiki pages as they are used.

@@ -12,7 +12,7 @@ Then create the core research doc inside it:
 
 `/mm-knowledge/wiki/research/trading/[research-name]/[research-name].md`
 
-Use [[research/trading/example_research_doc|Example Research Doc]] as the style reference for structured sections plus timestamped write logs.
+Use [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] as the style reference for structured sections plus timestamped write logs.
 
 Structure the rest of the folder as:
 

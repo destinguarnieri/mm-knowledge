@@ -7,7 +7,9 @@ This is the version-controlled knowledge base for Money Machine Labs. Treat it a
 - The **wiki graph** is the source of truth for synthesized durable knowledge.
 - **QMD** is the retrieval/index layer over the markdown graph.
 - **Linear** is the execution/backlog system, not the long-term context store.
-- Built-in Hermes memory is only for compact global facts/preferences. Do not rely on it for project continuity.
+- Built-in agent memory is only for compact global facts/preferences. Do not rely on it for project continuity.
+
+Money Machine's operating objective is positive net realized live P&L after costs over the active founder-set proof period. Preserve durable context only when it helps close that revenue loop; documentation volume is not progress.
 
 ## Required Agent Flow
 
@@ -22,16 +24,18 @@ Before answering project/context questions or doing Money Machine work:
 4. Follow relevant `[[wikilinks]]` and backlinks instead of stopping at the first matching page.
 5. Retrieve source pages before summarizing; do not answer from search snippets alone when precision matters.
 
-After meaningful work:
+After work that materially changes durable state:
 
-1. Update or create the relevant page(s) under `wiki/`.
-2. Update `wiki/sessions/current-checkpoint.md` with objective, current state, decisions, blockers, verification, and next action.
-3. Append a concise entry to `wiki/sessions/session-change-log.md` after ticketing, implementation, verification, or durable product/engineering decisions.
-4. Update `wiki/index.md` when routing, page inventory, or key topics change.
-5. Append a concise KB-structure entry to `wiki/log.md` when the KB itself changes.
-6. Run `/Users/destinguarnieri/.bun/bin/qmd update` so search reflects the new markdown.
-7. Run `/Users/destinguarnieri/.bun/bin/qmd embed` only when semantic retrieval needs to include new material immediately.
-8. Commit and push KB changes when appropriate, unless Destin says not to.
+1. Update an existing relevant page when possible; create a page only for reusable cross-session knowledge.
+2. Update `wiki/sessions/current-checkpoint.md` only when the objective, state, decision, blocker, verification, or next action changed.
+3. Append to `wiki/sessions/session-change-log.md` only for durable ticketing, implementation, verification, or product/engineering decisions.
+4. Update `wiki/index.md` only when routing or page inventory changed.
+5. Append to `wiki/log.md` only when KB structure changed.
+6. Run `/Users/destinguarnieri/.bun/bin/qmd update` after KB edits.
+7. Run `/Users/destinguarnieri/.bun/bin/qmd embed` only when semantic retrieval needs new material immediately.
+8. Commit or push only when Destin explicitly authorized it for the current execution session.
+
+If no durable state changed, close the loop without creating a page, changelog entry, index edit, commit, or push.
 
 ## Structure
 
@@ -55,7 +59,8 @@ wiki/                 # synthesized Obsidian-compatible markdown graph
   decisions/          # decision records and supersession chains
   projects/           # active initiatives and project-level context
   sessions/           # compact session summaries/checkpoints promoted from chat
-  vendor/             # vendor specifications and documentation
+  vendors/            # vendor specifications and documentation
+                      # (named `vendors/` not `vendor/` — QMD hard-excludes dirs named `vendor`)
 ```
 
 Canonical markdown belongs under `wiki/`. Do not keep duplicate top-level `company/`, `ops/`, `engineering/`, `research/`, or `trading/` markdown trees. If old/source material should be retained but not treated as canonical, move it under `archive/` or `raw/` with a note.

@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-11 22:58 EDT
+Date: 2026-07-12 00:10 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -9,7 +9,7 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - **Objective:** positive net realized live P&L after costs over a founder-set proof period.
 - **Proof period:** not yet set; Destin sets it before live evaluation begins.
 - **Strategy / experiment:** passive EMA 10/200 cross timeframe scan on BTC followed by a `$250,000` rolling-24h-volume-filtered `4h` universe screen. Bullish cross targets maximum long, bearish cross targets maximum short, and the position is held between crosses. See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
-- **Observed blocker:** the immediate contract bug is corrected locally: normal screening now requests durable `summary` retention and no longer queues bar-level artifact families, while promoted audit runs explicitly request `full`. The existing relational full-artifact writer remains unproven at long-window/multi-asset scale and is still the deeper `MON-140` constraint.
+- **Observed blocker:** the immediate contract bug is corrected locally: normal screening now requests durable `summary` retention and no longer queues bar-level artifact families, while promoted audit runs explicitly request `full`. The existing relational full-artifact writer remains unproven at long-window/multi-asset scale but is not an active research-flow blocker.
 - **Next action:** confirm the long-history Top 10 and whether POL/PAXG should receive separate lower-timeframe validation; do not merge shorter-history Sharpe estimates into the 5,000-candle ranking.
 - **WIP:** one primary revenue outcome unless Destin explicitly expands it.
 
@@ -18,10 +18,10 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - `MON-122` and `MON-134` are done.
 - `MON-132` is blocked behind the backtest-persistence redesign.
 - The backtest retention-contract rollout is implemented locally: one request field (`retention_mode=summary|full`), one persisted artifact outcome (`not_requested|writing|available|failed`), durable summaries for both modes, explicit outcome-aware artifact reads, and queryable queue/timeout/cancellation failure states. Legacy request branches, response aliases, writes, and database columns have been removed; unknown request fields are rejected.
-- `MON-140` still owns scalable full-artifact persistence. This slice deliberately did not add Parquet, streaming aggregation, scheduling, or a timeout increase; long-window `full` retention remains unproven.
+- `MON-140` is canceled as superseded by the metrics-only summary retention contract. Long-window `full` retention remains unproven and is deferred until an audit workflow demonstrates that it is a revenue blocker.
 - `MON-143` is the independent high-priority cached Binance candle-availability preflight for assigning assets to 5,000/2,500/1,000/<1,000 cohorts before execution.
-- `MON-141` is now the saved-run report exporter only and is blocked by `MON-140`; it produces one canonical manifest and generated report without updating checkpoint, changelog, canvas, or interpretation.
-- `MON-85` follows `MON-141` and `MON-143` to type and document the complete resulting registered Research MCP surface without changing runtime payloads.
+- `MON-141` is canceled: the EMA-session “manual transcription” was agent documentation habit, not a missing report-export product. Research continuity prompting now treats persisted `run_id` + Destin's UI as the metric source; wiki/checkpoint/changelog keep interpretation, and canvas is optional only for unique visuals beyond the UI.
+- `MON-85` follows `MON-143` to type and document the complete resulting registered Research MCP surface without changing runtime payloads.
 - `MON-135`–`MON-139`, grid expansion, artifact automation, and generalized orchestration are parked until separately justified by evidence from the revenue loop.
 - The accepted persistence foundation uses Study → Variant → Trial → Attempt. Batch is an API/enqueue convenience, not a persistence entity.
 - The V2 `BtStudy.retention_mode` contract remains independently `metrics|full`; the new `summary|full` vocabulary applies to `BtBacktestRun` requests and was deliberately not propagated into V2.

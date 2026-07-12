@@ -24,6 +24,8 @@ Create the folder and its core doc together during idea triage, before baselines
 
 Every research doc must keep a run registry. A reader should be able to trace any claim back to run IDs, saved-run links, configs, artifacts, charts, and review notes. Run IDs are the backend's UUID `run_id` for saved single runs and saved batches (from the backtest run/save response, the saved-run list, or Research MCP `get_saved_run` / `get_saved_run_asset`) — copy the real UUID, do not invent a label. Each entry must record the backend commit or engine version (and seed where randomness is involved) so the run stays reproducible after the backtest engine changes.
 
+The registry is an identity and interpretation index, not a second metrics database. Prefer: run ID, config pointer, window/cohort intent, and a short decision note. Do not paste standard metric tables or per-asset Sharpe/drawdown grids into the research doc, checkpoint, changelog, or canvas — those live in Destin's backtest UI and in persisted saved runs. Re-fetch metrics when needed. Canvas is optional only for a unique visual explanation the UI does not already provide.
+
 The registry must also track the cumulative number of configs evaluated across the whole research project. Every interpretation step should weigh the leaderboard against that count: the best of two thousand runs looks good by construction.
 
 ## 1. Idea Triage
@@ -83,7 +85,7 @@ Recommended baselines:
 - fee/slippage stress version;
 - asset/timeframe baseline comparison.
 
-Record the run IDs, saved-run review links, config, data range, candle count, backend commit, and headline metrics. If baselines are unstable or unexplainable, fix that before expanding the search.
+Record the run IDs, saved-run review links, config, data range, candle count, and backend commit, plus a short interpretive note. Leave the metric tables in the UI / saved-run records. If baselines are unstable or unexplainable, fix that before expanding the search.
 
 ## 4. Run a Small Structured Grid
 
@@ -183,11 +185,8 @@ Run the chosen asset path and produce mid-research results.
 Required outputs:
 
 - run registry entries for every reviewed run or batch;
-- per-asset or per-cluster results;
-- selected config families;
-- rejected config families;
-- metrics by asset, timeframe, and market period;
-- notes on whether the edge appears local, universal, or clustered;
+- selected and rejected config families, cited by run ID;
+- interpretive notes on whether the edge appears local, universal, or clustered (re-fetch metrics from saved runs or UI rather than pasting tables);
 - updated risks and tripwires.
 
 By this stage, you should understand the direction the optimal parameters are leaning toward and whether the strategy is worth an endgame optimization pass.

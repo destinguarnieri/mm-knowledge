@@ -37,6 +37,16 @@ After work that materially changes durable state:
 
 If no durable state changed, close the loop without creating a page, changelog entry, index edit, commit, or push.
 
+### Research continuity (metrics vs notes)
+
+Persisted backtest `run_id` values are the metric source of truth. Destin's backtest UI is the default place for standard tables and metrics.
+
+- Research wiki pages may record run IDs, experiment intent, fixed assumptions, interpretation, and decisions.
+- Do not paste standard metric tables, per-asset result grids, or full MCP payloads into wiki, checkpoint, changelog, or canvas.
+- Checkpoint and changelog are agent pickup aids. Keep them thin; do not use them as a metrics archive.
+- Canvas is optional for a unique visual explanation Destin cannot get from the UI. It is not the default for ordinary batch/result tables.
+- When numbers are needed again, re-fetch via Research MCP saved-run tools or open the UI.
+
 ## Structure
 
 Canonical structure:

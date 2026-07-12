@@ -1,6 +1,6 @@
 # Research MCP Runbook
 
-Last updated: 2026-03-19
+Last updated: 2026-07-11
 Written for: agents and future Hermes sessions operating the research backtest loop.
 
 ---
@@ -45,6 +45,11 @@ This is the complete loop an agent should follow:
 2. list_assets(limit=50)
    -> returns [{id, name}, ...]
    -> pick the asset you want, note its id (UUID)
+
+   Or, to apply a current liquidity floor:
+   list_assets_by_volume(min_volume_24h=250000, limit=200)
+   -> returns [{id, name, volume_24h}, ...]
+   -> includes dayNtlVlm >= the floor and ranks highest volume first
 
 3. get_strategy_registry()
    -> returns strategy_names (list of strings) and strategies (list of {name, id})
@@ -164,7 +169,9 @@ process will re-authenticate cleanly.
    returns both `strategy_names` (strings) and `strategies` (list of {name, id}).
    Always use the id from `strategies`, not a hand-crafted UUID.
 
-2. **asset_id is a UUID.** Use `list_assets()`. Never guess or hardcode asset UUIDs.
+2. **asset_id is a UUID.** Use `list_assets()` or `list_assets_by_volume()`.
+   Never guess or hardcode asset UUIDs. `volume_24h` is Hyperliquid's current
+   rolling-24h notional snapshot, not historical liquidity.
 
 3. **get_saved_run may 404 immediately after run_backtest.** The persistence flush
    is async. The MCP client retries automatically with backoff (100ms → 250ms →
@@ -200,6 +207,7 @@ backend modules — all communication is over HTTP.
 |------|---------|
 | system_status | check backtest_manager_running before run_backtest |
 | list_assets | discover asset UUIDs for run_backtest |
+| list_assets_by_volume | discover asset UUIDs at or above a current rolling-24h notional-volume floor |
 | get_strategy_registry | list strategy names + UUIDs |
 | get_strategy_params_and_config | get default params/config for a strategy |
 | get_strategy_params_and_config_schema | get JSON schema for a strategy's params |

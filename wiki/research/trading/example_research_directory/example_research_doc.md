@@ -2,7 +2,7 @@
 
 Purpose: show the expected shape of a Money Machine strategy research file. This is an example, not real research evidence.
 
-Use this style for files under `/mm-knowledge/wiki/quant/research/`. Keep structured sections stable, and append timestamped write-log entries as the work evolves. Do not silently rewrite the objective, kill criteria, or conclusion after seeing results.
+Use this style for files under `/mm-knowledge/wiki/research/`. Keep structured sections stable, and append timestamped write-log entries as the work evolves. Do not silently rewrite the objective, kill criteria, or conclusion after seeing results.
 
 This doc has a matching artifact folder at `/mm-knowledge/wiki/quant/research/trend-continuation-slope-filter/`, holding `configs/`, `artifacts/[run-id]/`, and `review/` as described in the process doc. Paths below are relative to that folder unless already prefixed with `research/`.
 

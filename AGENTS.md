@@ -52,12 +52,12 @@ wiki/                 # synthesized Obsidian-compatible markdown graph
   log.md              # chronological KB operation log
   company/            # company context and narrative
   ops/                # operating procedures and process docs
-  engineering/        # architecture, implementation context, invariants
+  engineering/        # stable architecture, contracts, implementation context, invariants
   quant/              # quantitative research notes
   trading/            # strategy/research/trading concepts
   concepts/           # cross-cutting concepts and domain language
   decisions/          # decision records and supersession chains
-  projects/           # active initiatives and project-level context
+  projects/           # active initiatives, project-level context, and bounded execution plans
   sessions/           # compact session summaries/checkpoints promoted from chat
   vendors/            # vendor specifications and documentation
                       # (named `vendors/` not `vendor/` — QMD hard-excludes dirs named `vendor`)
@@ -71,6 +71,8 @@ Canonical markdown belongs under `wiki/`. Do not keep duplicate top-level `compa
 - Prefer stable, descriptive filenames.
 - Keep pages concise but useful; split only when a page becomes hard to route or maintain.
 - Raw sources belong in `raw/`; synthesized agent-readable knowledge belongs in `wiki/`.
+- Keep `wiki/engineering/` for stable engineering knowledge: architecture, contracts, inventories, runbooks, and invariants. Do not create ticket or implementation-plan files there.
+- Put bounded, active project or ticket execution plans in `wiki/projects/`; retain execution/backlog truth in Linear. After delivery, promote only durable conclusions to the relevant stable wiki page or decision record.
 - Decision pages should say what changed, why, date, and superseded decisions if any.
 - Session pages should capture objective, decisions, verification, blockers, next actions, and links to Linear/issues/PRs when relevant.
 

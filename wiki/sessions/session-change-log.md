@@ -1,3 +1,20 @@
+## 2026-07-12 15:58 EDT
+
+- Closed the primary EMA 10/200 research loop on Destin's intended questions: (B) 10/200 directional usefulness supported by `% time in money`; (A) dead-simple prod monetization is only weak/maybe under selection. Stop exhaustive flip-only expansion; optional one–two cleanup runs only. Prefer better entry/exit (or another strategy) as the next revenue experiment. Updated research note and checkpoint accordingly.
+
+## 2026-07-12 15:40 EDT
+
+- EMA research correction: Destin overturned premature lower-TF closure based on BTC-alone Binance evidence. Selected 4h leaders on Hyperliquid remain live at `1h` (`351ecce1-bb07-4b15-82e6-a1a9dccf1fac`) and `30m` (`a8e58e9a-7ed8-4062-9008-0588d6b60475`); `5m` (`1059fdc6-ad67-411e-94b3-9bedd21de364`) is weak under flip-only. Accepted that asset selection is part of trend-strategy optimization because assets differ in serial correlation / trending behavior. Updated research note and checkpoint next action accordingly. Separate note: saved-batch MCP 404 for Destin-owned runs retrieved by a non-superuser agent is an auth/scoping investigation Destin is handling.
+
+## 2026-07-12 15:05 EDT
+
+- Implemented Linear `MON-144` in `mm_v04`: widened live `candle`/`indicatorvalue` `tf_sec` to Integer (Alembic `a2b3c4d5e6f7`), routed HL research db-first/db-only candle cache through `backtest_candle` with `source=hyperliquid`, and added focused 1d/write-target tests. Verification: 56 focused backtest candle tests passed. Local DB migrate, trading, deployment, commit, and push were not performed.
+- 15:04 EDT: Applied local Alembic upgrade to `a2b3c4d5e6f7` and verified Postgres `candle`/`indicatorvalue` `tf_sec` as INTEGER. Marked Linear `MON-144` Done with delivery notes. No trading, deployment, commit, or push.
+
+## 2026-07-12 14:55 EDT
+
+- Coding-manager readiness pass on Linear `MON-144`: Ready. Wrote bounded plan [[projects/MON-144-hl-1d-candle-overflow.plan|MON-144 HL 1d Candle Overflow]] locking Integer widen for `candle`/`indicatorvalue` `tf_sec`, HL research cache via `backtest_candle` `source=hyperliquid`, no historical row migration, and no Binance-style HL conflict HTTP. Indexed under Active Projects. No code, runtime, trading, deployment, commit, or push mutation.
+
 ## 2026-07-12 00:10 EDT
 
 - Canceled Linear `MON-141` after re-diagnosis: the EMA-session “manual transcription” was agent documentation habit, not a missing report-export product. Added always-applied `research-continuity` prompting so persisted `run_id` + Destin's UI remain the metric source; wiki/checkpoint/changelog keep interpretation only; canvas is optional for unique visuals beyond the UI. Updated KB `AGENTS.md`, `research_process_v1`, exploratory-researcher skill, and Research MCP `AGENT.md`. Keep `MON-143` as the real engineering follow-up; `MON-85` now follows `MON-143` only.

@@ -4,17 +4,33 @@ Related process: [[research/trading/research_process_v1|Research Process V1]]
 
 ## Status
 
-- Research state: BTC timeframe scan and tiered-history liquid-universe `4h` screen complete for assets in the first 200 Research MCP records.
-- Current decision: retain separate 5,000-, 2,500-, and 1,000-candle cohorts. ETH remains the cleanest long-history leader; POL and PAXG merit follow-up from the 2,500-candle cohort, while HYPE, MET, and MON remain provisional due to only 4–8 realized trades.
+- Research state: primary proof questions answered; do not exhaustively optimize this flip-only EMA cross.
+- Current decision: stop expanding the simplistic `emac_cross` research path. Optional one–two cleanup runs only if Destin wants them; prefer better entry/exit controls before treating this as the main production strategy.
+- Destin verdict (2026-07-12):
+  - **(B) Direction:** supported. Consistent high `% time in money` is the evidence that 10/200 places the position on the right side of the trade most of the time.
+  - **(A) Prod / make money with almost no params:** weak yes / maybe. Selected well, Destin has some confidence the current rule could be profitable if it were do-or-die, but would rather improve entry and exit before pushing it as the preferred live path.
+- Methodological stance: asset selection is an explicit optimization axis for strategies that need it; trend strategies should prefer assets with stronger serial correlation / trending behavior.
 - Started: 2026-07-11 00:18 EDT.
 - Strategy: `emac_cross`, fast EMA `10`, slow EMA `200`.
 - Initial asset: BTC; liquid-universe screen used a point-in-time `$250,000` rolling 24-hour Hyperliquid notional-volume floor.
 
-## Research Question
+## Research Questions
 
-Does a passive 10/200 EMA cross, continuously targeting maximum long or maximum short exposure after the first cross, produce useful net risk-adjusted performance on BTC across `1d`, `4h`, `1h`, `30m`, `5m`, and `1m`?
+The session was not an open-ended search for the best EMA variant. It was meant to test only:
 
-Primary KPI: net annualized Sharpe after fees and slippage. Supporting evidence: total return, CAGR, maximum drawdown, trade count, win rate, profit factor, annualized volatility, and cost drag when available.
+1. **Prod-simplicity (A):** Can a dead-simple, nearly parameter-free flip strategy be selected and pushed toward production with any plausible path to making money?
+2. **Directional measure (B):** Does the 10/200 EMA put you on the right side of the trade?
+
+Supporting metrics remain net Sharpe after costs, return, drawdown, trade stats, and especially `% time in money` for (B).
+
+## Verdict
+
+| Question | Call | Why |
+|---|---|---|
+| (B) Direction | **Supported** | High `% time in money` across BTC intervals and multi-asset screens; low realized win rates show monetization failure, not absence of directional information. |
+| (A) Simple prod PnL | **Kinda / maybe** | Selected-asset `4h`/`1h`/`30m` evidence is not bulletproof, but Destin has partial confidence that careful selection could be profitable under do-or-die. Preferred path is better entry/exit, not more flip-only EMA screening. |
+
+**Next move:** none required for more universe/timeframe expansion of this exact rule. Optional bounded entry/exit work is a separate decision if Destin wants that as the next revenue experiment.
 
 ## Fixed Baseline Assumptions
 
@@ -152,6 +168,23 @@ Cumulative reviewable asset-window evaluations: `86` successful. The liquid `4h`
 - ASTER, PUMP, SKY, and WLFI were negative.
 - Interpretation: HYPE, MET, and MON are watchlist observations, not ranking-quality evidence. The very low trade counts make their Sharpe estimates fragile.
 
+### `351ecce1-bb07-4b15-82e6-a1a9dccf1fac` — selected-cohort Hyperliquid `1h`
+
+- Intent: test whether lower intervals fail for 4h leaders, not only for BTC. Cohort is Destin's selected top performers from the prior `4h` work (22 assets requested).
+- Source: Hyperliquid trailing history (`min_candles` 4900); not the earlier Binance USD-M discovery windows.
+- Outcome: `21/22` succeeded; LIT failed on missing candles.
+- Interpretation: cohort-level results are materially stronger than the BTC Binance `1h` rejection implied. This falsifies the premature claim that lower intervals are dead for the strategy family. It does not by itself prove robustness: the set is selected, the venue/window differs from the Binance screen, and monetization diagnostics (high time-in-money, low realized win rate) still appear.
+
+### `a8e58e9a-7ed8-4062-9008-0588d6b60475` — selected-cohort Hyperliquid `30m`
+
+- Same selected cohort and Hyperliquid trailing-window setup as the `1h` batch; `22/22` succeeded.
+- Interpretation: `30m` remains live for this selected set and should not be closed from BTC-alone evidence. Still anecdotal relative to a formal selection rule plus out-of-sample time validation.
+
+### `1059fdc6-ad67-411e-94b3-9bedd21de364` — selected-cohort Hyperliquid `5m`
+
+- Same selected cohort on Hyperliquid `5m`; `22/22` succeeded.
+- Interpretation: unlike `1h`/`30m`, the cohort mostly collapses at `5m`. Treat `5m` as a weak/failed interval for the current flip-only rule on this set, pending any later mechanism change.
+
 ## Preliminary Risk-Filtered Top 10
 
 Selection requires positive net return, profit factor above one, maximum drawdown better than `-70%`, and worst position ROE better than `-25` percentage points, then ranks by Sharpe:
@@ -178,7 +211,7 @@ Worst position ROE and portfolio drawdown separate two failure modes:
 - `1d` and `4h` allow large adverse excursions within a position (`-17.93` and `-32.85` percentage points), alongside severe portfolio drawdowns.
 - `1h` through `1m` keep the worst individual adverse ROE much smaller (`-4.18` to `-0.94` points), yet still accumulate `-25.85%` to `-36.94%` portfolio drawdowns through repeated losses and costs.
 
-The evidence therefore does not simply say that the EMA direction is useless at shorter intervals. It says the current rule—hold until the opposite cross and then flip fully—is poorly monetizing favorable position paths. A later mechanism test should target profit retention and churn reduction rather than immediately widening the EMA parameter search.
+The evidence therefore does not simply say that the EMA direction is useless at shorter intervals. It says the current rule—hold until the opposite cross and then flip fully—is poorly monetizing favorable position paths on the BTC Binance scan. Destin's later selected-cohort Hyperliquid `1h`/`30m` runs show that interval rejection must be asset- and venue-specific, not inferred from BTC alone. A later mechanism test should still target profit retention and churn reduction, in parallel with formalizing the asset-selection rule rather than widening the EMA parameter search first.
 
 ## Write Log
 
@@ -213,3 +246,11 @@ Applied a point-in-time `$250,000` rolling 24-hour Hyperliquid notional-volume f
 ### 2026-07-11 02:38 EDT
 
 Worked backward through the 29 incomplete-history assets. A common trailing 2,500-candle run recovered 20 assets; a trailing 1,000-candle run recovered seven of the remaining nine. POL and PAXG were the strongest shorter-history results. HYPE, MET, and MON were positive in the 1,000-candle cohort but produced only 4–8 trades, so they remain provisional. APEX has no Binance USD-M symbol and MEGA is 31 candles short of the 1,000-candle requirement. Kept all three calendar-window cohorts separate to avoid biased ranking.
+
+### 2026-07-12 15:40 EDT
+
+Destin rejected premature closure of lower timeframes from BTC-alone Binance results and ran selected 4h leaders on Hyperliquid `1h` (`351ecce1-…`), `30m` (`a8e58e9a-…`), and `5m` (`1059fdc6-…`). The `1h`/`30m` cohorts remain live; `5m` mostly fails under the current rule. Accepted methodological correction: asset selection is part of optimization for a trend strategy because assets differ in serial correlation / trending behavior. Remaining work is not “prove it on every asset,” but define a reusable selection rule and test whether selected-asset + interval claims survive holdout time and realistic costs/risk. Research MCP saved-batch 404s for Destin-owned runs retrieved by a non-superuser agent are under Destin's investigation as an auth/scoping issue.
+
+### 2026-07-12 15:58 EDT
+
+Closed the primary EMA-cross research loop against Destin's actual questions. (B) Directional usefulness of 10/200 is supported by `% time in money`. (A) Dead-simple prod monetization is only a weak/maybe under selection; Destin would prefer better entry/exit controls and does not want exhaustive further research on this flip-only rule. Optional one–two cleanup runs only; next move for expansion of this exact strategy: none.

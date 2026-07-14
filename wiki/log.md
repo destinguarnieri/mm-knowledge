@@ -2,6 +2,10 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-07-12
+
+- Added [[projects/MON-144-hl-1d-candle-overflow.plan|MON-144 HL 1d Candle Overflow]] and linked it from [[index|wiki index]] Active Projects.
+
 ## 2026-07-10
 
 - Consolidated company routing around [[company/money-machine-360|Money Machine Operating Context]], removed the conflicting company overview, repaired the core index links, and reduced the agent template inventory to the managed [[agents/templates/worker-brief-template|Worker Brief]] and [[agents/templates/managed-coding-execution|Coding Execution]] references.

@@ -13,6 +13,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 
 ## Active Projects
 
+- [[projects/MON-144-hl-1d-candle-overflow.plan|MON-144 HL 1d Candle Overflow]] — widen live `candle`/`indicatorvalue` `tf_sec` for daily bars and route Hyperliquid research cache through `backtest_candle`.
 - [[projects/MON-142-backtest-risk-metric-contract.plan|MON-142 Backtest Risk Metric Contract]] — explicit risk labels plus decimal-unit normalization for worst active position ROE across compute, persistence, API, MCP, and frontend consumers.
 
 ## Wiki Areas

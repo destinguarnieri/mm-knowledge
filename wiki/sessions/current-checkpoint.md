@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-12 15:58 EDT
+Date: 2026-07-15 01:21 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -8,9 +8,10 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
 - **Objective:** positive net realized live P&L after costs over a founder-set proof period.
 - **Proof period:** not yet set; Destin sets it before live evaluation begins.
-- **Strategy / experiment:** EMA 10/200 flip-cross research closed on its intended questions. Directional measure supported via `% time in money`; dead-simple prod monetization is only weak/maybe under selection. Prefer better entry/exit over more flip-only EMA screening. See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
+- **Company phase:** discretionary alpha transfer. Select strategies Destin actually trades, codify their visual and control semantics, prove behavioral parity, and only then validate current economics. Novel discovery is secondary until that inventory is exhausted or Destin explicitly requests it.
+- **Strategy / experiment:** EMA 10/200 flip-cross research closed on its intended questions. Directional measure supported via `% time in money`; dead-simple prod monetization is only weak/maybe under selection. It does not define the next strategy by default. See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
 - **Observed blocker:** Research MCP saved-batch retrieval 404 for Destin-owned runs when fetched by a non-superuser agent (auth/scoping; Destin investigating). Separate from backtest-manager-off 503s.
-- **Next action:** none for expanding this exact flip-only EMA rule. Destin may run one–two optional cleanup backtests; otherwise choose the next revenue experiment (likely better entry/exit on the directional measure, or a different strategy). Live/capital mutation still needs explicit authorization.
+- **Next action:** select one discretionary strategy Destin already trades and begin chart-led semantic extraction. Prove behavioral parity before optimization or deployment validation. Live/capital mutation still needs explicit authorization.
 - **WIP:** one primary revenue outcome unless Destin explicitly expands it.
 
 ## Current Engineering State
@@ -34,7 +35,7 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
 ## Current Decision
 
-Do not continue platform expansion merely because the dependency chain exists. The first attempted strategy selection exposed a concrete historical-data blocker. Build only the bounded backtest-candle/provider-loader and passive-cross strategy path in the accepted MON-113 plan; keep the broader Agentic Research Loop parked.
+Do not continue platform expansion merely because the dependency chain exists. Use the current system to transfer one discretionary strategy at a time: semantic extraction, faithful codification, behavioral parity, then current economic validation. Keep open-ended discovery and the broader Agentic Research Loop parked unless Destin explicitly requests them or codification exposes a causal blocker.
 
 ## Verification
 
@@ -53,4 +54,4 @@ Do not continue platform expansion merely because the dependency chain exists. T
 
 ## Next Action
 
-None for expanding this exact flip-only EMA 10/200 rule. Primary questions are closed: direction supported; simple prod monetization is only weak/maybe under selection. Optional one–two cleanup runs at Destin's discretion. Prefer choosing the next revenue experiment (better entry/exit on the directional measure, or another strategy) over more EMA-screen breadth. Live/capital mutation still needs explicit authorization.
+None for expanding the exact flip-only EMA 10/200 rule. Select one discretionary strategy Destin already trades, extract its chart and control semantics, preserve independently deployable mappings, and prove behavioral parity before optimization. Live/capital mutation still needs explicit authorization.

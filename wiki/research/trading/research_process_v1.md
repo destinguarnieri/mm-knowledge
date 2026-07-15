@@ -2,6 +2,15 @@
 
 Purpose: make strategy research repeatable enough that a good idea can be tested, improved, rejected, or promoted without drifting into unconstrained parameter chasing.
 
+## Route the work first
+
+Money Machine currently has two distinct strategy paths:
+
+- **Discretionary strategy codification:** use when Destin already trades the strategy. Extract the exact visual and control semantics, preserve independently deployable mappings, and prove behavioral parity before optimization. Destin's source strategy is the specification; unresolved material semantics return to him instead of being guessed.
+- **Exploratory research:** use for explicit discovery, open empirical questions, or bounded uncertainty exposed during codification.
+
+This document's idea-triage and optimization process applies directly to exploratory research. For a discretionary strategy, begin here only after a faithful executable baseline exists. Treat the original manual behavior and any later optimized variant as distinct strategy identities so performance cannot silently redefine the source strategy.
+
 Before starting a new research project, create a research folder:
 
 `/mm-knowledge/wiki/research/trading/[research-name]/`

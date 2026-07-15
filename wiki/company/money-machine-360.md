@@ -9,9 +9,23 @@ Money Machine Labs is a proprietary quantitative trading and AI research company
 - It trades its own capital.
 - It has no trading-product end users.
 - It does not manage an outside investment fund.
-- Its systems exist to discover, deploy, and scale profitable trading strategies.
+- Its systems exist to codify, validate, deploy, and scale profitable trading strategies.
 
 The long-term ambition is to build a dominant AI-native financial company. Current work is judged by whether it advances the next proof, not by how complete that future vision sounds.
+
+## Current Company Phase
+
+Money Machine's first lifecycle phase is discretionary alpha transfer. Destin has a large inventory of strategies developed through approximately ten years of manual trading. The current bottleneck is faithful codification, not a shortage of strategy ideas.
+
+For this phase:
+
+- select one strategy Destin actually trades
+- extract its visual states, actions, exceptions, and risk semantics
+- preserve distinct trade mappings, including opposing directions on isolated subaccounts
+- prove the automated behavior matches Destin's intended behavior
+- then test whether that faithful implementation remains viable after current costs and constraints
+
+Destin's live experience is strong prior evidence for the strategy mechanism, but it does not replace behavioral-parity checks or current economic validation. Novel strategy discovery is secondary until the discretionary inventory is exhausted or Destin explicitly requests exploration. Exploratory work remains appropriate when a codification ambiguity requires empirical evidence.
 
 ## Current North Star
 
@@ -19,12 +33,14 @@ Produce positive net realized live P&L after costs over an active founder-set pr
 
 The immediate loop is:
 
-1. select the strongest available strategy candidate
-2. research and evaluate it with the current system
-3. make an explicit go/no-go decision
-4. launch only with Destin's explicit capital and risk authorization
-5. measure live net realized P&L after costs
-6. learn from the result and repeat
+1. select one discretionary strategy Destin actually trades
+2. elicit and codify its exact control semantics
+3. prove behavioral parity against representative and edge-case examples
+4. validate the faithful implementation with the current system and realistic costs
+5. make an explicit decision for each independently deployable trade mapping
+6. launch only with Destin's explicit capital and risk authorization
+7. measure live net realized P&L after costs
+8. learn from the result and repeat
 
 Backtests, tickets, infrastructure, documents, and agent activity are inputs or costs. They are not the proof.
 
@@ -32,7 +48,7 @@ Backtests, tickets, infrastructure, documents, and agent activity are inputs or 
 
 Money Machine already has functional live-trading and research infrastructure. Live runtime and backtest/research runtime are separate domains in one codebase.
 
-The current challenge is not to build a complete platform from zero. It is to put a strategy into controlled production, gather live evidence, and remove only the blockers that the attempt reveals.
+The current challenge is not to build a complete platform or discover alpha from zero. It is to transfer Destin's existing discretionary alpha into faithful automated strategies, put one into controlled production, gather live evidence, and remove only the blockers that the attempt reveals.
 
 The system is functional but not yet battle-tested in profitable production. Capital-sensitive paths therefore require strong human judgment and verification.
 
@@ -48,10 +64,10 @@ Live runtime, accounts, orders, positions, reconciliation, risk, deployment, and
 
 ### Research
 
-Backtests, signal evaluation, parameter search, strategy iteration, and result interpretation.
+Discretionary-strategy elicitation, behavioral-parity review, backtests, signal evaluation, bounded parameter investigation, strategy iteration, and result interpretation.
 
 - highest safe agent leverage
-- optimize for elapsed time to decision-quality evidence
+- optimize first for elapsed time to a faithful executable strategy, then for decision-quality evidence
 - stop research when the evidence is sufficient for a go/no-go decision
 
 ### Enablement

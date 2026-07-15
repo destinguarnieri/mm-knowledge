@@ -1,3 +1,9 @@
+# Session Change Log
+
+## 2026-07-15 01:21 EDT
+
+- Changed Money Machine's current lifecycle priority from novel strategy discovery to discretionary alpha transfer. Destin has approximately ten years of manually traded strategy experience and an overflowing strategy inventory; the immediate bottleneck is faithful codification. Added a dedicated project skill and command for chart-led semantic extraction, independent subaccount trade mappings, causal state models, and behavioral parity before optimization. Preserved exploratory research as a separate explicit path for novel discovery or bounded empirical uncertainty, and updated the company context, research routing, and checkpoint. No backtest, live runtime, account, trading, deployment, commit, or push mutation occurred.
+
 ## 2026-07-12 15:58 EDT
 
 - Closed the primary EMA 10/200 research loop on Destin's intended questions: (B) 10/200 directional usefulness supported by `% time in money`; (A) dead-simple prod monetization is only weak/maybe under selection. Stop exhaustive flip-only expansion; optional one–two cleanup runs only. Prefer better entry/exit (or another strategy) as the next revenue experiment. Updated research note and checkpoint accordingly.

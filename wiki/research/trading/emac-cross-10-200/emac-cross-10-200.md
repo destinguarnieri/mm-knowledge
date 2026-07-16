@@ -254,3 +254,25 @@ Destin rejected premature closure of lower timeframes from BTC-alone Binance res
 ### 2026-07-12 15:58 EDT
 
 Closed the primary EMA-cross research loop against Destin's actual questions. (B) Directional usefulness of 10/200 is supported by `% time in money`. (A) Dead-simple prod monetization is only a weak/maybe under selection; Destin would prefer better entry/exit controls and does not want exhaustive further research on this flip-only rule. Optional one–two cleanup runs only; next move for expansion of this exact strategy: none.
+
+### 2026-07-15 03:03 EDT
+
+Started behavioral-parity work for `emac_v4` using Threshold Engine V3. The comparison target remains BTC Binance USD-M `1d`, 2020-01-01 through 2026-07-10 UTC, EMA 10/200, `$10,000`, 100% equity at 1x, compounding sizing, `0.0005` fees, and `5.0` bps slippage. Saved artifacts from baseline run `ce0bc93e-01c6-41cb-8a2b-3b08a5ef26a1` confirm compounding sizing: post-loss flips target reduced current equity rather than restoring a static `$10,000` notional.
+
+Two diagnostic V4 runs completed. Static run `a1688414-48d3-430b-88b1-1cfe6a0bc802` was intentionally discarded as a configuration mismatch. Exact compounding run `6108178a-4411-41c8-bd13-fe0f9777aab3` proved that the zero-level paired V3 rules are accepted, but failed parity through repeated hold-period resizing. Its first short also occurred one bar before the baseline because rolling min-max normalization emitted zero while the raw EMA spread remained positive, and V3 treats landing on the threshold as a crossing. Decision: resolve these two behavioral mismatches before varying thresholds or evaluating economics.
+
+### 2026-07-15 03:11 EDT
+
+Updated `emac_v4` so order execution occurs only when Threshold Engine V3 reports a state-changing transition; unchanged state now holds the existing position without resizing. Added a focused negative-path test for a materially off-target existing position with no transition. Ruff, compilation, strategy mypy, and IDE diagnostics pass. The identical baseline rerun returned 503 after backend reload because the backtest manager was stopped, so behavioral parity remains unverified. Min-max normalization remains the accepted control signal.
+
+### 2026-07-15 03:13 EDT
+
+Completed the transition-only V4 baseline run `eea81901-fc13-44f0-b2a0-b727e6a83d52` on the identical BTC Binance USD-M `1d` fixture. The resizing defect is resolved: V4 produced 19 orders instead of the pre-fix run's 928, versus 23 for `emac_cross`. The remaining event difference is expected from the accepted V4 identity: rolling min-max emits exact zero samples, while V3 triggers when landing on a threshold and does not retrigger when starting exactly on it. This shifts the first short one bar earlier and merges several rapid raw-spread flips. Treat this saved run as the V4 zero-threshold baseline for incremental threshold work, not as exact event parity with raw `emac_cross`.
+
+### 2026-07-15 03:33 EDT
+
+Ran symmetric hysteresis candidate `b12d3a50-b3e9-4c4a-b8ed-4fb10a604f5b` on the identical fixture: long entry/short exit at `+0.01 CROSS_OVER`, long exit/short entry at `-0.01 CROSS_UNDER`. The run completed with 16 trades, reducing turnover and improving drawdown versus the zero-threshold V4 baseline, but weakening return and Sharpe. Treat this as a positional-control comparison for visual review, not a promotion decision.
+
+### 2026-07-15 23:27 EDT
+
+Completed `MON-146` verification with full-artifact run `bad11f56-d676-4577-92a0-4527b3577f92` on the identical BTC Binance USD-M `1d` fixture. The strategy now compares consecutive decision-time emitted min-max values. The visible 2023-03-13 to 2023-03-14 move from `0.0094370696` to `0.0368437059` immediately flipped the stale short to long on March 14; it no longer remained short through August. The corrected path produced 18 trades. Treat this run as the canonical symmetric `±0.01` V4 baseline for subsequent threshold work.

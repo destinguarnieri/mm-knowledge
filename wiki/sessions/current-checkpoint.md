@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-15 01:21 EDT
+Date: 2026-07-15 23:27 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -9,9 +9,9 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - **Objective:** positive net realized live P&L after costs over a founder-set proof period.
 - **Proof period:** not yet set; Destin sets it before live evaluation begins.
 - **Company phase:** discretionary alpha transfer. Select strategies Destin actually trades, codify their visual and control semantics, prove behavioral parity, and only then validate current economics. Novel discovery is secondary until that inventory is exhausted or Destin explicitly requests it.
-- **Strategy / experiment:** EMA 10/200 flip-cross research closed on its intended questions. Directional measure supported via `% time in money`; dead-simple prod monetization is only weak/maybe under selection. It does not define the next strategy by default. See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
-- **Observed blocker:** Research MCP saved-batch retrieval 404 for Destin-owned runs when fetched by a non-superuser agent (auth/scoping; Destin investigating). Separate from backtest-manager-off 503s.
-- **Next action:** select one discretionary strategy Destin already trades and begin chart-led semantic extraction. Prove behavioral parity before optimization or deployment validation. Live/capital mutation still needs explicit authorization.
+- **Strategy / experiment:** EMA 10/200 discretionary-control transfer is active in `emac_v4` using Threshold Engine V3. The initial target is exact parity with the prior flip-cross before incrementally changing entry/exit thresholds. See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
+- **Observed blocker:** resolved by `MON-146`. EMAC V4 now compares consecutive decision-time emitted signals rather than recalculating the prior normalized sample. Identical-fixture run `bad11f56-d676-4577-92a0-4527b3577f92` flipped the stale short to long on the visible 2023-03-14 `+0.01` crossing instead of remaining short through August.
+- **Next action:** visually accept the corrected symmetric `±0.01` baseline, then resume the smallest threshold-control comparison for the EMA 10/200 transfer. Shared normalizer redesign and legacy V2/V3 migration remain outside this completed correctness slice. Live/capital mutation still needs explicit authorization.
 - **WIP:** one primary revenue outcome unless Destin explicitly expands it.
 
 ## Current Engineering State
@@ -21,6 +21,7 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - The backtest retention-contract rollout is implemented locally: one request field (`retention_mode=summary|full`), one persisted artifact outcome (`not_requested|writing|available|failed`), durable summaries for both modes, explicit outcome-aware artifact reads, and queryable queue/timeout/cancellation failure states. Legacy request branches, response aliases, writes, and database columns have been removed; unknown request fields are rejected.
 - `MON-140` is canceled as superseded by the metrics-only summary retention contract. Long-window `full` retention remains unproven and is deferred until an audit workflow demonstrates that it is a revenue blocker.
 - `MON-143` is the independent high-priority cached Binance candle-availability preflight for assigning assets to 5,000/2,500/1,000/<1,000 cohorts before execution.
+- `MON-146` is implemented and verified locally. EMAC V4 retains bounded emitted history per asset/timeframe with duplicate-timestamp idempotency and out-of-order rejection; Threshold Engine V3 rejects zero levels; transition-only execution prevents hold-period resizing. The shared adaptive scaler, smooth `emac`, and legacy V2/V3 remain unchanged.
 - `MON-141` is canceled: the EMA-session “manual transcription” was agent documentation habit, not a missing report-export product. Research continuity prompting now treats persisted `run_id` + Destin's UI as the metric source; wiki/checkpoint/changelog keep interpretation, and canvas is optional only for unique visuals beyond the UI.
 - `MON-85` follows `MON-143` to type and document the complete resulting registered Research MCP surface without changing runtime payloads.
 - `MON-135`–`MON-139`, grid expansion, artifact automation, and generalized orchestration are parked until separately justified by evidence from the revenue loop.
@@ -51,7 +52,8 @@ Do not continue platform expansion merely because the dependency chain exists. U
 - The first Binance `4h` asset batch (`3c0f2043-aeac-44da-945f-523965b33c97`) completed 19/20 assets over a common 5,000-candle window. ETH, SUI, ARB, and DOGE cleared Sharpe `1.0`; median Sharpe was `0.438`, median drawdown `-64.38%`, median profit factor `0.951`, median time in money `87.84%`, and median trade win rate `23.73%`. MATIC failed cleanly on missing post-delisting candles.
 - A point-in-time Hyperliquid `dayNtlVlm >= $250,000` filter expanded the known universe through Research MCP runs `8c3d5e49`, `c98d9c89`, and `28a4f773`. Across the liquidity-eligible set, 52 assets had complete comparable history and 29 lacked the full 5,000-candle Binance window. ZEC and HBAR posted Sharpe above `1.3` but failed risk review on drawdown, Worst Position ROE, and/or cost drag; no cleaner leader than ETH emerged.
 - Tiered-history recovery completed: `20/29` assets ran over a common trailing 2,500-candle window and `7/9` remaining assets ran over 1,000 candles. POL (`1.231` Sharpe, `-40.08%` drawdown, 18 trades) and PAXG (`0.888`, `-26.04%`, 24 trades) led the 2,500 cohort. HYPE, MET, and MON were positive over 1,000 candles but had only 4–8 trades. APEX is unsupported on Binance USD-M; MEGA is 31 candles short of 1,000.
+- `MON-146` verification passed: 31 focused strategy/threshold tests, focused mypy, Ruff, formatting, and IDE diagnostics. Full-artifact Research MCP run `bad11f56-d676-4577-92a0-4527b3577f92` confirmed the March 14 crossing flips short to long immediately and completed with 18 trades.
 
 ## Next Action
 
-None for expanding the exact flip-only EMA 10/200 rule. Select one discretionary strategy Destin already trades, extract its chart and control semantics, preserve independently deployable mappings, and prove behavioral parity before optimization. Live/capital mutation still needs explicit authorization.
+Visually accept corrected run `bad11f56-d676-4577-92a0-4527b3577f92`, then continue the bounded EMA V4 threshold-control experiment. Live/capital mutation still needs explicit authorization.

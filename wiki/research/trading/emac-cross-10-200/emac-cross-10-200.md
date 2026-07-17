@@ -4,8 +4,10 @@ Related process: [[research/trading/research_process_v1|Research Process V1]]
 
 ## Status
 
-- Research state: primary proof questions answered; do not exhaustively optimize this flip-only EMA cross.
-- Current decision: stop expanding the simplistic `emac_cross` research path. Optional one–two cleanup runs only if Destin wants them; prefer better entry/exit controls before treating this as the main production strategy.
+- Research state: the primary flip-only questions are answered, and Threshold Engine V3 implementation is complete. The active work is now bounded control research in `emac_v4`, not further universe expansion of the simplistic `emac_cross`.
+- Current hypothesis: predetermined static thresholds are useful controls but are unlikely to be the final solution. Thresholds derived from the signal's own distribution (for example rolling mean and standard deviation) are more plausible adaptive controls.
+- Position direction and position magnitude should be separated. Sizing needs to become more continuous, using `sig_to_position` or an equivalent signal-to-target-position mapping rather than only discrete full-long/full-short states.
+- Next session has three research axes: run static-threshold controls, run dynamic signal-statistic thresholds, and work through continuous target-position semantics before judging economics.
 - Destin verdict (2026-07-12):
   - **(B) Direction:** supported. Consistent high `% time in money` is the evidence that 10/200 places the position on the right side of the trade most of the time.
   - **(A) Prod / make money with almost no params:** weak yes / maybe. Selected well, Destin has some confidence the current rule could be profitable if it were do-or-die, but would rather improve entry and exit before pushing it as the preferred live path.
@@ -31,6 +33,16 @@ Supporting metrics remain net Sharpe after costs, return, drawdown, trade stats,
 | (A) Simple prod PnL | **Kinda / maybe** | Selected-asset `4h`/`1h`/`30m` evidence is not bulletproof, but Destin has partial confidence that careful selection could be profitable under do-or-die. Preferred path is better entry/exit, not more flip-only EMA screening. |
 
 **Next move:** none required for more universe/timeframe expansion of this exact rule. Optional bounded entry/exit work is a separate decision if Destin wants that as the next revenue experiment.
+
+## Next-Session Research Direction
+
+Threshold Engine V3 is no longer the blocker. Use it to establish static-threshold controls, but do not assume fixed levels are the end-state mechanism.
+
+1. **Static thresholds:** run a small, interpretable set of predetermined thresholds as controls. Their purpose is to establish behavior and a comparison baseline, not to exhaustively optimize constants.
+2. **Dynamic thresholds:** test thresholds derived causally from the processed signal's rolling statistics, beginning with mean and standard deviation. Avoid lookahead and compare on the same fixtures as the static controls.
+3. **Position semantics:** define a continuous signal-to-target-position contract using `sig_to_position` or a closely related mapping. Resolve how threshold state, signal magnitude, target exposure, resizing, and transitions interact before comparing P&L.
+
+The next useful evidence is whether adaptive controls and continuous sizing retain the EMA's directional information more effectively than static full-position flips. Do not reopen broad asset/timeframe expansion until one of these control mechanisms is coherent.
 
 ## Fixed Baseline Assumptions
 
@@ -276,3 +288,15 @@ Ran symmetric hysteresis candidate `b12d3a50-b3e9-4c4a-b8ed-4fb10a604f5b` on the
 ### 2026-07-15 23:27 EDT
 
 Completed `MON-146` verification with full-artifact run `bad11f56-d676-4577-92a0-4527b3577f92` on the identical BTC Binance USD-M `1d` fixture. The strategy now compares consecutive decision-time emitted min-max values. The visible 2023-03-13 to 2023-03-14 move from `0.0094370696` to `0.0368437059` immediately flipped the stale short to long on March 14; it no longer remained short through August. The corrected path produced 18 trades. Treat this run as the canonical symmetric `±0.01` V4 baseline for subsequent threshold work.
+
+### 2026-07-15 23:44 EDT
+
+Corrected the shared signed-magnitude min-max series contract without changing its normalization formula. Every array index now uses only the trailing window ending at that index and matches the scalar value that would have been emitted from the corresponding prefix. The full-series path uses SciPy's compiled O(n) one-dimensional min/max filters with explicit non-finite sentinels; unbuffered current-value consumers use a dedicated scalar path, while history-dependent buffers consume the causal series. Summary rerun `f2299e5b-bc39-44d1-ac1d-0644df0b6cef` reproduced the canonical V4 baseline metrics exactly, confirming the V4 emitted-history behavior is unchanged.
+
+### 2026-07-16 00:16 EDT
+
+Standardized the processing API as `process_signal()` for causal full-series consumers and `process_signal_last()` for current-value-only consumers; removed the misleading `normalize_signal` name and updated all callers. Because V4 needs the previous processed value, it now consumes `process_signal(...)[-2:]` directly and no longer maintains strategy-local emitted history. Ring buffers remain reserved for true streaming boundaries where complete source history is unavailable. Summary run `e43db176-6384-460d-a663-61e2e9f87807` exactly reproduced the canonical V4 baseline metrics.
+
+### 2026-07-16 02:05 EDT
+
+Destin marked Threshold Engine V3 complete and reframed the next session around three bounded control questions. Static thresholds remain useful experimental controls but are unlikely to be the final solution; dynamic thresholds derived causally from signal statistics such as rolling mean and standard deviation are the stronger hypothesis. Position sizing should also move from discrete full-position states toward a continuous signal-to-target-position mapping using `sig_to_position` or an equivalent function. Next session: compare static controls, dynamic thresholds, and explicit continuous position semantics without reopening broad universe/timeframe expansion.

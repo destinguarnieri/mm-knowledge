@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-15 23:27 EDT
+Date: 2026-07-16 02:17 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -9,9 +9,9 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - **Objective:** positive net realized live P&L after costs over a founder-set proof period.
 - **Proof period:** not yet set; Destin sets it before live evaluation begins.
 - **Company phase:** discretionary alpha transfer. Select strategies Destin actually trades, codify their visual and control semantics, prove behavioral parity, and only then validate current economics. Novel discovery is secondary until that inventory is exhausted or Destin explicitly requests it.
-- **Strategy / experiment:** EMA 10/200 discretionary-control transfer is active in `emac_v4` using Threshold Engine V3. The initial target is exact parity with the prior flip-cross before incrementally changing entry/exit thresholds. See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
-- **Observed blocker:** resolved by `MON-146`. EMAC V4 now compares consecutive decision-time emitted signals rather than recalculating the prior normalized sample. Identical-fixture run `bad11f56-d676-4577-92a0-4527b3577f92` flipped the stale short to long on the visible 2023-03-14 `+0.01` crossing instead of remaining short through August.
-- **Next action:** visually accept the corrected symmetric `±0.01` baseline, then resume the smallest threshold-control comparison for the EMA 10/200 transfer. Shared normalizer redesign and legacy V2/V3 migration remain outside this completed correctness slice. Live/capital mutation still needs explicit authorization.
+- **Strategy / experiment:** EMA 10/200 discretionary-control transfer is active in `emac_v4`. Threshold Engine V3 is complete; the next research question is how static controls, signal-statistic-derived dynamic thresholds, and continuous target-position sizing should work together. See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
+- **Observed blocker:** no current Threshold Engine V3 implementation blocker. Predetermined static thresholds are likely controls rather than the final mechanism, and continuous position semantics are not yet defined.
+- **Next action:** run a bounded static-threshold control set, compare causal dynamic thresholds based on signal statistics such as rolling mean and standard deviation, and define continuous signal-to-target-position semantics using `sig_to_position` or an equivalent mapping. Do not reopen broad universe/timeframe expansion. Live/capital mutation still needs explicit authorization.
 - **WIP:** one primary revenue outcome unless Destin explicitly expands it.
 
 ## Current Engineering State
@@ -21,7 +21,8 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - The backtest retention-contract rollout is implemented locally: one request field (`retention_mode=summary|full`), one persisted artifact outcome (`not_requested|writing|available|failed`), durable summaries for both modes, explicit outcome-aware artifact reads, and queryable queue/timeout/cancellation failure states. Legacy request branches, response aliases, writes, and database columns have been removed; unknown request fields are rejected.
 - `MON-140` is canceled as superseded by the metrics-only summary retention contract. Long-window `full` retention remains unproven and is deferred until an audit workflow demonstrates that it is a revenue blocker.
 - `MON-143` is the independent high-priority cached Binance candle-availability preflight for assigning assets to 5,000/2,500/1,000/<1,000 cohorts before execution.
-- `MON-146` is implemented and verified locally. EMAC V4 retains bounded emitted history per asset/timeframe with duplicate-timestamp idempotency and out-of-order rejection; Threshold Engine V3 rejects zero levels; transition-only execution prevents hold-period resizing. The shared adaptive scaler, smooth `emac`, and legacy V2/V3 remain unchanged.
+- `MON-146` is implemented and verified locally. EMAC V4 consumes the causal `process_signal()` series directly, so its threshold engine receives the final two immutable processed values without strategy-local cache lifecycle. Threshold Engine V3 rejects zero levels, and transition-only execution prevents hold-period resizing. Smooth current-value strategies continue to use `process_signal_last()`.
+- The shared signed-magnitude min-max scaler now has explicit causal series and current-scalar contracts: each series index equals the value emitted from that input prefix, while the latest-value formula remains unchanged. The series path uses SciPy's compiled O(n) one-dimensional min/max filters with sentinel-based non-finite handling. This repairs historical-array semantics without changing V4's emitted-history boundary.
 - `MON-141` is canceled: the EMA-session “manual transcription” was agent documentation habit, not a missing report-export product. Research continuity prompting now treats persisted `run_id` + Destin's UI as the metric source; wiki/checkpoint/changelog keep interpretation, and canvas is optional only for unique visuals beyond the UI.
 - `MON-85` follows `MON-143` to type and document the complete resulting registered Research MCP surface without changing runtime payloads.
 - `MON-135`–`MON-139`, grid expansion, artifact automation, and generalized orchestration are parked until separately justified by evidence from the revenue loop.
@@ -53,7 +54,10 @@ Do not continue platform expansion merely because the dependency chain exists. U
 - A point-in-time Hyperliquid `dayNtlVlm >= $250,000` filter expanded the known universe through Research MCP runs `8c3d5e49`, `c98d9c89`, and `28a4f773`. Across the liquidity-eligible set, 52 assets had complete comparable history and 29 lacked the full 5,000-candle Binance window. ZEC and HBAR posted Sharpe above `1.3` but failed risk review on drawdown, Worst Position ROE, and/or cost drag; no cleaner leader than ETH emerged.
 - Tiered-history recovery completed: `20/29` assets ran over a common trailing 2,500-candle window and `7/9` remaining assets ran over 1,000 candles. POL (`1.231` Sharpe, `-40.08%` drawdown, 18 trades) and PAXG (`0.888`, `-26.04%`, 24 trades) led the 2,500 cohort. HYPE, MET, and MON were positive over 1,000 candles but had only 4–8 trades. APEX is unsupported on Binance USD-M; MEGA is 31 candles short of 1,000.
 - `MON-146` verification passed: 31 focused strategy/threshold tests, focused mypy, Ruff, formatting, and IDE diagnostics. Full-artifact Research MCP run `bad11f56-d676-4577-92a0-4527b3577f92` confirmed the March 14 crossing flips short to long immediately and completed with 18 trades.
+- Causal min-max and unified processing verification passed across 37 focused scaler/processing/V2/V4 tests plus focused mypy, Ruff, formatting, compilation, and IDE diagnostics. Stateless V4 summary run `e43db176-6384-460d-a663-61e2e9f87807` exactly matched the canonical V4 run's metrics, including 18 trades.
 
 ## Next Action
 
-Visually accept corrected run `bad11f56-d676-4577-92a0-4527b3577f92`, then continue the bounded EMA V4 threshold-control experiment. Live/capital mutation still needs explicit authorization.
+Continue the bounded EMA V4 control experiment across three axes: static-threshold controls, causal dynamic thresholds derived from signal statistics, and explicit continuous position semantics using `sig_to_position` or an equivalent mapping. Live/capital mutation still needs explicit authorization.
+
+Researcher reminder: until Destin confirms [[trading/dump|Trading Knowledge Dump]] is finished, ask him at the start of each research session whether he has completed it.

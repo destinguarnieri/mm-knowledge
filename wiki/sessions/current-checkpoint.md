@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-16 02:17 EDT
+Date: 2026-07-17 20:12 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -19,6 +19,7 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - `MON-122` and `MON-134` are done.
 - `MON-132` is blocked behind the backtest-persistence redesign.
 - The backtest retention-contract rollout is implemented locally: one request field (`retention_mode=summary|full`), one persisted artifact outcome (`not_requested|writing|available|failed`), durable summaries for both modes, explicit outcome-aware artifact reads, and queryable queue/timeout/cancellation failure states. Legacy request branches, response aliases, writes, and database columns have been removed; unknown request fields are rejected.
+- `MON-147` is implemented and verified in the running UI. Successful single `full` runs again return the complete chart payload already computed by the engine while asynchronous persistence remains unchanged; the frontend selects the returned `(run_id, asset_id)`, shows one selected result, and preserves the live chart while artifacts are `writing`. Summary and batch response contracts are unchanged.
 - `MON-140` is canceled as superseded by the metrics-only summary retention contract. Long-window `full` retention remains unproven and is deferred until an audit workflow demonstrates that it is a revenue blocker.
 - `MON-143` is the independent high-priority cached Binance candle-availability preflight for assigning assets to 5,000/2,500/1,000/<1,000 cohorts before execution.
 - `MON-146` is implemented and verified locally. EMAC V4 consumes the causal `process_signal()` series directly, so its threshold engine receives the final two immutable processed values without strategy-local cache lifecycle. Threshold Engine V3 rejects zero levels, and transition-only execution prevents hold-period resizing. Smooth current-value strategies continue to use `process_signal_last()`.

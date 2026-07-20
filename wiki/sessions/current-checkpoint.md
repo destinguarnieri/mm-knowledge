@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-17 20:12 EDT
+Date: 2026-07-18 00:52 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -9,9 +9,9 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - **Objective:** positive net realized live P&L after costs over a founder-set proof period.
 - **Proof period:** not yet set; Destin sets it before live evaluation begins.
 - **Company phase:** discretionary alpha transfer. Select strategies Destin actually trades, codify their visual and control semantics, prove behavioral parity, and only then validate current economics. Novel discovery is secondary until that inventory is exhausted or Destin explicitly requests it.
-- **Strategy / experiment:** EMA 10/200 discretionary-control transfer is active in `emac_v4`. Threshold Engine V3 is complete; the next research question is how static controls, signal-statistic-derived dynamic thresholds, and continuous target-position sizing should work together. See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
-- **Observed blocker:** no current Threshold Engine V3 implementation blocker. Predetermined static thresholds are likely controls rather than the final mechanism, and continuous position semantics are not yet defined.
-- **Next action:** run a bounded static-threshold control set, compare causal dynamic thresholds based on signal statistics such as rolling mean and standard deviation, and define continuous signal-to-target-position semantics using `sig_to_position` or an equivalent mapping. Do not reopen broad universe/timeframe expansion. Live/capital mutation still needs explicit authorization.
+- **Strategy / experiment:** EMA 10/200 discretionary-control transfer remains relevant, but Destin clarified that static/dynamic thresholds are mostly generic research knobs. The active discretionary-alpha transfer has pivoted to the chart-led EMA/PX trend-continuation mapping in [[projects/ema_px_trend/codification|EMA/PX Trend Continuation Codification]]. Short-side semantics and a first long-side fixture are partially elicited, but the long fixture exposed a rule-consistency issue that must not be promoted to accepted semantics yet.
+- **Observed blocker:** no current Threshold Engine V3 implementation blocker. The remaining blocker is behavioral specification: entry permission, continuous scale-out curves, PX anchor choice (`10 EMA low` versus `200 EMA`), ATR cooldown, PRI/CSI event definitions, rolling-low representation, side-asymmetry/consistency audit, and failure-case fixtures need more chart evidence before implementation. Discretionary "knowing when to break the rules" must become a separate named mapping, an explicit exception predicate, or be excluded from deterministic code.
+- **Next action:** continue chart-led codification for the EMA/PX trend-continuation strategy on the DOGE/BTC fixture before changing assets, so failure cases and volatile wrong-way regimes are not avoided. Focus next examples on entries and failures: audit whether early long `123` before the `10/200` cross is a separate entry strategy, valid explicit exception, missing shared permission rule, or labeling inconsistency; clarify PX anchor choice; decide whether long-duration trend capture belongs in this mapping or a separate strategy; then continuous PX scale-out, ATR cooldown, and failed `200 EMA` retest / slam short. After DOGE/BTC failure labels, ask Destin for a fresh unlabeled asset with the same colored EMA indicators for blind rule derivation, ideally by an unprimed/fresh agent not bounded by the current rule set. Do not reopen broad universe/timeframe expansion. Live/capital mutation still needs explicit authorization.
 - **WIP:** one primary revenue outcome unless Destin explicitly expands it.
 
 ## Current Engineering State
@@ -61,4 +61,4 @@ Do not continue platform expansion merely because the dependency chain exists. U
 
 Continue the bounded EMA V4 control experiment across three axes: static-threshold controls, causal dynamic thresholds derived from signal statistics, and explicit continuous position semantics using `sig_to_position` or an equivalent mapping. Live/capital mutation still needs explicit authorization.
 
-Researcher reminder: until Destin confirms [[trading/dump|Trading Knowledge Dump]] is finished, ask him at the start of each research session whether he has completed it.
+Researcher reminder: Destin reports [[trading/dump|Trading Knowledge Dump]] is about `70%` complete as of 2026-07-18. Treat it as useful provisional source material, not a finished spec, and keep asking at the start of research sessions until he confirms it is complete.

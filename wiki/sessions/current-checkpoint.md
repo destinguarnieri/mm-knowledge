@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-20 00:45 EDT
+Date: 2026-07-20 03:40 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -60,6 +60,14 @@ Do not continue platform expansion merely because the dependency chain exists. U
 
 ## Next Action
 
-Continue the bounded EMA V4 control experiment across three axes: static-threshold controls, causal dynamic thresholds derived from signal statistics, and explicit continuous position semantics using `sig_to_position` or an equivalent mapping. Live/capital mutation still needs explicit authorization.
+Active thread (2026-07-20): the EMAC 10/200 signal-stats **event study**. Observation phase is closed and synthesized; causal event/state labels are frozen in `wiki/research/trading/emac-cross-10-200/event_labels_v1.md`, with full session context in `ema_stats_condensed_synthesis_5c512469.plan.md` (same folder — read both before resuming). Next step is `run-event-study`: build a bounded offline research script that computes the label table and conditioned outcome statistics on the anchor fixture, then the same on one disjoint earlier Binance 5m holdout window. Pickup facts not fully in those docs:
+
+- Primary anchor `8077b0dd-e440-48d7-8e64-a4ef81d1074e` (BTC Binance USD-M 5m, 49,800 scored bars, ~Jan 28 → Jul 19 2026); its 50,000 candles are already cached in the local `backtest_candle` table, so the offline script can read the DB without refetching. Hyperliquid companion `d82eda65-…` (full retention) exists for UI/screenshot parity.
+- Script location is undecided — pick a research-side home (no strategy/runtime changes); labels must be computed with the existing `sig_stats` / `sig_extension` / `Slope` / `process_signal` code paths, full-series causal mode.
+- Destin accepted the anchor's brutal flip-only control economics as expected (5m was already a rejected interval for flip-only); the interesting confirmed fact is time-in-money holding ~80% over 49.8k bars.
+- Hyperliquid serves only ~5,000 candles per timeframe; Binance USD-M is the depth source (explicit start/end, 50k single-run cap, non-US egress).
+- The three-agent review docs and synthesis are untracked `.plan.md` files in `mm-knowledge` git; no commit authorized yet.
+
+Longer frame unchanged: the bounded EMA V4 control experiment (static thresholds, dynamic signal-statistic thresholds, continuous position semantics) with the positioning-mechanism inventory recorded on the EMA 10/200 durable page. Live/capital mutation still needs explicit authorization.
 
 Researcher reminder: Destin reports [[trading/dump|Trading Knowledge Dump]] is about `70%` complete as of 2026-07-18. Treat it as useful provisional source material, not a finished spec, and keep asking at the start of research sessions until he confirms it is complete.

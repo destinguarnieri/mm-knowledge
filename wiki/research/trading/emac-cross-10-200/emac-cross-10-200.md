@@ -8,10 +8,14 @@ Related process: [[research/trading/research_process_v1|Research Process V1]]
 - Current hypothesis: predetermined static thresholds are useful controls but are unlikely to be the final solution. Thresholds derived from the signal's own distribution (for example rolling mean and standard deviation) are more plausible adaptive controls.
 - Position direction and position magnitude should be separated. Sizing needs to become more continuous, using `sig_to_position` or an equivalent signal-to-target-position mapping rather than only discrete full-long/full-short states.
 - Next session has three research axes: run static-threshold controls, run dynamic signal-statistic thresholds, and work through continuous target-position semantics before judging economics.
+- Signal-statistics event study: causal event/state label definitions are frozen in [[event_labels_v1|EMAC Signal-Stats Event Labels V1]] (2026-07-20), anchored on BTC Binance USD-M 5m fixture `8077b0dd-e440-48d7-8e64-a4ef81d1074e` (49,800 scored bars, ~Jan 28 → Jul 19 2026), with Hyperliquid 5m full run `d82eda65-…` as screenshot-parity companion.
+- Data-depth fact (Destin, 2026-07-20): Hyperliquid serves only ~5,000 candles per timeframe; Binance USD-M provides history back to first listing via `candle_source: binance_usdm` (explicit start/end required, 50,000-candle single-run cap, non-US egress required).
 - Destin verdict (2026-07-12):
   - **(B) Direction:** supported. Consistent high `% time in money` is the evidence that 10/200 places the position on the right side of the trade most of the time.
   - **(A) Prod / make money with almost no params:** weak yes / maybe. Selected well, Destin has some confidence the current rule could be profitable if it were do-or-die, but would rather improve entry and exit before pushing it as the preferred live path.
 - Methodological stance: asset selection is an explicit optimization axis for strategies that need it; trend strategies should prefer assets with stronger serial correlation / trending behavior.
+- Timeframe priority (Destin, 2026-07-20): prefer `1m` and `5m`; the higher the timeframe, the less priority weight. Existing flip-only rejections at fast intervals are verdicts on that monetization rule, not on the intervals — mechanism research (signal statistics, positioning) targets making fast intervals work.
+- Positioning stance (Destin, 2026-07-20): all-in/all-out is the intentionally simplest control condition, not the destination. Known mapping family so far: flip-only, `sig_to_position` (amplitude → target position), its inverse variant, and further unrecorded mappings (e.g. a proposed quantile regression fed by the signal and its statistics — Q90/Q50/Q10 with proximity-to-quantile positioning weighted by r²). Build philosophy: start as simple as possible, add complexity progressively.
 - Started: 2026-07-11 00:18 EDT.
 - Strategy: `emac_cross`, fast EMA `10`, slow EMA `200`.
 - Initial asset: BTC; liquid-universe screen used a point-in-time `$250,000` rolling 24-hour Hyperliquid notional-volume floor.
@@ -300,6 +304,14 @@ Standardized the processing API as `process_signal()` for causal full-series con
 ### 2026-07-20 00:45 EDT
 
 Corrected the preceding no-ring decision after BTC 5m run `43036e20-bce1-47d6-88f1-b7cc339f75a9` exposed four missed threshold transitions. The scaler's causal series is prefix-correct for one input array, but the backtester's sliding 512-bar input window changes the EMA seed and can rewrite the recomputed penultimate EMAC value. EMAC V4 again retains the last two actual decision-time emissions per asset/timeframe while continuing to use the causal full series for current signal statistics and slope overlays. Corrected full run `e58f3c5d-e501-4105-9278-f1bcc3ee2b7f` executed all four previously missed transitions with no new transition mismatches. Treat consecutive emitted values—not adjacent values recomputed from a later sliding window—as the threshold-crossing identity contract.
+
+### 2026-07-20 03:15 EDT
+
+Ran fresh BTC Hyperliquid 5m anchor `d82eda65-aaf0-4a76-b536-12921c6682bb` for the signal-stats event study (full retention, `emac_v4` defaults, ±0.01 hysteresis, $10k/1x/5bps+5bps). A 20,000-bar request failed: Hyperliquid 5m history only reaches back to ~2026-06-28 (~6,100 bars), so the anchor uses the maximum clean 5,600-scored-bar window (~June 30 → July 20 UTC). Flip-only behavior on this window matches the standing diagnosis: heavy churn, low realized win rate, high time-in-money. Separately, prior 5m run `e58f3c5d-…` is retrievable via Research MCP (`saved`, full artifacts) but was not visible in Destin's UI table — possible recurrence of the saved-run UI scoping/auth issue from 2026-07-12.
+
+### 2026-07-20 03:30 EDT
+
+Destin confirmed Hyperliquid serves only ~5,000 bars per timeframe and directed depth runs to Binance. After a geo-block fix on his side, ran the primary event-study anchor `8077b0dd-e440-48d7-8e64-a4ef81d1074e`: BTC Binance USD-M (`BTCUSDT`) 5m, 49,800 scored bars (~2026-01-28 → 2026-07-19 UTC), complete candle load, summary retention, same canonical config. Flip-only control economics over the ~6-month window are decisively negative net of costs (net −75.1%, gross −31.7% before fees, 689 trades, 16.1% win rate, 80.3% time-in-money, cost drag 86.8% of initial capital) — the strongest confirmation yet that direction survives but flip-only monetization fails at 5m, and the reference the event-study mechanisms must beat. Learned constraints: `binance_usdm` requires explicit `start_ms`/`end_ms`; single-run `min_candles` cap is 50,000; the Hyperliquid run `d82eda65-…` is retained as the screenshot-parity companion.
 
 ### 2026-07-16 02:05 EDT
 

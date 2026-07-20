@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-18 00:52 EDT
+Date: 2026-07-20 00:45 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -22,8 +22,8 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - `MON-147` is implemented and verified in the running UI. Successful single `full` runs again return the complete chart payload already computed by the engine while asynchronous persistence remains unchanged; the frontend selects the returned `(run_id, asset_id)`, shows one selected result, and preserves the live chart while artifacts are `writing`. Summary and batch response contracts are unchanged.
 - `MON-140` is canceled as superseded by the metrics-only summary retention contract. Long-window `full` retention remains unproven and is deferred until an audit workflow demonstrates that it is a revenue blocker.
 - `MON-143` is the independent high-priority cached Binance candle-availability preflight for assigning assets to 5,000/2,500/1,000/<1,000 cohorts before execution.
-- `MON-146` is implemented and verified locally. EMAC V4 consumes the causal `process_signal()` series directly, so its threshold engine receives the final two immutable processed values without strategy-local cache lifecycle. Threshold Engine V3 rejects zero levels, and transition-only execution prevents hold-period resizing. Smooth current-value strategies continue to use `process_signal_last()`.
-- The shared signed-magnitude min-max scaler now has explicit causal series and current-scalar contracts: each series index equals the value emitted from that input prefix, while the latest-value formula remains unchanged. The series path uses SciPy's compiled O(n) one-dimensional min/max filters with sentinel-based non-finite handling. This repairs historical-array semantics without changing V4's emitted-history boundary.
+- `MON-146`'s emitted-history contract is restored after a regression exposed by sliding backtest windows. EMAC V4 retains the last two decision-time processed signals per asset/timeframe for Threshold Engine V3; duplicate timestamps are idempotent, older candles are rejected, and fresh strategy instances reset history. Transition-only execution still prevents hold-period resizing.
+- The shared signed-magnitude min-max scaler remains prefix-causal and unchanged. That contract does not make upstream EMA history immutable when the backtester's 512-bar input window slides and reseeds the EMA, so threshold consumers must retain prior decision-time emissions at that streaming boundary.
 - `MON-141` is canceled: the EMA-session “manual transcription” was agent documentation habit, not a missing report-export product. Research continuity prompting now treats persisted `run_id` + Destin's UI as the metric source; wiki/checkpoint/changelog keep interpretation, and canvas is optional only for unique visuals beyond the UI.
 - `MON-85` follows `MON-143` to type and document the complete resulting registered Research MCP surface without changing runtime payloads.
 - `MON-135`–`MON-139`, grid expansion, artifact automation, and generalized orchestration are parked until separately justified by evidence from the revenue loop.
@@ -56,6 +56,7 @@ Do not continue platform expansion merely because the dependency chain exists. U
 - Tiered-history recovery completed: `20/29` assets ran over a common trailing 2,500-candle window and `7/9` remaining assets ran over 1,000 candles. POL (`1.231` Sharpe, `-40.08%` drawdown, 18 trades) and PAXG (`0.888`, `-26.04%`, 24 trades) led the 2,500 cohort. HYPE, MET, and MON were positive over 1,000 candles but had only 4–8 trades. APEX is unsupported on Binance USD-M; MEGA is 31 candles short of 1,000.
 - `MON-146` verification passed: 31 focused strategy/threshold tests, focused mypy, Ruff, formatting, and IDE diagnostics. Full-artifact Research MCP run `bad11f56-d676-4577-92a0-4527b3577f92` confirmed the March 14 crossing flips short to long immediately and completed with 18 trades.
 - Causal min-max and unified processing verification passed across 37 focused scaler/processing/V2/V4 tests plus focused mypy, Ruff, formatting, compilation, and IDE diagnostics. Stateless V4 summary run `e43db176-6384-460d-a663-61e2e9f87807` exactly matched the canonical V4 run's metrics, including 18 trades.
+- The sliding-window regression was reproduced in BTC 5m run `43036e20-bce1-47d6-88f1-b7cc339f75a9` and corrected in full run `e58f3c5d-e501-4105-9278-f1bcc3ee2b7f`. All four observed missed transitions now execute, and the corrected artifact has no missing, spurious, duplicate, or hold-bar resizing transitions.
 
 ## Next Action
 

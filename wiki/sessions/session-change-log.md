@@ -1,5 +1,9 @@
 # Session Change Log
 
+## 2026-07-20 00:45 EDT
+
+- Reproduced a regression in EMAC V4 run `43036e20-bce1-47d6-88f1-b7cc339f75a9`: the causal min-max series was prefix-correct within one input, but the backtester's sliding 512-bar window reseeded EMA history, so recomputed `processed_signal[-2]` could differ from the prior decision-time emission. Restored the bounded two-value emitted-signal history per asset/timeframe while preserving the shared scaler and current slope/stat overlays. Focused EMAC tests, Ruff, strategy mypy, and IDE diagnostics pass. After Destin restarted only the research backtest manager, corrected full run `e58f3c5d-e501-4105-9278-f1bcc3ee2b7f` repaired all four observed missed transitions with no missing, spurious, duplicate, or hold-bar resizing transitions. No live runtime, account, trading, deployment, commit, or push mutation occurred.
+
 ## 2026-07-18 00:52 EDT
 
 - Started the running [[projects/ema_px_trend/codification|EMA/PX Trend Continuation Codification]] spec from Destin's chart-led explanation of a DOGE/BTC `4H` short-side discretionary mapping. Captured confirmed semantics for same-timeframe `10 EMA low` / `200 EMA close` short permission, close-only trigger, countertrend absorption, failed `200 EMA` retest invalidation, ATR anomaly cooldown, PRI/CSI fast exits, continuous PX scale-out, and the `1/3` initial, `1/3` adverse absorption, `1/3` in-money confirmation sizing invariant. Updated the checkpoint to treat static/dynamic thresholds as mostly generic research knobs and make chart-led EMA/PX codification the active transfer path. Long-side behavior and exact implementation curves remain unresolved. No backtest, live runtime, account, trading, deployment, commit, or push mutation occurred.

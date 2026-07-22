@@ -126,3 +126,20 @@ Side = current `sign_state`; positive side uses `upper_band_1/2_asym`, negative 
 ## Non-goals
 
 No strategy implementation, no parameter optimization of analysis choices, no cross-asset expansion, no live/capital action. Output of the next step is an event table + conditioned outcome statistics on the anchor fixture, then the same on one holdout.
+
+## Implementation (2026-07-20)
+
+Script: `mm_v04/backend/app/lib/analysis/event_study/` (CLI `python -m app.lib.analysis.event_study.run_event_study --run-id <uuid> [--start-ms --end-ms]`). Read-only: run config from `bt_backtest_run`, candles from `backtest_candle`, no network fetch. Holdout mode reuses the anchor run's config over an explicit disjoint window (candles must be cached first via the normal backtest path). Outputs per fixture: `events.csv` (label table with covariates and outcomes), `label_summary.csv`, `label_horizon_summary.csv`, `b1_chop_splits.csv`, `sign_legs.csv` + `escalation.csv`, `episodes.csv` + `episode_summary.csv`, `meta.json`.
+
+Resolved analysis choices made during implementation (frozen; not in V1 text):
+
+- **Moving-level crossings:** cross-over at `t` compares `x[t−1]` vs `L[t−1]` and `x[t]` vs `L[t]` (band-overtake counts as a cross). This also closes every breakout episode cleanly.
+- **`max_level`:** marks the terminal level of the move — outermost crossed level for breaks, innermost (deepest) for retreats/exits.
+- **Warmup:** events before bar 200 (EMA warmup) are excluded entirely; the processed signal is a placeholder `0.0` there, not NaN, so sign/slope events in that region are artifacts. Matches the run's scored region (49,800 of 50,000 bars).
+- **Slope ln-clamp caveat:** `lr_slope` applies `ln(max(x, eps))`, so negative signal stretches flatten and slope reads `0` there. Preserved because it is the live code path; affects `B3`/`slope_state` and `R5`/mean-slope during negative regimes.
+- **Escalation conditionals:** measured per sign leg (B1-to-B1): `P(S2 after S1 | S1, same leg)` etc., with unconditional per-leg touch rates as baseline and bars-between as time-to-touch.
+- **`sym_mean_filter` at B1 is near-degenerate** (|sig| ≈ 0 at a zero cross, so essentially all B1 events are `inside`); H4 chop splits should lean on `rolling_width` and `sym_compression`.
+- **Semantics correction (Destin, 2026-07-20):** sym #1 was mis-scoped as a B1-bar filter state. The intent was **the mean break as the entry trigger itself** — i.e. the `S1_mean_break` event, evaluated as an entry, not `sym_mean_filter` sampled at the zero cross. Tested in interpretation as the leg-level B1-entry vs S1-entry comparison.
+- **Chop-flag lookback caveat (Destin, 2026-07-20):** the 200-bar trailing window behind `rolling_width` pinch and `sym_compression` is an unvalidated free parameter — the H4 failure may be a lookback artifact rather than a hypothesis failure. Deferred check (explicitly not blocking the holdout): visually confirm the flagged compression areas match the chart-identified braid/chop regions before trusting or tuning the flag.
+
+Anchor fixture ran: 11,953 events, 410 sign legs, 507 breakout episodes over 49,800 scored bars. Artifacts in `mm_v04/backend/app/lib/analysis/event_study/output/8077b0dd-e440-48d7-8e64-a4ef81d1074e/` (local, uncommitted).

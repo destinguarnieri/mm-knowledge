@@ -1,4 +1,4 @@
-This is a work in progress brain dump of things I do manually trading and concept ive learned over the years. 
+This is a work in progress brain dump of things I do manually trading and concepts Ive learned over the years. 
 
 >>>>>
 Trends can be defined as higher highs or lower lows.
@@ -169,7 +169,7 @@ Classic. Transformed to [1,-1] signal space instead of traditional [0,100]
 
 The underlying math of RSI is fundamentally sound measurment of price action, very high correlations. 
 
-Simple interpretation is under over 0 bullish and under zero bearish. 
+Simple interpretation is under over zero bullish and under zero bearish. 
 
 Can trend trade it from 0 outwards. 
 
@@ -195,7 +195,7 @@ Meassured by taking the ema Volume of a window and calculating the multiple of c
 Expressed in multiples (1,2.5,3,4.24,5, ect)
 2-3 often indicate price is accelerating in direction of volume
 +4 is often negative signal. 
-+4 generally occurs at tops and botooms
++4 generally occurs at tops and bottoms.
 
 From a logical perspective , when a 4+ occurs the participants capital is used up for that current time period.
 They are exhuberant and exhausted. 
@@ -234,8 +234,7 @@ Observed when the CVD of a candle is opposite the direction.
 Example the candle is an up green candle but the cumulative volume delta had more selling flow then buying.
 This can be used as a reversal signal to take profit or flip direction, or an accelerant signal if in your positions favor. 
 
-The candles OHLC should be noted as important levels that are often retested.
->>>
+
 
 >>>
 *Trade Speed*
@@ -247,7 +246,7 @@ Often find volume tracks with trade speed but not always.
 
 For example, a counter party may place a single 100K order.
 
-If you measure candles total volume it will show up, if you watch for trades over X amount it will show, but trade speed counts as one.
+If you measure candles total volume it will show up, if you watch for trades over X USD amount it will show, but trade speed counts as one.
 Conversely, the counter party may break the 100K order into smaller chunks as to avoid detection. This will show up in trade speed. 
 
 Not the end all be all but useful for seeing under the hood of whats going on. 
@@ -318,7 +317,7 @@ Can be used as a reversal signal when it changes signs.
 Example people selling the top or buying the bottom, the rate will change before the price does. 
 
 I seen a nice formula (that i forget) but it effectively stated:
-Price needs to move in the direction of the funding, per time schedule of the funding rate, or it is -EV to do so.
+Price needs to move in the direction of the funding, per time schedule of the funding rate, or it is -EV to hold.
 
 Sounds obvious but what does it really mean.
 
@@ -343,7 +342,7 @@ Said another way: The funding rate reflects the positioning of participants dire
 - Pop it , dunk it. -> Entry triggers full position, exit position trigger closes fully.
 -123 -> market enter a position in thirds. Second and third buys are used to cost average the positon , with the requirement that the position is in the money before fully allocating. if your wrong, youre only 2/3ds wrong. 
 -Smash n Scale -> enter chunk of position with market order and put up for sale with a spread of limit orders
--Buy n Bid -> enter position with between 10-30% of intended target via market, place limits down to target to accumulate. Keep lifting limits as candles progres and replaceing orders down to the updated target. 
+-Buy n Bid -> enter position with between 10-30% of intended target via market, place limits down to price target to accumulate. Keep lifting limits as candles progress and replaceing orders down to the updated target. 
 -Ride the Wave -> Quote both sides of book with a limit order grid. Inventory is ONLY in direction of the trend. 
 Effectively states If asset is trending THEN im willing to absorb favorable inventory and will distribute the inventory away from the mean of the trend. 
 -Opposite Only -> IF trend is determined THEN buy ONLY on opposite candles of trend AND sell IF in the money AND candle is in trend direction. 

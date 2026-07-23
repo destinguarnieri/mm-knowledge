@@ -1,60 +1,70 @@
 # EMA Cross 10/200 Research
 
-Related process: [[research/trading/research_process_v1|Research Process V1]]
+Related process: [[research/trading/research_process_v2|Research Process V2]]
+Signal-stats event study: [[event_study_anchor_findings|Anchor + Holdout Findings]] · label definitions [[event_labels_v1|Event Labels V1]]
 
-## Status
+<!-- ================= LIVING HEAD — rewrite in place each session ================= -->
 
-- Research state: the primary flip-only questions are answered, and Threshold Engine V3 implementation is complete. The active work is now bounded control research in `emac_v4`, not further universe expansion of the simplistic `emac_cross`.
-- Current hypothesis: predetermined static thresholds are useful controls but are unlikely to be the final solution. Thresholds derived from the signal's own distribution (for example rolling mean and standard deviation) are more plausible adaptive controls.
-- Position direction and position magnitude should be separated. Sizing needs to become more continuous, using `sig_to_position` or an equivalent signal-to-target-position mapping rather than only discrete full-long/full-short states.
-- Next session has three research axes: run static-threshold controls, run dynamic signal-statistic thresholds, and work through continuous target-position semantics before judging economics.
-- Signal-statistics event study: causal event/state label definitions are frozen in [[event_labels_v1|EMAC Signal-Stats Event Labels V1]] (2026-07-20), anchored on BTC Binance USD-M 5m fixture `8077b0dd-e440-48d7-8e64-a4ef81d1074e` (49,800 scored bars, ~Jan 28 → Jul 19 2026), with Hyperliquid 5m full run `d82eda65-…` as screenshot-parity companion.
-- Data-depth fact (Destin, 2026-07-20): Hyperliquid serves only ~5,000 candles per timeframe; Binance USD-M provides history back to first listing via `candle_source: binance_usdm` (explicit start/end required, 50,000-candle single-run cap, non-US egress required).
-- Destin verdict (2026-07-12):
-  - **(B) Direction:** supported. Consistent high `% time in money` is the evidence that 10/200 places the position on the right side of the trade most of the time.
-  - **(A) Prod / make money with almost no params:** weak yes / maybe. Selected well, Destin has some confidence the current rule could be profitable if it were do-or-die, but would rather improve entry and exit before pushing it as the preferred live path.
-- Methodological stance: asset selection is an explicit optimization axis for strategies that need it; trend strategies should prefer assets with stronger serial correlation / trending behavior.
-- Timeframe priority (Destin, 2026-07-20): prefer `1m` and `5m`; the higher the timeframe, the less priority weight. Existing flip-only rejections at fast intervals are verdicts on that monetization rule, not on the intervals — mechanism research (signal statistics, positioning) targets making fast intervals work.
-- Positioning stance (Destin, 2026-07-20): all-in/all-out is the intentionally simplest control condition, not the destination. Known mapping family so far: flip-only, `sig_to_position` (amplitude → target position), its inverse variant, and further unrecorded mappings (e.g. a proposed quantile regression fed by the signal and its statistics — Q90/Q50/Q10 with proximity-to-quantile positioning weighted by r²). Build philosophy: start as simple as possible, add complexity progressively.
-- Started: 2026-07-11 00:18 EDT.
-- Strategy: `emac_cross`, fast EMA `10`, slow EMA `200`.
-- Initial asset: BTC; liquid-universe screen used a point-in-time `$250,000` rolling 24-hour Hyperliquid notional-volume floor.
+## TL;DR & What's Working
 
-## Research Questions
+Testing whether the near-parameter-free EMA 10/200 cross carries tradable edge, and how to monetize it. **Direction is well-supported; the open game is capturing the signal, not proving it exists.**
 
-The session was not an open-ended search for the best EMA variant. It was meant to test only:
+**What's working — live threads worth capturing:**
 
-1. **Prod-simplicity (A):** Can a dead-simple, nearly parameter-free flip strategy be selected and pushed toward production with any plausible path to making money?
-2. **Directional measure (B):** Does the 10/200 EMA put you on the right side of the trade?
+- **Direction is right ~80% of the time.** Positions sit in profit for `77.84%`–`88.21%` of active bars across BTC intervals (and ~`84–88%` median across the multi-asset 4h batches), despite only `10–28%` realized win rates. That gap is a *capture/exit* problem, not a direction problem — the single most important finding in this study. Cites: BTC scan `ce0bc93e` (1d) → `987817d2` (1m); 20-asset 4h batch `3c0f2043`.
+- **A real 4h leader cluster.** SUI, ETH, ARB, DOGE cleared Sharpe `1.0` in the 20-asset 4h batch (`3c0f2043`); roughly 30–40 assets show usable 4h/1h stats. ETH is the strongest risk-balanced name.
+- **Escalation ladder — most monetizable structure found so far.** In the signal-stats event study, mean→±2σ band-to-band traversal is positive with payoff *and* hit rate rising up the ladder: mean→2σ hit `94%` (anchor) / `96%` (holdout), with conditional touch rates stable across two disjoint 50k-bar windows (P(1σ|mean) ≈ 0.69–0.71, P(2σ|1σ) ≈ 0.62–0.63). **Net positive at realistic maker costs (~1–2 bps/side)** — the ~20 bps figure that earlier read as a kill is a max-taker *ceiling*, not a floor. Cites: anchor `8077b0dd`, holdout `9c96c57f`; full numbers in [[event_study_anchor_findings]].
+- **Capture vehicles now exist.** `emac_v4` (transition-only regime control) and `emac_v5` (continuous magnitude inside the Threshold Engine V3 regime) are implemented and pass focused tests — the mechanisms to hold the 80% instead of giving it back at the flip.
 
-Supporting metrics remain net Sharpe after costs, return, drawdown, trade stats, and especially `% time in money` for (B).
+**Best next step:** spec and evaluate a bounded mean-cycle capture variant (S1 entry / retreat exit, optionally escalation-aware) against the flip-only control, and wire continuous exit/scale-out to harvest the time-in-money. See Open Threads.
 
-## Verdict
+## Current Read (provisional — not a verdict)
 
-| Question | Call | Why |
-|---|---|---|
-| (B) Direction | **Supported** | High `% time in money` across BTC intervals and multi-asset screens; low realized win rates show monetization failure, not absence of directional information. |
-| (A) Simple prod PnL | **Kinda / maybe** | Selected-asset `4h`/`1h`/`30m` evidence is not bulletproof, but Destin has partial confidence that careful selection could be profitable under do-or-die. Preferred path is better entry/exit, not more flip-only EMA screening. |
+Living per-question status. A row only becomes a recorded **Decision** at a promotion gate (Research Process V1 §12) or an explicit kill; until then it stays provisional.
 
-**Next move:** none required for more universe/timeframe expansion of this exact rule. Optional bounded entry/exit work is a separate decision if Destin wants that as the next revenue experiment.
+| Question | Current read | Confidence | Key evidence | What would change it |
+|---|---|---|---|---|
+| (B) Does 10/200 put you on the right side? | Leaning strongly yes | Med–High | `77.8–88.2%` time-in-money across intervals and multi-asset batches | fails on a fresh untouched holdout or a different venue |
+| (A) Can dead-simple flip-only make money as-is? | Leaning no (flip-only) | Med | flip-only net-negative after costs at ≤1h; severe drawdown at 1d/4h | a real selection rule clears net after realistic costs |
+| (C) Can a capture mechanism monetize the 80%? | Open — top priority | Low (early) | escalation ladder net-positive at maker cost; V4/V5 built | a mean-cycle / continuous variant beats the control out-of-sample |
+| Universe filter from prior-window winners? | Rejected (on this evidence) | Med | prior-winner persistence weak; best causal AUC ~0.55–0.62, post-hoc only | a pre-registered rule holds on a genuinely untouched window |
 
-### 2026-07-23 — `30m` universe-filter holdout
+Reframing note: this doc previously carried a hard "Verdict" table calling (B) *Supported* and (A) *Kinda/maybe*. The substance is unchanged — (B) strong, (A) weak as flip-only — but it is now tracked as a provisional read, because no promotion/kill gate has been run and the capture question (C) is still open.
 
-Batch `aa84b35a-1ca6-4776-be07-dfeec643297a` was treated as the evaluation window, with a winner defined before analysis as having both positive net return and positive Sharpe. The immediately preceding disjoint 4,000-bar Binance USD-M qualification window was run with the unchanged EMA 10/200 strategy in batches `61a85dcb-518c-463d-b186-6c44e574bcad`, `acdeb9f8-0c30-456b-9d38-376f28a7ee64`, and `07d5b326-c2bb-4119-8e63-ab3457a59e00`; corrected HEMI and SEI runs are `9ee37d7d-c148-4f97-a7f1-93dc814419e4` and `fafee3b7-672e-4644-ab95-2509c43f34c6`. PURR is unsupported on Binance USD-M, leaving 95 comparable assets.
+## Open Threads / Next Experiments
 
-Contemporaneously, evaluation-window winners had fewer crosses/trades, higher realized win rate and profit factor, higher time in money, lower turnover, and shallower drawdown. Those are outcome diagnostics, not valid preselection features. Causally lagged evidence was weak: only 11 of 21 qualification-window winners remained winners, prior winner status selected 21 assets at 52.4% precision versus a 41.1% universe base rate, and captured only 28.2% of evaluation winners. Price-only qualification features—EMA cross frequency, regime duration, sign persistence, normalized EMA separation, return autocorrelation, efficiency ratios, variance ratios, realized volatility, and volatility-of-volatility—had best univariate winner AUC of only `0.587`. Combining prior winner status with low cross frequency selected 18 assets at 55.6% precision but still captured only 25.6% of winners and produced approximately flat mean evaluation return.
+Ranked by expected value, capture-first:
 
-Decision: reject a deployment universe filter from this evidence. Lower prior cross count is the only provisional lead, but its threshold was inspected post hoc and does not survive the untouched-window standard. Do not narrow future backtests or deployment from this screen; require a newly frozen rule and genuinely untouched window if the question is reopened.
+1. **Capture the 80% (top).** Spec a bounded mean-cycle variant (S1 entry / S4 mean-retreat exit, optionally escalation-aware) and evaluate against the flip-only control on both event-study fixtures. The hinge is cutting the non-escalating branch cheaply. See [[event_study_anchor_findings]] bottom line.
+2. **Continuous positioning.** Evaluate `emac_v5` (continuous magnitude within the V3 regime) and `sig_to_position` mappings; measure profit retention versus the flip-only giveback. No V5 backtest has been run yet.
+3. **Dynamic vs static thresholds.** Thresholds derived causally from the signal's own rolling mean/σ (no lookahead) versus static controls, on the same fixtures.
+4. **Selection rule, done right.** If an asset/universe filter is reopened, pre-register the rule and consume a genuinely untouched window exactly once. Standing post-hoc leads (candidates only): lower prior cross count; high 4-bar variance ratio + high 1-bar return autocorrelation.
+5. **Rolling-lens breakout episode** (Destin, 2026-07-22): enter on rolling ±2σ breach, exit on close back inside; needs a rolling-lens episode builder plus economics on both fixtures.
+6. **Compression/expansion market-state label** — pending Destin's corrected phrasing before re-running the chop split.
 
-## Next-Session Research Direction
+Deferred: broad asset/timeframe expansion of flip-only `emac_cross` — answered sufficiently; reopen only in service of a capture mechanism.
 
-Threshold Engine V3 is no longer the blocker. Use it to establish static-threshold controls, but do not assume fixed levels are the end-state mechanism.
+<!-- ================= STABLE ================= -->
 
-1. **Static thresholds:** run a small, interpretable set of predetermined thresholds as controls. Their purpose is to establish behavior and a comparison baseline, not to exhaustively optimize constants.
-2. **Dynamic thresholds:** test thresholds derived causally from the processed signal's rolling statistics, beginning with mean and standard deviation. Avoid lookahead and compare on the same fixtures as the static controls.
-3. **Position semantics:** define a continuous signal-to-target-position contract using `sig_to_position` or a closely related mapping. Resolve how threshold state, signal magnitude, target exposure, resizing, and transitions interact before comparing P&L.
+## Strategy & Data Facts
 
-The next useful evidence is whether adaptive controls and continuous sizing retain the EMA's directional information more effectively than static full-position flips. Do not reopen broad asset/timeframe expansion until one of these control mechanisms is coherent.
+- Strategy: `emac_cross`, fast EMA `10`, slow EMA `200`. Direct-position variant `emac` (strategy `be3545d2`); control research in `emac_v4` (transition-only) and `emac_v5` (continuous magnitude).
+- Data depth: Hyperliquid serves only ~5,000 candles per timeframe; Binance USD-M provides full history via `candle_source: binance_usdm` (explicit `start_ms`/`end_ms`, 50,000-candle single-run cap, non-US egress). See [[vendors/binance-market-data-access|Binance Market Data Access]].
+- Positioning family so far: flip-only, `sig_to_position` (amplitude → target) and its inverse, continuous V5, and a proposed quantile-regression mapping (Q90/Q50/Q10 with proximity-to-quantile sizing weighted by r²). Build philosophy: start simplest, add complexity progressively. All-in/all-out is the intentional control condition, not the destination.
+- Methodology: asset selection is an explicit optimization axis for trend strategies (assets differ in serial correlation / trending behavior).
+- Timeframe priority (Destin, 2026-07-20): prefer `1m`/`5m`; the higher the timeframe the less weight. Fast-interval flip-only rejections are verdicts on that monetization rule, not on the intervals.
+- Started: 2026-07-11 00:18 EDT. Initial asset: BTC; liquid-universe screen used a point-in-time `$250,000` rolling 24-hour Hyperliquid notional-volume floor.
+
+## Diagnosis — why flip-only leaks the edge
+
+`pct_time_in_money` is the fraction of active bar snapshots whose position ROE is positive; it is not a direct signal-classification accuracy measure. Even so, `77.84%`–`88.21%` time-in-money alongside only `10.22%`–`28.07%` realized win rates is the core signal: positions are profitable during most active bars, but the hold-until-opposite-cross exit gives the favorable excursion back before realization.
+
+Two failure textures, separated by worst position ROE vs portfolio drawdown:
+
+- `1d`/`4h` allow large adverse in-position excursions (worst ROE `-17.93` / `-32.85` pts) alongside severe portfolio drawdowns.
+- `1h`→`1m` keep worst individual adverse ROE small (`-4.18` to `-0.94` pts) yet still accumulate `-25.85%` to `-36.94%` portfolio drawdowns through repeated losses and costs.
+
+Implication: the fix is profit retention + churn reduction (better exit / scale-out) and asset selection — not widening the EMA parameter search. Destin's selected-cohort Hyperliquid `1h`/`30m` runs also show interval rejection must be asset- and venue-specific, not inferred from BTC alone.
 
 ## Fixed Baseline Assumptions
 
@@ -68,148 +78,49 @@ The next useful evidence is whether adaptive controls and continuous sizing reta
 - Funding is absent from OHLCV results and remains an explicit limitation.
 - Timeframes may require different calendar windows because the explicit-request cap is 100,000 candles. Cross-timeframe results are therefore intuition-building, not a controlled ranking unless their windows overlap.
 
-## Run Registry
+<!-- ================= APPEND-ONLY TAIL — do not edit past entries ================= -->
 
-Cumulative reviewable asset-window evaluations: `86` successful. The liquid `4h` universe now contains 52 comparable 5,000-candle results, 20 shorter-history 2,500-candle results, and seven 1,000-candle results. APEX is unsupported on Binance USD-M and MEGA remains 31 candles short of the 1,000-candle window. One additional 57,192-bar BTC `1h` attempt completed computation but failed autosave.
+## Run Registry (pointers, not tables)
 
-### `ce0bc93e-01c6-41cb-8a2b-3b08a5ef26a1` — BTC `1d`
+Identity + interpretation index. Metrics live in Destin's backtest UI and in persisted saved runs — re-fetch via Research MCP `get_saved_run` / `get_saved_batch_run` rather than pasting tables here. Cumulative reviewable asset-window evaluations: `86` successful.
 
-- Requested range: 2020-01-01 through 2026-07-10 UTC.
-- Scored bars: `2,183` after the 200-bar warmup; complete candle load with no gaps.
-- Net return: `93.67%`; CAGR: `11.70%`.
-- Sharpe: `0.471`; HAC Sharpe: `0.480`.
-- Maximum drawdown: `-45.77%`; worst position ROE: `-17.93` percentage points; annualized volatility: `43.92%`.
-- Time in money: `88.21%` of active bars.
-- Trades: `22`; win rate: `27.27%`; profit factor: `1.266`.
-- Net P&L: `$9,366.66`; total fees: `$288.85`.
-- Fee drag / initial capital: `2.89%`; total cost drag / initial capital: `5.78%`.
-- Turnover / average equity: `42.31x`.
-- Interpretation: positive absolute performance driven by infrequent large winners, but Sharpe is weak and drawdown is severe. This is useful enough to continue the timeframe scan, not strong enough to treat as a candidate.
+**BTC timeframe scan (Binance USD-M):**
 
-### `78ee3fe1-ee12-40d7-b68c-e962344d8652` — BTC `4h`
+- `ce0bc93e-01c6-41cb-8a2b-3b08a5ef26a1` — BTC `1d` — positive absolute return, weak Sharpe, severe drawdown; continue-scan quality, not a candidate.
+- `78ee3fe1-ee12-40d7-b68c-e962344d8652` — BTC `4h` — strongest BTC interval by Sharpe/profit factor, but extreme drawdown; the reasonable interval for a first cross-asset screen.
+- `2c8223d5-4c4a-445e-82ac-cbd957379c14` — BTC `1h` — ~flat gross edge → negative after costs. Flip-only monetization rejected on this interval, not the directional signal.
+- `756fade0-fc72-4397-96be-8790607f9080` — BTC `30m` — negative before and after fees despite high time-in-money.
+- `e40c891e-8302-4317-b588-5a00a9a5a169` — BTC `5m` — structurally poor over the short recent sample.
+- `987817d2-0c0f-406d-aa92-09b0da5fae38` — BTC `1m` — rapid churn overwhelms the rule over a one-week sample.
+- A 57,192-bar BTC `1h` attempt completed computation but failed autosave.
 
-- Requested range: 2020-01-01 through 2026-07-10 UTC; `14,098` scored bars.
-- Net return: `918.01%`; CAGR: `43.44%`; Sharpe: `0.935`.
-- Maximum drawdown: `-68.25%`; worst position ROE: `-32.85` percentage points.
-- Time in money: `84.62%` of active bars; trades: `122`; win rate: `27.87%`; profit factor: `1.424`.
-- Fee drag / initial capital: `59.20%`; total cost drag / initial capital: `118.40%`; turnover / average equity: `222.37x`.
-- Interpretation: strongest BTC interval by Sharpe and profit factor, but its extreme drawdown prevents promotion. It is the only reasonable interval for an initial cross-asset screen.
+**Cross-asset 4h batches:**
 
-### `2c8223d5-4c4a-445e-82ac-cbd957379c14` — BTC `1h`
+- `3c0f2043-aeac-44da-945f-523965b33c97` — 20-asset 4h — 19/20; SUI/ETH/ARB/DOGE cleared Sharpe `1.0`; coherent leader cluster with ETH best-balanced; monetization gap generalized. MATIC failed cleanly on missing post-delisting history.
+- `8c3d5e49-5026-4146-a7be-d7fe1a6a1f7f` — 30-asset liquid 4h — broader breadth weakened the median; ZEC high headline Sharpe but fails risk/cost.
+- `c98d9c89-971c-440a-9647-44929937e3bf` — 32-asset liquid 4h — 11/32 full history; no clean new leader (HBAR/IOTA fail risk).
+- `28a4f773-c94c-48c1-892f-de1ff8ce6ab0` — MEGA 4h history check — insufficient candles; joins the new-listing cohort.
+- `a32d01a7-096b-4ba8-b17f-b3c35baad2c3` — 29-asset 2,500-candle 4h cohort — weak aggregate; POL and PAXG materially better than cohort median.
+- `687ef1b4-2043-4fc3-8742-5330d2ec415a` — 9-asset 1,000-candle 4h cohort — HYPE/MET/MON positive but only 4–8 trades → watchlist observations, not ranking-quality.
 
-- Requested range: 2025-05-20 08:00 through 2026-07-10 UTC; `9,800` scored bars.
-- Net return: `-8.83%`; CAGR: `-7.94%`; Sharpe: `-0.020`.
-- Maximum drawdown: `-34.64%`; worst position ROE: `-4.18` percentage points.
-- Time in money: `84.58%` of active bars; trades: `114`; win rate: `28.07%`; profit factor: `0.915`.
-- Gross return before fees: `1.67%`; fee drag / initial capital: `10.51%`; total cost drag / initial capital: `21.01%`.
-- Interpretation: approximately flat gross edge becomes negative after costs. Reject the current flip-only monetization on this interval, not necessarily the directional signal.
+**Selected-cohort Hyperliquid (Destin's 4h leaders on lower timeframes):**
 
-### `756fade0-fc72-4397-96be-8790607f9080` — BTC `30m`
+- `351ecce1-bb07-4b15-82e6-a1a9dccf1fac` — `1h` — materially stronger than the BTC-alone 1h rejection implied; falsifies "lower intervals are dead." Selected-set / different-venue caveat.
+- `a8e58e9a-7ed8-4062-9008-0588d6b60475` — `30m` — remains live for this set; do not close from BTC alone.
+- `1059fdc6-ad67-411e-94b3-9bedd21de364` — `5m` — cohort mostly collapses; weak/failed for the current flip-only rule.
 
-- Requested range: 2025-12-14 16:00 through 2026-07-10 UTC; `9,800` scored bars.
-- Net return: `-16.72%`; CAGR: `-27.91%`; Sharpe: `-0.555`.
-- Maximum drawdown: `-36.27%`; worst position ROE: `-3.12` percentage points.
-- Time in money: `83.87%` of active bars; trades: `114`; win rate: `22.81%`; profit factor: `0.813`.
-- Gross return before fees: `-6.59%`; total cost drag / initial capital: `20.25%`.
-- Interpretation: negative before and after fees despite spending most active bars in profit. Reject the current monetization on this interval.
+**Direct-position `emac` + universe-filter holdouts (2026-07-23):**
 
-### `e40c891e-8302-4317-b588-5a00a9a5a169` — BTC `5m`
+- eval `aa84b35a-1ca6-4776-be07-dfeec643297a` (`emac_cross` 30m) vs qualification `61a85dcb`/`acdeb9f8`/`07d5b326` (+corrected `9ee37d7d`, `fafee3b7`): prior-winner persistence weak (3/9 repeated); reject a deployment universe filter from this evidence. Winner label = positive net return and Sharpe > `1.0`.
+- eval `eac34bc8-49f6-4a19-b64b-960c08be6862` (direct `emac`, strategy `be3545d2-e597-41c7-a508-9f7be7b8d46d`) vs qualification `ba6c9314`/`c6251adf`/`44126629`: prior-strategy performance anti-predictive; freeze high 4-bar variance ratio + high 1-bar autocorrelation as a post-hoc candidate only, requiring a genuinely untouched window before any use. One cross-venue temporal split, not multi-fold walk-forward.
 
-- Requested range: 2026-06-06 06:40 through 2026-07-10 UTC; `9,800` scored bars.
-- Net return: `-33.43%`; Sharpe: `-9.389`; maximum drawdown: `-36.94%`; worst position ROE: `-1.94` percentage points.
-- Time in money: `79.66%` of active bars.
-- Trades: `128`; win rate: `13.28%`; profit factor: `0.371`.
-- Gross return before fees: `-23.09%`; total cost drag / initial capital: `20.68%`.
-- Interpretation: structurally poor over this short recent sample; costs compound an already negative gross signal. Reject.
+**Signal-stats event study:**
 
-### `987817d2-0c0f-406d-aa92-09b0da5fae38` — BTC `1m`
+- anchor `8077b0dd-e440-48d7-8e64-a4ef81d1074e` (BTC Binance USD-M 5m, 49,800 scored bars, ~Jan 28 → Jul 19 2026) + Hyperliquid screenshot companion `d82eda65-aaf0-4a76-b536-12921c6682bb`; holdout `9c96c57f-733d-4b0b-a063-9a8824349d80` (disjoint ~Aug 7 2025 → Jan 27 2026). Findings and label definitions: [[event_study_anchor_findings]], [[event_labels_v1]].
 
-- Requested range: 2026-07-04 01:20 through 2026-07-10 UTC; `9,800` scored bars.
-- Net return: `-25.37%`; Sharpe: `-36.260`; maximum drawdown: `-25.85%`; worst position ROE: `-0.94` percentage points.
-- Time in money: `77.84%` of active bars.
-- Trades: `137`; win rate: `10.22%`; profit factor: `0.251`.
-- Gross return before fees: `-13.34%`; total cost drag / initial capital: `24.07%`.
-- Interpretation: rapid churn overwhelms the strategy over the one-week sample. Reject.
+**Continuous-control development (V4/V5):** see the Write Log for the sequence (`a1688414` discarded config mismatch; `6108178a`, `eea81901`, `b12d3a50`, `bad11f56`, `f2299e5b`, `e43db176`, `43036e20`, `e58f3c5d`).
 
-### `3c0f2043-aeac-44da-945f-523965b33c97` — 20-asset `4h` batch
-
-- Requested range: 2024-03-29 16:00 through 2026-07-10 UTC; 5,000 requested and 4,800 scored bars per successful asset.
-- Outcome: `19/20` assets succeeded; MATIC failed because only 995 candles existed before its Binance USD-M symbol stopped producing data.
-- Aggregate: median Sharpe `0.438`, median net return `12.42%`, median maximum drawdown `-64.38%`, median profit factor `0.951`, and median expectancy `-$22.95`.
-- Position path: median time in money `87.84%`, median realized win rate `23.73%`, and median worst position ROE `-11.76` percentage points. The monetization gap generalized across assets.
-- Breadth: 14 assets had positive Sharpe, 11 had positive net return, nine had profit factor above one, and four cleared Sharpe `1.0`.
-- Leading assets:
-  - ETH — Sharpe `1.169`, net return `193.50%`, maximum drawdown `-31.61%`, worst position ROE `-8.08` points, profit factor `1.822`.
-  - SUI — Sharpe `1.350`, net return `479.59%`, maximum drawdown `-51.38%`, worst position ROE `-10.13` points, profit factor `1.642`.
-  - ARB — Sharpe `1.044`, net return `199.33%`, maximum drawdown `-56.64%`, worst position ROE `-21.94` points, profit factor `1.792`.
-  - DOGE — Sharpe `1.023`, net return `190.88%`, maximum drawdown `-63.19%`, worst position ROE `-11.76` points, profit factor `1.366`.
-- BTC same-window control: Sharpe `0.770`, net return `66.11%`, maximum drawdown `-38.72%`, worst position ROE `-7.11` points, and profit factor `1.414`.
-- Interpretation: the strategy is not a universal `4h` edge; the median asset remains weak after costs and suffers severe drawdown. A coherent leader cluster exists, with ETH offering the strongest balance rather than the highest headline return.
-
-### `8c3d5e49-5026-4146-a7be-d7fe1a6a1f7f` — 30-asset liquid `4h` batch
-
-- Liquidity snapshot: Hyperliquid `dayNtlVlm >= $250,000` at 2026-07-11 02:21 EDT.
-- Outcome: `23/30` completed the common 5,000-candle range; ZRO, HYPE, EIGEN, SAGA, SYRUP, WLFI, and TRUMP lacked full history.
-- Aggregate: median Sharpe `0.276`, median net return `-18.80%`, median maximum drawdown `-75.68%`, median profit factor `0.842`, median time in money `85.34%`, and median trade win rate `20.00%`.
-- Leaders:
-  - ZEC — Sharpe `1.323`, net return `585.99%`, but maximum drawdown `-79.12%`, worst position ROE `-24.63` points, and cost drag `31.77%`.
-  - kBONK — Sharpe `0.894`, net return `136.93%`, maximum drawdown `-68.88%`, worst position ROE `-17.53` points.
-  - XLM — Sharpe `0.887`, net return `140.27%`, maximum drawdown `-59.57%`, worst position ROE `-11.58` points, but cost drag `31.65%`.
-  - WLD — Sharpe `0.829`, net return `105.78%`, maximum drawdown `-59.66%`, worst position ROE `-21.60` points.
-- Interpretation: broader breadth weakened the median result. ZEC's headline Sharpe is not sufficient to outrank ETH after risk and costs.
-
-### `c98d9c89-971c-440a-9647-44929937e3bf` — 32-asset liquid `4h` batch
-
-- Outcome: `11/32` completed the common range; 21 mostly newer listings lacked 5,000 candles.
-- Aggregate: median Sharpe `0.291`, median net return `-23.85%`, median maximum drawdown `-81.39%`, median profit factor `0.809`, median time in money `86.92%`, and median trade win rate `25.00%`.
-- HBAR was the only Sharpe-above-one result (`1.308`) but is excluded from a risk-filtered Top K: maximum drawdown `-70.49%`, worst position ROE `-61.47` points, and cost drag `70.75%`.
-- IOTA returned Sharpe `0.799` and `102.75%` net return, but its `-81.39%` drawdown also fails a risk-aware ranking.
-- Interpretation: no new clean leader emerged.
-
-### `28a4f773-c94c-48c1-892f-de1ff8ce6ab0` — MEGA `4h` history check
-
-- MEGA cleared the liquidity floor but had only 969 of 5,000 requested candles, so it joins the separate new-listing cohort.
-
-### `a32d01a7-096b-4ba8-b17f-b3c35baad2c3` — 29-asset `2,500`-candle `4h` cohort
-
-- Outcome: `20/29` completed; HYPE, PUMP, WLFI, APEX, MON, SKY, MET, ASTER, and MEGA still lacked the requested range or Binance support.
-- Aggregate: median Sharpe `-0.123`, median net return `-49.22%`, median maximum drawdown `-70.91%`, median profit factor `0.535`, median time in money `84.96%`, and median trade win rate `20.42%`.
-- Credible leaders:
-  - POL — Sharpe `1.231`, net return `81.82%`, maximum drawdown `-40.08%`, profit factor `2.130`, and 18 trades.
-  - PAXG — Sharpe `0.888`, net return `22.03%`, maximum drawdown `-26.04%`, profit factor `1.324`, and 24 trades.
-  - TRUMP — Sharpe `0.741`, net return `32.69%`, maximum drawdown `-43.24%`, profit factor `1.194`, and 13 trades.
-- ENA and POPCAT were marginally positive, while the other 15 assets were net-negative.
-- Interpretation: the shorter-history cohort is weak in aggregate, but POL and PAXG are materially better than the cohort median and deserve validation without merging their scores into the 5,000-candle ranking.
-
-### `687ef1b4-2043-4fc3-8742-5330d2ec415a` — nine-asset `1,000`-candle `4h` cohort
-
-- Outcome: `7/9` completed. APEX is unsupported on Binance USD-M; MEGA had 969 candles and missed the requested window by 31.
-- Aggregate: median Sharpe `-0.913`, median net return `-12.90%`, median maximum drawdown `-38.61%`, median profit factor `0.505`, median time in money `86.56%`, and median trade win rate `17.65%`.
-- Positive but low-count observations:
-  - HYPE — Sharpe `1.040`, net return `21.14%`, maximum drawdown `-38.61%`, profit factor `1.164`, but only eight trades.
-  - MET — Sharpe `0.956`, net return `18.02%`, maximum drawdown `-25.67%`, profit factor `1.598`, but only four trades.
-  - MON — Sharpe `0.706`, net return `9.16%`, maximum drawdown `-43.98%`, profit factor `1.250`, but only seven trades.
-- ASTER, PUMP, SKY, and WLFI were negative.
-- Interpretation: HYPE, MET, and MON are watchlist observations, not ranking-quality evidence. The very low trade counts make their Sharpe estimates fragile.
-
-### `351ecce1-bb07-4b15-82e6-a1a9dccf1fac` — selected-cohort Hyperliquid `1h`
-
-- Intent: test whether lower intervals fail for 4h leaders, not only for BTC. Cohort is Destin's selected top performers from the prior `4h` work (22 assets requested).
-- Source: Hyperliquid trailing history (`min_candles` 4900); not the earlier Binance USD-M discovery windows.
-- Outcome: `21/22` succeeded; LIT failed on missing candles.
-- Interpretation: cohort-level results are materially stronger than the BTC Binance `1h` rejection implied. This falsifies the premature claim that lower intervals are dead for the strategy family. It does not by itself prove robustness: the set is selected, the venue/window differs from the Binance screen, and monetization diagnostics (high time-in-money, low realized win rate) still appear.
-
-### `a8e58e9a-7ed8-4062-9008-0588d6b60475` — selected-cohort Hyperliquid `30m`
-
-- Same selected cohort and Hyperliquid trailing-window setup as the `1h` batch; `22/22` succeeded.
-- Interpretation: `30m` remains live for this selected set and should not be closed from BTC-alone evidence. Still anecdotal relative to a formal selection rule plus out-of-sample time validation.
-
-### `1059fdc6-ad67-411e-94b3-9bedd21de364` — selected-cohort Hyperliquid `5m`
-
-- Same selected cohort on Hyperliquid `5m`; `22/22` succeeded.
-- Interpretation: unlike `1h`/`30m`, the cohort mostly collapses at `5m`. Treat `5m` as a weak/failed interval for the current flip-only rule on this set, pending any later mechanism change.
-
-## Preliminary Risk-Filtered Top 10
+## Preliminary Risk-Filtered Top 10 (screen, not a promotion gate)
 
 Selection requires positive net return, profit factor above one, maximum drawdown better than `-70%`, and worst position ROE better than `-25` percentage points, then ranks by Sharpe:
 
@@ -224,18 +135,7 @@ Selection requires positive net return, profit factor above one, maximum drawdow
 9. BTC
 10. SEI
 
-This is a screening rule, not a promotion gate. ZEC, HBAR, and IOTA rank highly on headline Sharpe but fail the stated risk filter.
-
-## Cross-Timeframe Diagnosis
-
-`pct_time_in_money` is the fraction of active bar snapshots whose position ROE is positive; it is not a direct signal-classification accuracy measure. Even so, the consistent `77.84%`–`88.21%` range alongside only `10.22%`–`28.07%` realized win rates is important: positions are profitable during most active bars, but the flip-only exit often gives the favorable excursion back before realization.
-
-Worst position ROE and portfolio drawdown separate two failure modes:
-
-- `1d` and `4h` allow large adverse excursions within a position (`-17.93` and `-32.85` percentage points), alongside severe portfolio drawdowns.
-- `1h` through `1m` keep the worst individual adverse ROE much smaller (`-4.18` to `-0.94` points), yet still accumulate `-25.85%` to `-36.94%` portfolio drawdowns through repeated losses and costs.
-
-The evidence therefore does not simply say that the EMA direction is useless at shorter intervals. It says the current rule—hold until the opposite cross and then flip fully—is poorly monetizing favorable position paths on the BTC Binance scan. Destin's later selected-cohort Hyperliquid `1h`/`30m` runs show that interval rejection must be asset- and venue-specific, not inferred from BTC alone. A later mechanism test should still target profit retention and churn reduction, in parallel with formalizing the asset-selection rule rather than widening the EMA parameter search first.
+ZEC, HBAR, and IOTA rank highly on headline Sharpe but fail the stated risk filter.
 
 ## Write Log
 
@@ -324,3 +224,7 @@ Destin confirmed Hyperliquid serves only ~5,000 bars per timeframe and directed 
 ### 2026-07-16 02:05 EDT
 
 Destin marked Threshold Engine V3 complete and reframed the next session around three bounded control questions. Static thresholds remain useful experimental controls but are unlikely to be the final solution; dynamic thresholds derived causally from signal statistics such as rolling mean and standard deviation are the stronger hypothesis. Position sizing should also move from discrete full-position states toward a continuous signal-to-target-position mapping using `sig_to_position` or an equivalent function. Next session: compare static controls, dynamic thresholds, and explicit continuous position semantics without reopening broad universe/timeframe expansion.
+
+### 2026-07-23 04:10 EDT
+
+Implemented registered backtest strategy `emac_v5` as the continuous-position counterpart to `emac_v4`. It preserves V4's EMA 10/200 processed signal, emitted-history, slope overlay, signal-stat modes, Threshold Engine V3 configuration, volatility adjustment, position caps, and execution safeguards. Threshold Engine V3 still controls the persistent `LONG` / `FLAT` / `SHORT` regime; `signal_to_position` controls exposure magnitude continuously inside that regime, with the configured target floor and adjustment deadband applied before execution. Threshold state is retained independently from actual position size so a zero-magnitude target does not erase the active regime. V4 remains transition-only and unchanged. Focused V4/V5 tests pass (17 total), including threshold gating, state retention through a zero target, continuous resize, and unchanged-target omission; focused Ruff, formatting, source mypy, IDE diagnostics, and diff checks pass. No backtest was run and no live/capital mutation was performed.

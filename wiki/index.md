@@ -7,8 +7,8 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[company/money-machine-360|Money Machine Operating Context]] — canonical company frame, revenue proof, work lanes, and decision standard.
 - [[sessions/current-checkpoint|Current Checkpoint]] — active strategy, proof period, blocker, evidence, and next action.
 - [[ops/linear-operating-system|Linear Operating System]] — issue intake, execution state, and WIP rules.
-- [[research/trading/research_process_v1|Research Process V1]] — repeatable quant strategy research protocol from idea card through candidate handoff.
-- [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] — style reference for structured research files with timestamped write logs.
+- [[research/trading/research_process_v2|Research Process V2]] — current quant research protocol: lane router + evidence ladder, signal-validity/monetization split, symmetric kill/upside framing, dual costs, cross-market generalization. (Supersedes [[research/trading/research_process_v1|V1]].)
+- [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] — style reference for the two-layer research file (living head + append-only tail) per Research Process V2.
 - [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — active BTC timeframe scan, followed by multi-asset screening if the baseline remains coherent.
 - [[research/trading/emac-cross-10-200/event_study_anchor_findings|EMAC Event Study — Anchor Findings]] — interpreted verdicts from the signal-stats event study anchor run; holdout pending.
 - [[projects/ema_px_trend/codification|EMA/PX Trend Continuation Codification]] — running chart-led specification for Destin's short-side EMA/PX discretionary mapping, with long-side semantics still pending.
@@ -31,7 +31,7 @@ Canonical markdown lives under `wiki/`:
 - `wiki/ops/` — operating runbooks, process notes, Linear operating system.
 - `wiki/engineering/` — stable engineering architecture, contracts, inventories, implementation context, and invariants; not ticket or implementation plans.
 - `wiki/quant/` — quantitative research notes.
-- `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v1`, example research directory).
+- `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v2` current, `research_process_v1` superseded, example research directory).
 - `wiki/trading/` — trading language and discretionary/strategy context.
   - `wiki/trading/entry/` — reusable discretionary entry and sizing primitives.
 - `wiki/concepts/` — cross-cutting domain concepts and agent procedures.

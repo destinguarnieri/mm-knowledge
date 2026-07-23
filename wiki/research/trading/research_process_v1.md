@@ -1,5 +1,7 @@
 # Research Process V1
 
+> **Superseded by [[research/trading/research_process_v2|Research Process V2]] (2026-07-23).** V2 restructures this into a lane router + evidence ladder, splits signal validity from monetization, adds symmetric kill/upside framing, dual (realistic + stress) costs, and cross-market generalization. This page is retained for history and for existing links; use V2 for current work.
+
 Purpose: make strategy research repeatable enough that a good idea can be tested, improved, rejected, or promoted without drifting into unconstrained parameter chasing.
 
 ## Route the work first
@@ -129,10 +131,11 @@ Required output:
 
 ## 5. Reflect on Results
 
-Pause after the first grid and review the results from first principles.
+Pause after the first grid and review the results from first principles. Lead the review with the strongest positive signal in the results and what it implies, then examine the risks and failure modes — not the other way around. A partial win (for example correct direction most of the time but poor exit monetization) is a finding to build on, not just a reason to reject.
 
 Choose exactly one next state:
 
+- Amplify: a real edge or promising signal appeared but is not yet captured. Design the mechanism or experiment that would harvest it (exit, scale-out, sizing, holding period, regime gating) before widening or stopping. Distinguishing "the current mapping fails to monetize" from "the signal has no edge" is the whole job here.
 - Continue: the idea shows stable edge and can move into broader validation.
 - Modify: the results reveal a missing mechanism that belongs in the strategy.
 - Stop: no stable edge appears, or the failure is structural.
@@ -146,6 +149,8 @@ Answer: "The trend strategy gets chopped up during non-trending environments. Ad
 If a strategy change is made, rerun the small structured grid before expanding. Do not keep widening the grid around a strategy whose first-principles logic changed.
 
 Modify is not free. Each modification is a researcher degree of freedom that consumes statistical credibility. Log every modification as a hypothesis change in the write log and count them. Default budget: two or three mechanism changes per research card. If the idea still has no stable edge after that, choose stop or restart with a fresh research card; do not keep iterating.
+
+This budget governs undisciplined mechanism-churn on an idea that has shown no edge. It does not cap pursuit of a live edge. When the results already show a real signal that is simply not yet captured (the Amplify state), pulling the thread to harvest that signal is expected work, not budgeted degrees of freedom — keep following it as long as the evidence stays live. Do not use the modify budget as a reason to abandon a promising result.
 
 ## 6. Expand the Grid or Stop
 
@@ -275,7 +280,8 @@ End every research project with a handoff summary.
 Required fields:
 
 - research question;
-- final decision: promote, continue research, or reject;
+- final decision: promote, amplify (pursue an uncaptured edge), continue research, or reject;
+- what is working: the strongest positive signals found and a concrete proposed way to capture each, stated before the weaknesses;
 - reviewable run IDs and artifact links supporting the decision;
 - best candidate configs;
 - rejected configs and why;

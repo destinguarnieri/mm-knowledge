@@ -42,7 +42,7 @@ The immediate loop is:
 7. measure live net realized P&L after costs
 8. learn from the result and repeat
 
-Backtests, tickets, infrastructure, documents, and agent activity are inputs or costs. They are not the proof.
+Tickets, infrastructure, documents, and raw agent activity are inputs or costs, not the proof. Backtests are the tool that surfaces edge: a backtest that reveals a real or promising edge is progress to pursue, even though it is not yet the live-P&L proof. Do not treat a promising result as a cost to minimize.
 
 ## System Reality
 
@@ -93,8 +93,10 @@ Keep one primary revenue outcome in progress unless Destin explicitly expands WI
 Progress is:
 
 - live evidence
+- a real or promising edge identified and pursued toward capture
 - positive net realized P&L after costs
 - shorter time from strategy hypothesis to production evidence
+- a reduction in decision-relevant uncertainty
 - closed decisions and experiments
 - unnecessary work deleted
 
@@ -107,6 +109,8 @@ Progress is not:
 - agent activity
 
 New tickets, infrastructure, abstractions, or scope expansion must name the failed current-system attempt, causal blocker, no-build alternative, smallest fix, and work displaced.
+
+This deletion, deferral, and cost framing governs work-creation — tickets, infrastructure, abstractions, and busywork. It does not govern the interpretation of empirical results. A promising or surprising-positive finding (a live edge, a high hit rate, correct direction with poor capture) is progress: pursue and capture it rather than filing it under activity or defaulting it to no next move. Do not deflate real signal, and do not kill an edge using a worst-case cost assumption the intended venue would not actually pay.
 
 ## Safety And Authority
 

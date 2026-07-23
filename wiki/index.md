@@ -9,7 +9,9 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[ops/linear-operating-system|Linear Operating System]] — issue intake, execution state, and WIP rules.
 - [[research/trading/research_process_v2|Research Process V2]] — current quant research protocol: lane router + evidence ladder, signal-validity/monetization split, symmetric kill/upside framing, dual costs, cross-market generalization. (Supersedes [[research/trading/research_process_v1|V1]].)
 - [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] — style reference for the two-layer research file (living head + append-only tail) per Research Process V2.
+- [[research/trading/research_index|Research Board]] — living roster of active research threads (lane, validity/monetization state, status, next step); read this first to see what research is live.
 - [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — active BTC timeframe scan, followed by multi-asset screening if the baseline remains coherent.
+- [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — early cross-timeframe (1m/5m/15m) Hyperliquid lead; recover config, reproduce baseline, cost-stress.
 - [[research/trading/emac-cross-10-200/event_study_anchor_findings|EMAC Event Study — Anchor Findings]] — interpreted verdicts from the signal-stats event study anchor run; holdout pending.
 - [[projects/ema_px_trend/codification|EMA/PX Trend Continuation Codification]] — running chart-led specification for Destin's short-side EMA/PX discretionary mapping, with long-side semantics still pending.
 - [[research/trading/ema_px_trend/blind_pattern_match|EMA/PX Blind Pattern Match (Track 3)]] — agent pattern-matches unlabeled HYPE 4H charts (10 EMA_low / 200 EMA_close) window by window, updating priors toward a codified strategy.

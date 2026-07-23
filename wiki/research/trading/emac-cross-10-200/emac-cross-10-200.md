@@ -38,6 +38,14 @@ Supporting metrics remain net Sharpe after costs, return, drawdown, trade stats,
 
 **Next move:** none required for more universe/timeframe expansion of this exact rule. Optional bounded entry/exit work is a separate decision if Destin wants that as the next revenue experiment.
 
+### 2026-07-23 — `30m` universe-filter holdout
+
+Batch `aa84b35a-1ca6-4776-be07-dfeec643297a` was treated as the evaluation window, with a winner defined before analysis as having both positive net return and positive Sharpe. The immediately preceding disjoint 4,000-bar Binance USD-M qualification window was run with the unchanged EMA 10/200 strategy in batches `61a85dcb-518c-463d-b186-6c44e574bcad`, `acdeb9f8-0c30-456b-9d38-376f28a7ee64`, and `07d5b326-c2bb-4119-8e63-ab3457a59e00`; corrected HEMI and SEI runs are `9ee37d7d-c148-4f97-a7f1-93dc814419e4` and `fafee3b7-672e-4644-ab95-2509c43f34c6`. PURR is unsupported on Binance USD-M, leaving 95 comparable assets.
+
+Contemporaneously, evaluation-window winners had fewer crosses/trades, higher realized win rate and profit factor, higher time in money, lower turnover, and shallower drawdown. Those are outcome diagnostics, not valid preselection features. Causally lagged evidence was weak: only 11 of 21 qualification-window winners remained winners, prior winner status selected 21 assets at 52.4% precision versus a 41.1% universe base rate, and captured only 28.2% of evaluation winners. Price-only qualification features—EMA cross frequency, regime duration, sign persistence, normalized EMA separation, return autocorrelation, efficiency ratios, variance ratios, realized volatility, and volatility-of-volatility—had best univariate winner AUC of only `0.587`. Combining prior winner status with low cross frequency selected 18 assets at 55.6% precision but still captured only 25.6% of winners and produced approximately flat mean evaluation return.
+
+Decision: reject a deployment universe filter from this evidence. Lower prior cross count is the only provisional lead, but its threshold was inspected post hoc and does not survive the untouched-window standard. Do not narrow future backtests or deployment from this screen; require a newly frozen rule and genuinely untouched window if the question is reopened.
+
 ## Next-Session Research Direction
 
 Threshold Engine V3 is no longer the blocker. Use it to establish static-threshold controls, but do not assume fixed levels are the end-state mechanism.

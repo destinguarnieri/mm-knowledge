@@ -14,12 +14,14 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — early cross-timeframe (1m/5m/15m) Hyperliquid lead; recover config, reproduce baseline, cost-stress.
 - [[research/trading/emac-cross-10-200/event_study_anchor_findings|EMAC Event Study — Anchor Findings]] — interpreted verdicts from the signal-stats event study anchor run; holdout pending.
 - [[projects/ema_px_trend/codification|EMA/PX Trend Continuation Codification]] — running chart-led specification for Destin's short-side EMA/PX discretionary mapping, with long-side semantics still pending.
+- [[projects/ema_hilo_200_reentry/hype-ema-hilo-200-reentry-codification|HYPE EMA High/Low 200 Re-entry Codification]] — accepted simple HYPE 4H close-driven direction, stop, and re-entry mapping; implemented locally with baseline viability pending.
 - [[research/trading/ema_px_trend/blind_pattern_match|EMA/PX Blind Pattern Match (Track 3)]] — agent pattern-matches unlabeled HYPE 4H charts (10 EMA_low / 200 EMA_close) window by window, updating priors toward a codified strategy.
 - [[research/trading/ema_px_trend/strategy_ema_px_trend|ema_px_trend Strategy Doc]] — code walkthrough, rule semantics, dev-set discriminating events, and v2 candidates for the codified Track 3 strategy (first run: positive Sharpe).
 - [[trading/entry/123|123 Entry]] — reusable breakover, pullback, go entry lifecycle and sizing primitive.
 
 ## Active Projects
 
+- [[projects/ema_hilo_200_reentry/hype-ema-hilo-200-reentry-codification|HYPE EMA High/Low 200 Re-entry Codification]] — active discretionary-alpha transfer: code and focused parity fixtures pass; HYPE 4H baseline event review is next.
 - [[projects/ema_px_trend/codification|EMA/PX Trend Continuation Codification]] — provisional discretionary-alpha transfer spec for short-side trend continuation, countertrend absorption, PX scale-out, and close-only implementation handoff.
 - [[projects/MON-144-hl-1d-candle-overflow.plan|MON-144 HL 1d Candle Overflow]] — widen live `candle`/`indicatorvalue` `tf_sec` for daily bars and route Hyperliquid research cache through `backtest_candle`.
 - [[projects/MON-142-backtest-risk-metric-contract.plan|MON-142 Backtest Risk Metric Contract]] — explicit risk labels plus decimal-unit normalization for worst active position ROE across compute, persistence, API, MCP, and frontend consumers.
@@ -32,6 +34,7 @@ Canonical markdown lives under `wiki/`:
 - `wiki/agents/templates/` — the optional managed-worker brief and coding-execution reference.
 - `wiki/ops/` — operating runbooks, process notes, Linear operating system.
 - `wiki/engineering/` — stable engineering architecture, contracts, inventories, implementation context, and invariants; not ticket or implementation plans.
+  - [[engineering/backtest-strategies-index|Backtest Strategies Index]] — light inventory of registered backtest strategy implementations (registered name, class, file, key params).
 - `wiki/quant/` — quantitative research notes.
 - `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v2` current, `research_process_v1` superseded, example research directory).
 - `wiki/trading/` — trading language and discretionary/strategy context.

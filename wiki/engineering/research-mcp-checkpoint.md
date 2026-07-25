@@ -1,6 +1,20 @@
 # research_mcp checkpoint
 
-Date: 2026-03-18
+Date: 2026-07-23
+
+## Current request contract
+
+- A single run is identified by top-level `asset_id` plus exactly one matching
+  `assets` settings entry. Missing, duplicate, extra, or mismatched settings are
+  rejected locally before backend dispatch; leverage, allocation, and margin mode
+  are never silently invented.
+- Canonical costs are `fee_bps` and `slippage_bps`, both in basis points.
+- Backend 422 details are preserved for string, list, and structured responses,
+  and accepted-body rejections are logged with safe request identity.
+- Single runs use a dedicated 180-second timeout. A timeout is non-retryable
+  because backend execution may continue and persist; inspect saved runs first.
+- Current operational detail and examples live in
+  `mm_v04/research_mcp/doc/runbook.md`.
 
 ## Current status
 

@@ -1,4 +1,9 @@
-# MCP v1 Contract
+# MCP v1 Contract (Original Baseline)
+
+Status: historical scope baseline. The implemented tool catalog has expanded
+since this document was written. The current executable contract and canonical
+request examples live in `mm_v04/research_mcp/doc/runbook.md` and
+`mm_v04/research_mcp/AGENT.md`; use those instead of old field lists below.
 
 ## Purpose
 
@@ -139,8 +144,9 @@ Required input fields:
 - `strategy_name: string`
 - `params: object`
 - `initial_capital: float`
-- `fees: float`
-- `slippage: float`
+- `assets: list` containing exactly one settings entry matching `asset_id`
+- `fee_bps: float`
+- `slippage_bps: float`
 
 Optional input fields:
 - `backtest_strategy_id: UUID | null`
@@ -148,9 +154,10 @@ Optional input fields:
 - `backtest_strategy_version: int | null`
 - `config: object`
 - `trade_config: object`
-- `assets: list`
-- `detail_mode: "full" | "compact" | "lite"`
-- `auto_save: bool`
+- `retention_mode: "summary" | "full"`
+- `start_ms` and `end_ms` together
+- `candle_source`
+- `source_symbol`
 
 Expected output:
 - `run_id: UUID`
@@ -170,8 +177,7 @@ MCP normalization requirements:
 - preserve raw backend payload under a nested field if needed, but keep the top-level response concise
 
 Recommended MCP-side defaults:
-- `detail_mode="compact"`
-- `auto_save=true`
+- `retention_mode="summary"`
 - if `config` or `trade_config` missing, send `{}`
 
 ### 5. `list_saved_runs`
@@ -285,10 +291,11 @@ Current implementation status:
 - broader compatibility still needs real-backend integration testing before calling hardening complete
 
 ### Runtime behavior
-- default `run_backtest.auto_save=true`
-- default `run_backtest.detail_mode="compact"`
+- default `run_backtest.retention_mode="summary"`
 - timeouts should be bounded and explicit
 - retries should be conservative and only for transport or transient upstream failures
+- single-run POST timeouts are ambiguous because backend execution may continue;
+  they are non-retryable until saved-run state is inspected
 
 ## Auth model for v1
 

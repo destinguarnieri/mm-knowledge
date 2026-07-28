@@ -18,7 +18,7 @@ Before answering project/context questions or doing Money Machine work:
 1. Start with `wiki/index.md` when it exists; use it as the routing map.
 2. Use QMD for search when available:
    - `/Users/destinguarnieri/.bun/bin/qmd query "<question>"`
-   - `/Users/destinguarnieri/.bun/bin/qmd search "<keyword>" -c <collection>`
+   - `/Users/destinguarnieri/.bun/bin/qmd search "<keyword>"`
    - `/Users/destinguarnieri/.bun/bin/qmd get "<path-or-docid>"`
 3. If QMD is broken, sparse, or missing embeddings, use filesystem search/read tools directly.
 4. Follow relevant `[[wikilinks]]` and backlinks instead of stopping at the first matching page.
@@ -31,9 +31,8 @@ After work that materially changes durable state:
 3. Append to `wiki/sessions/session-change-log.md` only for durable ticketing, implementation, verification, or product/engineering decisions.
 4. Update `wiki/index.md` only when routing or page inventory changed.
 5. Append to `wiki/log.md` only when KB structure changed.
-6. Run `/Users/destinguarnieri/.bun/bin/qmd update` after KB edits.
-7. Run `/Users/destinguarnieri/.bun/bin/qmd embed` only when semantic retrieval needs new material immediately.
-8. Commit or push only when Destin explicitly authorized it for the current execution session.
+6. Run `/Users/destinguarnieri/.bun/bin/qmd update` after KB edits, then `/Users/destinguarnieri/.bun/bin/qmd embed`. Treat these as one step: `update` re-indexes text, `embed` vectorizes it, and a document that is indexed but not embedded is invisible to `qmd query` even though `qmd search` can still find it. Skip `embed` only when it reports nothing pending.
+7. Commit or push only when Destin explicitly authorized it for the current execution session.
 
 If no durable state changed, close the loop without creating a page, changelog entry, index edit, commit, or push.
 
@@ -77,6 +76,9 @@ Canonical markdown belongs under `wiki/`. Do not keep duplicate top-level `compa
 
 ## Wiki Rules
 
+- Any page covering in-progress work carries an explicit status line near the top: `Status: draft | in progress | confirmed | superseded`. A page with no status line is draft.
+- `confirmed` means Destin confirmed the specific claim and considers it settled. Recording something Destin said once is `in progress` — a faithful transcript of a work-in-progress statement is still work in progress.
+- Never imply maturity with a heading. Headings name the topic; the status line carries the confidence.
 - Use Obsidian-style `[[wikilinks]]` for important relationships.
 - Prefer stable, descriptive filenames.
 - Keep pages concise but useful; split only when a page becomes hard to route or maintain.
@@ -95,11 +97,14 @@ Useful commands:
 ```bash
 /Users/destinguarnieri/.bun/bin/qmd status
 /Users/destinguarnieri/.bun/bin/qmd update
+/Users/destinguarnieri/.bun/bin/qmd embed
 /Users/destinguarnieri/.bun/bin/qmd query "quarterly planning process"
-/Users/destinguarnieri/.bun/bin/qmd search "API" -c mm-engineering
+/Users/destinguarnieri/.bun/bin/qmd search "API"
 /Users/destinguarnieri/.bun/bin/qmd get "wiki/index.md"
 /Users/destinguarnieri/.bun/bin/qmd search "authentication" --json -n 10
 /Users/destinguarnieri/.bun/bin/qmd query "error handling" --all --files --min-score 0.4
 ```
 
-Use QMD collection contexts to improve retrieval quality. If search results look weak, check `qmd status`, run `qmd update`, and inspect files directly before concluding knowledge is absent.
+There is one collection, `mm-knowledge`, covering the whole `wiki/` tree. It previously overlapped five per-topic collections rooted at subdirectories of the same tree, which double-indexed those files and let duplicate hits consume result slots; the topic collections were removed on 2026-07-25. Do not re-add a collection whose path sits inside another collection's path.
+
+If search results look weak, check `qmd status` for pending embeddings first, then run `update` and `embed`, then inspect files directly before concluding knowledge is absent. `qmd query` is semantic and needs embeddings; `qmd search` is BM25 keyword and does not.

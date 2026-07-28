@@ -7,6 +7,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[company/money-machine-360|Money Machine Operating Context]] — canonical company frame, revenue proof, work lanes, and decision standard.
 - [[sessions/current-checkpoint|Current Checkpoint]] — active strategy, proof period, blocker, evidence, and next action.
 - [[ops/linear-operating-system|Linear Operating System]] — issue intake, execution state, and WIP rules.
+- [[trading/catalog|Trading Catalog]] — Destin's own catalog of the indicators, anomalies, execution styles, and concepts he uses when trading by hand, in his words. Use it to look up what a term means (PX, VFTI, HL channel, absorption, PR system) before asking him to re-explain it. Status is draft: it is a menu of tools he has used or sketched, not a specification of any one strategy, and several sections are placeholders. Retrieve the one section you need; do not read it end to end and assemble a strategy out of it.
 - [[research/trading/research_process_v2|Research Process V2]] — current quant research protocol: lane router + evidence ladder, signal-validity/monetization split, symmetric kill/upside framing, dual costs, cross-market generalization. (Supersedes [[research/trading/research_process_v1|V1]].)
 - [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] — style reference for the two-layer research file (living head + append-only tail) per Research Process V2.
 - [[research/trading/research_index|Research Board]] — living roster of active research threads (lane, validity/monetization state, status, next step); read this first to see what research is live.
@@ -17,7 +18,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[projects/ema_hilo_200_reentry/hype-ema-hilo-200-reentry-codification|HYPE EMA High/Low 200 Re-entry Codification]] — accepted simple HYPE 4H close-driven direction, stop, and re-entry mapping; implemented locally with baseline viability pending.
 - [[research/trading/ema_px_trend/blind_pattern_match|EMA/PX Blind Pattern Match (Track 3)]] — agent pattern-matches unlabeled HYPE 4H charts (10 EMA_low / 200 EMA_close) window by window, updating priors toward a codified strategy.
 - [[research/trading/ema_px_trend/strategy_ema_px_trend|ema_px_trend Strategy Doc]] — code walkthrough, rule semantics, dev-set discriminating events, and v2 candidates for the codified Track 3 strategy (first run: positive Sharpe).
-- [[trading/entry/123|123 Entry]] — reusable breakover, pullback, go entry lifecycle and sizing primitive.
+
 
 ## Active Projects
 
@@ -38,7 +39,9 @@ Canonical markdown lives under `wiki/`:
 - `wiki/quant/` — quantitative research notes.
 - `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v2` current, `research_process_v1` superseded, example research directory).
 - `wiki/trading/` — trading language and discretionary/strategy context.
+  - [[trading/catalog|Trading Catalog]] — Destin's draft catalog of his hand-trading tools and vocabulary; the glossary of record for his terms.
   - `wiki/trading/entry/` — reusable discretionary entry and sizing primitives.
+  - [[trading/positioning/size-distribution|Size Distribution]] — size mass (curve + Lower/Higher + 0–100%); continuous inverse scale-in/out from toward/away zero (`d_abs`); elicited, not implemented.
 - `wiki/concepts/` — cross-cutting domain concepts and agent procedures.
 - `wiki/projects/` — active initiative context, project-level synthesis, and bounded execution plans.
 - `wiki/decisions/` — durable decision records.

@@ -1,10 +1,14 @@
 # EMA/PX Trend Continuation Codification
 
+Status: in progress
+
 Date opened: 2026-07-18
+
+Maturity note (added 2026-07-25): the "Confirmed" headings below mean Destin described that behavior during the 2026-07-18 session. They do not mean the behavior is settled, audited, or ready to implement. Nothing on this page has behavioral parity. Treat the labeled fixtures as the durable asset here and the rule prose as a live working draft.
 
 Purpose: running specification for transferring Destin's discretionary EMA/PX trend-continuation behavior into executable strategy logic. This page is provisional until both short and long mappings have chart-backed behavioral parity.
 
-Related context: [[company/money-machine-360|Money Machine Operating Context]], [[trading/dump|Trading Knowledge Dump]], [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
+Related context: [[company/money-machine-360|Money Machine Operating Context]], [[trading/catalog|Trading Catalog]], [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
 
 ## Source Strategy
 
@@ -217,7 +221,7 @@ Hard invariant for the automated approximation:
 
 > Do not reach full target exposure while the position is still adverse. Full allocation requires positive unrealized position ROE or a distinct in-trend confirmation.
 
-This is the practical meaning of the Trading Knowledge Dump's `123` / `Buy n Bid` behavior for this mapping.
+This is the practical meaning of the Trading Catalog's `123` / `Buy n Bid` behavior for this mapping.
 
 Because current backtests are close-only and do not support limit grids, the first codification must be explicitly labeled as a close-price approximation of a discretionary limit-grid strategy.
 

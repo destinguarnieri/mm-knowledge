@@ -2,6 +2,13 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-07-26
+
+- Added [[trading/positioning/size-distribution|Size Distribution]] under `wiki/trading/positioning/` (elicited signal→position skew concept; curves image co-located). Linked from [[index|wiki index]] and [[trading/catalog|Trading Catalog]] Scaling In/Out.
+- Expanded [[trading/positioning/size-distribution|Size Distribution]] with exchange knobs (curve / Lower|Higher / 0–100%), polarity vs size-shape split, inverse signal-axis sketch, underwater linear-inverse example, and prefer-separate-direct/inverse implementation note.
+- Corrected continuous rule on [[trading/positioning/size-distribution|Size Distribution]]: scale-in/out from toward/away zero via `d_abs = abs(sig[-1]) - abs(sig[-2])`; mid-cut absolute bands superseded.
+- Added caller-owned active signal space on [[trading/positioning/size-distribution|Size Distribution]]: strategy thresholds shrink the skew band (e.g. `[0.1,1] || [-1,-0.1]`).
+
 ## 2026-07-12
 
 - Added [[projects/MON-144-hl-1d-candle-overflow.plan|MON-144 HL 1d Candle Overflow]] and linked it from [[index|wiki index]] Active Projects.

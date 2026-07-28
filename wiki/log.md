@@ -10,6 +10,9 @@ Chronological log of meaningful KB changes. Keep entries concise and link change
 - Added caller-owned active signal space on [[trading/positioning/size-distribution|Size Distribution]]: strategy thresholds shrink the skew band (e.g. `[0.1,1] || [-1,-0.1]`).
 - Reverted in-place `signal_inner` change on linear `signal_to_position`; threshold-aware mapping will be a separate opt-in helper (existing callers stay on the legacy function).
 - Added opt-in `signal_to_position_banded` (caller `band_inner`/`band_outer`, no `signal_scale`); legacy `signal_to_position` unchanged. Documented on [[trading/positioning/size-distribution|Size Distribution]].
+- Parked linear banded track on [[trading/positioning/size-distribution|Size Distribution]]; next focus is non-linear size distribution (cubic/exp + Lower/Higher + amount).
+- Added `signal_to_position_banded_skewed` (NumPy cubic/expm1 warp toward inner/outer) plus `band_end_from_motion`; documented on [[trading/positioning/size-distribution|Size Distribution]].
+- Skew path is inverse-only: renamed motion helper to `band_end_from_motion_inverse`; removed direct from `signal_to_position_banded_skewed`.
 
 ## 2026-07-12
 

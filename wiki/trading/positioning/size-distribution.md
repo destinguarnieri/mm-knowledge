@@ -128,17 +128,34 @@ Higher vs Lower names which end of a region gets the pile; the average follows t
 
 ## Current code
 
-- Legacy `signal_to_position` — unchanged; linear `direct` / `inverse` over `[-signal_scale, signal_scale]`. Existing callers stay here until they opt in.
-- Opt-in `signal_to_position_banded` (`mm_v04` `backend/app/helpers/signal_position.py`) — linear map over caller `[band_inner, band_outer]` magnitudes; no `signal_scale`; invalid bands raise `ValueError`.
+- Legacy `signal_to_position` — unchanged; linear `direct` / `inverse` over `[-signal_scale, signal_scale]`.
+- Opt-in `signal_to_position_banded` — linear map over caller `[band_inner, band_outer]` magnitudes.
+- Opt-in `signal_to_position_banded_skewed` — **inverse only**; band + cubic/exponential warp toward `inner`/`outer`; `amount_pct=0` matches inverse banded. Direct skew not implemented.
+- Helpers: `warp_unit_interval`, `band_end_from_motion_inverse` (compress→inner, extend→outer).
 
-Size-distribution curve skew (cubic/exp + motion) is still not implemented.
+Asymmetric long/short: caller picks side magnitudes before calling. Dynamic bands: pass this bar’s endpoints. Piecewise multi-knot maps stay strategy-owned.
+
+**Linear track: on hold** (2026-07-28). Banded helper is enough for single magnitude bands (static or dynamic); not chasing strategy migration or asymmetric API sugar now.
+
+## Non-linear size distribution
+
+Opt-in inverse-only `signal_to_position_banded_skewed` + `warp_unit_interval` / `band_end_from_motion_inverse` in `signal_position.py`.
+
+Knobs:
+
+- Curve: `cubic` | `exponential` (generic; NumPy `power` / `expm1` — not HL-specific)
+- `toward`: `inner` | `outer` on the **magnitude band** (not Lower/Higher)
+- Amount: `0–100%` (`0` = same as linear inverse banded)
+
+Lower/Higher is signed-axis / UI vocabulary: toward inner is Lower on the long side and Higher on the short side. Helper stays on inner/outer. See canvas `toward-away-lower-higher.canvas.tsx`.
+
+`band_end_from_motion_inverse(sig, prev)` maps `d_abs` → `inner` / `outer` / `None` for inverse only (compress → scale-in → inner; extend → scale-out → outer). Direct motion→toward is undefined / not implemented. Caller passes `toward` (or holds prior on flat).
 
 ## Open for later
 
-- Exact cubic / exponential weight formulas
-- Exact mapping from toward/away → Lower/Higher (+ amount) per side
-- Flat-bar behavior (`d_abs == 0`)
-- Strategy call-site migration to `signal_to_position_banded`
-- Whether continuous signal→position and discrete scale-order ladders share one primitive
-- Direct-polarity motion / curve diagram
-- Refresh canvas to drop mid-cut zones and show `d_abs` toward/away + threshold band
+- Strategy call-site migration / eye-check on underwater inverse path
+- Flat-bar policy when `band_end_from_motion_inverse` returns `None`
+- Direct-polarity skewed variant (only if/when motion→toward is defined for direct)
+- Discrete scale-order ladder sharing `warp_unit_interval`
+- Direct-polarity curve diagram
+- Refresh older size-distribution canvas (mid-cut zones stale)

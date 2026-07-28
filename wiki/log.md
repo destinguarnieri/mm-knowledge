@@ -8,6 +8,8 @@ Chronological log of meaningful KB changes. Keep entries concise and link change
 - Expanded [[trading/positioning/size-distribution|Size Distribution]] with exchange knobs (curve / Lower|Higher / 0–100%), polarity vs size-shape split, inverse signal-axis sketch, underwater linear-inverse example, and prefer-separate-direct/inverse implementation note.
 - Corrected continuous rule on [[trading/positioning/size-distribution|Size Distribution]]: scale-in/out from toward/away zero via `d_abs = abs(sig[-1]) - abs(sig[-2])`; mid-cut absolute bands superseded.
 - Added caller-owned active signal space on [[trading/positioning/size-distribution|Size Distribution]]: strategy thresholds shrink the skew band (e.g. `[0.1,1] || [-1,-0.1]`).
+- Reverted in-place `signal_inner` change on linear `signal_to_position`; threshold-aware mapping will be a separate opt-in helper (existing callers stay on the legacy function).
+- Added opt-in `signal_to_position_banded` (caller `band_inner`/`band_outer`, no `signal_scale`); legacy `signal_to_position` unchanged. Documented on [[trading/positioning/size-distribution|Size Distribution]].
 
 ## 2026-07-12
 

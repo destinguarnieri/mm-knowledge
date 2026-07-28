@@ -95,19 +95,15 @@ Absolute signal level still drives **how large** the polarity target is (`invers
 
 ## Active signal space (thresholds) — caller-owned
 
-A strategy may set a **signal threshold** in config. Then the real space for applying size-distribution skew is **not** the full `[-1, 1]`.
+A strategy may set band endpoints in config. The real space for mapping is **not** assumed to be `[-1, 1]` or tied to `signal_scale`.
 
-Example: symmetrical thresholds `+0.1` / `-0.1`. Active bands for skew:
+Caller supplies magnitude endpoints, e.g. `band_inner=0.1`, `band_outer=0.9` (or `30`–`80` in other units). That span is **100%** of the position map. Long/short share the band via `|signal|`; sign comes from the signal.
 
-```text
-[+0.1, +1]   and   [-1, -0.1]
-```
+`|signal| < band_inner` is dead / flat. Invalid bands (negative inner, `outer <= inner`, mixed-sign outer like `0.3` / `-0.5`) must be rejected — do not silently coerce.
 
-The open interval between thresholds (here `(-0.1, +0.1)`) is outside the mapping — dead / flat relative to this skew band.
+Only the strategy knows its thresholds. The helper stays agnostic over the band it is given.
 
-Only the strategy knows its thresholds (and whether they are symmetrical). So the **caller must pass the intended signal space** (band endpoints / active domain) into the sizing helper. The helper stays agnostic; it skews over the band it is given.
-
-Consequence for inverse “toward zero”: with thresholds, the inner edge of the active band is the threshold (e.g. `±0.1`), not literal `0`. Motion toward the compressed end means toward that inner edge of the caller-supplied space.
+Consequence for inverse “toward zero”: the inner edge of the active band is `band_inner`, not literal `0`. Motion toward the compressed end means toward that inner edge.
 
 ## Signal axis sketches
 
@@ -130,16 +126,19 @@ Useful as **intent labels** (scale-in near zero vs scale-out toward ±1). **Not*
 
 Higher vs Lower names which end of a region gets the pile; the average follows that end.
 
-## Current code (context only)
+## Current code
 
-`signal_to_position` today supports only linear `direct` and `inverse`. A v2 (or separate direct/inverse helpers) would add curve + direction + amount, and (for continuous inverse) motion-based scale-in vs scale-out selection, without breaking existing callers until opt-in.
+- Legacy `signal_to_position` — unchanged; linear `direct` / `inverse` over `[-signal_scale, signal_scale]`. Existing callers stay here until they opt in.
+- Opt-in `signal_to_position_banded` (`mm_v04` `backend/app/helpers/signal_position.py`) — linear map over caller `[band_inner, band_outer]` magnitudes; no `signal_scale`; invalid bands raise `ValueError`.
+
+Size-distribution curve skew (cubic/exp + motion) is still not implemented.
 
 ## Open for later
 
 - Exact cubic / exponential weight formulas
 - Exact mapping from toward/away → Lower/Higher (+ amount) per side
-- Flat-bar behavior (`d_abs == 0`) and behavior inside the threshold dead zone
-- API shape for caller-supplied active signal space (endpoints / thresholds)
+- Flat-bar behavior (`d_abs == 0`)
+- Strategy call-site migration to `signal_to_position_banded`
 - Whether continuous signal→position and discrete scale-order ladders share one primitive
 - Direct-polarity motion / curve diagram
 - Refresh canvas to drop mid-cut zones and show `d_abs` toward/away + threshold band

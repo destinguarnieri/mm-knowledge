@@ -2,6 +2,10 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-07-29
+
+- Added [[research/trading/quantile_regression/qr-trading-reference|Quantile Regression Trading Reference]] under `wiki/research/trading/quantile_regression/` (text extracted from `QR_trading_{1,2}.png`; source images co-located). Linked from [[index|wiki index]].
+
 ## 2026-07-26
 
 - Added [[trading/positioning/size-distribution|Size Distribution]] under `wiki/trading/positioning/` (elicited signal→position skew concept; curves image co-located). Linked from [[index|wiki index]] and [[trading/catalog|Trading Catalog]] Scaling In/Out.

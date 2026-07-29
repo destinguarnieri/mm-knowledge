@@ -18,6 +18,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[projects/ema_hilo_200_reentry/hype-ema-hilo-200-reentry-codification|HYPE EMA High/Low 200 Re-entry Codification]] — accepted simple HYPE 4H close-driven direction, stop, and re-entry mapping; implemented locally with baseline viability pending.
 - [[research/trading/ema_px_trend/blind_pattern_match|EMA/PX Blind Pattern Match (Track 3)]] — agent pattern-matches unlabeled HYPE 4H charts (10 EMA_low / 200 EMA_close) window by window, updating priors toward a codified strategy.
 - [[research/trading/ema_px_trend/strategy_ema_px_trend|ema_px_trend Strategy Doc]] — code walkthrough, rule semantics, dev-set discriminating events, and v2 candidates for the codified Track 3 strategy (first run: positive Sharpe).
+- [[research/trading/quantile_regression/qr-trading-reference|Quantile Regression Trading Reference]] — extracted external QR trading tables (ranked knobs / IR impact + decision layer vs raw-signal failure modes); draft, not MM-validated.
 
 
 ## Active Projects

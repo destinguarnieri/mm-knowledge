@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-07-24 02:00 EDT
+Date: 2026-07-30 18:20 EDT
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -16,6 +16,7 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
 ## Current Engineering State
 
+- `MON-156` is implemented and benchmarked locally for summary-retention batches. Binance fetch now feeds a bounded grouped write-behind queue with an isolated session, merges cached and fetched candles in memory without a final full-window reread, and requires the durability/conflict barrier before accepting each asset. Summary strategy execution uses isolated spawned processes while the parent retains async DB/network, run identity, progress, failure isolation, and persistence. Page size `1000` was selected over `499`/`1500` from measured latency and Binance request-weight tradeoffs; the conservative local default is three process workers, independent from eight-way asset I/O concurrency. Full-retention execution remains on its prior path.
 - `MON-122` and `MON-134` are done.
 - `MON-132` is blocked behind the backtest-persistence redesign.
 - The backtest retention-contract rollout is implemented locally: one request field (`retention_mode=summary|full`), one persisted artifact outcome (`not_requested|writing|available|failed`), durable summaries for both modes, explicit outcome-aware artifact reads, and queryable queue/timeout/cancellation failure states. Legacy request branches, response aliases, writes, and database columns have been removed; unknown request fields are rejected.
@@ -44,6 +45,7 @@ Do not continue platform expansion merely because the dependency chain exists. U
 
 ## Verification
 
+- `MON-156` fixed-window evidence: original cold batch `c9bdf9fe-fcb5-4618-8a8e-1042bb1a1ae1` took `666.2s`; the post-change cold run `12bcf8ed-7559-4f80-9c77-01972e17753b` took `334.4s` (`49.8%` faster, 23 successful assets and one isolated missing-catalog failure). Warm runs took `255.2s` with two workers (`42a17c98-202b-4d6d-a03b-97e7987060ba`), `139.5s` with four (`8a750d1f-377d-4248-94ae-6a688ba6eeae`), and `175.6s` with three (`25aa264b-4d45-41a5-9f13-604b280beccf`). Four workers produced two active-compute status outliers (`7.38s`, `2.32s`); three produced median `26ms`, maximum `864ms`, and zero requests over two seconds while remaining `31.2%` faster than two. Exact pre-change warm throughput was not captured, so the ticket's warm `2x` comparison is not claimed as measured. Forty-four focused tests plus fatal Ruff and focused mypy pass; the existing frontend build remains blocked by an unrelated `TradingViewChart.tsx:2574` type error.
 - `MON-134` accepted and committed as `5a659548`.
 - Foundation verification and detailed ticket history are recorded in `wiki/sessions/session-change-log.md` and the issue-linked briefs.
 - Historical-data and strategy semantics were narrowed from grid/platform work to the accepted [[engineering/MON-113-binance-backtest-candles-plan|MON-113 plan]].

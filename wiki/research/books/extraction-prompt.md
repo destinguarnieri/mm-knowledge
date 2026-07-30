@@ -6,6 +6,29 @@ Process only the chapter provided to you. Read it completely and produce a self-
 
 Do not rely on outside knowledge unless explicitly instructed. Do not invent missing information. If content is unclear, incomplete, or illegible, flag it rather than guessing.
 
+## Completeness contract
+
+Completeness is determined by reconciling the extraction against the supplied source, not by whether the final summary feels comprehensive.
+
+Before drafting, make a source inventory of:
+
+- every heading and subheading;
+- every numbered equation and every unnumbered formula that defines a mechanism, calculation, decision rule, or parameter;
+- every numbered example, exercise, algorithm, and code block;
+- every figure and table;
+- the first and last available page or other source boundary.
+
+After drafting, reconcile every inventory item to either:
+
+1. a specific place in the output; or
+2. an explicit entry under `Open Questions or Extraction Issues` stating that the item was missing, truncated, illegible, or intentionally omitted and why.
+
+Sequential gaps are mandatory review signals. For example, if the source or output contains Equations 2.5 and 2.7, Examples 2.3 and 2.6, or Figures 4.1 and 4.3, account explicitly for the missing identifiers before marking the chapter complete. Do not infer that an unobserved item is unimportant.
+
+A prose description of a mathematical relationship does not substitute for its source formula. If the text names a formula, coefficient transformation, closed-form solution, threshold calculation, or parameter-selection rule, preserve the equation and the reasoning that connects it to its use.
+
+Use `status: "extracted"` only when reconciliation passes. Use `status: "needs-review"` when source material or an inventory item cannot be recovered or confidently interpreted.
+
 ## Required output
 
 Write the result to:
@@ -25,7 +48,8 @@ Capture all material needed to understand and apply the chapter, including:
 - Important distinctions and relationships between concepts
 - Assumptions, constraints, boundary conditions, and exceptions
 - Procedures, algorithms, and step-by-step methods
-- Mathematical formulas and equations
+- Every numbered or displayed mathematical formula and equation
+- Every unnumbered formula that defines a mechanism, calculation, decision rule, output, or parameter choice
 - Definitions of every variable and symbol used in each formula
 - Units, domains, and conditions under which formulas apply
 - Derivations or proof outlines when they contribute to understanding
@@ -46,7 +70,15 @@ Transcribe formulas exactly using LaTeX:
 - Inline mathematics: `$...$`
 - Display mathematics: `$$...$$`
 
-For every important formula, include:
+Formula importance is not discretionary. Capture:
+
+- every numbered equation;
+- every displayed equation;
+- every formula referenced by a worked example, code block, later equation, or trading/research rule;
+- every coefficient transformation or closed-form result used to interpret a model;
+- every formula whose omission would prevent reconstruction of the chapter's reasoning or implementation.
+
+For every captured formula, include:
 
 1. The formula
 2. A definition of every symbol
@@ -54,6 +86,8 @@ For every important formula, include:
 4. Its assumptions or validity conditions
 5. A short interpretation
 6. A worked example if one appears in the chapter
+
+When equations form a derivation chain, preserve the chain and explain how one expression yields the next. Do not retain an upstream equation while replacing a downstream analytical result with prose.
 
 Never silently “correct” a formula. If the source appears inconsistent, preserve the source version and add a clearly labeled note.
 
@@ -85,7 +119,7 @@ Use this structure:
 title: "<Chapter title>"
 chapter: <chapter number>
 source: "<Textbook title>"
-status: "extracted"
+status: "<extracted | needs-review>"
 ---
 
 # Chapter <number>: <title>
@@ -147,6 +181,8 @@ Preserve important logical or mathematical steps without adding unsupported step
 
 Include the problem, method, calculation steps, result, interpretation, and source locator.
 
+Represent every numbered example in the supplied source. If an example is abbreviated because it repeats a method, still record its identifier, inputs, reported result, and what it adds. Reconcile gaps in example numbering under `Open Questions or Extraction Issues`.
+
 ## Figures and Tables
 
 For each important item, record:
@@ -195,19 +231,39 @@ Record:
 - Figures or tables that could not be interpreted
 - Items requiring human review
 
+## Source Coverage Inventory
+
+Provide a compact reconciliation table:
+
+| Source item | Identifier or heading | Output location | Status |
+|---|---|---|---|
+| Source boundary | first–last supplied page/section | Chapter Overview | complete / truncated / needs review |
+| Section | ... | ... | captured / needs review |
+| Equation | ... | ... | captured / needs review |
+| Example | ... | ... | captured / needs review |
+| Figure or table | ... | ... | captured / needs review |
+
+The table may group contiguous items only when every identifier in the range is present. Do not write `Equations 2.1–2.8` if one of those equations was not observed and reconciled.
+
 ## Quality-control checklist
 
 Before finishing, verify that:
 
 - The entire assigned chapter was examined
 - Every major heading and subsection is represented
-- All important formulas were captured
+- Every numbered and displayed equation was inventoried and reconciled
+- Every mechanism-, calculation-, rule-, output-, and parameter-defining formula was captured
+- No mathematical relationship is represented only in prose when the source supplies its equation
 - Every formula’s symbols are defined
+- Equation-number sequences were checked for unexplained gaps
 - Assumptions and exceptions were retained
-- Important examples, figures, and tables are covered
+- Every numbered example was inventoried and reconciled
+- Example-number sequences were checked for unexplained gaps
+- Figures, tables, algorithms, and code blocks were inventoried and reconciled
 - Source locators are present wherever available
 - No unsupported information was introduced
 - The output contains only this chapter
 - The Markdown is valid and internally consistent
+- `status` is `needs-review` rather than `extracted` if any inventory item remains unresolved
 
-Finish by reporting the output file path and any unresolved extraction issues.
+Finish by reporting the output file path, the counts of inventoried equations/examples/figures/tables, and any unresolved extraction issues or numbering gaps.

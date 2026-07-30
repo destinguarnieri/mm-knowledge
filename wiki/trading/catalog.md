@@ -358,13 +358,7 @@ Effectively states If asset is trending THEN im willing to absorb favorable inve
 - Signal -> Condition -> Position
 - Signal -> Model -> Prediction -> Condition -> Position
 
-## Research Directions
 
-- Explore intial Model set
-- Model Pipelining
-- TradeView Scraping
-- Image based model trading
-- LFM (Large Financial Models)[as opposed to LLM large language models]
 
 ## A Portfolio of Strategies
 

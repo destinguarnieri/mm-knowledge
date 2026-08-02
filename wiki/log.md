@@ -2,6 +2,10 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-08-01
+
+- Added [[research/trading/multi-speed-ewmac/multi-speed-ewmac|Multiple Trend Following Rules (Strategy Nine)]] under `wiki/research/trading/multi-speed-ewmac/`, capturing the faithful baseline, crypto-specific uncertainties, and staged test direction. Linked it from [[index|wiki index]].
+
 ## 2026-07-29
 
 - Added [[research/trading/quantile_regression/qr-trading-reference|Quantile Regression Trading Reference]] under `wiki/research/trading/quantile_regression/` (text extracted from `QR_trading_{1,2}.png`; source images co-located). Linked from [[index|wiki index]].

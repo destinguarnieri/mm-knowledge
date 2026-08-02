@@ -13,6 +13,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[research/trading/research_index|Research Board]] — living roster of active research threads (lane, validity/monetization state, status, next step); read this first to see what research is live.
 - [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — active BTC timeframe scan, followed by multi-asset screening if the baseline remains coherent.
 - [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — early cross-timeframe (1m/5m/15m) Hyperliquid lead; recover config, reproduce baseline, cost-stress.
+- [[research/trading/multi-speed-ewmac/multi-speed-ewmac|Multiple Trend Following Rules (Strategy Nine)]] — book-faithful multi-speed EWMAC baseline, crypto evaluation assumptions, and staged research direction.
 - [[research/trading/emac-cross-10-200/event_study_anchor_findings|EMAC Event Study — Anchor Findings]] — interpreted verdicts from the signal-stats event study anchor run; holdout pending.
 - [[projects/ema_px_trend/codification|EMA/PX Trend Continuation Codification]] — running chart-led specification for Destin's short-side EMA/PX discretionary mapping, with long-side semantics still pending.
 - [[projects/ema_hilo_200_reentry/hype-ema-hilo-200-reentry-codification|HYPE EMA High/Low 200 Re-entry Codification]] — accepted simple HYPE 4H close-driven direction, stop, and re-entry mapping; implemented locally with baseline viability pending.

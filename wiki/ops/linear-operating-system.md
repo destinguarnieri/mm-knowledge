@@ -21,9 +21,11 @@ Purpose: keep Linear usable as the operating surface for Money Machine Labs acro
 
 Use projects only for real initiatives.
 
+- VWAP Mean Reversion Research — current primary revenue initiative
 - Trading System Reliability
-- Backtesting and Evaluation
 - Dashboard V2
+
+Completed or retired research projects remain historical in Linear. Horizon programs live on the Research Board and receive a Linear project only when they become funded finite initiatives.
 
 Anything that does not clearly belong to a finite initiative can stay outside a project.
 
@@ -223,6 +225,25 @@ Minimum bar:
 - Do not start many things to feel productive
 
 ## Operating cadence
+
+### Research synchronization closeout
+
+Research has three state layers with different jobs:
+
+- The per-thread wiki page holds evidence, assumptions, run pointers, and interpretation.
+- The Research Board holds portfolio rank, primary/challenger/parked state, and the next decisive question.
+- Linear holds funded execution and backlog state.
+
+Agents closing material research work must:
+
+1. update the thread living head when evidence or the next experiment changes;
+2. update the Research Board in the same session when validity, monetization, portfolio state, blocker, or next decisive step changes;
+3. update the linked Linear item when executable scope, state, blocker, or completion changes;
+4. ensure exactly one board candidate is `primary` and exactly one corresponding revenue issue is `In Progress` unless Destin explicitly expands WIP;
+5. ensure parked work has a resume condition and does not remain `In Progress` in Linear;
+6. reconcile mismatches before starting unrelated work: thread evidence first, Board portfolio decision second, Linear execution state third.
+
+Do not duplicate standard backtest tables in Linear. A run ID, decision, blocker, and next action are sufficient.
 
 ### Daily control pass (10–15 min)
 Review:

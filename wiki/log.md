@@ -2,6 +2,10 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-08-02
+
+- Repaired KB routing after the trading catalog became [[trading/catalog_v1|Trading Catalog V1]], and updated stale EMA/PX codification backlinks to its current research location.
+
 ## 2026-08-01
 
 - Added [[research/trading/multi-speed-ewmac/multi-speed-ewmac|Multiple Trend Following Rules (Strategy Nine)]] under `wiki/research/trading/multi-speed-ewmac/`, capturing the faithful baseline, crypto-specific uncertainties, and staged test direction. Linked it from [[index|wiki index]].
@@ -12,7 +16,7 @@ Chronological log of meaningful KB changes. Keep entries concise and link change
 
 ## 2026-07-26
 
-- Added [[trading/positioning/size-distribution|Size Distribution]] under `wiki/trading/positioning/` (elicited signal→position skew concept; curves image co-located). Linked from [[index|wiki index]] and [[trading/catalog|Trading Catalog]] Scaling In/Out.
+- Added [[trading/positioning/size-distribution|Size Distribution]] under `wiki/trading/positioning/` (elicited signal→position skew concept; curves image co-located). Linked from [[index|wiki index]] and [[trading/catalog_v1|Trading Catalog]] Scaling In/Out.
 - Expanded [[trading/positioning/size-distribution|Size Distribution]] with exchange knobs (curve / Lower|Higher / 0–100%), polarity vs size-shape split, inverse signal-axis sketch, underwater linear-inverse example, and prefer-separate-direct/inverse implementation note.
 - Corrected continuous rule on [[trading/positioning/size-distribution|Size Distribution]]: scale-in/out from toward/away zero via `d_abs = abs(sig[-1]) - abs(sig[-2])`; mid-cut absolute bands superseded.
 - Added caller-owned active signal space on [[trading/positioning/size-distribution|Size Distribution]]: strategy thresholds shrink the skew band (e.g. `[0.1,1] || [-1,-0.1]`).

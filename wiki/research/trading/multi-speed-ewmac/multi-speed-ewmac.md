@@ -4,11 +4,64 @@ Status: in progress
 
 Related process: [[research/trading/research_process_v2|Research Process V2]]
 
+Tags: #research/strategy #trend-following #ewmac #carver/strategy-nine #source/book-extract
+
 ## Purpose
 
 Evaluate a book-faithful, backtest-only implementation of Robert Carver's Strategy Nine, "Multiple Trend Following Rules," before introducing Money Machine scaling or signal-normalization variants.
 
 Deployment target for this research is crypto perpetual futures, initially Hyperliquid. This page does not authorize a live strategy, capital allocation, runtime startup, or account/order mutation.
+
+## Book Extract Source Map
+
+Extraction provenance and scope: [Advanced Futures Trading book-extract README](../../../../raw/research/book-extracts/advanced-futures-trading/README.md).
+
+### Primary specification — Strategy Nine
+
+Source: [Chapter 9 — Multiple Trend Following Rules](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md).
+
+| Research claim | Tagged source section |
+|---|---|
+| Strategy identity and inherited mechanics | [Purpose and central argument](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#purpose-and-central-argument) and [Scope, dependencies, and assumptions](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#scope-dependencies-and-assumptions) |
+| EWMAC family and `slow = 4 × fast` | [Filter universe and design boundaries](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#filter-universe-and-design-boundaries) |
+| Fixed forecast scalars | [Forecast scalars (Table 29)](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#forecast-scalars-table-29) |
+| Gap divided by price risk, scalar, and individual cap | [Compute each EWMAC forecast](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#1-compute-each-ewmac-forecast) |
+| Cost-filtered eligible suffix sets | [Choose tradable filters by cost](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#2-choose-tradable-filters-by-cost) |
+| Cap each forecast before equal-weight averaging | [Allocate forecast weights](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#3-allocate-forecast-weights) |
+| FDM suffix table and final combined cap | [Restore forecast scale and cap again](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#4-restore-forecast-scale-and-cap-again) |
+| Forecast-to-position mapping and inherited buffer | [Size, buffer, and trade the position](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#5-size-buffer-and-trade-the-position) |
+| Reported diversification claim | [Diversification and weight-selection evidence](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#diversification-and-weight-selection-evidence) and [Aggregate results and practical implications](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#aggregate-results-and-practical-implications) |
+| Historical failure periods and anti-overfitting caution | [Historical behavior, cautions, and figures](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/09-multiple-trend-following-rules.md#historical-behavior-cautions-and-figures) |
+
+### Inherited supporting mechanics
+
+| Mechanic | Tagged source section | Use here |
+|---|---|---|
+| Centered EWMA volatility | [Chapter 3 — EWMA estimator](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/03-buy-and-hold-variable-risk-scaling.md#ewma-estimator) | Current percentage-volatility estimate rather than the repository's relative-volatility overlay. |
+| `70%` current plus `30%` long-run volatility | [Chapter 3 — Blend short-run clustering with long-run mean reversion](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/03-buy-and-hold-variable-risk-scaling.md#blend-short-run-clustering-with-long-run-mean-reversion) | Causal blended annual volatility used by signal normalization and sizing. |
+| Risk-targeted normal position | [Chapter 3 — Position sizing](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/03-buy-and-hold-variable-risk-scaling.md#position-sizing) | Capital × IDM × weight × risk target divided by annual percentage volatility. |
+| Risk-normalized raw forecast | [Chapter 7 — Calculate a raw forecast](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/07-slow-trend-following-trend-strength.md#1-calculate-a-raw-forecast) | Establishes the EWMAC gap divided by price-unit volatility. |
+| Common forecast scale of `10` | [Chapter 7 — Scale to a common forecast scale](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/07-slow-trend-following-trend-strength.md#3-scale-to-a-common-forecast-scale) | Gives forecast `±10` its normal-risk interpretation. |
+| Forecast position equation and `±20` cap | [Chapter 7 — Position sizing](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/07-slow-trend-following-trend-strength.md#position-sizing) and [Cap forecasts before sizing](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/07-slow-trend-following-trend-strength.md#cap-forecasts-before-sizing) | Provides the linear forecast-to-position mapping and twice-normal limit. |
+| Fast EWMAC worked formula | [Chapter 8 — Forecast, cap, and position size](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/08-fast-trend-following-long-short-trend-strength.md#forecast-cap-and-position-size) | Confirms EWMAC(16,64), scalar `4.1`, and the shared sizing equation. |
+| Symmetric 10% normal-position buffer | [Chapter 8 — Buffering to reduce costs](../../../../raw/research/book-extracts/advanced-futures-trading/chapters/08-fast-trend-following-long-short-trend-strength.md#buffering-to-reduce-costs) | Defines buffer width independently of current forecast magnitude. |
+
+### Classification tags and validation boundary
+
+Source: [Advanced Futures Trading classification synthesis](../../../../raw/research/book-extracts/advanced-futures-trading/classification-synthesis.md).
+
+- [Forecast architecture](../../../../raw/research/book-extracts/advanced-futures-trading/classification-synthesis.md#forecast-architecture): preserve the distinct raw signal → risk normalization → scalar → cap → combination → sizing → buffer → execution stages.
+- [Transferable research methods](../../../../raw/research/book-extracts/advanced-futures-trading/classification-synthesis.md#transferable-research-methods): test point-in-time normalization, cost-speed eligibility, mechanism-first ensembles, realistic execution, stress, and negative results.
+- [Trend family](../../../../raw/research/book-extracts/advanced-futures-trading/classification-synthesis.md#trend-family): classifies cost-filtered multi-speed EWMAC as a concrete research direction and trend-strength-versus-sign as a distinct question.
+- [Source-specific material](../../../../raw/research/book-extracts/advanced-futures-trading/classification-synthesis.md#source-specific-material): the `20%` risk target, `32/35`-day volatility spans, `70/30` blend, EWMAC horizons, forecast scale/cap, cost speed limit, FDM/IDM tables, and compounding practices are historical source inputs—not validated crypto constants.
+- [Claims requiring independent validation](../../../../raw/research/book-extracts/advanced-futures-trading/classification-synthesis.md#claims-requiring-independent-validation): independently test performance, forecast-scalar/FDM stability, eligibility/cost assumptions, and generalization from broad daily futures to Hyperliquid crypto and other bar frequencies.
+- [Evidence ladder](../../../../raw/research/book-extracts/advanced-futures-trading/classification-synthesis.md#one-sheet-architecture): textbook proposal → reproduced gross baseline → point-in-time net backtest → alternate universe/regime → realistic execution → forward shadow → explicitly authorized live evidence.
+
+### Source ambiguities retained
+
+- Chapter 8 prints the lower/upper no-trade inequality in reverse and describes trade-to-boundary behavior inconsistently. This implementation uses the coherent nearest-boundary no-trade rule; it minimizes turnover and is explicitly treated as an interpretation of the source ambiguity.
+- Chapter 7 contains an EWMAC span/scalar inconsistency in one displayed formula. Strategy Nine's explicit Table 29 scalar family and Chapter 9 calculation procedure govern this baseline.
+- Chapter 9's cost eligibility and turnover inputs come from traditional daily futures. The baseline therefore accepts only documented suffix sets but does not infer Hyperliquid eligibility automatically.
 
 ## Faithful Baseline
 
@@ -74,3 +127,5 @@ Metrics remain in the backtest UI and saved-run tools. No verified run ID is rec
 ### 2026-08-01
 
 Created the initial research page. Frozen the book-faithful implementation as the baseline and deferred Money Machine signal-scaling and normalization variants until baseline behavior is characterized. No live or capital action was authorized or performed.
+
+Tagged the exact primary and inherited book-extract sections for forecast construction, volatility, sizing, FDM, buffering, and cost eligibility. Added classification tags distinguishing portable research methods from source-specific constants and independently testable claims.

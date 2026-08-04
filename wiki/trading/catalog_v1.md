@@ -2,7 +2,7 @@
 
 Status: draft
 
-This is a work in progress brain dump of things I do manually trading and concepts Ive learned over the years.
+This is a catalog of indicators, signals, and concepts used in manually trading strategies Ive learned over the years.
 
 ## High Low Channel (HL_Channel)
 
@@ -180,12 +180,50 @@ Things can stay "overbought/oversold" in trend environment for a while.
 
 ## ROC
 
-*(not yet written)*
+Universal measurement of speed in physics. 
 
-## PRI / PRL / PRB
+## PRI / PRL / PRZ/ PRB
 
-Combined PR system. Discretionary vs Signalized.
-Measure forward returns of PRI and PRB
+Price Reversal Indicator. Price Reversal Levels. Price Reversal Zone. Price Reversal Breaker.
+
+Combined they form a Price Reversal System that can be used as a discretionary or signalized.
+
+The core concept attempts to capture whether buyers or sellers are control of price action. 
+
+It determines this by looking at the current candles close compared to the previous candles range. 
+
+Bullish PRI:
+
+previous candle was bearish (sellers had the bar)
+current candle is bullish (buyers took it back)
+current close is above the previous high
+Bearish PRI:
+
+previous candle was bullish
+current candle is bearish
+current close is below the previous low
+That third condition is the important one. Color flip alone is noise. Closing through the previous high/low is the reclaim — buyers (or sellers) didnt just paint a green/red candle, they took out the prior bars range.
+
+
+PRL (Price Reversal Levels)
+
+When PRI fires, the signal candle leaves levels that matter: typically the open and the extreme (low on bullish PRI, high on bearish PRI). Those become the Price Reversal Levels — places price often retests.
+
+PRZ (Price Reversal Zone)
+The OLHC levels form the Price Reversal Zone.
+Generally considered a safe place to absorb inventory in the direction of whos in control. 
+Conversly, if you think the party in control is going to be tested, you might target this zone as weakness or place to take profit.
+
+PRB (Price Reversal Breaker)
+If price later breaks the PRL the signal direction is invalidated and the reverse implication is true. 
+
+System Notes:
+Can be used as entry trigger, reversal, or continuation signal.
+Can be used as sole input to a strategy or in combination with other signals.
+
+There are typically two reaction types from an event firing, immediate follow through in the direction of the print, or a delayed reaction in which the control party is tested. 
+
+
 
 ## Volume Anomalies
 
@@ -252,15 +290,16 @@ You need a way to measure speed, this is one of them.
 
 Additional use: may want to use as a knob for determining trade urgency for entry/exits, and avoiding adverse selection if you know price is likely to move away from you.
 
-## Absorption
+## Absorption (WIP)
 
-Measured by percent of candle body that is a wick.
+Measured by amount of candle body that is a wick.
 Used to detect reversals
 At minimum should reduce position if on correct side.
 
 ## Candle Strength Indicator (WIP)
 
-*(not yet written)*
+Attempts to measure stregtch of a candle by a composite of factors.
+Core input is proximity of close to high/low respective of candle direction.
 
 ## Order Book Imbalance
 
@@ -271,16 +310,32 @@ OB imbalance displays intentions of accumulating or distributing inventory.
 
 ## Combined Signal
 
-VFTI + PX(RVWAP) + SLOPE(RVWAP) + RSI = sig_current
-Add orderbook and roc to combo = sig_v2
+VFTI + PX(RVWAP) + SLOPE(RVWAP) + RSI + roc  = sig_current
+Add orderbook inbalance to combo = sig_v2
 
 ## Multi Time Frames (MTF)
 
-*(not yet written)*
+Indicators and signals of one timeframe have effects and can explain activity on other timeframes. 
+
+Example: The 200 day moving average projected down to 1 hour timeframe, you can observe price reacting to the 200 day MA as support resistence directly. 
+
+Example2: Compositing. Consider the same example again. IF price is under the 200 Day Ma && over the 1H 200 ma, you can start to compose a multitime frame view of the market. 
+
 
 ## EMA MAXI
 
-*(not yet written)*
+Combines moving averages of different timeframes to form a composite view of the market on a specific timeframe.
+
+Current daytrading setup on 5m timeframe:
+- 200 ema 1D
+- 200 ema 4H
+- 10 ema_low 4H
+- 10 ema_high 4H
+- 200 ema 5M
+
+## MTF Ribbon
+
+Building on the Ma ribbon and MTF concept, I propose using the 200 ema of various timeframes to form a lower timeframe ribbon, and then trading band to band as support and resistence.
 
 ## Volatility Scores
 
@@ -327,15 +382,15 @@ Said another way: The funding rate reflects the positioning of participants dire
 - POC_BREAKER
 - ATR Breaker
 
-## Scaling In and Scaling Out
+## Scaling In and Scaling Out(WIP)
 
-See [[trading/positioning/size-distribution|Size Distribution]] for the elicited signal→position skew concept (size mass along the signal path; not quote spacing).
+
+Scaling in and out of positions reduces price path dependence for profitablity and risk. 
+It transforms timing risk into directional risk. 
 
 *(section body not yet written)*
 
-## Scaling Part Two
-
-*(not yet written)*
+See [[trading/positioning/size-distribution|Size Distribution]] for the elicited signal→position skew concept (size mass along the signal path; not quote spacing).
 
 ## Trading Styles
 
@@ -347,78 +402,5 @@ See [[trading/positioning/size-distribution|Size Distribution]] for the elicited
 Effectively states If asset is trending THEN im willing to absorb favorable inventory and will distribute the inventory away from the mean of the trend.
 - Opposite Only -> IF trend is determined THEN buy ONLY on opposite candles of trend AND sell IF in the money AND candle is in trend direction.
 
-## Top K Bottom K
-
-*(not yet written)*
-
-## Types of Systematic Trading
-
-- Conditional Only (IF THEN / Match case)
-- Signal -> Position
-- Signal -> Condition -> Position
-- Signal -> Model -> Prediction -> Condition -> Position
 
 
-
-## A Portfolio of Strategies
-
-Key Principle: Strategies can disagree and both make money.
-Stay flexible
-
-## SubAccounts
-
-In crypto there is concept of subaccounts on exchanges that are NOT cross collateralized and ABSOLUTELY can hold the same universe of assets in arbitrary combinations or directions.
-
-This is the mechanism which enpowers the portfolio of strategies.
-
-## Margin: Cross and Isolated Semantics
-
-Each position in a sub account can be either Cross Margined or Isolated.
-
-Across the portfolio this enables maximum isolation , maximal capital efficiency, or likely a balance between the extremes.
-
-## Crypto Forever?
-
-No. We have goals to accomplish here then stand up tradfi operations.
-
-Speaking of goals
-
-## Business Goals
-
-1: Become 1% of volume across all Hyperliquid assets
-2: Scale exchange infra to top 10 crypto exchanges
-3: Become 1% of volume of top 10 Exchanges
-4: Stand Up tradfi infra
-4: TRAD KPI_1:: Have a presence on all quoted stocks over 1B MCAP and Futures
-5: TRAD KPI_2:: Become 1% of daily US volume
-6: TRAD_KPI_3:: Scale international infra
-...you guessed it
-7: TRAD_KPI_4:: Become 1% of globel daily volume.
-
-**IT SHOULD BE STRONGLY NOTED THAT VOLUME IS IMPLICITLY PROFITABLE. VOLUME ALONE IS OBVIOUSLY NOT THE METRIC**
-
-## MAX_P Concept
-
-*(not yet written)*
-
-## Half Life of Mean Reversion
-
-*(not yet written)*
-
-## Optimal Trend Testing (OLS)
-
-*(not yet written)*
-
-## CPO - Conditional Parameter Optimization
-
-*(not yet written)*
-
-## The Physics of Markets
-
-It helps to think of markets from first princlples of physics.
-Unless the market somehow operates outside the law of physics(it doesnt) then the law of physics applies to it.
-
-Mass, velocity, trajectory, gravity, electical charges, not limited to, are all directly relatble to markets and the core math concepts can be applied.
-
-I propose there is a gravitational force of an object to the mean.
-The object and the mean are charged entities.

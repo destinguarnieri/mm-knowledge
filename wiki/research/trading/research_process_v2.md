@@ -6,7 +6,7 @@ Purpose: turn a research question into a decision — and, when a real edge appe
 
 ## Design principles
 
-1. **Alpha transfer and capture first, discovery second.** The current bottleneck is faithfully codifying and monetizing edges Destin already has, not discovering edges from zero. Route most work accordingly.
+1. **Revenue proximity over strategy origin.** Discretionary codification, capture engineering, open discovery, and cross-market extension are research lanes, not a priority ranking. Fund the candidate with the strongest combination of evidence, expected net edge, operational fit, and shortest credible path to a money decision. The [[research/trading/research_index|Research Board]] holds the current ranking.
 2. **Two separate questions, separately gated:** does the signal carry directional information (validity), and can we capture it after realistic costs (monetization)? Your own EMA work showed these diverge — direction right ~80% of the time while flip-only still lost money. A valid-but-uncaptured signal is a *promising, fundable state*, not a failure.
 3. **Market-agnostic and foundational.** Asset class (crypto perp, equities, futures, FX, …) is an explicit research axis like timeframe or asset. Research produces reusable building blocks — signal definitions, features, capture mechanisms — meant to be re-pointed at other markets cheaply. An edge that fails in one market is *open*, not dead, in the others.
 4. **Symmetric discipline.** Every stage carries both a kill thesis and an upside/capture thesis. Lead findings with the strongest positive read, then the caveats. Rigor is for calibration, not for deflating results.
@@ -16,9 +16,9 @@ Purpose: turn a research question into a decision — and, when a real edge appe
 
 ## 0. Route the work
 
-Pick the lane before doing anything else. Most work is the first two.
+Pick the lane before doing anything else so the correct method and evidence gates are used. **Lane selection does not set portfolio priority.** An agent must not promote or demote work merely because it is discretionary, systematic, discovered internally, or derived from an external source.
 
-- **Discretionary codification** — Destin already trades it. Use the `discretionary-strategy-codifier` skill. Extract exact visual/control semantics, preserve independently deployable mappings, prove behavioral parity *before* optimization. Destin's source strategy is the spec; unresolved semantics return to him. The mechanism is Destin's experience — the Mechanism rung (below) is satisfied, so start at Signal Validity or directly at Capture.
+- **Discretionary codification** — Destin already trades it. Use the `discretionary-strategy-codifier` skill. Extract exact visual/control semantics, preserve independently deployable mappings, prove behavioral parity *before* optimization. Destin's source strategy is the spec; unresolved semantics return to him. The mechanism is Destin's experience — the Mechanism rung (below) is satisfied, so start at Signal Validity or directly at Capture. This lane receives no automatic priority over other candidates.
 - **Capture engineering** — a signal already believed valid but not yet monetized (e.g. EMA's 80% time-in-money). Skip discovery; start at the Monetization rung. The whole job is finding a control policy (entry, exit, sizing, holding, regime gating) that harvests the signal after realistic costs.
 - **Open discovery** — an explicit new-edge search or an empirical uncertainty exposed during codification. Run the full ladder from Mechanism.
 - **Cross-market extension** — take an already-validated edge to a new asset class/venue. Re-point the portable signal definition; re-derive only the market-specific capture and parameters; treat the new market as fresh holdout surface.
@@ -83,6 +83,8 @@ Rank candidates by something like:
 
 Diversification value explicitly rewards cross-market and cross-mechanism decorrelation. A modest, understandable, reliably deployable edge can outrank a spectacular but fragile backtest.
 
+Portfolio ranking should also account for **distance to the next decisive economic test**. When two candidates have comparable expected value, prefer the one that can reach a trustworthy promote/reject or shadow-execution decision sooner. Do not confuse amount of prior work with proximity to revenue.
+
 ## 6. Documentation
 
 Use the two-layer research doc: a small **living head** rewritten in place each session (TL;DR & What's Working → Current Read (provisional, not a verdict) → Open Threads / Next Experiments), and an **append-only tail** (Fixed Assumptions, Run Registry as pointers-not-tables, Write Log). See [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] as the reference structure and apply `.cursor/rules/research-continuity.mdc`.
@@ -90,6 +92,25 @@ Use the two-layer research doc: a small **living head** rewritten in place each 
 - Persisted `run_id` values are the metric source of truth; Destin's UI is the default place for tables. Do not paste metric tables into wiki/checkpoint/changelog/canvas.
 - Separate portable signal notes from market-specific capture notes so results stay reusable.
 - The living head mirrors the handoff format below, so an end-of-session handoff *is* the doc-head update.
+
+### Research Board and Linear synchronization
+
+The three research-state layers have distinct authority:
+
+- **Per-thread research page:** evidence, assumptions, run pointers, interpretation, and the thread's next experiment.
+- **Research Board:** current portfolio ranking, primary/challenger/parked state, decisive uncertainty, and cross-thread relationships. This is the authority for what research is funded now.
+- **Linear:** concrete funded execution and backlog. It is not the authority for scientific interpretation or portfolio ranking.
+
+Agents must keep them synchronized as part of closing a material research session:
+
+1. Before work, read the Research Board and the relevant thread page; confirm that an `active` or `primary` thread has a linked Linear execution item.
+2. After evidence changes a thread's validity, monetization, priority, status, blocker, or next experiment, update the thread's living head and its Research Board row in the same session.
+3. Update the linked Linear issue or project when the executable next action, state, blocker, or completion status changed. Do not copy metric tables into Linear.
+4. Exactly one revenue candidate may be `primary`. A `parked` item must state the condition that would resume it. Replacing the primary requires explicitly demoting or closing the previous one.
+5. Every `In Progress` research issue must map to a `primary` or `active` board entry, or be identified as bounded enablement for the primary. Every `primary` or `active` board entry must have funded execution represented in Linear.
+6. If the layers disagree, stop treating the stale layer as context. Reconcile the board from the per-thread evidence, then reconcile Linear from the corrected board before starting unrelated work.
+
+Routine synchronization is part of the research closeout, not a separate documentation project. Historical changelog entries remain historical and must not override the current board.
 
 ## 7. Handoff and decision
 

@@ -8,7 +8,7 @@ Maturity note (added 2026-07-25): the "Confirmed" headings below mean Destin des
 
 Purpose: running specification for transferring Destin's discretionary EMA/PX trend-continuation behavior into executable strategy logic. This page is provisional until both short and long mappings have chart-backed behavioral parity.
 
-Related context: [[company/money-machine-360|Money Machine Operating Context]], [[trading/catalog|Trading Catalog]], [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
+Related context: [[company/money-machine-360|Money Machine Operating Context]], [[trading/catalog_v1|Trading Catalog]], [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]].
 
 ## Source Strategy
 

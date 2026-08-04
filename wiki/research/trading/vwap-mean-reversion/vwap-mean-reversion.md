@@ -2,7 +2,7 @@
 
 Related process: [[research/trading/research_process_v2|Research Process V2]]
 Board: [[research/trading/research_index|Research Board]]
-Linear: [VWAP Mean Reversion Research](https://linear.app/money-machine/project/vwap-mean-reversion-research-ec37e0025905)
+Linear: [VWAP Mean Reversion Research](https://linear.app/money-machine/project/vwap-mean-reversion-research-ec37e0025905) · [MON-159 realistic-slippage gate](https://linear.app/money-machine/issue/MON-159/run-vwap-5m15m-realistic-slippage-monetization-gate)
 
 Lane (Research Process V2 §0): **capture engineering** — a promising signal to reproduce and monetize, not an open discovery from zero.
 

@@ -13,6 +13,8 @@
 
 Train a QR model on original feature set. 
 
+
+
 ## Knowledge Extraction
 
 Convert Books, articles, and other sources of knowledge into testable concepts and features to build a diverse catalog of alpha. 

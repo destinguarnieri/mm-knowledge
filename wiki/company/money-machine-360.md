@@ -15,17 +15,20 @@ The long-term ambition is to build a dominant AI-native financial company. Curre
 
 ## Current Company Phase
 
-Money Machine's first lifecycle phase is discretionary alpha transfer. Destin has a large inventory of strategies developed through approximately ten years of manual trading. The current bottleneck is faithful codification, not a shortage of strategy ideas.
+Money Machine is in **revenue-candidate selection and monetization**. The company has several strategy candidates and reusable research components at different evidence stages. The current bottleneck is selecting the closest credible path to positive realized P&L, closing its decisive uncertainty, and moving a surviving candidate toward controlled live evidence.
+
+Strategy origin does not determine priority. A discretionary strategy, a simple systematic baseline, a captured signal, or a newly discovered edge may become primary when its evidence, economics, operational fit, and distance to deployment make it the best revenue candidate.
 
 For this phase:
 
-- select one strategy Destin actually trades
-- extract its visual states, actions, exceptions, and risk semantics
-- preserve distinct trade mappings, including opposing directions on isolated subaccounts
-- prove the automated behavior matches Destin's intended behavior
-- then test whether that faithful implementation remains viable after current costs and constraints
+- maintain a visible portfolio of revenue candidates and reusable mechanisms
+- choose one primary candidate using current evidence and distance to a money decision
+- run the cheapest decisive validity, monetization, or deployability test
+- preserve valid signals when a particular capture policy fails
+- promote a surviving candidate through shadow execution and an explicitly authorized live canary
+- keep other candidates as challengers or parked work with explicit resume conditions
 
-Destin's live experience is strong prior evidence for the strategy mechanism, but it does not replace behavioral-parity checks or current economic validation. Novel strategy discovery is secondary until the discretionary inventory is exhausted or Destin explicitly requests exploration. Exploratory work remains appropriate when a codification ambiguity requires empirical evidence.
+Destin's live experience is strong prior evidence when evaluating a discretionary strategy, but it does not automatically outrank other evidence. Likewise, a promising systematic backtest is a lead rather than a deployment verdict until costs, robustness, and execution are tested.
 
 ## Current North Star
 
@@ -33,14 +36,14 @@ Produce positive net realized live P&L after costs over an active founder-set pr
 
 The immediate loop is:
 
-1. select one discretionary strategy Destin actually trades
-2. elicit and codify its exact control semantics
-3. prove behavioral parity against representative and edge-case examples
-4. validate the faithful implementation with the current system and realistic costs
-5. make an explicit decision for each independently deployable trade mapping
+1. rank current revenue candidates from reviewable evidence
+2. select one primary candidate and name its decisive remaining uncertainty
+3. run the smallest test capable of producing a promote, narrow, continue, or reject decision
+4. if a signal is valid but uncaptured, test the simplest plausible monetization policy
+5. test realistic costs, robustness, deployability, and shadow execution as the evidence warrants
 6. launch only with Destin's explicit capital and risk authorization
 7. measure live net realized P&L after costs
-8. learn from the result and repeat
+8. learn, update the portfolio, and repeat
 
 Tickets, infrastructure, documents, and raw agent activity are inputs or costs, not the proof. Backtests are the tool that surfaces edge: a backtest that reveals a real or promising edge is progress to pursue, even though it is not yet the live-P&L proof. Do not treat a promising result as a cost to minimize.
 
@@ -48,7 +51,7 @@ Tickets, infrastructure, documents, and raw agent activity are inputs or costs, 
 
 Money Machine already has functional live-trading and research infrastructure. Live runtime and backtest/research runtime are separate domains in one codebase.
 
-The current challenge is not to build a complete platform or discover alpha from zero. It is to transfer Destin's existing discretionary alpha into faithful automated strategies, put one into controlled production, gather live evidence, and remove only the blockers that the attempt reveals.
+The current challenge is not to build a complete platform or maximize the number of research threads. It is to convert the strongest available evidence into one controlled production candidate, gather live evidence, and remove only the blockers that the attempt reveals.
 
 The system is functional but not yet battle-tested in profitable production. Capital-sensitive paths therefore require strong human judgment and verification.
 
@@ -64,10 +67,10 @@ Live runtime, accounts, orders, positions, reconciliation, risk, deployment, and
 
 ### Research
 
-Discretionary-strategy elicitation, behavioral-parity review, backtests, signal evaluation, bounded parameter investigation, strategy iteration, and result interpretation.
+Candidate ranking, discretionary-strategy elicitation, behavioral-parity review, open discovery, backtests, signal evaluation, capture engineering, bounded parameter investigation, strategy iteration, and result interpretation.
 
 - highest safe agent leverage
-- optimize first for elapsed time to a faithful executable strategy, then for decision-quality evidence
+- optimize for elapsed time to a trustworthy money decision and then to deployable evidence
 - stop research when the evidence is sufficient for a go/no-go decision
 
 ### Enablement
@@ -86,7 +89,7 @@ Tools, automation, dashboards, persistence, orchestration, and process improveme
 4. Accelerate the evidence loop.
 5. Automate only after a real attempt proves the current path limiting.
 
-Keep one primary revenue outcome in progress unless Destin explicitly expands WIP.
+Keep one primary revenue outcome in progress unless Destin explicitly expands WIP. The [[research/trading/research_index|Research Board]] is the current portfolio authority; strategy origin or lane must never silently override its ranking.
 
 ## Decision Standard
 

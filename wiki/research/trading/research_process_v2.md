@@ -4,9 +4,11 @@ Supersedes [[research/trading/research_process_v1|Research Process V1]] (2026-07
 
 Purpose: turn a research question into a decision — and, when a real edge appears, into a *captured* edge — without either drifting into parameter chasing or killing a valid signal on the wrong assumption.
 
+Cycle-level companion: [[research/trading/agentic_research_playbook|Agentic Research Playbook]]. This process governs lane selection, evidence gates, holdouts, costs, authority, parallel-work boundaries, and promotion. After a bounded workstream and research card exist, use the playbook for correctness review, chart/time-series diagnosis, evidence scoping, and the next-test loop.
+
 ## Design principles
 
-1. **Revenue proximity over strategy origin.** Discretionary codification, capture engineering, open discovery, and cross-market extension are research lanes, not a priority ranking. Fund the candidate with the strongest combination of evidence, expected net edge, operational fit, and shortest credible path to a money decision. The [[research/trading/research_index|Research Board]] holds the current ranking.
+1. **Revenue proximity over strategy origin.** Discretionary codification, capture engineering, open discovery, and cross-market extension are research lanes, not a priority ranking. The [[research/trading/research_index|Research Board]] holds the current programs and executable workstreams. Use evidence, expected net edge, operational fit, and distance to a money decision to allocate scarce human review and resolve conflicts—not to force all independent agent work into a single serial queue.
 2. **Two separate questions, separately gated:** does the signal carry directional information (validity), and can we capture it after realistic costs (monetization)? Your own EMA work showed these diverge — direction right ~80% of the time while flip-only still lost money. A valid-but-uncaptured signal is a *promising, fundable state*, not a failure.
 3. **Market-agnostic and foundational.** Asset class (crypto perp, equities, futures, FX, …) is an explicit research axis like timeframe or asset. Research produces reusable building blocks — signal definitions, features, capture mechanisms — meant to be re-pointed at other markets cheaply. An edge that fails in one market is *open*, not dead, in the others.
 4. **Symmetric discipline.** Every stage carries both a kill thesis and an upside/capture thesis. Lead findings with the strongest positive read, then the caveats. Rigor is for calibration, not for deflating results.
@@ -98,19 +100,45 @@ Use the two-layer research doc: a small **living head** rewritten in place each 
 The three research-state layers have distinct authority:
 
 - **Per-thread research page:** evidence, assumptions, run pointers, interpretation, and the thread's next experiment.
-- **Research Board:** current portfolio ranking, primary/challenger/parked state, decisive uncertainty, and cross-thread relationships. This is the authority for what research is funded now.
-- **Linear:** concrete funded execution and backlog. It is not the authority for scientific interpretation or portfolio ranking.
+- **Research Board:** current programs, parallel workstreams, dependencies, decisive uncertainties, and cross-thread relationships. This is the authority for what research is funded or Ready.
+- **Linear:** concrete funded execution and the agent-pull queue. It is not the authority for scientific interpretation.
 
 Agents must keep them synchronized as part of closing a material research session:
 
-1. Before work, read the Research Board and the relevant thread page; confirm that an `active` or `primary` thread has a linked Linear execution item.
+1. Before work, read the Research Board and the relevant thread page; confirm the bounded workstream has a linked Linear issue and does not collide with another In Progress issue's files, fixtures, or holdout.
 2. After evidence changes a thread's validity, monetization, priority, status, blocker, or next experiment, update the thread's living head and its Research Board row in the same session.
 3. Update the linked Linear issue or project when the executable next action, state, blocker, or completion status changed. Do not copy metric tables into Linear.
-4. Exactly one revenue candidate may be `primary`. A `parked` item must state the condition that would resume it. Replacing the primary requires explicitly demoting or closing the previous one.
-5. Every `In Progress` research issue must map to a `primary` or `active` board entry, or be identified as bounded enablement for the primary. Every `primary` or `active` board entry must have funded execution represented in Linear.
+4. One agent owns one bounded issue at a time; multiple agents may advance independent issues and programs in parallel. Destin's current human focus does not park autonomous work elsewhere.
+5. Every `Ready` or `In Progress` research issue must map to a board program/shared asset. Every executable board workstream must have funded execution represented in Linear.
 6. If the layers disagree, stop treating the stale layer as context. Reconcile the board from the per-thread evidence, then reconcile Linear from the corrected board before starting unrelated work.
 
 Routine synchronization is part of the research closeout, not a separate documentation project. Historical changelog entries remain historical and must not override the current board.
+
+### Parallel research packet requirements
+
+A workstream is safe to pull in parallel only when it states:
+
+- one bounded question and decision vector;
+- the signal/feature, market-state, forecast, control, execution, or portfolio layer it is testing;
+- fixed fixtures, intended/stress costs, and holdout rules;
+- dependencies and likely shared files;
+- what the agent may decide autonomously and what must return to Destin;
+- its required thread-page, Board, and Linear closeout.
+
+If two packets would edit the same mechanism, consume the same one-time holdout, or interpret the same unresolved semantics, isolate them first or sequence them. Parallelism should reduce human waiting without multiplying hidden search budget.
+
+### Strategy-system depth
+
+One-signal → one-position backtests are control conditions for isolating whether a primitive carries information and whether a simple mapping captures it. They are not the default ceiling for strategy design. Research may separately build and validate:
+
+1. signal/features;
+2. composite market state;
+3. conditional or forward-price predictions;
+4. position/control policies;
+5. execution and costs;
+6. portfolio interaction.
+
+Keep these layers separable enough to diagnose where value or failure originates, then combine only with an explicit hypothesis and protected validation evidence.
 
 ## 7. Handoff and decision
 

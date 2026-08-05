@@ -7,14 +7,15 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[company/money-machine-360|Money Machine Operating Context]] — canonical company frame, revenue proof, work lanes, and decision standard.
 - [[sessions/current-checkpoint|Current Checkpoint]] — active strategy, proof period, blocker, evidence, and next action.
 - [[ops/linear-operating-system|Linear Operating System]] — issue intake, execution state, and WIP rules.
-- [[trading/catalog_v1|Trading Catalog]] — Destin's own catalog of the indicators, anomalies, execution styles, and concepts he uses when trading by hand, in his words. Use it to look up what a term means (PX, VFTI, HL channel, absorption, PR system) before asking him to re-explain it. Status is draft: it is a menu of tools he has used or sketched, not a specification of any one strategy, and several sections are placeholders. Retrieve the one section you need; do not read it end to end and assemble a strategy out of it.
+- [[trading/catalog_v1|Trading Catalog]] — Destin's inventory of indicators, anomalies, market-state inputs, controls, execution styles, and concepts. It is both the glossary of record and the source for a typed implementation/evaluation queue. A queued primitive is not automatically alpha and must not be combined into a strategy without a separate hypothesis.
 - [[research/trading/research_process_v2|Research Process V2]] — current quant research protocol: lane router + evidence ladder, signal-validity/monetization split, symmetric kill/upside framing, dual costs, cross-market generalization. (Supersedes [[research/trading/research_process_v1|V1]].)
+- [[research/trading/agentic_research_playbook|Agentic Research Playbook]] — cycle-level companion used inside a bounded V2 workstream for correctness review, chart/time-series diagnosis, evidence scoping, and selection of the next test.
 - [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] — style reference for the two-layer research file (living head + append-only tail) per Research Process V2.
 - [[research/trading/research_index|Research Board]] — living roster of active research threads (lane, validity/monetization state, status, next step); read this first to see what research is live.
 - [[research/trading/alpha-inbox/overview|Alpha Inbox]] — low-friction capture funnel for new alpha ideas; inbox entries are not research commitments or Linear tasks.
 - [[research/trading/weather-map/overview|Multiframe Forecasting Weather Map]] — parked long-horizon concept for probabilistic timeframe × horizon price paths, graph topology, and traversal-aware trading.
 - [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — active BTC timeframe scan, followed by multi-asset screening if the baseline remains coherent.
-- [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — primary revenue candidate; broad 5m/15m Hyperliquid lead awaiting the gating realistic-slippage rerun.
+- [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — active multi-branch program; no current immediate-execution mapping is promoted.
 - [[research/trading/multi-speed-ewmac/multi-speed-ewmac|Multiple Trend Following Rules (Strategy Nine)]] — book-faithful multi-speed EWMAC baseline, crypto evaluation assumptions, and staged research direction.
 - [[research/trading/emac-cross-10-200/event_study_anchor_findings|EMAC Event Study — Anchor Findings]] — interpreted verdicts from the signal-stats event study anchor run; holdout pending.
 - [[research/trading/ema_px_trend/codification|EMA/PX Trend Continuation Codification]] — running chart-led specification for Destin's short-side EMA/PX discretionary mapping, with long-side semantics still pending.
@@ -26,10 +27,9 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 
 ## Active Projects
 
-- [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — sole primary revenue candidate; realistic-slippage survival at 5m/15m is the next decisive test.
-- [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — challenger; supported escalation-ladder signal awaiting a distinct tradeable capture-policy verdict.
-
-Other candidates, reusable mechanisms, and horizon programs are intentionally parked or queued on the [[research/trading/research_index|Research Board]] rather than presented as active projects here.
+- [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — active branches for slope/regime filtering, PnL-aware resizing, wide-stop risk, longer history, and later passive-fill modeling.
+- [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — active parent program spanning controls, signal statistics, thresholds, traversal, continuous/nonlinear position control, and selection.
+- [[research/trading/research_index|Research Board]] — the complete set of parallel Ready/In Progress programs, shared assets, dependencies, and horizon work.
 
 ## Wiki Areas
 

@@ -8,8 +8,8 @@ Purpose: keep Linear usable as the operating surface for Money Machine Labs acro
 2. Project = finite initiative with a real outcome
 3. Label = classification
 4. State = execution stage
-5. Backlog is storage, not an action queue
-6. Agents should pull from Ready, not from raw Backlog or Triage
+5. Backlog is storage; Ready is the executable parallel agent queue
+6. Agents pull one bounded Ready issue each; multiple agents may execute independent issues at once
 7. Positive net realized live P&L is the objective; tickets are costs incurred only when they unblock it
 8. Closing, canceling, merging, and deferring work are positive outcomes
 
@@ -21,7 +21,8 @@ Purpose: keep Linear usable as the operating surface for Money Machine Labs acro
 
 Use projects only for real initiatives.
 
-- VWAP Mean Reversion Research — current primary revenue initiative
+- VWAP Mean Reversion Research — active multi-branch capture program
+- EMA 10/200 Research — parent program for the full 10/200 research body; traversal is one branch
 - Trading System Reliability
 - Dashboard V2
 
@@ -80,9 +81,10 @@ A Ready issue should answer:
 Actively being worked.
 
 Rule:
-- keep WIP low
-- keep one primary revenue outcome active unless Destin explicitly expands WIP
-- allow multiple bounded execution tasks only when they serve that outcome and do not create dependency or file collisions
+- one bounded In Progress issue per agent
+- allow many independent agent issues across research programs
+- serialize or isolate work that edits the same mechanism, consumes the same holdout, or depends on unresolved shared semantics
+- keep Destin's human-required queue small; human focus is the scarce WIP constraint
 
 ### Blocked
 Cannot move because of a dependency, missing information, or waiting event.
@@ -182,10 +184,11 @@ Do not create projects just because a repo or subsystem exists.
 
 ### Default intake path
 1. Record a discovery on the active outcome when it affects current execution.
-2. Try the current system or no-build path before proposing infrastructure.
-3. Close or ignore non-blocking ideas; conversation does not imply durable work.
-4. Create an issue only after the work-creation gate passes and Destin approves the tradeoff.
-5. Put approved work in `Triage`, `Backlog`, or `Ready` based on its actual state.
+2. Route new alpha into the Alpha Inbox or a typed Trading Catalog queue entry without interrupting Destin's current task.
+3. Try the current system or no-build path before proposing infrastructure.
+4. A confirmed catalog primitive or alpha hypothesis may become a bounded research issue; conversation alone does not imply implementation scope.
+5. Create implementation/enablement work only after the work-creation gate passes.
+6. Put approved work in `Triage`, `Backlog`, or `Ready` based on its actual state.
 
 ### Skip Triage only when
 - the issue is already clear enough for Backlog or Ready
@@ -193,7 +196,7 @@ Do not create projects just because a repo or subsystem exists.
 
 ### Work-creation gate
 
-Apply this gate when creating an issue or expanding an issue's scope. Do not re-run it for ordinary execution inside an already approved boundary.
+Apply this gate when creating implementation, infrastructure, automation, or expansive follow-up work. A bounded alpha/research card may instead cite its Catalog/Alpha Inbox source, explicit hypothesis, smallest test, evidence boundary, and decision rule. Do not re-run either gate for ordinary execution inside an already approved boundary.
 
 Before asking Destin to approve new work, present:
 
@@ -218,11 +221,12 @@ Minimum bar:
 
 ## WIP rules
 
-- Prefer 1 active human-led issue at a time
-- Keep one primary revenue outcome in progress unless Destin explicitly expands WIP
-- Adding another primary outcome requires closing, canceling, or demoting the current one first
-- Agents should generally pull from `Ready`
-- Do not start many things to feel productive
+- Prefer 1 active human-led decision/review at a time
+- Keep at most 1 bounded In Progress issue per agent
+- Run independent agent-owned issues across programs in parallel
+- Agents pull from `Ready`, mark the issue In Progress when they actually begin, and return it to Ready if they stop without an active worker
+- Before pulling, check file ownership, fixture overlap, one-time holdouts, and semantic dependencies
+- Do not confuse many vague starts with parallel execution; every active packet needs a question, boundary, and done state
 
 ## Operating cadence
 
@@ -231,7 +235,7 @@ Minimum bar:
 Research has three state layers with different jobs:
 
 - The per-thread wiki page holds evidence, assumptions, run pointers, and interpretation.
-- The Research Board holds portfolio rank, primary/challenger/parked state, and the next decisive question.
+- The Research Board holds programs, parallel workstreams, dependencies, and the next decisive questions.
 - Linear holds funded execution and backlog state.
 
 Agents closing material research work must:
@@ -239,8 +243,8 @@ Agents closing material research work must:
 1. update the thread living head when evidence or the next experiment changes;
 2. update the Research Board in the same session when validity, monetization, portfolio state, blocker, or next decisive step changes;
 3. update the linked Linear item when executable scope, state, blocker, or completion changes;
-4. ensure exactly one board candidate is `primary` and exactly one corresponding revenue issue is `In Progress` unless Destin explicitly expands WIP;
-5. ensure parked work has a resume condition and does not remain `In Progress` in Linear;
+4. ensure every Ready/In Progress issue maps to a board program or shared asset and has one bounded agent owner;
+5. ensure human-blocked branches name the exact decision while independent branches remain runnable;
 6. reconcile mismatches before starting unrelated work: thread evidence first, Board portfolio decision second, Linear execution state third.
 
 Do not duplicate standard backtest tables in Linear. A run ID, decision, blocker, and next action are sufficient.
@@ -253,8 +257,9 @@ Review:
 - what should be deprioritized
 
 Output:
-- 1 primary revenue outcome
-- clean Ready queue
+- 1 current human decision/review focus, if one exists
+- a clean multi-agent Ready queue
+- honest In Progress ownership with no stale agents
 - stale items corrected
 - work closed, canceled, merged, or deferred
 
@@ -263,7 +268,7 @@ Review:
 - Triage -> classify or kill
 - Backlog -> kill, merge, defer, or justify against the current revenue path
 - split only when one accepted outcome truly requires independent execution boundaries
-- promote at most the next blocking issue to Ready
+- promote every independently executable agent issue that meets the Ready bar; keep the human-required Ready queue deliberately small
 
 ### Weekly planning / review (30–45 min)
 Review:
@@ -300,9 +305,9 @@ It is for:
 
 ### Future agents
 - should follow this document
-- should prefer `Ready`
+- should pull one bounded `Ready` issue, move it to In Progress, and leave other independent agents running
 - should not invent new taxonomy casually
-- should update issue status and comments as work changes reality
+- should update the thread page, Research Board, and Linear status/comments in the same closeout when work changes reality
 
 ## Issue creation standard
 

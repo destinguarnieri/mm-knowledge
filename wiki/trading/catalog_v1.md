@@ -4,6 +4,19 @@ Status: draft
 
 This is a catalog of indicators, signals, and concepts used in manually trading strategies Ive learned over the years.
 
+## Implementation and evaluation queue
+
+This catalog is also the source inventory for Money Machine's implementation/evaluation queue. Each entry should eventually record:
+
+- type: indicator, signal, market-state feature, forecast input, position/control mechanism, execution feature, or strategy concept;
+- implementation state and known code path;
+- smallest correctness/evaluation step;
+- dependencies and unresolved Destin questions;
+- candidate strategy/program uses;
+- queue state: captured, needs specification, Ready, In Progress, Blocked, evaluated, or rejected.
+
+Linear [MON-169](https://linear.app/money-machine/issue/MON-169/convert-the-trading-catalog-into-an-implementation-and-evaluation) owns the first queue conversion. Independent primitives may be implemented and evaluated by separate agents in parallel. Queueing a primitive does not assert that it is alpha, and combining primitives into a strategy still requires an explicit hypothesis and protected evaluation.
+
 ## High Low Channel (HL_Channel)
 
 Trends can be defined as higher highs or lower lows.
@@ -401,6 +414,5 @@ See [[trading/positioning/size-distribution|Size Distribution]] for the elicited
 - Ride the Wave -> Quote both sides of book with a limit order grid. Inventory is ONLY in direction of the trend.
 Effectively states If asset is trending THEN im willing to absorb favorable inventory and will distribute the inventory away from the mean of the trend.
 - Opposite Only -> IF trend is determined THEN buy ONLY on opposite candles of trend AND sell IF in the money AND candle is in trend direction.
-
 
 

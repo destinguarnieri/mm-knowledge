@@ -15,18 +15,19 @@ The long-term ambition is to build a dominant AI-native financial company. Curre
 
 ## Current Company Phase
 
-Money Machine is in **revenue-candidate selection and monetization**. The company has several strategy candidates and reusable research components at different evidence stages. The current bottleneck is selecting the closest credible path to positive realized P&L, closing its decisive uncertainty, and moving a surviving candidate toward controlled live evidence.
+Money Machine is in **parallel revenue research and monetization**. The company has several strategy programs, reusable research components, and model directions at different evidence stages. The current bottleneck is research throughput and converting supported signals, market-state knowledge, forecasts, and control ideas into cost-valid strategy evidence without making Destin supervise every step.
 
-Strategy origin does not determine priority. A discretionary strategy, a simple systematic baseline, a captured signal, or a newly discovered edge may become primary when its evidence, economics, operational fit, and distance to deployment make it the best revenue candidate.
+Strategy origin does not determine priority. A discretionary strategy, a simple systematic baseline, a captured signal, a multi-signal model, or a newly discovered edge may become the next deployment candidate when its evidence, economics, operational fit, and distance to deployment justify promotion.
 
 For this phase:
 
 - maintain a visible portfolio of revenue candidates and reusable mechanisms
-- choose one primary candidate using current evidence and distance to a money decision
-- run the cheapest decisive validity, monetization, or deployability test
+- keep the portfolio of research programs visible and let independent agents advance bounded workstreams in parallel
+- use current evidence and distance to a money decision to order scarce human review, capital decisions, and shared-resource conflicts
+- run the cheapest decisive validity, forecasting, control, monetization, or deployability test inside each funded workstream
 - preserve valid signals when a particular capture policy fails
 - promote a surviving candidate through shadow execution and an explicitly authorized live canary
-- keep other candidates as challengers or parked work with explicit resume conditions
+- preserve explicit program/workstream state so independent work can continue, wait on a named dependency, or close without being lost
 
 Destin's live experience is strong prior evidence when evaluating a discretionary strategy, but it does not automatically outrank other evidence. Likewise, a promising systematic backtest is a lead rather than a deployment verdict until costs, robustness, and execution are tested.
 
@@ -36,14 +37,14 @@ Produce positive net realized live P&L after costs over an active founder-set pr
 
 The immediate loop is:
 
-1. rank current revenue candidates from reviewable evidence
-2. select one primary candidate and name its decisive remaining uncertainty
-3. run the smallest test capable of producing a promote, narrow, continue, or reject decision
-4. if a signal is valid but uncaptured, test the simplest plausible monetization policy
-5. test realistic costs, robustness, deployability, and shadow execution as the evidence warrants
-6. launch only with Destin's explicit capital and risk authorization
-7. measure live net realized P&L after costs
-8. learn, update the portfolio, and repeat
+1. decompose current programs into independent, reviewable workstreams
+2. let separate agents execute non-colliding workstreams in parallel
+3. use simple one-signal / one-position strategies as controls while also advancing market-state, forecasting, position-control, execution, and portfolio layers
+4. require each workstream to produce a promote, narrow, continue, reject, or blocked-on-specific-decision result
+5. route only true ambiguities, cross-workstream conflicts, and promotion decisions to Destin
+6. test realistic costs, robustness, deployability, and shadow execution as the evidence warrants
+7. launch only with Destin's explicit capital and risk authorization
+8. measure live net realized P&L after costs, update the portfolio, and repeat
 
 Tickets, infrastructure, documents, and raw agent activity are inputs or costs, not the proof. Backtests are the tool that surfaces edge: a backtest that reveals a real or promising edge is progress to pursue, even though it is not yet the live-P&L proof. Do not treat a promising result as a cost to minimize.
 
@@ -51,7 +52,7 @@ Tickets, infrastructure, documents, and raw agent activity are inputs or costs, 
 
 Money Machine already has functional live-trading and research infrastructure. Live runtime and backtest/research runtime are separate domains in one codebase.
 
-The current challenge is not to build a complete platform or maximize the number of research threads. It is to convert the strongest available evidence into one controlled production candidate, gather live evidence, and remove only the blockers that the attempt reveals.
+The current challenge is not to build a complete platform or maximize thread count for its own sake. It is to run many well-bounded research packets concurrently, convert the strongest surviving evidence into controlled production candidates, gather live evidence, and remove only the blockers those attempts reveal.
 
 The system is functional but not yet battle-tested in profitable production. Capital-sensitive paths therefore require strong human judgment and verification.
 
@@ -89,7 +90,7 @@ Tools, automation, dashboards, persistence, orchestration, and process improveme
 4. Accelerate the evidence loop.
 5. Automate only after a real attempt proves the current path limiting.
 
-Keep one primary revenue outcome in progress unless Destin explicitly expands WIP. The [[research/trading/research_index|Research Board]] is the current portfolio authority; strategy origin or lane must never silently override its ranking.
+Keep one bounded issue per agent, not one issue for the whole company. Run independent agent-owned research workstreams in parallel; reserve Destin's focus for decisions and review. The [[research/trading/research_index|Research Board]] is the current portfolio authority; strategy origin or lane must never silently override evidence or economics.
 
 ## Decision Standard
 

@@ -1,5 +1,7 @@
 # VWAP Mean Reversion Research
 
+Status: in progress
+
 Related process: [[research/trading/research_process_v2|Research Process V2]]
 Board: [[research/trading/research_index|Research Board]]
 Linear: [VWAP Mean Reversion Research](https://linear.app/money-machine/project/vwap-mean-reversion-research-ec37e0025905) · [MON-159 realistic-slippage gate](https://linear.app/money-machine/issue/MON-159/run-vwap-5m15m-realistic-slippage-monetization-gate)
@@ -7,6 +9,43 @@ Linear: [VWAP Mean Reversion Research](https://linear.app/money-machine/project/
 Lane (Research Process V2 §0): **capture engineering** — a promising signal to reproduce and monetize, not an open discovery from zero.
 
 <!-- ================= LIVING HEAD — rewrite in place each session ================= -->
+
+## Strategy Thesis
+
+We target statistically unusual extensions of current price from its rolling volume-weighted average price.
+
+We are not broadly providing liquidity against price merely because it is moving away from VWAP. Price can trend away from its average for long enough to create unacceptable adverse path, cost, and tail risk. Statistical overextension identifies where an opportunity may exist; it does not by itself make the reversion ready to trade.
+
+We seek high-probability conditions where an extreme extension is becoming exhausted and price and market participants display observable readiness to travel inward toward VWAP. The objective is to capture that inward traversal, not to assume immediate or complete convergence. Price and a moving VWAP may converge because price returns, VWAP catches up, or both move, and the timing may be too slow to support a profitable trade.
+
+The strategy therefore has distinct layers:
+
+1. **Location:** quantify how statistically overextended price is from VWAP.
+2. **Readiness:** require observable evidence that the outward move is exhausting and inward travel is becoming probable. Destin has additional readiness tools to introduce; do not predefine this layer from the current PX and slope evidence alone.
+3. **Regime avoidance:** recognize periods when price can continue trending away and avoid indiscriminate fading or liquidity provision.
+4. **Risk introduction and capture:** use thresholding, escalation, position control, exits, and execution policy to enter and monetize the inward traversal without allowing failed reversions or costs to dominate.
+
+Working distinction: **extension magnitude says where; readiness and regime say whether/when; position and execution policy say how much and how to capture it.**
+
+### Catalog tools plausibly useful to VWAP readiness
+
+Source inventory: [[trading/catalog_v1|Trading Catalog]]. These are mechanism candidates, not a combined strategy specification or evidence that each adds alpha. Introduce and evaluate one incremental feature at a time after the current slope/regime reference.
+
+| Tool | Thesis layer | Why it may work here | Important boundary |
+|---|---|---|---|
+| **VWAP slope** | Regime avoidance | Directly distinguishes a relatively stationary mean from a VWAP migrating strongly enough that fading price can be dangerous. The catalog explicitly identifies strong VWAP trend as the mean-reversion blowout regime. | Test first and alone. Define normalization, lookback, allowed slope state, and whether it gates entry only or also forces exit. |
+| **VFTI** | Participant readiness | Volume flow can turn against the current price direction before price visibly reverses. At a PX extreme, divergence or an inward VFTI turn may show participants withdrawing support from the outward move. | A continuous flow signal; specify divergence/turn semantics and avoid treating every disagreement as reversal proof. |
+| **PRI / PRL / PRZ / PRB** | Control transfer and invalidation | PRI requires the opposing side to reclaim the prior candle's range, making it a concrete price-action event for “ready to travel inward.” Its levels/zones can anchor entry, retest, and invalidation rather than relying on candle-color reversal. | Test the PRI event first; do not bundle the full level/zone/breaker system until the trigger itself earns inclusion. |
+| **Volume anomaly** | Exhaustion | A roughly 4× volume event near a local or PX extreme may indicate exuberance and exhaustion: participants committed unusual capital but failed or are beginning to fail to extend price. | Location matters; the same anomaly in the middle of a range can be acceleration rather than reversal. |
+| **ATR anomaly** | Exhaustion and risk state | An unusually large range often precedes partial retracement and may mark capitulation at an extension. It can also warn that risk has changed abruptly. | “Something big happened” is not directional readiness by itself; likely a risk/reduction input unless paired with a separately validated inward trigger. |
+| **Volume-delta anomaly** | Flow divergence | Candle direction opposed by cumulative volume delta may reveal outward price movement that underlying aggressive flow does not confirm. | Requires trustworthy delta data and an explicit sign/alignment contract. Test independently from VFTI. |
+| **Absorption** | Exhaustion / failed continuation | Large wick relative to candle body at an outer extension can show attempted continuation being absorbed and rejected. | Catalog entry is WIP; definition and implementation correctness must precede economic testing. |
+| **Order-book imbalance** | Quoted participant intention | At an extension, a change in quoted inventory pressure may show accumulation/distribution before price turns and may improve entry timing. | Book state is fragile and execution-sensitive; defer until credible L2 replay/mock-book infrastructure exists. |
+| **Funding-rate state/change** | Broader participant positioning | Funding exposes how perp participants are positioned and what they pay to maintain that positioning. A sign change or failure of price to follow crowded funding may support reversal readiness. | Slow, venue-specific context rather than a standalone bar-level trigger. Avoid lookahead around funding publication/settlement. |
+| **Trade speed** | Urgency and adverse selection | Rising event intensity can distinguish a quiet extension from an active attempt to continue or exhaust; it may guide whether to wait, cross, or avoid being adversely selected. | Not inherently directional and can diverge from volume; treat first as execution/risk context. |
+| **RSI leaving an extreme** | Price-action readiness control | The catalog independently notes that fading is usually better when RSI is leaving an extreme, matching the outward-extension versus inward-reentry distinction observed in PX. | Likely correlated with PX; require incremental benefit beyond the existing signal rather than counting the same price move twice. |
+
+Most direct future readiness candidates: **VFTI** for participant flow and **PRI** for an observable transfer of price control. Exhaustion features (volume/ATR anomaly and absorption) are plausible qualifiers. Order-book imbalance, funding, and trade speed belong later as participant or execution context. Do not combine these into the slope experiment.
 
 ## TL;DR & What's Working
 
@@ -32,7 +71,9 @@ VWAP mean reversion retains a valid gross signal, but the frozen high-turnover m
 
 **Corrected threshold-band continuous result:** the intended `0.1 → 0%`, `0.3 → 50%`, `0.5 → 100%` mapper was run unchanged across the exact 15m matrix. It was more aggressive than the whole-signal control: original-window trades rose from `17,264` to `19,628`, median drawdown worsened from `−12.8%` to `−18.0%`, and intended-cost breadth/median return fell from `58/96` / `+2.71%` to `48/96` / approximately flat. Stress fell to `37/96` positive and `−5.00%` median return. The short forward remained negative (`32/96`, `−1.64%` at 5 bps; `22/96`, `−2.53%` at 10 bps). Reject the corrected mapper as a monetization improvement; do not tune it on these windows.
 
-**Best next step:** choose one independent mechanism with preregistered semantics and validate it on longer Binance history. The recorded candidates are a VWAP slope/regime filter, PnL-aware resizing, and a wide stop; do not combine them. Revisit the frozen baseline after mock limit-orderbook/passive-fill modeling exists.
+**VWAP slope/regime result:** the preregistered `abs(normalized_vwap_slope) <= 0.1` entry-only gate materially reduced failed-reversion exposure on a disjoint 20,000-bar Binance USDM 15m window. Across 30 paired assets it cut trades by about 43%, improved return and drawdown on broad majorities at both 5 and 10 bps, and roughly halved the count of assets with drawdown at or below −40%. Median return improved from −17.4% to −2.6% at intended cost and from −27.3% to −10.0% under stress, but remained negative. Support slope as a real regime/risk mechanism; do not promote the current threshold+slope mapping or tune `0.1`/lookback on this window. MON-163 is Done.
+
+**Best next step:** choose the next independent VWAP mechanism or a newly preregistered combination. The open isolated branches are PnL-aware resizing, a wide stop, later `±0.9` threshold sensitivity, readiness inputs, and the 2σ-band/escalation hypothesis. Revisit the frozen baseline after mock limit-orderbook/passive-fill modeling exists.
 
 ## Current Read (provisional — not a verdict)
 
@@ -52,7 +93,7 @@ Two separate questions, separately gated (Research Process V2 §2).
 2. **Thresholds plus continuous sizing — corrected and rejected (`px_threshold_continuous`).** The intended mapping uses `signal_to_position_banded` over each state's exit-to-entry magnitude, so exit edge maps to flat, band midpoint to half size, and entry edge to full size. Against the whole-signal control it increased turnover/exposure, weakened original-window intended-cost economics, worsened drawdown, failed stress, and remained negative forward. The baseline retained `MIN_ADJUSTMENT_VALUE_PCT=0.4`, which Destin originally found through a one-night manual grid as a configuration that stood out; it remains a useful frozen reference, not an empirical optimum. Do not tune this mapper on the seen windows.
 3. **PnL-aware continuous resizing — direction confirmed, semantics open.** Negative churn often comes from mechanically resizing to the signal without considering whether the live position is in the money. Destin directionally confirmed the current interpretation: scaling in remains available; discretionary scaling out generally waits until the position is profitable; threshold and stop exits override. Exact definitions of “in profit,” partial reductions, and any additional risk-reduction exception remain unresolved. Test only after the corrected banded baseline.
 4. **Wide stop loss — hypothesis recorded, semantics open.** A wide but sensible stop may cap catastrophic failed reversions. Keep it separate from PnL-aware resizing and slope filtering. Define trigger unit, close-versus-intrabar execution, and rearm/cooldown semantics before implementation so a stopped regime cannot immediately re-enter accidentally.
-5. **VWAP slope/regime filter.** Permit mean-reversion entries only in an explicitly defined VWAP-slope or trend regime. This is a useful independent filter hypothesis, not dismissed evidence and not equivalent to the existing `px_slope_sniper` disagreement-sizing behavior. Specifically test whether slope identifies the failed-reversion regimes behind the threshold-only tail before entry; define the allowed regimes and expected missed-trade/tail tradeoff before running.
+5. **VWAP slope/regime filter — evaluated; mechanism supported, mapping not promoted (`px_threshold_slope`).** The base remained threshold-only `px_threshold`: log-linear rolling-VWAP slope, `SLOPE_LOOKBACK=3`, existing 252-bar min-max scaling with positive slope polarity, and fresh flat-to-position entries only when `abs(normalized_vwap_slope) <= 0.1`; existing exits were ordinary and blocked crossings were skipped. Return-blind BTC/ETH/SOL diagnostics established that `0.1` was materially selective before outcomes. On the preceding 20,000-bar Binance USDM 15m panel, the gate cut trades about 43%, improved paired return/drawdown broadly, and roughly halved severe-drawdown cases at both costs. It also missed profitable behavior, most clearly ETHFI. Median returns remained negative at intended and stress cost. Freeze the result: slope is a useful failed-reversion/risk mechanism, not a standalone promotion, and neither the lookback nor boundary should be tuned on this window.
 6. **2σ-band trade mechanism plus escalation ladder — Destin's outcome hypothesis, semantics open.** Destin predicts the best results will come from using the calculated two-standard-deviation VWAP-extension price bands as the trade mechanism and combining them with signal escalation. His observation that `±0.9` processed-signal entry improves on `±0.5` points in the same directional intuition: wait for a more extreme extension before committing risk. Do not equate `±0.9` with the 2σ band mathematically, and do not implement from that intuition alone. Entry, successive escalation levels, sizing, reduction/exit, reversal, and failed-reversion risk semantics remain to be specified. Preserve this as a distinct later experiment rather than combining it into the currently Ready slope, PnL-aware, or wide-stop branches.
 7. **Execution-model revisit.** Re-run the frozen baseline when a credible mock limit-orderbook/passive-fill model exists. Treat that as execution-model validation, not evidence that the current market-order mapping survived.
 8. **Longer-history validation.** Hyperliquid supplies only roughly 5,000 bars. Use Binance candle data for longer and genuinely disjoint windows where venue comparability is acceptable; keep provider provenance explicit.
@@ -118,10 +159,40 @@ Metrics live in the UI / saved runs — cite and re-fetch; do not paste tables.
 - `c9226973-0b64-4c70-bc2d-4c408af838c2` — corrected threshold-band continuous `15m`, original window, 10 bps, 96/96 — 37/96 positive, median return about −5.00%.
 - `8dfae36f-4c62-41b9-9a2d-9848d32d5b81` — corrected threshold-band continuous short forward `15m`, 5 bps, 96/96 — 32/96 positive, median return about −1.64%.
 - `c9cced6e-19c8-40f0-acae-21c53297ac88` — corrected threshold-band continuous short forward `15m`, 10 bps, 96/96 — 22/96 positive, median return about −2.53%.
+- `35206de0-72f1-4ec2-8f88-c65a3b194227` — BTC Binance USDM `15m`, 5,000-bar full-retention `px_slope_sniper` diagnostic used only for the return-blind normalized VWAP-slope distribution; not strategy-economic evidence.
+- `308801b5-4374-4401-ba25-7045368db69f` — ETH Binance USDM `15m`, same return-blind slope-distribution diagnostic.
+- `8906c8a0-372d-4c08-92c5-8a65fc373a67` — SOL Binance USDM `15m`, same return-blind slope-distribution diagnostic.
+- `e7c1c0ba-4ad6-48c0-8a1b-dc1be384ba6d` — invalid BTC Binance USDM `15m` `px_threshold_slope` runtime smoke; a missing subclass transition guard caused hold-bar resizing and 535 fills. Do not use as economic evidence.
+- `409b607a-7907-4eae-8c4d-02a42b712a5a` — paired unchanged `px_threshold` smoke on the identical BTC candles; its 32 fills exposed the slope subclass execution mismatch. Diagnostic control only.
+- `4089eaee-4f74-4e28-b294-f79e3d03f135` — corrected BTC Binance USDM `15m` slope-gate smoke; 19 fills versus 32 for the paired base control, confirming transition-only runtime behavior before the longer matrix.
+- `5ce4aa11-60b9-4b91-8a0c-6b6494ccc3d0` — disjoint 20,000-bar Binance USDM `15m` threshold control, 5 bps intended slippage; 30 paired successes.
+- `f1b57f85-c92c-4833-9e92-782255b761dd` — identical intended-cost slope gate; broad paired return/drawdown improvement and materially fewer severe drawdowns, but negative median return.
+- `8fb88390-5f92-456b-b716-77d9c2eef65f` — identical threshold control at 10 bps stress.
+- `8fbde7bc-937a-4f1c-8ad2-1b96b97518d0` — identical slope gate at 10 bps stress; improvement survived stress but median return remained negative.
 
 Metrics retrieved via `get_saved_batch_run` on 2026-07-23 after the saved-run 404 was fixed. Re-fetch for full per-asset numbers; do not transcribe the 96-row grids here.
 
 ## Write Log
+
+### 2026-08-05 — VWAP slope/regime filter evaluated on disjoint Binance history
+
+Completed MON-163 without changing the preregistered identity. The window requested 20,000 Binance USDM 15m bars immediately before the original Hyperliquid study; 30/32 current liquid-panel assets completed both strategies, while LIT and SKR lacked the required full span and failed symmetrically. At 5 bps, the slope gate cut trades from 4,078 to 2,332, improved return on 22/30 assets and drawdown on 21/30, moved median return from −17.4% to −2.6%, median drawdown from −46.7% to −38.1%, and severe-drawdown count from 23 to 11. At 10 bps, it improved return on 24/30 and drawdown on 23/30, moved median return from −27.3% to −10.0%, median drawdown from −48.9% to −39.5%, and severe-drawdown count from 24 to 13. Positive breadth improved but remained insufficient for promotion. ETHFI was the clearest missed-profit counterexample; do not respond with asset exclusion or slope tuning. Decision: support slope as a real failed-reversion/risk-reduction mechanism, reject promotion of the present threshold+slope mapping, freeze `SLOPE_LOOKBACK=3` and `max_abs_slope=0.1` on this evidence, and close MON-163. No live/capital mutation, commit, or push occurred.
+
+### 2026-08-05 — VWAP slope-gate identity frozen and implemented
+
+Destin selected threshold-only behavior, normal VWAP-slope normalization, entry-only gating with ordinary exits, and a provisional three-bar slope lookback. A return-blind Binance USDM 15m distribution check across BTC, ETH, and SOL showed that normalized absolute slope `0.1` is near the ordinary-bar median while admitting only about one-third of fresh `±0.5` extension crossings, so `0.1` was frozen as a materially selective first regime boundary. Implemented registered strategy `px_threshold_slope`: rolling-VWAP log-linear slope, three-bar slope lookback, existing 252-bar min-max scaling with true slope direction, `abs(slope) <= 0.1` for fresh entries only, skipped blocked crossings, unchanged threshold exits, and normalized slope UI emission. The first runtime smoke exposed a missing subclass transition guard: invalid run `e7c1c0ba` resized on hold bars (535 fills) while paired base control `409b607a` had 32. Restored the guard and added the negative-path regression; ten focused PX threshold tests pass, and focused Ruff/source mypy are clean. Linear MON-163 is In Progress. The database strategy entry exists; the code reload stopped the research manager, so corrected smoke and economic runs await an explicit research-manager restart. No valid economic slope-gate backtest, live/capital mutation, commit, or push occurred.
+
+### 2026-08-05 — catalog readiness-tool map recorded
+
+Mapped plausible Trading Catalog tools into the confirmed VWAP thesis so later work does not need to rediscover them. VWAP slope is the isolated regime filter. VFTI and PRI are the strongest direct readiness candidates; volume/ATR anomalies, volume-delta disagreement, and absorption may qualify exhaustion or failed continuation; order-book imbalance, funding, and trade speed provide later participant/execution context; RSI leaving an extreme is a correlated control requiring incremental-value evidence. Recorded mechanism, rationale, and boundary for each. This is a reusable candidate map, not permission to bundle features; no code, backtest, Linear, live/capital mutation, commit, or push occurred.
+
+### 2026-08-05 — strategy thesis explicitly confirmed
+
+Destin confirmed the first explicit thesis card for the VWAP program. The strategy targets statistically unusual price extension from rolling VWAP, but is not unconditional liquidity provision or a generic fade of price moving away from its average. Because price can trend away and convergence with a moving VWAP may occur through price, VWAP, or both—and too late to monetize—the trade requires observable readiness for inward travel plus regime avoidance. Separate location, readiness, regime, and risk/capture layers. Destin has additional participant-readiness tools to introduce; preserve that layer as open rather than inferring its contents. Mirrored the concise thesis into the Linear project; no code, backtest, live/capital mutation, commit, or push occurred.
+
+### 2026-08-05 — PX magnitude signal statistics forwarded to UI
+
+Before beginning the slope/regime branch, added the established EMAC V4/V5 magnitude-stat pattern to the shared `px_threshold` feature path inherited by `px_threshold_continuous`. The strategy now calculates `sig_extension` over a configurable `signal_stats_lookback` defaulting to `200` and emits only `pos_mean`, `neg_mean`, `upper_band_1`, `lower_band_1`, `upper_band_2`, and `lower_band_2` as components of the existing PX signal message. The raw processed signal remains the `value` component. The backtest chart already renders non-value signal components as signal studies, so no frontend recomputation or schema change was required. Preserved concurrent price-overlay emission for VWAP mean and 1σ/2σ price bands. Ten focused PX threshold tests, Ruff, and focused mypy pass. No backtest, Linear, live/capital mutation, commit, or push occurred.
 
 ### 2026-08-05 — 2σ-band plus escalation outcome hypothesis
 

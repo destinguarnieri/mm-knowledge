@@ -2,6 +2,10 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-08-05
+
+- Added [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]] and linked it from the wiki index, Research Board, playbook, checkpoint, and session log. The brief defines the agent-as-customer product policy and event-study vertical slice.
+
 ## 2026-08-02
 
 - Repaired KB routing after the trading catalog became [[trading/catalog_v1|Trading Catalog V1]], and updated stale EMA/PX codification backlinks to its current research location.

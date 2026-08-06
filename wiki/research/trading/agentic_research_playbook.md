@@ -8,7 +8,7 @@ Status: in progress
 
 The operating idea is simple: every finding must earn a scope, every iteration must explain what worked and what did not, and every strategy change must move through a documented loop from concept to evidence.
 
-Related operating context: [[research/trading/research_process_v2|Research Process V2]] · [[research/trading/research_index|Research Board]] · [[research/trading/alpha-inbox/overview|Alpha Inbox]]
+Related operating context: [[research/trading/research_process_v2|Research Process V2]] · [[research/trading/research_index|Research Board]] · [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]] · [[research/trading/alpha-inbox/overview|Alpha Inbox]]
 
 ### Applicability and precedence
 
@@ -17,6 +17,12 @@ Research Process V2 is the governing research protocol. It determines the lane, 
 If the two documents appear to conflict, Research Process V2 controls. Lane-specific procedures—especially discretionary behavioral-parity work—also control over this generic loop.
 
 Before using this playbook, the agent must have a bounded Linear issue or explicitly authorized research packet that names the question, research layer, evidence surface, decision boundary, likely shared files, and what must return to Destin.
+
+### Agent inspection interface
+
+The autonomous research interface is typed MCP evidence access, not the browser UI. Agents use the approved run-description, bounded-series, chart-rendering, and annotation tools for the research loop. The existing UI is for Destin's manual review; Browser Use is forbidden as a routine fallback and is allowed only when Destin explicitly requests UI inspection or the UI itself is under test.
+
+If a required research type cannot expose its permitted numerical and visual evidence through the approved tool surface, classify that as a tool gap and block the affected playbook step. Do not bypass the contract with arbitrary output directories, unregistered scripts, or browser navigation. The product contract and first vertical slice are defined in the [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]].
 
 ---
 
@@ -201,7 +207,7 @@ Create a strategy file only when the question actually requires a complete captu
 
 ### Step 3 — Run
 
-Execute a reproducible experiment. Save the code or version identifier, configuration, data snapshot or lineage, environment details, random seed when relevant, and a unique run ID.
+Execute a reproducible experiment. Save the code or version identifier, configuration, data snapshot or lineage, environment details, random seed when relevant, and a unique run ID. Generated evidence belongs in the registered research-run artifact workspace, never in an application source package.
 
 Record the expected result before viewing the outcome. Evaluate both the realistic achievable and stress cost regimes when the experiment has trading economics. Increment the project-wide search-budget counter.
 
@@ -209,7 +215,7 @@ Record the expected result before viewing the outcome. Evaluate both the realist
 
 Read the headline metrics first, but do not decide from them alone. At minimum review return, volatility, drawdown, risk-adjusted return, turnover, costs, hit rate, exposure, concentration, and sample size. Compare against the declared benchmark and acceptance threshold.
 
-Persisted run IDs and the backtest UI remain the source of truth for standard metrics. The thread page records intent, run pointers, interpretation, and decisions rather than duplicating ordinary metric tables.
+Persisted run IDs and approved MCP saved-run/research-run tools remain the source of truth for standard metrics. The backtest UI remains Destin's human review surface, not the autonomous agent interface. The thread page records intent, run pointers, interpretation, and decisions rather than duplicating ordinary metric tables.
 
 ### Step 5 — Pass the correctness and artifact gate
 
@@ -227,6 +233,8 @@ If this gate fails, classify the result as a tool/data/implementation failure. R
 ### Step 6 — Inspect permitted charts
 
 Inspect the charts as a human researcher would inspect backtest results. The goal is not primarily to search for hard system errors. It is to understand **what is working, what is not working, where each behavior occurs, and what the visual evidence suggests trying next**.
+
+Use the run-description tool before requesting a chart, then use the approved declarative chart renderer with explicit windows, series, panels, and annotations. Preserve the normalized render configuration and render ID with the research run. Do not use Browser Use for this step.
 
 Do not treat the initial chart view as sufficient. Inspect the full **permitted discovery/validation surface**, never the untouched promotion holdout before its authorized one-time use. If a chart or artifact combines discovery data with hidden holdout data, create a bounded view before continuing.
 
@@ -246,6 +254,8 @@ The visual-research loop is: **navigate → observe → compare → annotate →
 ### Step 7 — Analyze the core time-series set
 
 Use the raw and derived time series as material for pattern matching and idea generation. The agent should actively mine the series for recurring relationships, conditional behavior, and potentially useful structure—not merely verify that the data looks correct.
+
+Retrieve bounded aligned windows through the approved numerical extraction surface. Do not infer numerical relationships solely from chart pixels or hydrate an unbounded artifact bundle when a bounded series query can answer the question.
 
 Review aligned series together:
 

@@ -16,6 +16,7 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
 ## Current Engineering State
 
+- Agentic Research Loop product direction is now active and treats the research agent as the customer. Autonomous inspection will use typed MCP run discovery, bounded extraction, deterministic rendering, and structured annotations; the browser UI is human-only. The EMA 10/200 event study is the first vertical slice. Signal-deciles and the cancelled Study/Variant/Trial persistence redesign are explicitly not foundations for this work.
 - `px_threshold` is implemented in `mm_v04` with Threshold Engine V3 transition-only full long/flat/full short sizing and no continuous rebalancing.
 - The study's negative signal polarity is encoded as the strategy default. Four focused tests, focused Ruff, and focused mypy pass. The running backtest manager will not expose the strategy until Destin adds it manually in the UI.
 - `px_threshold_continuous` uses the existing threshold-band mapper: exit edge → 0%, midpoint → 50%, entry edge → 100%, before volatility reduction. Thirty-two focused mapper/threshold tests plus Ruff/mypy pass. Its exact four-cell 15m evaluation completed 96/96 in every cell and is rejected as a monetization improvement.
@@ -43,6 +44,7 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 
 ## Verification
 
+- The Agentic Research Loop Linear project is reactivated around the event-study acceptance journey. [MON-177](https://linear.app/money-machine/issue/MON-177/establish-research-run-artifact-workspace-and-contain-event-study) is Ready; MON-178–181 are dependency-blocked through describe/extract, render/annotations, evidence permissions, and end-to-end acceptance. [MON-182](https://linear.app/money-machine/issue/MON-182/decide-preservation-and-cleanup-of-legacy-tracked-event-study-outputs) is human-blocked on the roughly 312 MB / 355 tracked historical outputs. Existing saved-backtest `list_saved_run_series` / `get_saved_run_series` tools are retained as substrate.
 - Linear MON-155 (fee/slippage cost semantics) is Done.
 - Linear MON-156 (cold batch acceleration) is Done.
 - Linear MON-145 (agent access to UI-owned saved runs) is Done.
@@ -58,4 +60,4 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 
 ## Next Action
 
-For VWAP, choose the next isolated branch or explicitly preregister a justified combination after reviewing the supported-but-insufficient slope result. PnL-aware resizing, wide-stop policy, later `±0.9` entry sensitivity, readiness inputs, and 2σ-band escalation remain distinct options. Other agents pull separate Ready issues in parallel, one bounded issue per agent. Preserve each mechanism's identity, fixtures, holdouts, and cost assumptions; synchronize the thread page, Research Board, and Linear at closeout.
+For VWAP, choose the next isolated branch or explicitly preregister a justified combination after reviewing the supported-but-insufficient slope result. PnL-aware resizing, wide-stop policy, later `±0.9` entry sensitivity, readiness inputs, and 2σ-band escalation remain distinct options. In parallel, execute the bounded Agentic Research Loop event-study product slice from artifact containment through MCP evidence inspection and acceptance. Preserve each mechanism's identity, fixtures, holdouts, and cost assumptions; synchronize the thread page, Research Board, and Linear at closeout.

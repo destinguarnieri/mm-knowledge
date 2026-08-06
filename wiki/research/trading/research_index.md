@@ -45,6 +45,7 @@ Do not interpret a weak primitive control as proof that the richer system is inv
 | [[engineering/backtest-strategies-index|Baseline strategy suite]] | Backtester sanity checks and control conditions. Simple strategies are controls, not the ceiling on strategy intelligence. |
 | Papers and book extracts, including Carver and Ronnie Chen material | Sources for queueable features, models, controls, and complete strategy hypotheses. Extracted knowledge should flow into the catalog/implementation queue. |
 | [[research/trading/alpha-inbox/overview|Alpha Inbox]] | High-throughput capture. Triage ideas into a program, catalog primitive, horizon program, or rejection without interrupting the current human task. |
+| [[projects/agentic-research-loop-product-brief|Agentic Research Loop]] | Active agent-as-customer enablement. [MON-177](https://linear.app/money-machine/issue/MON-177/establish-research-run-artifact-workspace-and-contain-event-study) is the sole Ready foundation issue; MON-178–181 form the dependency-gated event-study evidence/inspection/acceptance path. [MON-182](https://linear.app/money-machine/issue/MON-182/decide-preservation-and-cleanup-of-legacy-tracked-event-study-outputs) is human-blocked on preservation of existing outputs. |
 
 ## Horizon programs
 
@@ -52,7 +53,7 @@ These remain visible so they are not forgotten. They may receive bounded definit
 
 | Program | State | Resume condition |
 |---|---|---|
-| Karpathy-style autoresearch / Agentic Research Loop | **horizon — definition open** | The throughput bottleneck is now confirmed. Resume bounded orchestration work once parallel manual agent packets expose the concrete coordination, collision, and evaluation bottlenecks to automate |
+| Karpathy-style continuous autoresearch | **horizon — parked** | Resume after the active agentic evidence/perception slice proves the manual alpha loop and exposes a repeated optimization or orchestration bottleneck worth automating |
 | Vision/FSD-style model trading | **horizon — parked** | Resume with a bounded perception or policy hypothesis and a labeled evaluation set; do not combine perception, policy learning, and live execution in one first experiment |
 | Large Financial Models | **horizon — parked** | Resume when a concrete prediction/control objective, proprietary data advantage, compute budget, and baseline comparison are defined |
 | [[research/trading/weather-map/overview|Multiframe Forecasting Weather Map]] | **horizon — parked** | Resume when the first forecast target, confidence/calibration contract, graph relationship, deployment target, and baseline comparison are defined |

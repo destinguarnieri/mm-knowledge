@@ -10,6 +10,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[trading/catalog_v1|Trading Catalog]] — Destin's inventory of indicators, anomalies, market-state inputs, controls, execution styles, and concepts. It is both the glossary of record and the source for a typed implementation/evaluation queue. A queued primitive is not automatically alpha and must not be combined into a strategy without a separate hypothesis.
 - [[research/trading/research_process_v2|Research Process V2]] — current quant research protocol: lane router + evidence ladder, signal-validity/monetization split, symmetric kill/upside framing, dual costs, cross-market generalization. (Supersedes [[research/trading/research_process_v1|V1]].)
 - [[research/trading/agentic_research_playbook|Agentic Research Playbook]] — cycle-level companion used inside a bounded V2 workstream for correctness review, chart/time-series diagnosis, evidence scoping, and selection of the next test.
+- [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]] — agent-as-customer product contract for typed research-run evidence, bounded extraction, deterministic chart rendering, annotations, and the event-study vertical slice.
 - [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] — style reference for the two-layer research file (living head + append-only tail) per Research Process V2.
 - [[research/trading/research_index|Research Board]] — living roster of active research threads (lane, validity/monetization state, status, next step); read this first to see what research is live.
 - [[research/trading/alpha-inbox/overview|Alpha Inbox]] — low-friction capture funnel for new alpha ideas; inbox entries are not research commitments or Linear tasks.
@@ -27,6 +28,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 
 ## Active Projects
 
+- [[projects/agentic-research-loop-product-brief|Agentic Research Loop]] — active bounded enablement project; first prove one event-study loop through MCP without Browser Use or generated artifacts in source.
 - [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — active branches for slope/regime filtering, PnL-aware resizing, wide-stop risk, longer history, and later passive-fill modeling.
 - [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — active parent program spanning controls, signal statistics, thresholds, traversal, continuous/nonlinear position control, and selection.
 - [[research/trading/research_index|Research Board]] — the complete set of parallel Ready/In Progress programs, shared assets, dependencies, and horizon work.

@@ -34,7 +34,7 @@ MON-163 confirms normalized rolling-VWAP slope is a material regime/risk mechani
 
 EMA 10/200 is restored as a parent research program. Band-to-band traversal is one supported branch alongside the flip-only controls, thresholds, signal-stat market state, continuous/nonlinear positioning, and asset/timeframe selection.
 
-One-signal → one-position backtests are retained as controls, not treated as the intended limit of strategy intelligence. The active queue now includes a bounded multi-signal market-state plus forward-price baseline and a correctness audit of nonlinear/Citadel-inspired position mappings.
+One-signal → one-position backtests are retained as controls, not treated as the intended limit of strategy intelligence. The active queue now includes a bounded multi-signal market-state plus forward-price baseline and implementation of the confirmed bounded accumulation/distribution schedule architecture.
 
 PnL-aware resizing is directionally confirmed but not specified: scaling in remains available, discretionary scaling out generally waits for profit, and threshold/stop exits override. Wide-stop semantics also remain open. Neither belongs in the corrected baseline rerun.
 
@@ -49,7 +49,7 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 - Linear MON-156 (cold batch acceleration) is Done.
 - Linear MON-145 (agent access to UI-owned saved runs) is Done.
 - The Research Board is rebuilt around revenue candidates, reusable mechanisms, and horizon programs.
-- Linear is rebuilt for parallel execution: MON-159 is Done; VWAP branches MON-162/163/164 are Ready; EMA 10/200 has a parent project with MON-157/165/167 Ready; EWMAC MON-166, position-control MON-168, Catalog queue MON-169, multi-signal forecasting MON-170, and EMA/PX agent-vision MON-171 are Ready. Human-labeled EMA/PX MON-172 remains blocked on Destin semantics.
+- Linear is rebuilt for parallel execution: MON-159 is Done; VWAP branches MON-162/163/164 are Ready; EMA 10/200 has a parent project with MON-157/165/167 Ready; EWMAC MON-166, bounded accumulation/distribution schedules MON-168, Catalog queue MON-169, multi-signal forecasting MON-170, and EMA/PX agent-vision MON-171 are Ready. Human-labeled EMA/PX MON-172 remains blocked on Destin semantics.
 - Registered `px_threshold` implementation: 4 focused tests pass; changed files pass focused Ruff and source mypy checks.
 - Four 96-asset threshold-only runs persisted: original-window 5/10 bps and short-forward 5/10 bps. Original-window economics improved materially; both forward medians were negative.
 - Four canonical 5m threshold-only runs persisted. The original runs had 95 successes plus ACE negative-equity failure; both complete forward runs had 96/96. 5m is rejected under stress/forward evidence.

@@ -1,5 +1,17 @@
 # Session Change Log
 
+## 2026-08-07 — MON-209 progress-aware backtest persistence deadlines
+
+- Closed Linear `MON-209` as Done after coding-manager acceptance. mm_v04 commit `9c11a76bf56543f53998796f7365693713e16d7a` replaces the fixed flush timeout with COPY stall vs silent-phase budgets, commits run+asset failure states atomically, retains `ix_bt_sig_run_asset_ts_name_component` after measured bounded-series regression, and adds stall/commit/failure-reader regressions. No push, deploy, or live/capital mutation occurred.
+
+## 2026-08-07 — EMAC control population expanded to the full liquid universe
+
+- Destin rejected the initial BTC-plus-four-alt control scope. Updated MON-210, MON-211, and downstream MON-165 to freeze a full point-in-time asset-search snapshot containing every asset with rolling 24-hour Hyperliquid notional volume strictly above `$250,000`. MON-210 now attempts the 1D basic cross for every eligible asset; MON-211 attempts continuous V1 for the same universe at `5m`/`1h`/`4h`/`1d`; MON-165 must inherit the exact completed cells for V4/V5. Eligibility is independent of Binance availability, and missing symbols, insufficient history, delistings, and other failures must be explicit exclusions rather than silent panel narrowing. No backtest, code, live/capital mutation, commit, or push occurred.
+
+## 2026-08-07 — EMAC control-coverage audit and backlog repair
+
+- Audited the EMA 10/200 strategy-version evidence and corrected the durable/Linear framing: basic `emac_cross` 1D evidence is BTC-only; direct continuous `emac` V1 has incidental universe-filter runs but no clean standalone asset×timeframe baseline; V4 economics are sparse; V5 has no backtest. Created Ready MON-210 for a bounded BTC/ETH/SOL/DOGE/AVAX 1D cross control and Ready MON-211 for a compact continuous-V1 matrix. Rewrote MON-165 as the matched V1/V4/V5 attribution test, marked it dependency-blocked on MON-211, and linked MON-210 as related. Updated the EMA thread, Research Board, and checkpoint. No backtest, code, live/capital mutation, commit, or push occurred.
+
 ## 2026-08-06 — VWAP fractional-depth traversal
 
 - Extended the isolated VWAP event study from exact bands to a continuous closed-bar coordinate (`mean=0`, `1σ=1`, `2σ=2`) with fixed half-band checkpoints. Canonical BTC 15m anchor/replication artifacts are `52fa8f74` and `c36a7b0f`. Immediate outward continuation remained the minority across every fractional rung, while retry-allowed episodes confirmed meaningful reversions without full next-band touches. Simple inward-turn confirmation remained mixed and negatively skewed, so continuous depth is supported as location/capacity context but not as an optimal nonlinear sizing curve. Twenty-five focused tests and all static/structural checks pass. Ticket 207 persistence work, strategies, Threshold Engine, nonlinear allocator, live runtime, and capital paths were untouched; no commit or push occurred.

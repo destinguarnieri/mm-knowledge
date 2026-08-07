@@ -1,5 +1,7 @@
 # EMA Cross 10/200 Research
 
+Status: in progress
+
 Related process: [[research/trading/research_process_v2|Research Process V2]]
 Signal-stats event study: [[event_study_anchor_findings|Anchor + Holdout Findings]] · label definitions [[event_labels_v1|Event Labels V1]]
 
@@ -7,19 +9,19 @@ Signal-stats event study: [[event_study_anchor_findings|Anchor + Holdout Finding
 
 ## TL;DR & What's Working
 
-Testing whether the near-parameter-free EMA 10/200 cross carries tradable edge, and how to monetize it. **Direction is well-supported; the open game is capturing the signal, not proving it exists.**
+Testing whether the near-parameter-free EMA 10/200 family carries tradable edge, and how to monetize it. **Directional and traversal evidence is promising, but the version ladder is not yet comparison-ready: basic cross coverage is incomplete at 1D, continuous V1 lacks a clean baseline program, V4 economics are sparse, and V5 has no backtest evidence.**
 
 **What's working — live threads worth capturing:**
 
-- **Direction is right ~80% of the time.** Positions sit in profit for `77.84%`–`88.21%` of active bars across BTC intervals (and ~`84–88%` median across the multi-asset 4h batches), despite only `10–28%` realized win rates. That gap is a *capture/exit* problem, not a direction problem — the single most important finding in this study. Cites: BTC scan `ce0bc93e` (1d) → `987817d2` (1m); 20-asset 4h batch `3c0f2043`.
+- **Direction is promising where tested.** Positions sit in profit for `77.84%`–`88.21%` of active bars across BTC intervals (and ~`84–88%` median across the multi-asset 4h batches), despite only `10–28%` realized win rates. That gap is a *capture/exit* problem, not a direction problem. The boundary matters: basic `emac_cross` has multi-asset coverage at 4h and selected lower intervals, but its 1D result is BTC-only. Cites: BTC scan `ce0bc93e` (1d) → `987817d2` (1m); 20-asset 4h batch `3c0f2043`.
 - **A real 4h leader cluster.** SUI, ETH, ARB, DOGE cleared Sharpe `1.0` in the 20-asset 4h batch (`3c0f2043`); roughly 30–40 assets show usable 4h/1h stats. ETH is the strongest risk-balanced name.
 - **Escalation ladder — most monetizable structure found so far, and it generalizes.** In the signal-stats event study, mean→±2σ band-to-band traversal is positive with payoff *and* hit rate rising up the ladder: mean→2σ hit `94%` (anchor) / `96%` (holdout), with conditional touch rates stable across two disjoint 50k-bar windows (P(1σ|mean) ≈ 0.69–0.71, P(2σ|1σ) ≈ 0.62–0.63). **Net positive at realistic maker costs (~1–2 bps/side)** — the ~20 bps figure that earlier read as a kill is a max-taker *ceiling*, not a floor. Cites: anchor `8077b0dd`, holdout `9c96c57f`; full numbers in [[event_study_anchor_findings]].
 - **Cross-asset generalization on 5m confirmed (leg 1, 2026-07-23).** The ladder is not BTC-specific: across a 20-asset cross-section of the ≥$250k Hyperliquid universe (majors + high-vol alts), P(1σ|mean) sits at `0.63–0.71` on every asset vs an unconditional mean-touch base rate of only ~`0.45–0.54`, P(2σ|1σ) is always `0.53–0.70`, and mean→2σ traversal is positive on all 20 at a mid-90s% hit rate (`91–98%`). Higher-vol alts show *larger* per-rung bps (better edge-to-fixed-cost ratio). The naive mean-cycle (S1-in/S4-out) stays negative-median everywhere — the band-to-band *traversal*, not the naive cycle, is the capture target. Artifacts + run pointers in the Write Log entry below; leg 2 sweeps the timeframe axis.
 - **Cross-timeframe invariance confirmed on BTC (leg 2, 2026-07-23).** Same config swept over `1m/5m/15m/30m/1h/4h/1d`: the *conditional structure is timeframe-invariant* — P(1σ|mean) stays `0.65–0.71` and P(2σ|1σ) `0.58–0.66` across `1m`→`4h`, mean→2σ hit `93–100%` — while the *payoff scales monotonically with timeframe*: median mean→2σ traversal `+17 → +56 → +75 → +115 → +224 → +404 bps` from `1m` to `4h`. So the edge-to-cost ratio improves up the timeframe ladder: `1m` (+17 bps) is thin vs maker round-trip (~2–4 bps) but net positive; `≥15m` is comfortable. The naive mean-cycle stays negative through `4h`. `1d` is unreliable (14 legs, 2 mean→2σ obs). Side note: the flip-only *control* Sharpe also climbs with TF and turns positive at `4h` (+0.96) — same "bigger moves vs fixed cost" mechanism.
 - **Timeframe-invariance confirmed off-BTC (leg 2 tail, 2026-07-24).** Ran the `1m` and `1h` extremes on ETH/SOL/DOGE/AVAX. Both BTC signatures replicate on every asset: at `1m`, P(1σ|mean) `0.63–0.69`, P(2σ|1σ) `0.59–0.62`, mean→2σ hit `91–96%`, median payoff `+17–30 bps`; at `1h`, P(1σ|mean) `0.67–0.69`, mean→2σ hit `91–96%`, median payoff `+224–556 bps` (higher-vol AVAX/SOL largest), mean-cycle negative on all. So the ladder is a joint asset×timeframe invariant, not a BTC or 5m artifact. Pointers in the Write Log entry below (`panel_tf_extremes_escalation.csv`).
-- **Capture vehicles now exist.** `emac_v4` (transition-only regime control) and `emac_v5` (continuous magnitude inside the Threshold Engine V3 regime) are implemented and pass focused tests — the mechanisms to hold the 80% instead of giving it back at the flip.
+- **Capture vehicles exist in code, not yet in comparable evidence.** Unthresholded continuous `emac` V1, transition-only thresholded `emac_v4`, and thresholded continuous `emac_v5` provide the right attribution ladder. Existing direct-`emac` runs were incidental to universe-filter work rather than a frozen baseline; V4 economics cover only a few BTC fixtures; V5 passes focused implementation tests but has no backtest.
 
-**Best next step:** spec and evaluate a bounded mean-cycle capture variant (S1 entry / retreat exit, optionally escalation-aware) against the flip-only control, and wire continuous exit/scale-out to harvest the time-in-money. See Open Threads.
+**Best next step:** complete the missing controls before version claims using one frozen full asset search: every asset with point-in-time rolling 24-hour Hyperliquid notional volume above `$250,000`. [MON-210](https://linear.app/money-machine/issue/MON-210/complete-the-multi-asset-1d-emac-cross-control) runs the 1D `emac_cross` control across that universe; [MON-211](https://linear.app/money-machine/issue/MON-211/establish-the-unthresholded-continuous-emac-v1-baseline) runs continuous V1 across the same universe at `5m`/`1h`/`4h`/`1d`. Only then compare V4/V5 on the exact completed cells in [MON-165](https://linear.app/money-machine/issue/MON-165/compare-thresholded-continuous-emac-v5-with-continuous-v1-and-v4). Band-to-band monetization remains an independent capture branch.
 
 ## Current Read (provisional — not a verdict)
 
@@ -30,27 +32,38 @@ Living per-question status. A row only becomes a recorded **Decision** at a prom
 | (B) Does 10/200 put you on the right side? | Leaning strongly yes | Med–High | `77.8–88.2%` time-in-money across intervals and multi-asset batches | fails on a fresh untouched holdout or a different venue |
 | (A) Can dead-simple flip-only make money as-is? | Leaning no (flip-only) | Med | flip-only net-negative after costs at ≤1h; severe drawdown at 1d/4h | a real selection rule clears net after realistic costs |
 | (C) Can a capture mechanism monetize the 80%? | Open — top priority | Low (early) | escalation ladder net-positive at maker cost; V4/V5 built | a mean-cycle / continuous variant beats the control out-of-sample |
+| (D) Is the EMAC version ladder comparison-ready? | No | High | 1D basic cross is BTC-only; no clean continuous-V1 baseline; V4 sparse; V5 untested economically | matched V1/V4/V5 fixtures plus multi-asset 1D control |
 
 Reframing note: this doc previously carried a hard "Verdict" table calling (B) *Supported* and (A) *Kinda/maybe*. The substance is unchanged — (B) strong, (A) weak as flip-only — but it is now tracked as a provisional read, because no promotion/kill gate has been run and the capture question (C) is still open.
 
+## Coverage Audit
+
+| Variant | Evidence actually available | Material gap | Linear |
+|---|---|---|---|
+| Basic flip-only `emac_cross` | BTC across `1m`–`1d`; broad multi-asset 4h; selected cohorts at `1h`/`30m`/`5m` | 1D is BTC-only; fill it across the full point-in-time `>$250k` Hyperliquid-volume universe | [MON-210](https://linear.app/money-machine/issue/MON-210/complete-the-multi-asset-1d-emac-cross-control) — Ready |
+| Unthresholded continuous `emac` V1 | Direct-position runs exist inside universe-filter qualification/evaluation work | No frozen standalone baseline; run the full `>$250k` universe at `5m`/`1h`/`4h`/`1d` before attributing V5 improvements | [MON-211](https://linear.app/money-machine/issue/MON-211/establish-the-unthresholded-continuous-emac-v1-baseline) — Ready |
+| Transition-only thresholded `emac_v4` | Transition correctness and a few BTC 1D/5m fixtures; extensive event-study configuration use | Sparse matched economic coverage across assets/timeframes | [MON-165](https://linear.app/money-machine/issue/MON-165/compare-thresholded-continuous-emac-v5-with-continuous-v1-and-v4) — blocked on MON-211 |
+| Thresholded continuous `emac_v5` | Focused semantics/tests only | No backtest; no matched V1/V4 panel | [MON-165](https://linear.app/money-machine/issue/MON-165/compare-thresholded-continuous-emac-v5-with-continuous-v1-and-v4) — blocked on MON-211 |
+
 ## Open Threads / Next Experiments
 
-Ranked by expected value, capture-first:
+Ranked by expected information value:
 
-1. **Capture the 80% (top).** Spec a bounded mean-cycle variant (S1 entry / S4 mean-retreat exit, optionally escalation-aware) and evaluate against the flip-only control on both event-study fixtures. The hinge is cutting the non-escalating branch cheaply. See [[event_study_anchor_findings]] bottom line.
-2. **Continuous positioning.** Evaluate `emac_v5` (continuous magnitude within the V3 regime) and `sig_to_position` mappings; measure profit retention versus the flip-only giveback. No V5 backtest has been run yet.
-3. **Dynamic vs static thresholds.** Thresholds derived causally from the signal's own rolling mean/σ (no lookahead) versus static controls, on the same fixtures.
-4. **Selection rule, done right.** If an asset/universe filter is reopened, pre-register the rule and consume a genuinely untouched window exactly once. Standing post-hoc leads (candidates only): lower prior cross count; high 4-bar variance ratio + high 1-bar return autocorrelation.
-5. **Rolling-lens breakout episode** (Destin, 2026-07-22): enter on rolling ±2σ breach, exit on close back inside; needs a rolling-lens episode builder plus economics on both fixtures.
-6. **Compression/expansion market-state label** — pending Destin's corrected phrasing before re-running the chop split.
+1. **Complete the control surface.** Freeze one full asset-search snapshot containing every asset above `$250,000` rolling 24-hour Hyperliquid notional volume. Run all eligible assets at 1D for `emac_cross` (MON-210), and at `5m`/`1h`/`4h`/`1d` for continuous V1 (MON-211). Report source/history exclusions rather than silently narrowing the universe.
+2. **Compare the version ladder.** After MON-211, fill matched V4/V5 cells across the same frozen liquid universe in MON-165. V1 vs cross isolates continuous sizing; V4 vs cross isolates threshold gating; V5 vs V4 isolates continuous magnitude inside the threshold regime; V5 vs V1 tests whether gating helps continuous sizing.
+3. **Capture the 80%.** Independently spec a bounded mean-cycle variant (S1 entry / S4 mean-retreat exit, optionally escalation-aware) and evaluate against the flip-only control on both event-study fixtures. The hinge is cutting the non-escalating branch cheaply. See [[event_study_anchor_findings]] bottom line.
+4. **Dynamic vs static thresholds.** Thresholds derived causally from the signal's own rolling mean/σ (no lookahead) versus static controls, on the same fixtures.
+5. **Selection rule, done right.** If an asset/universe filter is reopened, pre-register the rule and consume a genuinely untouched window exactly once. Standing post-hoc leads (candidates only): lower prior cross count; high 4-bar variance ratio + high 1-bar return autocorrelation.
+6. **Rolling-lens breakout episode** (Destin, 2026-07-22): enter on rolling ±2σ breach, exit on close back inside; needs a rolling-lens episode builder plus economics on both fixtures.
+7. **Compression/expansion market-state label** — pending Destin's corrected phrasing before re-running the chop split.
 
-Deferred: broad asset/timeframe expansion of flip-only `emac_cross` — answered sufficiently; reopen only in service of a capture mechanism.
+Deferred: timeframes outside the frozen `5m`/`1h`/`4h`/`1d` comparison and any parameter sweep. Within those cells, full eligible-universe coverage is required; a handpicked representative panel is not sufficient.
 
 <!-- ================= STABLE ================= -->
 
 ## Strategy & Data Facts
 
-- Strategy: `emac_cross`, fast EMA `10`, slow EMA `200`. Direct-position variant `emac` (strategy `be3545d2`); control research in `emac_v4` (transition-only) and `emac_v5` (continuous magnitude).
+- Strategy ladder: `emac_cross` is the basic flip-only EMA 10/200 control; `emac` V1 (strategy `be3545d2`) is the unthresholded continuous signal-to-position control; `emac_v4` is transition-only threshold gating; `emac_v5` adds continuous magnitude inside the V4 threshold regime.
 - Data depth: Hyperliquid serves only ~5,000 candles per timeframe; Binance USD-M provides full history via `candle_source: binance_usdm` (explicit `start_ms`/`end_ms`, 50,000-candle single-run cap, non-US egress). See [[vendors/binance-market-data-access|Binance Market Data Access]].
 - Positioning family so far: flip-only, `sig_to_position` (amplitude → target) and its inverse, continuous V5, and a proposed quantile-regression mapping (Q90/Q50/Q10 with proximity-to-quantile sizing weighted by r²). Build philosophy: start simplest, add complexity progressively. All-in/all-out is the intentional control condition, not the destination.
 - Methodology: asset selection is an explicit optimization axis for trend strategies (assets differ in serial correlation / trending behavior).
@@ -120,7 +133,7 @@ Identity + interpretation index. Metrics live in Destin's backtest UI and in per
 
 - anchor `8077b0dd-e440-48d7-8e64-a4ef81d1074e` (BTC Binance USD-M 5m, 49,800 scored bars, ~Jan 28 → Jul 19 2026) + Hyperliquid screenshot companion `d82eda65-aaf0-4a76-b536-12921c6682bb`; holdout `9c96c57f-733d-4b0b-a063-9a8824349d80` (disjoint ~Aug 7 2025 → Jan 27 2026). Findings and label definitions: [[event_study_anchor_findings]], [[event_labels_v1]].
 
-**Continuous-control development (V4/V5):** see the Write Log for the sequence (`a1688414` discarded config mismatch; `6108178a`, `eea81901`, `b12d3a50`, `bad11f56`, `f2299e5b`, `e43db176`, `43036e20`, `e58f3c5d`).
+**Continuous/version-control development:** direct `emac` V1 runs in the universe-filter section are not a clean baseline program. V4's saved sequence (`a1688414` discarded config mismatch; `6108178a`, `eea81901`, `b12d3a50`, `bad11f56`, `f2299e5b`, `e43db176`, `43036e20`, `e58f3c5d`) primarily establishes transition correctness on sparse BTC fixtures. V5 has no saved backtest run.
 
 ## Preliminary Risk-Filtered Top 10 (screen, not a promotion gate)
 

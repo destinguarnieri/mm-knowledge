@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-08-06
+Date: 2026-08-07
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -33,7 +33,7 @@ The confirmed VWAP thesis is selective, readiness-conditioned inward traversal: 
 
 MON-163 showed that the specific `abs(normalized_vwap_slope) <= 0.1` gate materially altered risk/economics on a disjoint Binance window, but it did not establish low slope as the correct semantic use of VWAP slope. Destin's visual observation and a return-blind BTC/ETH/SOL saved-series check show PX and slope magnitudes co-extend; low slope is rare at the largest PX extremes. Label low-slope filtering as a hypothesis. Keep slope level, slope extremity, PX/slope signed alignment, and slope change/deceleration as competing roles. The current threshold+slope mapping remains unpromoted; do not tune the three-bar/`0.1` identity on its evaluation window or create post-hoc asset exclusions.
 
-EMA 10/200 is restored as a parent research program. Band-to-band traversal is one supported branch alongside the flip-only controls, thresholds, signal-stat market state, continuous/nonlinear positioning, and asset/timeframe selection.
+EMA 10/200 is restored as a parent research program. Band-to-band traversal is one supported branch alongside the flip-only controls, thresholds, signal-stat market state, continuous/nonlinear positioning, and asset/timeframe selection. A coverage audit found that the basic cross's 1D evidence is BTC-only, continuous `emac` V1 has no clean standalone baseline, V4 economics are sparse, and V5 has no backtest. MON-210 and MON-211 are Ready to repair the first two control gaps using every asset returned by a frozen point-in-time search above `$250,000` rolling 24-hour Hyperliquid notional volume; MON-165 is blocked on MON-211 and inherits its exact completed cells for matched V4/V5 comparison.
 
 One-signal → one-position backtests are retained as controls, not treated as the intended limit of strategy intelligence. The active queue now includes a bounded multi-signal market-state plus forward-price baseline and implementation of the confirmed bounded accumulation/distribution schedule architecture.
 
@@ -62,7 +62,7 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 - Linear MON-156 (cold batch acceleration) is Done.
 - Linear MON-145 (agent access to UI-owned saved runs) is Done.
 - The Research Board is rebuilt around revenue candidates, reusable mechanisms, and horizon programs.
-- Linear is rebuilt for parallel execution: MON-159 is Done; VWAP branches MON-162/163/164 are Ready; EMA 10/200 has a parent project with MON-157/165/167 Ready; EWMAC MON-166, bounded accumulation/distribution schedules MON-168, Catalog queue MON-169, multi-signal forecasting MON-170, and EMA/PX agent-vision MON-171 are Ready. Human-labeled EMA/PX MON-172 remains blocked on Destin semantics.
+- Linear is rebuilt for parallel execution. EMA 10/200 controls MON-210 (multi-asset 1D basic cross) and MON-211 (continuous V1 baseline) are Ready; MON-165 is dependency-blocked on MON-211 before matched V4/V5 work. EMA branches MON-157/167, EWMAC MON-166, bounded accumulation/distribution schedules MON-168, Catalog queue MON-169, multi-signal forecasting MON-170, and EMA/PX agent-vision MON-171 remain Ready. Human-labeled EMA/PX MON-172 remains blocked on Destin semantics.
 - Registered `px_threshold` implementation: 4 focused tests pass; changed files pass focused Ruff and source mypy checks.
 - Four 96-asset threshold-only runs persisted: original-window 5/10 bps and short-forward 5/10 bps. Original-window economics improved materially; both forward medians were negative.
 - Four canonical 5m threshold-only runs persisted. The original runs had 95 successes plus ACE negative-equity failure; both complete forward runs had 96/96. 5m is rejected under stress/forward evidence.
@@ -76,3 +76,5 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 ## Next Action
 
 For VWAP, retain `px_signal_bands` as the binary control rather than the intended final mapping. After MON-168's bounded accumulation/distribution allocator passes deterministic semantics, run one offline strategy-shaped comparison of binary full-touch/full-position, linear distributed allocation, and one preregistered favorable backloaded schedule over the supported `0→2` depth coordinate. Keep readiness features, allocator curve tuning, and live wiring out of that comparison. Manual UI registration/smoke of the binary control remains useful for execution correctness, not as the destination design.
+
+For EMA 10/200, run MON-210 and MON-211 as independent controls using the full frozen `>$250,000` Hyperliquid-volume universe, not a representative asset panel. MON-210 covers 1D basic cross; MON-211 covers continuous V1 at `5m`/`1h`/`4h`/`1d`. Do not start the economic V5 comparison in MON-165 until MON-211 freezes the matched completed cells; then fill V4/V5 on those same cells so continuous sizing and threshold gating can be attributed separately.

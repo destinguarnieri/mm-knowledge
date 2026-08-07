@@ -116,8 +116,6 @@ Trying to mean revert a strongly trending asset is how you get blown out.
 
 Conversly if VWAP slope is low trend trading gets chopped.
 
-Therfor if slope is under threshold_1 you want to be mean reverting it.
-If slope over threshold_2 you can trend trade it.
 
 Often paired with PX for proximity of price to vwap but not strictly required.
 
@@ -136,7 +134,7 @@ Example , price is grinding around the highs but VFTI starts turning negative. d
 
 Hard to hide volume. The intentions show themselves.
 
-VFTI is very much a leading indicator of price movement.
+VFTI is very much a leading indicator of price movement. *should be verified*
 
 ## PX (Price Extension)
 
@@ -163,7 +161,7 @@ Price might be Over the 200 but under the 10 , or obviously any combination of t
 
 ## SLOPE
 
-Linear Regression Slope. Another classic , nothing too fancy.
+Linear Regression Slope. Another classic.
 
 Indicator itself doesnt need much explanation, and fairly easy to interpret.
 
@@ -238,41 +236,45 @@ There are typically two reaction types from an event firing, immediate follow th
 
 
 
-## Volume Anomalies
+## Volume Ratio
 
-Meassured by taking the ema Volume of a window and calculating the multiple of current volume(1) / avg.
-Expressed in multiples (1,2.5,3,4.24,5, ect)
-2-3 often indicate price is accelerating in direction of volume
-+4 is often negative signal.
-+4 generally occurs at tops and bottoms.
+Volume Ratio measures current bar volume relative to its recent baseline:
 
-From a logical perspective , when a 4+ occurs the participants capital is used up for that current time period.
-They are exhuberant and exhausted.
+`current volume / EMA(volume, window)`
 
-Can be interpretted as reversal or accellerant , often using where in the range it occurred.
+It is expressed as a multiple. A reading of 1 means current volume is equal to its EMA baseline, 2 means twice the baseline, and 0.5 means half the baseline.
 
-for example if it happenned near the rolling window low or rolling high it is likely a reversal.
-In the middle of the range likely an accelerant.
+The full range is useful. Low ratios identify periods of low participation or quiet trade, while rising and elevated ratios show increasing participation and can confirm that price is accelerating. The ratio is not inherently directional and should be interpreted alongside price direction, candle structure, and location within the recent range.
 
-Advice on +4 is usually shrink position regardless or close.
+The rolling standard deviation of the ratio adds regime information. Compression indicates that relative volume is behaving consistently; expansion indicates a widening distribution of participation and can identify a changing or unstable regime.
 
-The candles OHLC should be noted as important levels that are often retested.
+### Volume anomalies
 
-## ATR Anomalies
+Extreme high ratios are a special case of the broader feature. Readings around 2–3 have often accompanied price acceleration, while readings around 4 or higher have often appeared near tops and bottoms. These thresholds are heuristics and should be evaluated by asset and timeframe.
 
-Meassured by taking the ema ATR of a window and calculating the multiple of current atr(1) / avg.
-Expressed in multiples (1,2.5,3,4.24,5, ect)
-All are useful but readings of +4 are the triggers
+A high-ratio candle near a rolling-window high or low is more likely to mark exhaustion or reversal; one in the middle of the range may instead act as an accelerant. The intuition behind an extreme print is that participants may have committed and exhausted much of the capital available for that period.
 
-Interpretation is quite simple: Something big just happened.
+At extreme readings, the usual guidance is to shrink or close the position regardless of direction. The anomaly candle's OHLC should be retained as important levels that price may later retest.
 
-Should reduce position size or close position.
-Price often retraces part of or all of the move.
-Can generally just rebuy your position at a better price if determined the trend is still intact.
+## ATR Ratio
 
-The candles OHLC should be noted as important levels that are often retested.
+ATR Ratio measures current ATR relative to its recent baseline:
 
-Often these Triggers are at reversal points hence the guidance that its generally EV to shrink or close.
+`current ATR / EMA(ATR, window)`
+
+It is expressed as a multiple. A reading of 1 means current ATR is equal to its EMA baseline, 2 means twice the baseline, and 0.5 means half the baseline.
+
+The full range is useful. Low ratios identify range and volatility compression; high ratios identify range expansion. Neither state is inherently directional, but each changes the expected movement, risk, sizing, and execution environment.
+
+The rolling standard deviation of the ratio adds regime information. Compression indicates a stable volatility regime, while expansion indicates that realized range is becoming less consistent and may signal a regime transition.
+
+### ATR anomalies
+
+Extreme high ratios are a special case of the broader feature: something unusually large just happened. Readings around 4 or higher are useful candidate triggers, but the threshold should be evaluated by asset and timeframe.
+
+These events often occur near reversal points, and price frequently retraces part or all of the move. The usual guidance is to reduce position size or close, then re-enter at a better price if the trend remains intact.
+
+The anomaly candle's OHLC should be retained as important levels that price may later retest.
 
 ## Volume Delta Anomaly
 
@@ -414,5 +416,4 @@ See [[trading/positioning/size-distribution|Size Distribution]] for the elicited
 - Ride the Wave -> Quote both sides of book with a limit order grid. Inventory is ONLY in direction of the trend.
 Effectively states If asset is trending THEN im willing to absorb favorable inventory and will distribute the inventory away from the mean of the trend.
 - Opposite Only -> IF trend is determined THEN buy ONLY on opposite candles of trend AND sell IF in the money AND candle is in trend direction.
-
 

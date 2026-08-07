@@ -1,5 +1,21 @@
 # Session Change Log
 
+## 2026-08-07 — VWAP continuous excursion geometry matrix shipped
+
+- Replaced the fractional touch ladder with an isolated continuous excursion study that samples new episode high-water depths and measures fixed-horizon fade return, eventual VWAP recross, MFE/MAE, and further adverse depth in raw-price, price-band, volatility-normalized, and signal-band coordinates. Fetched the missing Binance research candles for the frozen 30-asset liquid universe and ran three matched 1,666-hour development/replication/confirmation blocks at `5m`/`15m`/`1h`; all 270 cells completed under canonical artifact `796b64a5-fccd-4d52-8d2b-de9277ccad21`. Causal 1,000-bar pre-roll and left-censor exclusion prevent block-boundary indicator/episode bias. Structural QA passed; 15 focused tests plus Ruff/format/mypy are clean. Outputs live only in the KB's ignored `.research/runs/` store. No strategy, Threshold Engine, allocator, live/capital mutation, commit, or push occurred.
+
+## 2026-08-07 — MON-210 execution invalidated
+
+- Destin invalidated the entire MON-210 fixed-floor execution after many assets returned zero/no metrics and he identified the `emac_cross` strategy file as broken. All batch metrics and the initial interpretation are discarded; saved IDs remain only as diagnostic pointers in the EMA research page and Linear. MON-210 moved from Ready to Blocked pending Destin's repair and verification, after which the frozen universe and assumptions must be rerun. No live/capital mutation, code change, commit, or push occurred.
+
+## 2026-08-07 — Binance fixed-floor cohort planner shipped
+
+- Implemented `binance_cohort_pack_v2` in `mm_v04`: backend, Research MCP planning/execution tools, generated frontend client, and the backtest UI now support auditable descending fixed floors. Each eligible asset uses the largest floor its exact trailing continuous bars satisfy; floor groups remain deterministically ordered and runtime-chunked at 16, accepted floors are echoed, malformed policies fail validation, and below-smallest-floor assets are explicit skips. Legacy `cohort_floor` and `max_history` modes remain available with unchanged API/MCP defaults. The UI default is `[2500, 2000, 1500, 1200, 1000, 800, 600, 500, 300, 200]`; MON-210 must use `201` as its final floor to match its EMA-aware minimum. The earlier 13-plan max-history result is superseded for execution, so the frozen universe must be re-planned before the manager runs it. Verification: 16 backend tests plus Ruff/mypy, 10 MCP tests plus Ruff, regenerated client, and frontend lint/build passed. No backtest, manager, live/capital mutation, database migration, commit, or push occurred.
+
+## 2026-08-07 — MON-210 universe and Binance cohort plan frozen
+
+- Prepared MON-210 without running a backtest. The point-in-time `>$250,000` rolling 24-hour Hyperliquid-notional search returned 100 assets and was not result-limit truncated. The deterministic 1D Binance planner fixed common end `2026-08-07T00:00:00Z` and assigned 96 assets to 13 max-history lifespan plans, using 0.8 relative tolerance to preserve substantially more available history than the standard cohort floors while keeping comparable shared windows. Strategy-aware minimum history is 201 candles for EMA-200 warmup; SKR (197) and MEGA (189) are explicit insufficient-history exclusions, while MNT and kNEIRO are unsupported-symbol exclusions. Fixed execution assumptions remain EMA 10/200, `$10,000`, 100% equity at 1x, compounding, 5 bps fee/side, 5 bps slippage/side, summary retention, and no funding. The first refresh preflight timed out; the warmed-cache retry completed. No backtest, Linear, code, live/capital mutation, commit, or push occurred.
+
 ## 2026-08-07 — MON-209 progress-aware backtest persistence deadlines
 
 - Closed Linear `MON-209` as Done after coding-manager acceptance. mm_v04 commit `9c11a76bf56543f53998796f7365693713e16d7a` replaces the fixed flush timeout with COPY stall vs silent-phase budgets, commits run+asset failure states atomically, retains `ix_bt_sig_run_asset_ts_name_component` after measured bounded-series regression, and adds stall/commit/failure-reader regressions. No push, deploy, or live/capital mutation occurred.

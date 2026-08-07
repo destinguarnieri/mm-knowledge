@@ -87,6 +87,8 @@ VWAP mean reversion retains a valid gross signal, but the frozen high-turnover m
 
 **Fractional-depth extension (2026-08-06):** the same two BTC windows now map contemporaneous band space continuously (`mean=0`, `1σ=1`, `2σ=2`) and measure fixed half-band checkpoints. At every outward half-step, immediate continuation remained the minority in both price and signal domains; retreats through the starting depth occurred roughly two-thirds to three-quarters of the time. Retry-allowed episodes also contained meaningful partial traversals that ended before the next half-step, confirming that exact/full touches discard tradeable path information. Simple inward-turn confirmation was not uniformly decisive: next-inner completion varied by depth and side, with the deepest turn strongest but still negatively skewed. Decision: replace full-touch/full-position semantics with continuous location plus bounded inventory capacity, but do not claim the study identifies an optimal nonlinear curve. Canonical schema-v2 artifacts: `52fa8f74-d7e7-4d5e-86a1-45612570ba20` and `c36a7b0f-b0a0-4f68-92d3-e05906aef22e`.
 
+**Continuous excursion geometry (2026-08-07):** replaced fixed touch probabilities with event-level high-water observations at every newly reached continuous depth. Each observation carries forward fade returns at 1/2/4/8/16/32 closed bars, eventual VWAP recross, MFE/MAE to recross, and additional adverse depth in four coordinates: raw price percent, continuous price-band location, 100-bar volatility-normalized distance, and continuous signal-band location. The frozen matrix uses the same 30 Binance-supported liquid assets at `5m`/`15m`/`1h` across three non-overlapping 1,666-hour development/replication/confirmation blocks; price and signal statistics are both 100 bars, indicators receive 1,000 causal pre-roll bars, and episodes already underway at a scoring boundary are excluded as left-censored. All 270 cells completed and passed structural QA. Canonical artifact: `796b64a5-fccd-4d52-8d2b-de9277ccad21`. This is ready for interpretation; no position curve or trade rule is promoted yet.
+
 ## Current Read (provisional — not a verdict)
 
 Two separate questions, separately gated (Research Process V2 §2).
@@ -193,10 +195,18 @@ Metrics live in the UI / saved runs — cite and re-fetch; do not paste tables.
 - `d474a327-d619-49ed-863d-fa6340bf1569` — matching second chronological 9,999-bar half; replication artifact, not a protected holdout.
 - `52fa8f74-d7e7-4d5e-86a1-45612570ba20` — BTC Binance USDM `15m` fractional-depth schema-v2 anchor; fixed half-band price/signal attempts, episode traversal, and path excursions.
 - `c36a7b0f-b0a0-4f68-92d3-e05906aef22e` — matching fractional-depth chronological replication; development-history replication, not a protected holdout.
+- `5d7ec980-7792-4ab7-ad54-9401d5cf35e8`, `1b292818-3f50-46c0-ab33-af696a8a6f64`, `ac82d2c1-64f9-4720-b3c1-fdf791b5f602` — frozen 30-asset Binance USDM `5m` configuration/candle fixtures for the three matched continuous-excursion blocks.
+- `325ad38b-82d6-4852-9484-4bee4a4917ba` — matching 30-asset `15m` fixture with price/signal lookbacks both frozen at 100.
+- `f099e770-7798-4691-8f02-331662794933` — matching 30-asset `1h` fixture.
+- `796b64a5-fccd-4d52-8d2b-de9277ccad21` — canonical 270-cell continuous VWAP excursion-geometry matrix; 30 assets × `5m`/`15m`/`1h` × development/replication/confirmation, with event-level audit frames and asset-equal summaries.
 
 Metrics retrieved via `get_saved_batch_run` on 2026-07-23 after the saved-run 404 was fixed. Re-fetch for full per-asset numbers; do not transcribe the 96-row grids here.
 
 ## Write Log
+
+### 2026-08-07 — continuous excursion geometry matrix shipped
+
+Added an isolated read-only `vwap_band/excursion` package that measures continuously observed excursion depth rather than another ladder of touch probabilities. It records four price/signal/volatility coordinates, high-water episode sampling, fixed closed-bar fade horizons, eventual VWAP recross, MFE/MAE, and further adverse depth. A causal 1,000-bar pre-roll initializes each cell and left-censored boundary episodes are excluded. Missing Binance research candles were fetched for the existing frozen 30-asset liquid universe; the matched three-timeframe, three-block matrix completed 270/270 under artifact `796b64a5-fccd-4d52-8d2b-de9277ccad21`. Structural QA found balanced asset coverage, all ten development bins, no duplicate response keys, no zero-outcome rows, and essentially complete path metrics. Fifteen focused tests plus Ruff, formatting, and mypy pass. Outputs remain under the KB's ignored `.research/runs/` workspace; no strategy, Threshold Engine, allocator, live runtime, capital path, commit, or push changed.
 
 ### 2026-08-06 — fractional-depth VWAP traversal shipped
 

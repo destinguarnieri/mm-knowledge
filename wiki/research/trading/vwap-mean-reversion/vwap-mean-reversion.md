@@ -85,6 +85,8 @@ VWAP mean reversion retains a valid gross signal, but the frozen high-turnover m
 
 **Dual-domain traversal study (2026-08-06):** a closed-bar BTC Binance USDM `15m` event study froze both lookbacks at 100 and measured raw-price and processed-signal band crossings separately across chronological 10,000/9,999-bar halves. Both domains reproduced the same broad structure: outward continuation becomes less likely at the next rung, while the stricter inward 2σ→1σ race completes before re-expansion only about half the time. Price and signal touches overlap heavily, so the normalized signal is a timing transform of the price-extension process—not independent confirmation; its modest distinction is slightly earlier inward timing. This supports continuing with the bounded dynamic-band smoke, but not promoting threshold-only full risk. Canonical artifact runs: `e88e7013-9f93-48c8-aefc-e1ee197ed092` and `d474a327-d619-49ed-863d-fa6340bf1569`.
 
+**Fractional-depth extension (2026-08-06):** the same two BTC windows now map contemporaneous band space continuously (`mean=0`, `1σ=1`, `2σ=2`) and measure fixed half-band checkpoints. At every outward half-step, immediate continuation remained the minority in both price and signal domains; retreats through the starting depth occurred roughly two-thirds to three-quarters of the time. Retry-allowed episodes also contained meaningful partial traversals that ended before the next half-step, confirming that exact/full touches discard tradeable path information. Simple inward-turn confirmation was not uniformly decisive: next-inner completion varied by depth and side, with the deepest turn strongest but still negatively skewed. Decision: replace full-touch/full-position semantics with continuous location plus bounded inventory capacity, but do not claim the study identifies an optimal nonlinear curve. Canonical schema-v2 artifacts: `52fa8f74-d7e7-4d5e-86a1-45612570ba20` and `c36a7b0f-b0a0-4f68-92d3-e05906aef22e`.
+
 ## Current Read (provisional — not a verdict)
 
 Two separate questions, separately gated (Research Process V2 §2).
@@ -189,10 +191,16 @@ Metrics live in the UI / saved runs — cite and re-fetch; do not paste tables.
 - `6b207683-c927-45eb-b444-6c102101835e` — NEAR matching full-retention visual fixture; artifacts available.
 - `e88e7013-9f93-48c8-aefc-e1ee197ed092` — BTC Binance USDM `15m` dual-domain traversal study, first chronological 10,000-bar half; raw-price episodes plus price/signal competing-barrier trials.
 - `d474a327-d619-49ed-863d-fa6340bf1569` — matching second chronological 9,999-bar half; replication artifact, not a protected holdout.
+- `52fa8f74-d7e7-4d5e-86a1-45612570ba20` — BTC Binance USDM `15m` fractional-depth schema-v2 anchor; fixed half-band price/signal attempts, episode traversal, and path excursions.
+- `c36a7b0f-b0a0-4f68-92d3-e05906aef22e` — matching fractional-depth chronological replication; development-history replication, not a protected holdout.
 
 Metrics retrieved via `get_saved_batch_run` on 2026-07-23 after the saved-run 404 was fixed. Re-fetch for full per-asset numbers; do not transcribe the 96-row grids here.
 
 ## Write Log
+
+### 2026-08-06 — fractional-depth VWAP traversal shipped
+
+Extended the isolated VWAP event study without changing strategy, Threshold Engine, nonlinear positioning, or persistence paths. Each closed bar now receives a piecewise band coordinate with mean-extension `0`, 1σ `1`, and 2σ `2`; fixed half-step crossings preserve both single-attempt competing barriers and retry-allowed VWAP-side episodes. Outputs retain price/signal and long/short identity and include durations, price traversal, MFE/MAE, episode reach rates, partial-without-next rates, and maximum depth. The anchor/replication result supports continuous location and bounded accumulation/distribution rather than exact full-touch/full-position commands, while failing to identify a monotonic or optimal nonlinear curve from depth alone. Twenty-five focused tests plus Ruff, formatting, mypy, function-length review, and diff checks pass. Generated artifacts remain under the KB's ignored `.research/runs/` workspace. No live runtime, capital mutation, database-write change, commit, or push occurred.
 
 ### 2026-08-06 — dual-domain VWAP band traversal study shipped
 

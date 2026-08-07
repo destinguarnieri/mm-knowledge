@@ -1,5 +1,9 @@
 # Session Change Log
 
+## 2026-08-06 — VWAP fractional-depth traversal
+
+- Extended the isolated VWAP event study from exact bands to a continuous closed-bar coordinate (`mean=0`, `1σ=1`, `2σ=2`) with fixed half-band checkpoints. Canonical BTC 15m anchor/replication artifacts are `52fa8f74` and `c36a7b0f`. Immediate outward continuation remained the minority across every fractional rung, while retry-allowed episodes confirmed meaningful reversions without full next-band touches. Simple inward-turn confirmation remained mixed and negatively skewed, so continuous depth is supported as location/capacity context but not as an optimal nonlinear sizing curve. Twenty-five focused tests and all static/structural checks pass. Ticket 207 persistence work, strategies, Threshold Engine, nonlinear allocator, live runtime, and capital paths were untouched; no commit or push occurred.
+
 ## 2026-08-06 — VWAP dual-domain band traversal event study
 
 - Shipped an isolated, read-only VWAP event-study package that measures closed-bar band traversal separately in raw-price and normalized-signal domains with both lookbacks frozen at 100. Canonical BTC Binance USDM 15m artifact runs `e88e7013` and `d474a327` cover chronological 10,000/9,999-bar halves. Both reproduce the same broad transition structure; price and signal touches are highly coupled, and the stricter inward 2σ→1σ race is approximately coin-flip rather than an automatic reversion. Generated artifacts live under the KB's ignored `.research/runs/` workspace, never the application repo. Seventeen focused tests plus Ruff, formatting, mypy, function-length review, and diff checks pass. Threshold Engine V3 was not changed; no live/capital mutation, commit, or push occurred.

@@ -17,6 +17,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[research/trading/weather-map/overview|Multiframe Forecasting Weather Map]] — parked long-horizon concept for probabilistic timeframe × horizon price paths, graph topology, and traversal-aware trading.
 - [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — active BTC timeframe scan, followed by multi-asset screening if the baseline remains coherent.
 - [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — active multi-branch program; no current immediate-execution mapping is promoted.
+- [[research/trading/vwap-mean-reversion/event-study-findings-audit|VWAP Event-Study Findings Audit]] — interpreted audit of the dual-domain, fractional-depth, and signed depth-response studies; new event-study design is paused pending review.
 - [[research/trading/multi-speed-ewmac/multi-speed-ewmac|Multiple Trend Following Rules (Strategy Nine)]] — book-faithful multi-speed EWMAC baseline, crypto evaluation assumptions, and staged research direction.
 - [[research/trading/emac-cross-10-200/event_study_anchor_findings|EMAC Event Study — Anchor Findings]] — interpreted verdicts from the signal-stats event study anchor run; holdout pending.
 - [[research/trading/ema_px_trend/codification|EMA/PX Trend Continuation Codification]] — running chart-led specification for Destin's short-side EMA/PX discretionary mapping, with long-side semantics still pending.

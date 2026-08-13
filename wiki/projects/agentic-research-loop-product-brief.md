@@ -219,7 +219,7 @@ The first slice succeeds when:
 
 Execution belongs in the re-scoped [Agentic Research Loop](https://linear.app/money-machine/project/agentic-research-loop-176aff6d7aac) project. Historical cancelled issues remain historical; new issues are derived from this vertical slice rather than reopened wholesale.
 
-- [MON-177](https://linear.app/money-machine/issue/MON-177/establish-research-run-artifact-workspace-and-contain-event-study) — **Ready:** artifact workspace, manifest contract, and containment of future event-study outputs.
+- [MON-177](https://linear.app/money-machine/issue/MON-177/establish-research-run-artifact-workspace-and-contain-event-study) — **Done:** typed artifact workspace and manifest contract, future EMA event-study containment, explicit evidence-role input, failed-run manifests, checksummed inventories, and registered compression figures.
 - [MON-178](https://linear.app/money-machine/issue/MON-178/expose-event-study-describe-run-and-bounded-extract-window-through) — **Blocked by MON-177:** event-study `describe_run` and bounded `extract_window`.
 - [MON-179](https://linear.app/money-machine/issue/MON-179/add-declarative-render-chart-and-structured-annotations-for-research) — **Blocked by MON-177/178:** deterministic `render_chart` and structured annotations.
 - [MON-180](https://linear.app/money-machine/issue/MON-180/enforce-discovery-validation-and-holdout-permissions-across-research) — **Blocked by MON-178/179:** evidence-permission enforcement across the read surface.

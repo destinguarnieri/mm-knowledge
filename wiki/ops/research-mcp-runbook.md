@@ -115,8 +115,8 @@ event data to score a run.
     "config": {},               # optional, defaults to {}
     "trade_config": {},         # optional, defaults to {}
     "initial_capital": 10000.0,
-    "fees": 0.0005,             # 5 bps
-    "slippage": 0.0005,         # 5 bps
+    "fee_bps": 5.0,             # 5 bps per side
+    "slippage_bps": 5.0,        # 5 bps per side
     "detail_mode": "compact",   # default — keep this for the loop
     "auto_save": True,          # default — always save
 }

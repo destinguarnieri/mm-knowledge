@@ -143,3 +143,18 @@ Resolved analysis choices made during implementation (frozen; not in V1 text):
 - **Chop-flag lookback caveat (Destin, 2026-07-20):** the 200-bar trailing window behind `rolling_width` pinch and `sym_compression` is an unvalidated free parameter — the H4 failure may be a lookback artifact rather than a hypothesis failure. Deferred check (explicitly not blocking the holdout): visually confirm the flagged compression areas match the chart-identified braid/chop regions before trusting or tuning the flag.
 
 Anchor fixture ran: 11,953 events, 410 sign legs, 507 breakout episodes over 49,800 scored bars. Artifacts in `mm_v04/backend/app/lib/analysis/event_study/output/8077b0dd-e440-48d7-8e64-a4ef81d1074e/` (local, uncommitted).
+
+## Registered artifact workspace (2026-08-12)
+
+MON-177 contains future EMA event-study output under the ignored top-level `.research/runs/ema_signal_stats/<research_run_id>/` workspace. New invocations require an explicit evidence role and return the allocated research run ID before loading the fixture:
+
+```bash
+cd mm_v04/backend
+uv run python -m app.lib.analysis.event_study.run_event_study \
+  --run-id <source-backtest-run-id> \
+  --evidence-role discovery \
+  --research-thread <thread-id> \
+  --linear-issue MON-177
+```
+
+Each run contains `manifest.json`, `summary.json`, `data/`, `figures/`, and `logs/`. The typed manifest records source/config/code identity, requested and actual windows, evidence role, available aligned series and panels, lifecycle status, warnings, and a checksummed inventory of generated artifacts. The compression plotter now accepts `--research-run-id` and attaches its figure to that same run. Execution failures retain an explicit failed manifest. The historical tracked `backend/app/lib/analysis/event_study/output/` tree remains untouched pending MON-182.

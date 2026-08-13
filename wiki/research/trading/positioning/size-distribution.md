@@ -86,6 +86,12 @@ This asymmetry is why the two concepts cannot be collapsed into alternate absolu
 
 Think like a market maker managing inventory at favorable prices.
 
+The paired reference sketches preserve the accepted time-0/time-1 price-space example. The quantity marks describe bounded transaction allocations and inventory available to the schedules, not a nonlinear absolute-position target:
+
+![Price-space bounded accumulation and distribution schedules at time 0](price-space-round-trip-t0.png)
+
+![Price-space bounded accumulation and distribution schedules at time 1](price-space-round-trip-t1.png)
+
 Example, long side at time 0:
 
 - current inventory: 2;
@@ -127,6 +133,10 @@ One shared curve cannot produce favorable averages for both acquisition and rele
 ## Signal-space translation
 
 Price space defines the economics. Signal space supplies a proxy coordinate for traversal.
+
+The corresponding signal-space sketch is also unit-based accumulation and distribution. Labels such as `Buy 1 unit` and `Buy 7 units` are transaction tranches allocated by the schedules; they are not absolute-position targets:
+
+![Signal-space unit-based accumulation and distribution schedules](signal-space-accumulation-distribution.png)
 
 For the confirmed short inverse example:
 

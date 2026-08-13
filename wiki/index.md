@@ -8,6 +8,7 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[sessions/current-checkpoint|Current Checkpoint]] — active strategy, proof period, blocker, evidence, and next action.
 - [[ops/linear-operating-system|Linear Operating System]] — issue intake, execution state, and WIP rules.
 - [[trading/catalog_v1|Trading Catalog]] — Destin's inventory of indicators, anomalies, market-state inputs, controls, execution styles, and concepts. It is both the glossary of record and the source for a typed implementation/evaluation queue. A queued primitive is not automatically alpha and must not be combined into a strategy without a separate hypothesis.
+- [[research/trading/catalog_queue|Trading Catalog Implementation and Evaluation Queue]] — stable agent-pull records for every catalog primitive, including implementation evidence, provisional first-pass measurements, semantic-review gates, dependencies, and queue state.
 - [[research/trading/research_process_v2|Research Process V2]] — current quant research protocol: lane router + evidence ladder, signal-validity/monetization split, symmetric kill/upside framing, dual costs, cross-market generalization. (Supersedes [[research/trading/research_process_v1|V1]].)
 - [[research/trading/agentic_research_playbook|Agentic Research Playbook]] — cycle-level companion used inside a bounded V2 workstream for correctness review, chart/time-series diagnosis, evidence scoping, and selection of the next test.
 - [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]] — agent-as-customer product contract for typed research-run evidence, bounded extraction, deterministic chart rendering, annotations, and the event-study vertical slice.
@@ -47,6 +48,7 @@ Canonical markdown lives under `wiki/`:
 - `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v2` current, `research_process_v1` superseded, example research directory).
 - `wiki/trading/` — trading language and discretionary/strategy context.
   - [[trading/catalog_v1|Trading Catalog]] — Destin's draft catalog of his hand-trading tools and vocabulary; the glossary of record for his terms.
+  - [[research/trading/catalog_queue|Trading Catalog Implementation and Evaluation Queue]] — operational queue derived from the catalog without changing its wording or maturity.
   - `wiki/trading/entry/` — reusable discretionary entry and sizing primitives.
   - [[trading/positioning/size-distribution|Size Distribution]] — confirmed price-leg inventory-allocation intent (Higher/Lower + curve + amount), underwater linear-average problem, and unaccepted experimental signal-target implementation.
 - `wiki/concepts/` — cross-cutting domain concepts and agent procedures.

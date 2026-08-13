@@ -112,6 +112,63 @@ At time 1, price has fallen to 98.10 and traversed part of the accumulation rang
 
 Nothing switched from accumulation to distribution. Both schedules existed throughout. A subsequent rise traverses the distribution schedule; a further fall traverses more of the accumulation schedule.
 
+## Accepted refresh lifecycle
+
+The time-0/time-1 example is a sequence of fresh inventory snapshots, not a stateful curve carrying fill progress forever:
+
+1. At time 0, the caller builds both schedules from current inventory, maximum inventory, average entry, and strategy-selected ranges.
+2. Coordinate movement alone does not change inventory. A transaction fill made actionable during traversal changes inventory and may change average entry.
+3. After the fill, the caller invalidates and rebuilds both schedules from the new snapshot.
+4. The fresh accumulation total is remaining capacity, `max(0, maximum inventory - current inventory)`. The fresh distribution total is current inventory.
+
+The caller owns refresh timing. Rebuilding after every fill is the accepted normal use, while batching fills or refreshing on another strategy event remains a caller policy. Any unfilled allocation from the replaced plan must be cancelled/replaced or counted as reserved capacity by the execution layer; that state does not belong in the generic curve.
+
+## Accepted generic curve contract and implementation progress
+
+The generic curve is a stateless description of one fresh plan:
+
+- it receives exactly two range coordinates, start and end, plus the coordinate being evaluated;
+- it is coordinate-agnostic and works in price space or signal space;
+- it receives the total transaction quantity, curve family, skew amount, and whether size is weighted toward the numerically lower or higher end;
+- it returns the transaction quantity allocated by that fresh plan at the evaluated coordinate, bounded from zero at the start to the total quantity at the end;
+- it does not receive completed quantity, inventory, average entry, strategy direction, fill state, or refresh state.
+
+Discrete sampling or execution placement may consume the continuous curve later, but a list of supplied levels is not part of the accepted core contract.
+
+The quantity-weighted average of a price-space curve is its implied average transaction price. The same calculation in signal space is an implied average transaction signal coordinate, such as `-0.12`; actual average entry price still requires observed transaction prices.
+
+Local implementation work has established two small helpers:
+
+- `backend/app/helpers/allocation_curve.py` exposes `scheduled_quantity_at_coordinate(...)` with the stateless contract above;
+- `backend/app/helpers/position_schedule.py` independently caps accumulation by remaining capacity and distribution by current inventory, preventing release through flat.
+
+An interactive design lab was also used to confirm that simulated fills update inventory, remaining capacity, releasable inventory, transaction average, and average entry, and that accumulation and distribution curves can be weighted independently. Action mapping, strategy wiring, deterministic tests, linting, and economic backtests remain unfinished. Tests and linting are intentionally deferred until the reviewed implementation steps are complete.
+
+## Implementation checkpoint — 2026-08-13
+
+The first bounded implementation and deterministic-verification pass is complete locally in `mm_v04`:
+
+- `backend/app/helpers/allocation_curve.py` implements the stateless continuous allocation query across exactly two endpoints, with cubic or exponential shape and numerical Lower/Higher weighting;
+- `backend/app/helpers/position_schedule.py` derives fresh accumulation totals from remaining capacity and fresh distribution totals from current inventory, composes those totals with independently configured curves, retains final quantity caps, and maps `accumulate|distribute` plus `long|short` into `buy|sell` and reduce-only semantics;
+- `backend/app/backtest/strategies/positions_lab.py` no longer uses the rejected absolute-target or one-bar motion-switching model. The non-trading backtest lab now emits simultaneous accumulation/distribution allocations and their snapshot-derived totals from a fixed inventory snapshot.
+
+Thirty-one focused deterministic tests pass. They cover curve endpoints and clamping, linear zero-weight behavior, cubic/exponential Lower/Higher weighting, reversed ranges, price/signal normalized equivalence, invalid inputs, the accepted time-0/time-1 inventory totals (`2/12 → 10 accumulation and 2 distribution`; `5/12 → 7 and 5`), caps, and all four side-aware execution mappings. Focused Ruff format/check and mypy pass across the three implementation files and two new test files.
+
+This checkpoint verifies the headless contract; it is not an economic backtest and does not create orders. The backtest lab is not a satisfactory curve-tuning interface. A separate interactive Position Lab UI is desired later for visual fine-tuning, simulated fills, average-entry changes, and schedule rebuilds. Strategy wiring, execution-layer replacement/reservation handling, economic evaluation, and live/capital mutation remain out of scope and unfinished.
+
+## Interactive Position Lab closure — 2026-08-13
+
+The separate interactive Position Lab is now implemented locally in `mm_v04` and closes the accepted MON-168 evaluation surface:
+
+- an authenticated read-only preview endpoint rebuilds both schedules from the submitted inventory snapshot without database, order, position, or live-runtime mutation;
+- the frontend supports price or signal coordinates, long or short inventory, independent accumulation/distribution ranges and curve controls, dynamic capacity/releasable inventory, simultaneous curve display, and side-aware execution/reduce-only labels;
+- the chart displays current coordinate, inventory average coordinate, full accumulation/distribution implied averages, explicit schedule ranges, and endpoints without animation flashes during coordinate movement;
+- accumulation and distribution have separate simulated-fill actions so overlapping actionable schedules are never silently resolved;
+- each simulated fill creates the next local snapshot and rebuilds both schedules. Accumulation updates the quantity-weighted average price or signal coordinate; distribution preserves that average while inventory remains and clears it at flat;
+- lifecycle history records `t0`, `t1`, and later local snapshots. Manual snapshot edits reset that local history.
+
+Final deterministic verification comprises 31 backend allocation/controller tests and six frontend lifecycle tests. The frontend production build and lint pass; scoped backend Ruff and mypy pass. MON-168 is Done. Deferred overlay toggles, undo/reset, saved configurations, richer lifecycle comparison, strategy-owned anchors, refresh/reservation policy, discrete quote placement/rounding, economic backtests, and any later execution integration are recorded in [MON-224](https://linear.app/money-machine/issue/MON-224/extend-position-lab-controls-persistence-and-strategy-integration). No live or capital mutation occurred.
+
 ## Favorable price orientations
 
 `Higher` and `Lower` name the **price end receiving more transaction size**. They do not name signal direction, position side, or motion toward zero.
@@ -203,7 +260,7 @@ These knobs shape quantity allocation within a supplied range. They do not deter
 - `signal_to_position_banded` — linear absolute target over a caller-supplied magnitude band.
 - `signal_to_position_banded_skewed` — experimental inverse-only warped absolute target.
 - `band_end_from_motion_inverse` — experimental one-bar motion selector.
-- `positions_lab` — demonstrates the rejected switching behavior.
+- the prior `positions_lab` implementation — demonstrated the rejected switching behavior; the local MON-168 replacement now emits concurrent bounded transaction schedules as recorded above.
 
 These functions may contain reusable curve-warp mathematics, but their absolute-target contract is not the confirmed size-distribution architecture.
 

@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-08-12
+Date: 2026-08-13
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -16,6 +16,7 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
 ## Current Engineering State
 
+- MON-168 is Done. The verified stateless coordinate-agnostic allocator, inventory-snapshot totals/caps, side-aware execution semantics, and concurrent schedules now have an authenticated read-only preview API and separate interactive Position Lab. The UI tunes price/signal curves, plots schedule and inventory averages, simulates explicit accumulation/distribution fills, records local `t0`/`t1` lifecycle snapshots, and rebuilds both schedules without any live or capital mutation. Thirty-one backend core tests and six frontend lifecycle tests pass; frontend build/lint and scoped backend Ruff/mypy are clean. Deferred UX, persistence, strategy, quote-placement/rounding, economic, and execution work is recorded in follow-on MON-224.
 - Binance research planning now uses one shared lifespan → exact preview → reviewed execution contract in the Backtest UI and Research MCP. Durable lifecycles seed from Binance `exchangeInfo` and boundary-only kline verification; manual groups require at least two assets; preview is read-only; execution rejects stale or altered plans and never replans. The legacy fixed-floor/cohort plan-and-run surface is removed. MON-216 through MON-220, MON-222, and parent MON-214 are Done; optional recommendation MON-221 remains Backlog.
 - Agentic Research Loop product direction is now active and treats the research agent as the customer. Autonomous inspection will use typed MCP run discovery, bounded extraction, deterministic rendering, and structured annotations; the browser UI is human-only. The EMA 10/200 event study is the first vertical slice. Signal-deciles and the cancelled Study/Variant/Trial persistence redesign are explicitly not foundations for this work.
 - `px_threshold` is implemented in `mm_v04` with Threshold Engine V3 transition-only full long/flat/full short sizing and no continuous rebalancing.
@@ -58,11 +59,13 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 
 ## Verification
 
+- MON-168 focused verification: 31 deterministic helper tests pass across endpoints/clamping, curve families and Lower/Higher direction, reversed ranges, price/signal equivalence, accepted time-0/time-1 inventory totals, caps, invalid inputs, and all side-aware execution mappings. Scoped Ruff format/check and mypy pass across the three implementation files and two test files. No backtest run or live/capital path was exercised.
 - The Agentic Research Loop Linear project is active around the event-study acceptance journey. [MON-177](https://linear.app/money-machine/issue/MON-177/establish-research-run-artifact-workspace-and-contain-event-study) is Done: future EMA event studies use an ignored typed research-run workspace with required evidence roles, explicit failure manifests, checksummed inventories, aligned series, and registered compression figures. Manifest schema v2 records both fees and slippage in canonical basis points and transparently migrates v1 mixed-unit manifests when loaded. Real v1 smoke run `e19e77d7-162c-4b93-9112-021f6d29b083` and v2 verification run `571779ae-32ec-4f46-bdfe-062cad2114b1` completed from saved backtest `8077b0dd-e440-48d7-8e64-a4ef81d1074e`; each has 11 checksum-verified artifacts including its registered compression figure. MON-178–181 retain Blocked status through describe/extract, render/annotations, evidence permissions, and end-to-end acceptance. [MON-182](https://linear.app/money-machine/issue/MON-182/decide-preservation-and-cleanup-of-legacy-tracked-event-study-outputs) remains human-blocked on the untouched roughly 312 MB / 355 tracked historical outputs. Existing saved-backtest `list_saved_run_series` / `get_saved_run_series` tools are retained as substrate.
 - Linear MON-155 (fee/slippage cost semantics) is Done.
 - Linear MON-156 (cold batch acceleration) is Done.
 - Linear MON-145 (agent access to UI-owned saved runs) is Done.
 - The Research Board is rebuilt around revenue candidates, reusable mechanisms, and horizon programs.
+- The [[research/trading/catalog_queue|Trading Catalog queue]] now exposes 42 stable agent-pull records with exact implementation evidence, provisional first-pass measurements, dependencies, candidate uses, and queue state. PRI/PRL/PRZ/PRB are both independently evaluable components and one combined Price Reversal System. Destin semantic review gates every provisional measurement before it is treated as faithful or economically evaluated.
 - MON-214's required slices are complete: MON-216 lifecycle persistence, MON-217 exact preview, MON-218 reviewed execution, MON-219 UI editor, MON-220 MCP tools, and MON-222 legacy cutover are Done. UI smoke covered refresh → grouping → preview → accepted execution. Research MCP returned 859 stored lifecycles, previewed a valid unchanged 437-bar SOL/HYPE 1D plan, and executed it as saved run `6b45dfb9-12be-5489-9a9f-4e5e033ce78e` with 2/2 assets successful, zero failures, and zero liquidations. Optional recommendation MON-221 remains Backlog. The legacy 44 fixed-floor runs remain quarantined pending exact-plan reruns.
 - Registered `px_threshold` implementation: 4 focused tests pass; changed files pass focused Ruff and source mypy checks.
 - Four 96-asset threshold-only runs persisted: original-window 5/10 bps and short-forward 5/10 bps. Original-window economics improved materially; both forward medians were negative.
@@ -76,6 +79,8 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 - MON-163 is Done. Paired Binance runs: intended control `5ce4aa11`, intended slope `f1b57f85`, stress control `8fb88390`, stress slope `8fbde7bc`; 30/32 paired assets completed, with LIT/SKR failing symmetrically for incomplete history.
 
 ## Next Action
+
+For positioning, preserve the completed MON-168 core and interactive Position Lab as the current checkpoint. Do not expand into MON-224 until a bounded enhancement or integration phase is explicitly selected. Strategy-owned anchors, replacement/reserved-capacity policy, discrete quote placement and rounding, economic backtests, and any live execution remain separately gated.
 
 For VWAP, review [[research/trading/vwap-mean-reversion/event-study-findings-audit|VWAP Event-Study Findings Audit]] before creating another event study or preregistering a depth/capacity experiment. Decide which first-touch questions remain useful, which fractional-depth observations survive coordinate disagreement, whether the signed representation is useful, and the exact estimand for every-candle analysis. Treatment of within-episode and overlapping-horizon independence remains open for Destin's later argument. Keep readiness features, curve tuning, allocator implementation, and live wiring out of this audit step; `px_signal_bands` remains a binary correctness control rather than the destination design.
 

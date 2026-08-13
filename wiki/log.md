@@ -2,6 +2,10 @@
 
 Chronological log of meaningful KB changes. Keep entries concise and link changed pages.
 
+## 2026-08-13
+
+- Added [[research/trading/catalog_queue|Trading Catalog Implementation and Evaluation Queue]] and linked it from the source catalog, wiki index, Research Board, and checkpoint. The queue preserves source maturity, separates implementation from evaluation, and gates provisional first-pass measurements on Destin semantic review.
+
 ## 2026-08-05
 
 - Added [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]] and linked it from the wiki index, Research Board, playbook, checkpoint, and session log. The brief defines the agent-as-customer product policy and event-study vertical slice.

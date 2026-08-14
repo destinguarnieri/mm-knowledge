@@ -1,6 +1,6 @@
 # Current Checkpoint
 
-Date: 2026-08-13
+Date: 2026-08-14
 
 Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 
@@ -9,7 +9,7 @@ Company frame: [[company/money-machine-360|Money Machine Operating Context]].
 - **Objective:** positive net realized live P&L after costs over a founder-set proof period.
 - **Proof period:** not yet set; Destin sets it before live evaluation begins.
 - **Company phase:** parallel revenue research and monetization. Strategy origin does not determine priority.
-- **Research portfolio:** multiple agent-owned programs run in parallel. VWAP, the full EMA 10/200 program, EMA/PX agent vision, multi-speed EWMAC, position/control research, the Catalog queue, and the first multi-signal forecasting baseline are all represented on the Research Board and in Linear.
+- **Research portfolio:** multiple agent-owned programs run in parallel. VWAP, the full EMA 10/200 program, EMA/PX agent vision, multi-speed EWMAC, position/control research, the Catalog queue, the Price Reversal System, and the first multi-signal forecasting baseline are all represented on the Research Board and in Linear.
 - **Current VWAP state:** no immediate-execution mapping is promoted. The three completed event studies now have a dedicated [[research/trading/vwap-mean-reversion/event-study-findings-audit|findings audit]] that treats dual-domain first touch, fractional depth, and signed depth response as distinct descriptive estimands. Fractional depth is retained despite disputed coordinates; the signed representation is not automatically preferred. New VWAP event-study design is paused pending Destin's review before any position-curve experiment.
 - **Observed VWAP blocker:** older Hyperliquid candles are unavailable for the planned preceding-window test, and fixed adverse slippage does not represent credible passive limit-order execution.
 - **WIP:** one bounded issue per agent, many independent agents/programs in parallel; keep Destin's human decision/review queue small.
@@ -66,6 +66,7 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 - Linear MON-145 (agent access to UI-owned saved runs) is Done.
 - The Research Board is rebuilt around revenue candidates, reusable mechanisms, and horizon programs.
 - The [[research/trading/catalog_queue|Trading Catalog queue]] now exposes 42 stable agent-pull records with exact implementation evidence, provisional first-pass measurements, dependencies, candidate uses, and queue state. PRI/PRL/PRZ/PRB are both independently evaluable components and one combined Price Reversal System. Destin semantic review gates every provisional measurement before it is treated as faithful or economically evaluated.
+- The active [Price Reversal System Research](https://linear.app/money-machine/project/price-reversal-system-research-1b1579ea6126) project now owns PRI, PRL, PRZ, PRB, and later combined-system evaluation. High-priority Ready issue [MON-226](https://linear.app/money-machine/issue/MON-226/validate-pri-and-run-the-initial-prb-censored-event-study) is the first bounded packet: PRI-only signal validity on Binance USD-M's frozen current-volume top 100 across seven separately reported timeframes, with the primary open PRL, strict close-through PRB, PRB-censored MFE/MAE, matched controls, and no retest, PRZ, capture, economics, execution, or live scope.
 - MON-214's required slices are complete: MON-216 lifecycle persistence, MON-217 exact preview, MON-218 reviewed execution, MON-219 UI editor, MON-220 MCP tools, and MON-222 legacy cutover are Done. UI smoke covered refresh → grouping → preview → accepted execution. Research MCP returned 859 stored lifecycles, previewed a valid unchanged 437-bar SOL/HYPE 1D plan, and executed it as saved run `6b45dfb9-12be-5489-9a9f-4e5e033ce78e` with 2/2 assets successful, zero failures, and zero liquidations. Optional recommendation MON-221 remains Backlog. The legacy 44 fixed-floor runs remain quarantined pending exact-plan reruns.
 - Registered `px_threshold` implementation: 4 focused tests pass; changed files pass focused Ruff and source mypy checks.
 - Four 96-asset threshold-only runs persisted: original-window 5/10 bps and short-forward 5/10 bps. Original-window economics improved materially; both forward medians were negative.
@@ -79,6 +80,8 @@ Destin's stronger forward hunch is that the best VWAP capture will use the calcu
 - MON-163 is Done. Paired Binance runs: intended control `5ce4aa11`, intended slope `f1b57f85`, stress control `8fb88390`, stress slope `8fbde7bc`; 30/32 paired assets completed, with LIT/SKR failing symmetrically for incomplete history.
 
 ## Next Action
+
+For the Price Reversal System, pull [MON-226](https://linear.app/money-machine/issue/MON-226/validate-pri-and-run-the-initial-prb-censored-event-study). Freeze chronological evidence windows and per-timeframe forward horizons, audit `pri_v3` against the confirmed truth table and representative event marks, then run the isolated PRI-only signal-validity study. Keep retest, PRZ, capture, strategy economics, execution, and live wiring outside this first packet.
 
 For positioning, preserve the completed MON-168 core and interactive Position Lab as the current checkpoint. Do not expand into MON-224 until a bounded enhancement or integration phase is explicitly selected. Strategy-owned anchors, replacement/reserved-capacity policy, discrete quote placement and rounding, economic backtests, and any live execution remain separately gated.
 

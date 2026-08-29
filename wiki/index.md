@@ -7,10 +7,12 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[company/money-machine-360|Money Machine Operating Context]] — canonical company frame, revenue proof, work lanes, and decision standard.
 - [[sessions/current-checkpoint|Current Checkpoint]] — active strategy, proof period, blocker, evidence, and next action.
 - [[ops/linear-operating-system|Linear Operating System]] — issue intake, execution state, and WIP rules.
+- [[trading/pmax|P_Max]] — foundational model of market opportunity: extractable value is positive and computable, so "no edge" is not a finding. Defines the constraint ladder, capture ratio, and the gap decomposition (information / cost / policy) that every research result must supply. Mandatory reading.
 - [[trading/catalog_v1|Trading Catalog]] — Destin's inventory of indicators, anomalies, market-state inputs, controls, execution styles, and concepts. It is both the glossary of record and the source for a typed implementation/evaluation queue. A queued primitive is not automatically alpha and must not be combined into a strategy without a separate hypothesis.
 - [[research/trading/catalog_queue|Trading Catalog Implementation and Evaluation Queue]] — stable agent-pull records for every catalog primitive, including implementation evidence, provisional first-pass measurements, semantic-review gates, dependencies, and queue state.
-- [[research/trading/research_process_v2|Research Process V2]] — current quant research protocol: lane router + evidence ladder, signal-validity/monetization split, symmetric kill/upside framing, dual costs, cross-market generalization. (Supersedes [[research/trading/research_process_v1|V1]].)
-- [[research/trading/agentic_research_playbook|Agentic Research Playbook]] — cycle-level companion used inside a bounded V2 workstream for correctness review, chart/time-series diagnosis, evidence scoping, and selection of the next test.
+- [[research/trading/research_process_v2|Research Process V2]] — current quant research protocol: lane router + evidence ladder, signal-validity/monetization split, symmetric kill/upside framing, dual costs, cross-market generalization. (Supersedes V1, removed 2026-08-28; history in the session changelog.)
+- [[research/trading/study-menu|Study Menu]] — the named set of event-study shapes, when each applies, and what each is structurally unable to see. Choose from it rather than copying a neighbouring study.
+- [[research/trading/agentic_research_playbook|Agentic Research Playbook]] — **first draft, not current process.** Design sketch for a future autonomous solo research loop; rework deferred. Use the `capture-engineer` skill for per-cycle execution and [[research/trading/research_process_v2|V2]] for process.
 - [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]] — agent-as-customer product contract for typed research-run evidence, bounded extraction, deterministic chart rendering, annotations, and the event-study vertical slice.
 - [[research/trading/example_research_directory/example_research_doc|Example Research Doc]] — style reference for the two-layer research file (living head + append-only tail) per Research Process V2.
 - [[research/trading/research_index|Research Board]] — living roster of active research threads (lane, validity/monetization state, status, next step); read this first to see what research is live.
@@ -45,12 +47,12 @@ Canonical markdown lives under `wiki/`:
 - `wiki/engineering/` — stable engineering architecture, contracts, inventories, implementation context, and invariants; not ticket or implementation plans.
   - [[engineering/backtest-strategies-index|Backtest Strategies Index]] — light inventory of registered backtest strategy implementations (registered name, class, file, key params).
 - `wiki/quant/` — quantitative research notes.
-- `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v2` current, `research_process_v1` superseded, example research directory).
+- `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v2` current; per-program research directories).
 - `wiki/trading/` — trading language and discretionary/strategy context.
   - [[trading/catalog_v1|Trading Catalog]] — Destin's draft catalog of his hand-trading tools and vocabulary; the glossary of record for his terms.
   - [[research/trading/catalog_queue|Trading Catalog Implementation and Evaluation Queue]] — operational queue derived from the catalog without changing its wording or maturity.
   - `wiki/trading/entry/` — reusable discretionary entry and sizing primitives.
-  - [[trading/positioning/size-distribution|Size Distribution]] — confirmed price-leg inventory-allocation intent (Higher/Lower + curve + amount), underwater linear-average problem, and unaccepted experimental signal-target implementation.
+  - [[research/trading/positioning/size-distribution|Size Distribution]] — confirmed price-leg inventory-allocation intent (Higher/Lower + curve + amount), underwater linear-average problem, and unaccepted experimental signal-target implementation.
 - `wiki/concepts/` — cross-cutting domain concepts and agent procedures.
 - `wiki/projects/` — active initiative context, project-level synthesis, and bounded execution plans.
 - `wiki/decisions/` — durable decision records.

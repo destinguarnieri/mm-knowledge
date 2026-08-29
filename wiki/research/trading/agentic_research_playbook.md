@@ -1,6 +1,12 @@
 # Agentic Research Playbook
 
-Status: in progress
+Status: **first draft — not current process. Do not follow for today's work.**
+
+> This is a design sketch for a future **solo autonomous research loop**, captured from a conversation and a set of hand-drawn diagrams. It predates the capture-first environment rework (2026-08-28) and still frames research around stop/escalation conditions rather than gap decomposition.
+>
+> Current per-cycle execution is the `capture-engineer` skill. Current process is [[research/trading/research_process_v2|Research Process V2]]. Its evidence-scope ladder and Scope Record have been promoted into V2 §2b.
+>
+> Rework is deferred by decision, not oversight. Retained as the seed for the autonomous-loop product.
 
 ## Evidence scope, diagnostic questions, and the alpha loop
 

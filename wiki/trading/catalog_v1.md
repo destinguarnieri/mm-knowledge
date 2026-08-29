@@ -398,7 +398,7 @@ It transforms timing risk into directional risk.
 
 *(section body not yet written)*
 
-See [[trading/positioning/size-distribution|Size Distribution]] for the elicited signal→position skew concept (size mass along the signal path; not quote spacing).
+See [[research/trading/positioning/size-distribution|Size Distribution]] for the elicited signal→position skew concept (size mass along the signal path; not quote spacing).
 
 ## Trading Styles
 

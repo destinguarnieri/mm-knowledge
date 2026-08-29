@@ -1,17 +1,19 @@
 # Research Process V2
 
-Supersedes [[research/trading/research_process_v1|Research Process V1]] (2026-07-23). V1 is retained for history.
+Supersedes Research Process V1 (2026-07-23), which was removed 2026-08-28; its history is in the session changelog.
 
 Purpose: turn a research question into a decision — and, when a real edge appears, into a *captured* edge — without either drifting into parameter chasing or killing a valid signal on the wrong assumption.
 
-Cycle-level companion: [[research/trading/agentic_research_playbook|Agentic Research Playbook]]. This process governs lane selection, evidence gates, holdouts, costs, authority, parallel-work boundaries, and promotion. After a bounded workstream and research card exist, use the playbook for correctness review, chart/time-series diagnosis, evidence scoping, and the next-test loop.
+Cycle-level execution: the `capture-engineer` skill (`mm_v04/.cursor/skills/capture-engineer/`) runs the within-cycle loop — instrument selection, experiment choice, and gap decomposition. This process governs lane selection, evidence gates, holdouts, costs, authority, parallel-work boundaries, and promotion. Study shapes come from [[research/trading/study-menu|Study Menu]].
+
+[[research/trading/agentic_research_playbook|Agentic Research Playbook]] is a first draft for a future autonomous solo loop and is **not** current process — do not follow it for present work.
 
 ## Design principles
 
-1. **Revenue proximity over strategy origin.** Discretionary codification, capture engineering, open discovery, and cross-market extension are research lanes, not a priority ranking. The [[research/trading/research_index|Research Board]] holds the current programs and executable workstreams. Use evidence, expected net edge, operational fit, and distance to a money decision to allocate scarce human review and resolve conflicts—not to force all independent agent work into a single serial queue.
+1. **Revenue proximity over strategy origin.** Discretionary codification, capture engineering, open discovery, external-model reproduction, and cross-market extension are research lanes, not a priority ranking. The [[research/trading/research_index|Research Board]] holds the current programs and executable workstreams. Use evidence, expected net edge, operational fit, and distance to a money decision to allocate scarce human review and resolve conflicts—not to force all independent agent work into a single serial queue.
 2. **Two separate questions, separately gated:** does the signal carry directional information (validity), and can we capture it after realistic costs (monetization)? Your own EMA work showed these diverge — direction right ~80% of the time while flip-only still lost money. A valid-but-uncaptured signal is a *promising, fundable state*, not a failure.
 3. **Market-agnostic and foundational.** Asset class (crypto perp, equities, futures, FX, …) is an explicit research axis like timeframe or asset. Research produces reusable building blocks — signal definitions, features, capture mechanisms — meant to be re-pointed at other markets cheaply. An edge that fails in one market is *open*, not dead, in the others.
-4. **Symmetric discipline.** Every stage carries both a kill thesis and an upside/capture thesis. Lead findings with the strongest positive read, then the caveats. Rigor is for calibration, not for deflating results.
+4. **Mappings are killable; signals are not.** Every stage carries both a kill thesis for the *current trade mapping* and an upside/capture thesis for the signal beneath it. Under [[trading/pmax|P_Max]] there is no verdict available that closes a line entirely — a losing policy is rejected, and the surviving signal returns to the capture lane with a gap decomposition. Lead findings with the strongest positive read, then the caveats. Rigor is for calibration, not for deflating results.
 5. **Two cost regimes, always.** Evaluate at the realistic achievable cost (e.g. maker vs taker, real fills) *and* under stress. Reporting only worst-case cost is what buries live edges; reporting only best-case is how you fool yourself.
 6. **Protect against the researcher's own intelligence.** A capable model (or human) generates convincing narratives about noise. Untouched holdouts, predictions-before-results, search-budget awareness, and no retroactive narrative changes are non-negotiable. Eloquence is unrelated to evidence.
 7. **Earn the right to risk.** Research earns the right to a small live canary; live evidence earns the right to scale. Capital mutation always requires explicit Destin authorization.
@@ -20,9 +22,10 @@ Cycle-level companion: [[research/trading/agentic_research_playbook|Agentic Rese
 
 Pick the lane before doing anything else so the correct method and evidence gates are used. **Lane selection does not set portfolio priority.** An agent must not promote or demote work merely because it is discretionary, systematic, discovered internally, or derived from an external source.
 
-- **Discretionary codification** — Destin already trades it. Use the `discretionary-strategy-codifier` skill. Extract exact visual/control semantics, preserve independently deployable mappings, prove behavioral parity *before* optimization. Destin's source strategy is the spec; unresolved semantics return to him. The mechanism is Destin's experience — the Mechanism rung (below) is satisfied, so start at Signal Validity or directly at Capture. This lane receives no automatic priority over other candidates.
-- **Capture engineering** — a signal already believed valid but not yet monetized (e.g. EMA's 80% time-in-money). Skip discovery; start at the Monetization rung. The whole job is finding a control policy (entry, exit, sizing, holding, regime gating) that harvests the signal after realistic costs.
+- **Discretionary codification** — Destin already trades it. Use `/strategy-codifier`, then `/capture-engineer` once semantics are extracted. Extract exact visual/control semantics, preserve independently deployable mappings, prove behavioral parity *before* optimization. Destin's source strategy is the spec; unresolved semantics return to him. The mechanism is Destin's experience — the Mechanism rung (below) is satisfied, so start at Signal Validity or directly at Capture. This lane receives no automatic priority over other candidates.
+- **Capture engineering** — a signal already believed valid but not yet monetized (e.g. EMA's 80% time-in-money). Use `/capture-engineer`. Skip discovery; start at the Monetization rung. Entry, exit, sizing, holding period, and regime gating are independent axes, and the deliverable is capture ratio against `P_Max(Δt, costs)` plus a gap decomposition.
 - **Open discovery** — an explicit new-edge search or an empirical uncertainty exposed during codification. Run the full ladder from Mechanism.
+- **External-model reproduction** — the strategy comes from a book, paper, or third party rather than from Destin's own trading. The mechanism is *claimed*, not proven by his P&L, so the Mechanism rung is not satisfied — reproduce the source faithfully against stated controls before any variation. Do not apply the codification lane's "his P&L is ground truth" prior here; there is no such prior.
 - **Cross-market extension** — take an already-validated edge to a new asset class/venue. Re-point the portable signal definition; re-derive only the market-specific capture and parameters; treat the new market as fresh holdout surface.
 
 Each lane declares up front: the decision(s) it must support, the deployment target(s) including **asset class + venue + account isolation**, and the split between the **portable** part (signal/mechanism) and the **market-specific** part (capture/params).
@@ -49,7 +52,7 @@ The backbone. Each rung is fail-fast, and each carries both a kill read and an u
 1. **Mechanism** — a coherent reason the edge could exist. (Satisfied by Destin's experience for codification.)
 2. **Cheap falsification** — the smallest test that could kill it, including a null/random-entry baseline (same exit, sizing, costs; shuffled entries) to confirm the signal beats noise at all.
 3. **Signal validity** — *does it carry directional information?* Time-in-money, hit rate, forward-return / information coefficient, favorable-excursion capture. **This is a separate gate from making money.** Passing here with monetization unsolved = "promising, capture-open" → route to rung 4, do not reject.
-4. **Monetization / capture** — *can a control policy harvest it after realistic costs?* Treat entry, exit, sizing, holding period, and regime gating as independent axes. Evaluate at realistic *and* stress costs. This is where capture-engineering work lives; a valid signal that no policy can monetize across realistic costs and markets is the real kill, not a losing first policy.
+4. **Monetization / capture** — *can a control policy harvest it after realistic costs?* Treat entry, exit, sizing, holding period, and regime gating as independent axes. Evaluate at realistic *and* stress costs. This is where capture-engineering work lives; a losing first policy is a policy result, not a signal result. Under [[trading/pmax|P_Max]] there is no kill verdict available here: report the shortfall as a gap decomposition (information / cost / policy) and name the next capture attempt.
 5. **Robustness / adversarial** — leakage and lookahead checks, overfit and parameter-cliff tests, regime/period dependence, search-budget haircut, and **cross-market generalization**: does the edge survive in another asset class, or is it market/microstructure-specific? Both outcomes are informative — a generalizing edge is stronger mechanism evidence *and* buys more independent regimes; a single-market edge is valid but labeled specialized. Do not force generalization; do not force rejection.
 6. **Deployability** — capacity, liquidity, latency, operational complexity, and failure behavior, per venue and asset class.
 7. **Shadow execution** — signals and simulated fills generated under real production conditions.
@@ -57,6 +60,38 @@ The backbone. Each rung is fail-fast, and each carries both a kill read and an u
 9. **Scale** — increase exposure only as live evidence supports the estimated edge, heavily haircut from historical estimates.
 
 Reflect after early rungs and choose one next state explicitly: **amplify** (a real signal appeared but is not yet captured — fund the capture experiment), **continue**, **modify** (a missing mechanism belongs in the strategy), **extend** (take it to another market), or **stop**. The modify budget (≈2–3 mechanism changes on an idea showing no edge) governs undisciplined churn, not pursuit of a live edge — following a validated signal to capture it is expected work.
+
+## 2b. Evidence-scope ladder
+
+Use this ladder after a result appears promising to describe the widest scope the evidence actually supports. Test the preregistered claim first. Narrow only when the evidence requires it, and treat every newly narrowed rule as a **new hypothesis requiring fresh validation**—not as a validated salvage result from the same data.
+
+```mermaid
+flowchart TD
+    A[Result for preregistered claim] --> B{Claim supported in tested scope?}
+    B -- Yes --> G[Record supported scope and boundaries]
+    B -- No --> F[Record rejection in tested scope]
+    F --> C{Defensible narrower hypothesis?}
+    C -- No --> X[Stop or archive]
+    C -- Yes --> N[Create a fresh research card and validation surface]
+    N --> A
+```
+
+### Scope record
+
+Every accepted finding should produce this record:
+
+- **Claim:** one sentence describing the effect.
+- **Research layer:** signal/feature / market state / forecast / position-control / execution / portfolio.
+- **Scope:** general / smaller universe / regime / single asset.
+- **Boundary:** explicit inclusion, exclusion, and trigger logic.
+- **Evidence:** development, holdout, perturbation, and cost-aware results.
+- **Mechanism:** why the effect may exist.
+- **Fragility:** known failure modes and concentration risks.
+- **Validity state:** supported / rejected-in-scope / untested.
+- **Forecast state:** supported / rejected-in-scope / not applicable / untested.
+- **Control and monetization state:** captured / capture-open / rejected mapping / untested.
+- **Portability:** portable component versus market-specific capture, parameters, and execution.
+- **Monitoring:** decay indicators and invalidation threshold.
 
 ## 3. Cross-market as a first-class axis
 
@@ -73,7 +108,9 @@ Non-negotiable, and they apply most to the agent:
 - Predictions recorded before results; label any post-result hypothesis revision.
 - Untouched holdouts; explicit discovery/validation separation; a validation asset touched for tuning becomes a discovery asset and needs a fresh one.
 - Multiple-testing / search-budget awareness; simple baselines.
-- Independent adversarial review for promotion-track candidates.
+- Independent adversarial review for promotion-track candidates: `/parity-auditor`, which audits divergence from Destin's actual trading and information leakage — not whether the edge exists.
+- Direction and favorable-outcome definition preregistered before results are inspected. A rate whose polarity is settled afterward is worthless.
+- `P_Max` and the perfect-foresight DP are non-causal by construction. They are legitimate as a denominator and as offline training labels, and must never appear in a policy's input features.
 - No retroactive narrative changes without disclosure. Eloquence ≠ evidence.
 
 ## 5. Ranking deployable edges

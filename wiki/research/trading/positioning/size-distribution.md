@@ -169,6 +169,20 @@ The separate interactive Position Lab is now implemented locally in `mm_v04` and
 
 Final deterministic verification comprises 31 backend allocation/controller tests and six frontend lifecycle tests. The frontend production build and lint pass; scoped backend Ruff and mypy pass. MON-168 is Done. Deferred overlay toggles, undo/reset, saved configurations, richer lifecycle comparison, strategy-owned anchors, refresh/reservation policy, discrete quote placement/rounding, economic backtests, and any later execution integration are recorded in [MON-224](https://linear.app/money-machine/issue/MON-224/extend-position-lab-controls-persistence-and-strategy-integration). No live or capital mutation occurred.
 
+## Strategy replay UI first-pass checkpoint — 2026-08-14
+
+[MON-225](https://linear.app/money-machine/issue/MON-225/build-strategy-replay-ui-for-position-curves-and-inventory-decisions) now has an uncommitted UI-first implementation checkpoint in the `codex/position-lab` worktree. The new `/backtest/replay` tab reuses saved-run hydration and the Backtest drawer rather than creating a parallel data-loading path.
+
+The implemented recorded-data surface is:
+
+- the existing full Backtest TradingView chart with a selectable highlighted candle window;
+- a second Lightweight Charts view containing the same saved candles zoomed to that fixed window plus a synchronized signed-column signal pane;
+- a separate replay cursor that resets to the first candle after window selection and reveals candles, signals, indicators, and average-entry price progressively with Previous/Next advancing exactly one candle;
+- compact-chart controls for candle color, indicator color, indicator selection, and average price, with pan/zoom preserved across replay steps;
+- an edge-to-edge terminal-style layout.
+
+The curve, discrete allocation, inventory readout, urgency, capacity, and curve-weight panels remain explicitly fixture-backed. They are layout scaffolding, not recorded strategy truth. No backend replay-frame contract, persistence, strategy reconstruction, decision/order/fill evidence, recorded-vs-What-if mode, or live/capital path was added. Focused frontend lint, TypeScript, diff checks, and production builds pass; deterministic replay alignment tests remain future work.
+
 ## Favorable price orientations
 
 `Higher` and `Lower` name the **price end receiving more transaction size**. They do not name signal direction, position side, or motion toward zero.

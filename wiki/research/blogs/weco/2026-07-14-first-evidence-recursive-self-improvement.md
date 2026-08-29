@@ -374,7 +374,7 @@ The article does not present a formal adoption checklist, but it implies the fol
 ### Potentially Applicable Ideas
 
 - **Nested research optimization should be evaluated on decision quality, not activity.** A fixed budget, hidden validation, and rejection-heavy gate align with Money Machine’s emphasis on closing research decisions rather than maximizing run count. This is a hypothesis for process design, not an adopted change.
-- **Public/private/holdout layers map naturally to strategy research.** Inner optimizers can see discovery metrics, candidate survival can use quarantined validation, and final promotion can consume an untouched holdout once. This reinforces, but does not replace, [[research/trading/research_process_v1|Research Process V1]].
+- **Public/private/holdout layers map naturally to strategy research.** Inner optimizers can see discovery metrics, candidate survival can use quarantined validation, and final promotion can consume an untouched holdout once. This reinforces, but does not replace, [[research/trading/research_process_v2|Research Process V2]].
 - **Heterogeneous evaluation could pressure agent research toward reusable methods.** For Money Machine, that might mean multiple assets, regimes, costs, and strategy families rather than one leaderboard. The evaluation must still respect the existing rule that validation assets and holdouts cannot feed parameter selection.
 - **Lossless artifacts plus bounded role-specific reads are promising for agent research continuity.** Full run records can remain the source of truth while researcher prompts receive only the relevant config, intent, recent findings, and failure signatures. This is consistent with the KB’s run-ID-plus-interpretation model and should not become duplicated metric archives.
 - **Reward hacking has a direct quantitative analogue.** Backtest leakage, metric gaming, silent evaluator repair, and exploiting artifact bugs are Money Machine versions of optimizing the score rather than the revenue hypothesis.
@@ -392,13 +392,13 @@ The article does not present a formal adoption checklist, but it implies the fol
 
 - AIDE²’s outer loop ran 100 expensive candidate evaluations. Money Machine’s current operating policy says automation is justified only after a real attempt proves the current path limiting; this source does not itself establish such a blocker for Money Machine. See [[company/money-machine-360|Money Machine Operating Context]].
 - Weco’s benchmark optimization tolerates opaque evolved code; Money Machine’s money-sensitive paths require explainability, negative-path verification, and human authority. Performance transfer cannot waive those constraints.
-- The article’s “store everything” write path should not be interpreted as permission to duplicate standard backtest metrics into the wiki. Money Machine’s durable research continuity remains persisted run IDs plus interpretation, with metrics in saved runs and the UI. See [[research/trading/research_process_v1|Research Process V1]].
+- The article’s “store everything” write path should not be interpreted as permission to duplicate standard backtest metrics into the wiki. Money Machine’s durable research continuity remains persisted run IDs plus interpretation, with metrics in saved runs and the UI. See [[research/trading/research_process_v2|Research Process V2]].
 - The current Money Machine checkpoint has no active need for recursive research-loop infrastructure. This source note does not alter [[sessions/current-checkpoint|Current Checkpoint]].
 
 ## Related Knowledge
 
 - [[company/money-machine-360|Money Machine Operating Context]] — fixed outcome focus, bounded enablement, and capital authority constraints.
-- [[research/trading/research_process_v1|Research Process V1]] — discovery/validation/holdout separation, cumulative search-budget tracking, and promotion gates.
+- [[research/trading/research_process_v2|Research Process V2]] — discovery/validation/holdout separation, cumulative search-budget tracking, and promotion gates.
 - [[sessions/current-checkpoint|Current Checkpoint]] — current revenue proof and the absence of an adopted autonomous-R&D expansion.
 - [[research/blogs/blog-extraction|Blog Extraction Workflow]] — provenance and claim/evidence structure used for this note.
 

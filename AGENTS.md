@@ -30,9 +30,8 @@ After work that materially changes durable state:
 2. Update `wiki/sessions/current-checkpoint.md` only when the objective, state, decision, blocker, verification, or next action changed.
 3. Append to `wiki/sessions/session-change-log.md` only for durable ticketing, implementation, verification, or product/engineering decisions.
 4. Update `wiki/index.md` only when routing or page inventory changed.
-5. Append to `wiki/log.md` only when KB structure changed.
-6. Run `/Users/destinguarnieri/.bun/bin/qmd update` after KB edits, then `/Users/destinguarnieri/.bun/bin/qmd embed`. Treat these as one step: `update` re-indexes text, `embed` vectorizes it, and a document that is indexed but not embedded is invisible to `qmd query` even though `qmd search` can still find it. Skip `embed` only when it reports nothing pending.
-7. Commit or push only when Destin explicitly authorized it for the current execution session.
+5. Run `/Users/destinguarnieri/.bun/bin/qmd update` after KB edits, then `/Users/destinguarnieri/.bun/bin/qmd embed`. Treat these as one step: `update` re-indexes text, `embed` vectorizes it, and a document that is indexed but not embedded is invisible to `qmd query` even though `qmd search` can still find it. Skip `embed` only when it reports nothing pending.
+6. Commit or push only when Destin explicitly authorized it for the current execution session.
 
 If no durable state changed, close the loop without creating a page, changelog entry, index edit, commit, or push.
 
@@ -58,7 +57,6 @@ archive/              # deprecated or historical material kept out of canonical 
 scripts/              # maintenance scripts such as link checkers
 wiki/                 # synthesized Obsidian-compatible markdown graph
   index.md            # routing map and page inventory
-  log.md              # chronological KB operation log
   company/            # company context and narrative
   ops/                # operating procedures and process docs
   engineering/        # stable architecture, contracts, implementation context, invariants

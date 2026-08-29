@@ -21,7 +21,9 @@ Finally, answer explicitly: **what would this study be structurally unable to se
 
 ## Invariants every shape obeys
 
-Enforced by the shared measurement contract, not by convention:
+Enforced by the shared measurement contract at
+`backend/app/lib/analysis/event_study/contract.py`, which every study imports.
+These raise `ContractViolation` at construction; they are not conventions:
 
 - **Terminal states are a named, exhaustive partition summing to 1.0.** Reporting one probability and leaving the complement to inference is how a polarity error survives review.
 - **Direction is signed at construction.** Returns live in hypothesis space, not price space, so "positive" always means the hypothesis was right.
@@ -36,7 +38,7 @@ Which of several named barriers is reached first, plus path statistics up to tha
 
 - **Use when:** the trade has exactly one exit and the episode genuinely ends at the first barrier.
 - **Cannot see:** anything after the first touch. For a strategy that scales out, holds a runner, or re-enters, this is where most of the P&L lives.
-- **Reference:** the PRI study — `PriDirection = Literal[-1, 1]`, `OutcomeEnd = Literal["prb", "horizon", "right_censored"]`, returns signed at construction.
+- **Reference:** the PRI study (source on branch `codex/pri-eventstudy`, not on `feat/work`) — `PriDirection = Literal[-1, 1]`, `OutcomeEnd = Literal["prb", "horizon", "right_censored"]`, returns signed at construction.
 - **Counterexample:** `event_study/vwap_band`, where `success` means "continued outward" in one phase and "reverted inward" in another under one field name.
 
 ### 2. Path / schedule
@@ -47,6 +49,7 @@ Records the full episode path in trade coordinates and replays position policies
 - **Records:** level-touch sequence with timing, MFE *and the bar it occurred on*, revisits, time spent beyond each level, and how the episode structurally ended. Termination is the end of the setup, not the first barrier.
 - **Why it matters operationally:** the expensive work — data, event detection, path extraction — runs once. Policy iteration then costs minutes instead of a study rebuild, and every policy is compared on identical paths with no re-run variance.
 - **Headline metric:** capture ratio against `P_Max(Δt, costs)`.
+- **Implementation:** `backend/app/lib/analysis/event_study/path/` — `record.build_episode_path` produces the path, `policy.replay` runs a schedule over it, `pmax.p_max` computes the ceiling by exact dynamic program. Reference policies: `HoldToEnd`, `ExitOnFirstTouch`, `ScaleOut`, and `OracleSingleExit` (non-causal; bounds what perfect exit timing alone is worth, separating an entry problem from an exit problem).
 
 ### 3. State-conditional forward returns
 

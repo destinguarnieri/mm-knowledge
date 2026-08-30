@@ -53,4 +53,12 @@ Common commands:
 /Users/destinguarnieri/.bun/bin/qmd get "wiki/index.md"
 ```
 
-QMD indexes the wiki and archived/supporting markdown. It does not validate wikilinks; use the link checker for that.
+QMD indexes two sibling collections: `mm-knowledge` (the `wiki/` tree) and `mm-raw` (the `raw/` source dumps). `archive/` is not indexed. Scope a search with `-c`:
+
+```bash
+/Users/destinguarnieri/.bun/bin/qmd query "Markov regime switching" -c mm-raw
+```
+
+Results from `mm-raw` are unvetted source material, not Money Machine decisions.
+
+QMD does not validate wikilinks; use the link checker for that.

@@ -103,6 +103,15 @@ Useful commands:
 /Users/destinguarnieri/.bun/bin/qmd query "error handling" --all --files --min-score 0.4
 ```
 
-There is one collection, `mm-knowledge`, covering the whole `wiki/` tree. It previously overlapped five per-topic collections rooted at subdirectories of the same tree, which double-indexed those files and let duplicate hits consume result slots; the topic collections were removed on 2026-07-25. Do not re-add a collection whose path sits inside another collection's path.
+There are two sibling collections:
+
+- `mm-knowledge` → `wiki/` (51 docs) — synthesized canonical graph.
+- `mm-raw` → `raw/` (80 docs) — unsynthesized source dumps: book extracts, papers, concept drafts. Added 2026-08-29.
+
+They share no files. `mm-knowledge` previously overlapped five per-topic collections rooted at subdirectories of the *same* tree, which double-indexed those files and let duplicate hits consume result slots; the topic collections were removed on 2026-07-25. The rule that prevents recurrence is: **do not create a collection whose path sits inside another collection's path.** Sibling trees such as `wiki/` and `raw/` are safe and do not double-index.
+
+Treat provenance as load-bearing. A `mm-raw` hit is third-party or draft material, not a Money Machine decision. Never cite one as confirmed practice; promote it into `wiki/` first if it should become durable. Both collections carry a `qmd context` description stating this, which the reranker and result payloads surface.
+
+`archive/` (4 docs) remains deliberately unindexed.
 
 If search results look weak, check `qmd status` for pending embeddings first, then run `update` and `embed`, then inspect files directly before concluding knowledge is absent. `qmd query` is semantic and needs embeddings; `qmd search` is BM25 keyword and does not.

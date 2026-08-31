@@ -28,6 +28,9 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 - [[research/trading/ema_px_trend/blind_pattern_match|EMA/PX Blind Pattern Match (Track 3)]] — agent pattern-matches unlabeled HYPE 4H charts (10 EMA_low / 200 EMA_close) window by window, updating priors toward a codified strategy.
 - [[research/trading/ema_px_trend/strategy_ema_px_trend|ema_px_trend Strategy Doc]] — code walkthrough, rule semantics, dev-set discriminating events, and v2 candidates for the codified Track 3 strategy (first run: positive Sharpe).
 - [[research/trading/quantile_regression/qr-trading-reference|Quantile Regression Trading Reference]] — extracted external QR trading tables (ranked knobs / IR impact + decision layer vs raw-signal failure modes); draft, not MM-validated.
+- [[concepts/supervised-trading-labels|Supervised Trading Labels]] — mechanical contract for pairing point-in-time feature snapshots with later-resolved outcomes, constructing `X`/`y`, and fitting classifiers or regressors without exposing future labels as inputs.
+- [[concepts/strategy-optimization-jesse-and-mm|Strategy Optimization: Jesse Mechanics and Money Machine Design]] — exact account of Jesse's parallel random-search optimizer and a proposed Money Machine search, validation, Optuna, and stable-neighborhood selection contract.
+- [[concepts/reinforcement-learning-trading-mechanics-ziad-francis-GPT|RL Trading Mechanics — Ziad Francis (GPT)]] — GPT-authored external implementation analysis of Ziad Francis's PPO environment, action/reward/training mechanics, reusable patterns, and explicit non-carry-over boundary.
 
 
 ## Active Projects

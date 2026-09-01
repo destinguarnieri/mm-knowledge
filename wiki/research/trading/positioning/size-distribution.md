@@ -183,6 +183,12 @@ The implemented recorded-data surface is:
 
 The curve, discrete allocation, inventory readout, urgency, capacity, and curve-weight panels remain explicitly fixture-backed. They are layout scaffolding, not recorded strategy truth. No backend replay-frame contract, persistence, strategy reconstruction, decision/order/fill evidence, recorded-vs-What-if mode, or live/capital path was added. Focused frontend lint, TypeScript, diff checks, and production builds pass; deterministic replay alignment tests remain future work.
 
+## Recorded backtest decision checkpoint — 2026-09-01
+
+The Positions Lab backtest now emits a typed `BacktestDecision` on every scored candle. Full-retention runs persist those decisions in the backtest-owned `bt_decision` table alongside execution artifacts; summary runs do not retain them. The payload records both schedule legs, the previous/current signal coordinate, the inventory snapshot, the selected intent and target, and requested/planned/order execution details without misclassifying accumulation or distribution as signals.
+
+Commit `ea6ee170` established the model, migration, engine capture, and dense persistence path. The next local slice adds the corresponding saved-run read path to `BacktestRunResponse`, regenerates the frontend OpenAPI types, and hydrates decisions into the existing Position Replay artifact state. A read-only smoke against saved Positions Lab run `0fbb2f33-49cf-44b9-b8aa-5a2ad4a71ef5` restored all 896 persisted rows as typed envelopes in timestamp order. The replay curve/allocation/urgency panels are still fixtures; selecting the recorded decision for the current replay candle is the next bounded UI step.
+
 ## Favorable price orientations
 
 `Higher` and `Lower` name the **price end receiving more transaction size**. They do not name signal direction, position side, or motion toward zero.

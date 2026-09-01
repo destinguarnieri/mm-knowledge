@@ -1,5 +1,9 @@
 # Session Change Log
 
+## 2026-09-01 — MON-225 recorded positioning decisions persisted and exposed for replay
+
+- Committed `ea6ee170` on `feat/work` to add a typed backtest-owned position-schedule decision envelope, migration, full-retention engine capture, and dense `bt_decision` persistence. The Positions Lab records both accumulation/distribution legs and execution-planning fields on every scored candle without storing them as signals. The following uncommitted bounded slice adds ordered saved-run retrieval, payload/envelope validation, `BacktestRunResponse.decisions`, generated frontend client types, and hydration into Position Replay's existing artifact state; it does not yet replace fixture panels. Verification: 24 focused backend tests, focused backend fatal-error lint, frontend lint/build, diff checks, and a read-only restoration of all 896 decisions from saved run `0fbb2f33-49cf-44b9-b8aa-5a2ad4a71ef5`. Shared-file mypy still reports pre-existing baseline errors outside the new decision lines. No live runtime, capital mutation, push, or deploy occurred.
+
 ## 2026-08-19 — PRI 5m package-native forward-return diagnostic completed
 
 - Completed development run `808a5d98-e522-45d0-b7c6-dc2572019c0f` from reviewed 60-contract plan `6ae6ecf0` using cached candles and one timeframe only. The CSV contains exactly 480 rows: 60 assets × H1–H6/H12/H24. Every row is `5m`, package output columns remain unchanged apart from ordinary symbol/window metadata, no nonfinite CSV value is present, and checksums match for `forward_return_results.csv`, `results.json`, and `universe.json`. Failed precursor `ea564554` stopped at universe UUID serialization before result persistence; the JSON boundary was corrected and regression-covered. Eight focused tests plus scoped formatting, Ruff, and mypy pass. Replication and holdout remain sealed; no custom report, backtest trade rule, live runtime, capital mutation, commit, or push occurred.

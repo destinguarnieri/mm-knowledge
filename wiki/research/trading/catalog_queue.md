@@ -1,5 +1,8 @@
 # Trading Catalog Implementation and Evaluation Queue
 
+> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [[engineering/backtest-strategies-index#Retired EMA strategies → Example (2026-09-29)|replacement guide and verification limits]]. The historical V4 event-study fixture contract remains supported.
+
+
 Status: in progress
 
 Source glossary: [[trading/catalog_v1|Trading Catalog]]. Execution owner: [Linear MON-169](https://linear.app/money-machine/issue/MON-169/convert-the-trading-catalog-into-an-implementation-and-evaluation).
@@ -100,7 +103,7 @@ Queue states are `captured`, `needs specification`, `ready`, `in progress`, `blo
 
 - **Source maturity:** Preferred 10/200 framing; 10 EMA low is preferred in practice and symmetry remains context-dependent.
 - **Type:** signal.
-- **Implementation:** `implemented` — `mm_v04/backend/app/lib/indicators/emac.py`, `backend/app/lib/signals/emac.py`, and registered EMAC strategies; tests include `backend/tests/backtest/test_emac_cross.py` and related EMA suites.
+- **Implementation:** `implemented` — `mm_v04/backend/app/lib/indicators/emac.py`, `backend/app/lib/signals/emac.py`, and registered EMAC strategies; tests include `backend/tests/backtest/test_example.py` (zero-cross branch) and related EMA suites.
 - **First pass:** No new primitive build. Continue exact mechanism/economic work inside the existing EMA 10/200 program using auditable windows.
 - **Gate/dependencies:** Any canonical high/low source symmetry belongs to the named strategy hypothesis, not generic cross math.
 - **Candidate uses:** opportunity framing, trend state, expansion/contraction. **State:** evaluated.

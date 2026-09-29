@@ -1,5 +1,8 @@
 # EMAC 10/200 Signal-Stats Event Labels V1
 
+> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [[engineering/backtest-strategies-index#Retired EMA strategies → Example (2026-09-29)|replacement guide and verification limits]]. The historical V4 event-study fixture contract remains supported.
+
+
 Causal event and state label definitions for the signal-statistics event study. Consolidates the observation sets from the three-agent review and Destin's 2026-07-20 hypotheses (see `ema_stats_condensed_synthesis_5c512469.plan.md`). Labels only — no strategy or runtime behavior change is implied.
 
 Parent research: [[emac-cross-10-200|EMA Cross 10/200 Research]]

@@ -1,5 +1,8 @@
 # EMA Cross 10/200 Research
 
+> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [[engineering/backtest-strategies-index#Retired EMA strategies → Example (2026-09-29)|replacement guide and verification limits]]. The historical V4 event-study fixture contract remains supported.
+
+
 Status: in progress
 
 Related process: [[research/trading/research_process_v2|Research Process V2]]

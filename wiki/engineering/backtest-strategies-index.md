@@ -18,11 +18,9 @@ Paths below are relative to the `mm_v04` repo.
 
 ### EMA-crossover family
 
-- **`emac`** - `EmaCrossStrategy` (`emac.py`): simple EMA crossover; long when the fast EMA is above the slow EMA (short if symmetric). Params: `fast_window=20`, `slow_window=60`, `SOURCE=CLOSE`, `SYMETRIC=True`.
-- **`emac_cross`** - `EMACCrossStrategy` (`emac_cross.py`): passive two-state EMA cross; flips the target direction (+1/-1) on each cross of the EMA spread through zero. Params: `fast_window=20`, `slow_window=60`.
-- **`emac_v4`** - `EMACV4Strategy` (`emac_v4.py`): trend strategy using signal-stats normalization of the EMAC signal plus the V3 threshold engine, with explicit long/short entry/exit cross thresholds. Params: `fast_window=10`, `slow_window=200`, `signal_stats_lookback=200`; Config carries the entry/exit thresholds and `signal_stats_mode`.
-- **`emac_v5`** - `EMACV5Strategy` (`emac_v5.py`): subclass of V4 that continuously sizes positions from the processed EMAC signal rather than a two-state flip.
-- **`emac_slope_v1`** - `EMACSlopeV1Strategy` (`emac_slope_v1.py`): subclass of V4 that continuously sizes positions from the processed slope of the EMAC signal.
+- **`example`** - `ExampleStrategy` (`example.py`): configurable EMA backtest registered 2026-09-29. Supports fixed/zero/no thresholds, full/continuous/banded sizing, transition/every-bar adjustment, and optional volatility adjustment. Shared SIG_TO_POS_SIZE and VOL_ADJ_POS_SIZE now belong in trade_config; old backtest payloads are rejected rather than translated. Catalog defaults refreshed and five disposable saved configuration groups deleted, retaining historical run/study snapshots. UI exposes structured thresholds and volatility controls. The four legacy EMA implementations and registry names are retired; see the replacement guide below.
+
+- **`emac_slope_v1`** - `EMACSlopeV1Strategy` (`emac_slope_v1.py`): standalone BacktestStrategy that continuously sizes positions from the processed slope of the EMAC signal; owns its params/config, EMA setup, warmup and signal-stat emission. The EMAC event-study pipeline also owns its configuration types in study_types.py, retaining historical V4 run identity without importing the V4 implementation.
 - **`emac_escalation`** - `EMACEscalationStrategy` (`emac_escalation.py`): band-escalation cycle; sets a piecewise-linear target fraction as the signal magnitude moves across the mean / 1-sigma / 2-sigma bands. Params: `fast_window=10`, `slow_window=200`, `signal_stats_lookback=200`; Config band targets `0.75` / `0.25`.
 - **`emac_escalation_v2`** - `EMACEscalationV2Strategy` (`emac_escalation_v2.py`): mean-cycle variant of the escalation strategy (enter when magnitude is below the mean band, exit on cross). Params: `fast_window=10`, `slow_window=200`, `signal_stats_lookback=200`.
 
@@ -49,3 +47,34 @@ Related research: [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cro
 
 - When adding a strategy, add its `@register(...)` import to `__init__.py` and add a one-line entry here.
 - Keep this page light: purpose + key params only. Do not paste backtest metric tables (re-fetch via Research MCP / backtest UI).
+
+## Retired EMA strategies → Example (2026-09-29)
+
+Status: confirmed — Destin authorized this consolidation. The four files `backend/app/backtest/strategies/{emac,emac_cross,emac_v4,emac_v5}.py` and their registry exports were removed. Their catalog rows were soft-deleted through the existing API, retaining IDs/FKs for historical results. New executions use `example` (catalog UUID `429d3307-791e-4c3a-b386-7aa3a9cc0be4`); no old-name aliases or automatic payload translation exist. Saved results keep their original names and snapshots; reading them does not require the old implementation. Historical references in research write logs remain provenance, not instructions to select retired names.
+
+### Explicit replacement settings
+
+These are the tested mappings, not a guarantee that every historical custom variation is equivalent. Copy the original run's EMA windows, source, signal processing, position limits, costs, data source and date window explicitly. Example's defaults are not historical research defaults (notably fixed thresholds default to long entry 0.1 / exit 0.9, not ±0.01).
+
+| Historical name | Example THRESHOLDS | SIZING | ADJUSTMENT | VOLATILITY |
+|---|---|---|---|---|
+| emac | null | continuous | every_bar | fast_span 35, slow_span 200 |
+| emac_cross | "zero_cross" | full | transitions | null |
+| emac_v4 | fixed levels/cross directions from original run | full | transitions | null |
+| emac_v5 | fixed levels/cross directions from original run | continuous | every_bar | fast_span 35, slow_span 200 |
+
+The tested V4/V5 fixed config is long_entry=long_exit=0.01, short_entry=short_exit=-0.01; long-entry/short-exit cross_over, long-exit/short-entry cross_under. All those settings live in `trade_config.THRESHOLDS`. `SIG_TO_POS_SIZE` and `VOL_ADJ_POS_SIZE` also live in trade_config (tested direct/inverse respectively), not signal config. StrategyParams remains intentionally empty at the shared level; Example owns fast_window, slow_window and SOURCE. Do not copy legacy SYMETRIC or signal_stats_lookback into Example. Example supports signed two-sided sizing; legacy one-sided/custom signal-stat display variants are not covered by this comparison. Research statistics remain available in their study pipeline rather than being added back to Example.
+
+Exact paired payloads are preserved as historical evidence in `backend/tests/backtest/fixtures/example_ema_comparisons.json`; only each `example` payload is executable now. Existing sizing, zero-cross, threshold, state-memory, inverse-saturation and rolling-window regression coverage lives in `test_example.py`, `test_example_registry.py`, `test_mon99_emac_signal_semantics.py` and the shared sizing tests. Old implementation-only tests were removed.
+
+### Verification and interpretation limits
+
+Aligned longest-input warmup was applied before comparison. Cross/V4/V5 matched fills and metrics exactly on the paired LINKUSDT daily window. Continuous emac's small V1/V2 position-rounding difference was explicitly accepted by Destin; do not describe it as bitwise parity. Cleanup run `56008fed-9630-491f-be00-4a765582b7c1` exactly matched pre-cleanup Example `3c12b85f-a1cb-442f-b0bf-80fea58cdbe1`. Four legacy comparison runs remain readable after catalog retirement: emac `6ace7d7f-e361-4292-b419-cf44b6f1188a`, cross `53fd2597-6716-4b5c-bd64-43c797abdbbd`, V4 `bd1a5d44-b7a1-41db-9814-f0633a819a53`, V5 `60295611-2b6d-4a41-9c3c-18f7005a13d5`.
+
+This is implementation consolidation, not new trading evidence or a promotion of previously quarantined research. Older runs with different warmup windows may not reproduce exactly. Rebuild explicit Example configurations for new research rather than replaying obsolete saved JSON unchanged. Smoothing implementation remains deferred.
+
+### Research dependency handling
+
+`emac_slope_v1` owns its setup and inherits only BacktestStrategy. `event_study/study_types.py` owns EMACStudyParams/EMACStudyConfig; fixture loading, series calculation and the runner no longer import V4. The existing event-study CLI intentionally still requires a historical saved `emac_v4` run as its input identity; do not pass a new Example run to it without separately adapting that contract. Its full-series calculation, historical warmup and documented log-slope behavior were preserved, not made equivalent to Example's rolling execution. Existing saved V4 anchors remain usable.
+
+Other EMA, PX, slope, escalation and specialized strategies are not retired by this change.

@@ -1,5 +1,8 @@
 # EMAC 10/200 Event Study — Anchor + Holdout Findings (2026-07-20/21)
 
+> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [[engineering/backtest-strategies-index#Retired EMA strategies → Example (2026-09-29)|replacement guide and verification limits]]. The historical V4 event-study fixture contract remains supported.
+
+
 Interpretation of the conditioned statistics from the [[event_labels_v1|frozen label grammar]] on the anchor fixture, read in the synthesis test order. Provisional until the disjoint Binance 5m holdout reproduces the signs and rankings.
 
 - Fixture: run `8077b0dd-e440-48d7-8e64-a4ef81d1074e` (BTC Binance USD-M 5m, 49,800 scored bars, ~Jan 28 → Jul 19 2026). 11,953 events, 410 sign legs, 507 breakout episodes.

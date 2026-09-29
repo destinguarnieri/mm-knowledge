@@ -24,6 +24,9 @@ Skill: None
 
 # EMA Signal Stats — Condensed Synthesis (3-Agent Merge)
 
+> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [[engineering/backtest-strategies-index#Retired EMA strategies → Example (2026-09-29)|replacement guide and verification limits]]. The historical V4 event-study fixture contract remains supported.
+
+
 Sources merged: `ema_stats_pattern_trail_ff74e053` (GPT 5.6 Sol, no skill), `ema_stats_comparison_7ae09594` (no model tag), `rolling_vs_magnitude_stats_63361ce6` (Fable 5, Discretionary Strategy Codifier). Observation-only; no strategy or runtime changes implied.
 
 ## Settled facts (confirmed, supersede open questions in the other two docs)

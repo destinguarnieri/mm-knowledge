@@ -1,0 +1,6424 @@
+[
+  {
+    "received_at": "2026-09-08T04:19:30.484Z",
+    "raw_quote_balance": "-19045.260052",
+    "signed_position_value": "26170.215829",
+    "gross_marked_equity": "7124.955777",
+    "borrowed_usdc": "3684.94927827",
+    "unrealized_pnl": "1779.995911",
+    "settled_net_equity": "1660.01058773",
+    "net_balance": "3440.00649873",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "84.035",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5464.7148201723350",
+    "borrow_headroom": "1779.7655419023350",
+    "borrow_health_factor": "1.482982371669955387551229150",
+    "isolated_equity": "5062.726506",
+    "cross_initial_margin": "1072.671204",
+    "position_margin": "6135.397710",
+    "open_order_initial_margin": "977.9434099666666666666666670",
+    "order_buffer": "9.779434099666666666666666670",
+    "order_reservation": "987.7228440663333333333333337",
+    "total_margin_commitment": "7123.120554066333333333333334",
+    "hold": "1658.405733893998333333333334",
+    "available_balance": "1781.600764836001666666666666",
+    "reported_available_balance": "1781.60076499",
+    "free_quote_after_unbuffered_orders": "11.6146570333333333333333330",
+    "hype_held": "67.42820629383056205213639617",
+    "hype_available": "32.61646044616943794786360383",
+    "cross_net_equity": "-1622.72000727",
+    "cross_maintenance_margin": "536.335602",
+    "liquidation_collateral_value": "6935.98419483411750",
+    "maintenance_borrow": "2159.05560927",
+    "available_after_maintenance": "4776.92858556411750",
+    "portfolio_margin_ratio": "0.3607167900404887613409369418",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3067.9956",
+        "unrealized_pnl": "-49.184936",
+        "calculated_margin": "266.527269",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.50404",
+        "unrealized_pnl": "-5.386698",
+        "calculated_margin": "13.550404",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1519.44",
+        "unrealized_pnl": "69.66",
+        "calculated_margin": "282.582787",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "648.9945",
+        "unrealized_pnl": "-3.387077",
+        "calculated_margin": "100.466777",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "7257.1",
+        "notional": "3436.527134",
+        "unrealized_pnl": "-16.25117",
+        "calculated_margin": "873.160688",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.67725",
+        "unrealized_pnl": "1.6835",
+        "calculated_margin": "14.063572",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2108.736",
+        "unrealized_pnl": "195.2413",
+        "calculated_margin": "575.152368",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "957.5",
+        "notional": "2175.44",
+        "unrealized_pnl": "68.176676",
+        "calculated_margin": "591.046913",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1502.96835",
+        "unrealized_pnl": "46.064386",
+        "calculated_margin": "286.325617",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1282.55",
+        "unrealized_pnl": "-92.77381",
+        "calculated_margin": "364.353048",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "822.4216",
+        "unrealized_pnl": "-33.589486",
+        "calculated_margin": "178.398545",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2520.792",
+        "unrealized_pnl": "9.39546",
+        "calculated_margin": "252.0792",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "456.6914",
+        "unrealized_pnl": "-41.87791",
+        "calculated_margin": "81.9277",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1525.93352",
+        "unrealized_pnl": "-7.580008",
+        "calculated_margin": "501.179127",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7047.456",
+        "unrealized_pnl": "1403.852777",
+        "calculated_margin": "704.7456",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2144.3064",
+        "unrealized_pnl": "147.931737",
+        "calculated_margin": "808.904197",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "511.48",
+        "unrealized_pnl": "47.268404",
+        "calculated_margin": "102.296",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "240.886035",
+        "unrealized_pnl": "40.752766",
+        "calculated_margin": "138.637898",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "WLD",
+        "oid": 538919084244,
+        "margin": "2.89130625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084243,
+        "margin": "2.878015"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084242,
+        "margin": "2.8646625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084241,
+        "margin": "2.851310"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084240,
+        "margin": "2.83801875"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084239,
+        "margin": "3.07830975"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084238,
+        "margin": "4.440825"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084237,
+        "margin": "6.144229"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084236,
+        "margin": "8.206252"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084235,
+        "margin": "10.6556685"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084234,
+        "margin": "13.508700"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084233,
+        "margin": "16.81532775"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084232,
+        "margin": "20.580131"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084231,
+        "margin": "24.817278"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084230,
+        "margin": "29.57549025"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084229,
+        "margin": "34.845213"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084228,
+        "margin": "40.67332075"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084227,
+        "margin": "47.0626155"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084226,
+        "margin": "54.012602"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "-1E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-1.53998333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "1.43998333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "-6.16943794786360383E-9",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "0.00000157411750",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "-1.595112386590630582E-10",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  },
+  {
+    "received_at": "2026-09-08T04:19:33.822Z",
+    "raw_quote_balance": "-19045.260052",
+    "signed_position_value": "26170.889877",
+    "gross_marked_equity": "7125.629825",
+    "borrowed_usdc": "3684.94929602",
+    "unrealized_pnl": "1780.669959",
+    "settled_net_equity": "1660.01056998",
+    "net_balance": "3440.68052898",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "84.052",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5465.8203137398120",
+    "borrow_headroom": "1780.8710177198120",
+    "borrow_health_factor": "1.483282366908895007130057971",
+    "isolated_equity": "5062.756614",
+    "cross_initial_margin": "1072.733198",
+    "position_margin": "6135.489812",
+    "open_order_initial_margin": "977.9434099666666666666666670",
+    "order_buffer": "9.779434099666666666666666670",
+    "order_reservation": "987.7228440663333333333333337",
+    "total_margin_commitment": "7123.212656066333333333333334",
+    "hold": "1657.392342326521333333333334",
+    "available_balance": "1783.288186653478666666666666",
+    "reported_available_balance": "1783.28818699",
+    "free_quote_after_unbuffered_orders": "12.1966030333333333333333330",
+    "hype_held": "67.40391711882265801268323518",
+    "hype_available": "32.64074962117734198731676482",
+    "cross_net_equity": "-1622.07608502",
+    "cross_maintenance_margin": "536.366599",
+    "liquidation_collateral_value": "6937.38732128514600",
+    "maintenance_borrow": "2158.44268402",
+    "available_after_maintenance": "4778.94463726514600",
+    "portfolio_margin_ratio": "0.3605697099158952492640167277",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3068.1442",
+        "unrealized_pnl": "-49.036336",
+        "calculated_margin": "266.675869",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.51198",
+        "unrealized_pnl": "-5.378758",
+        "calculated_margin": "13.551198",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1519.56",
+        "unrealized_pnl": "69.78",
+        "calculated_margin": "282.702787",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "649.044",
+        "unrealized_pnl": "-3.337577",
+        "calculated_margin": "100.516277",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "7257.1",
+        "notional": "3435.293427",
+        "unrealized_pnl": "-17.484877",
+        "calculated_margin": "871.926981",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.6727",
+        "unrealized_pnl": "1.67895",
+        "calculated_margin": "14.059022",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2109.024",
+        "unrealized_pnl": "195.5293",
+        "calculated_margin": "575.440368",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "957.5",
+        "notional": "2175.44",
+        "unrealized_pnl": "68.176676",
+        "calculated_margin": "591.046913",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1502.96835",
+        "unrealized_pnl": "46.064386",
+        "calculated_margin": "286.325617",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1282.55",
+        "unrealized_pnl": "-92.77381",
+        "calculated_margin": "364.353048",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "822.4216",
+        "unrealized_pnl": "-33.589486",
+        "calculated_margin": "178.398545",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2520.78",
+        "unrealized_pnl": "9.40746",
+        "calculated_margin": "252.078",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "456.7288",
+        "unrealized_pnl": "-41.84051",
+        "calculated_margin": "81.9651",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1526.78992",
+        "unrealized_pnl": "-6.723608",
+        "calculated_margin": "502.035527",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7048.08",
+        "unrealized_pnl": "1404.476777",
+        "calculated_margin": "704.808",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2144.0512",
+        "unrealized_pnl": "147.676537",
+        "calculated_margin": "808.648997",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "511.48",
+        "unrealized_pnl": "47.268404",
+        "calculated_margin": "102.296",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "240.9097",
+        "unrealized_pnl": "40.776431",
+        "calculated_margin": "138.661563",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "WLD",
+        "oid": 538919084244,
+        "margin": "2.89130625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084243,
+        "margin": "2.878015"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084242,
+        "margin": "2.8646625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084241,
+        "margin": "2.851310"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084240,
+        "margin": "2.83801875"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084239,
+        "margin": "3.07830975"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084238,
+        "margin": "4.440825"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084237,
+        "margin": "6.144229"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084236,
+        "margin": "8.206252"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084235,
+        "margin": "10.6556685"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084234,
+        "margin": "13.508700"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084233,
+        "margin": "16.81532775"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084232,
+        "margin": "20.580131"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084231,
+        "margin": "24.817278"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084230,
+        "margin": "29.57549025"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084229,
+        "margin": "34.845213"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084228,
+        "margin": "40.67332075"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084227,
+        "margin": "47.0626155"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084226,
+        "margin": "54.012602"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "-1E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-3.36521333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "3.26521333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "-1.117734198731676482E-8",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "0.00000127514600",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "-8.41047507359832723E-11",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  },
+  {
+    "received_at": "2026-09-08T04:19:38.812Z",
+    "raw_quote_balance": "-19045.260052",
+    "signed_position_value": "26173.677627",
+    "gross_marked_equity": "7128.417575",
+    "borrowed_usdc": "3684.94932523",
+    "unrealized_pnl": "1783.457709",
+    "settled_net_equity": "1660.01054077",
+    "net_balance": "3443.46824977",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "84.066",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5466.7307202071460",
+    "borrow_headroom": "1781.7813949771460",
+    "borrow_health_factor": "1.483529415934623262243921536",
+    "isolated_equity": "5067.869324",
+    "cross_initial_margin": "1072.568702",
+    "position_margin": "6140.438026",
+    "open_order_initial_margin": "977.9434099666666666666666670",
+    "order_buffer": "9.779434099666666666666666670",
+    "order_reservation": "987.7228440663333333333333337",
+    "total_margin_commitment": "7128.160870066333333333333334",
+    "hold": "1661.430149859187333333333334",
+    "available_balance": "1782.038099910812666666666666",
+    "reported_available_balance": "1782.03810099",
+    "free_quote_after_unbuffered_orders": "10.0361390333333333333333330",
+    "hype_held": "67.43223035922934788112148759",
+    "hype_available": "32.61243638077065211887851241",
+    "cross_net_equity": "-1624.40107423",
+    "cross_maintenance_margin": "536.284351",
+    "liquidation_collateral_value": "6938.54283718599300",
+    "maintenance_borrow": "2160.68542523",
+    "available_after_maintenance": "4777.85741195599300",
+    "portfolio_margin_ratio": "0.3608069736371398809323626924",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3069.0358",
+        "unrealized_pnl": "-48.144736",
+        "calculated_margin": "267.567469",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.63902",
+        "unrealized_pnl": "-5.251718",
+        "calculated_margin": "13.563902",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1519.56",
+        "unrealized_pnl": "69.78",
+        "calculated_margin": "282.702787",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "649.044",
+        "unrealized_pnl": "-3.337577",
+        "calculated_margin": "100.516277",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "7257.1",
+        "notional": "3435.583711",
+        "unrealized_pnl": "-17.194593",
+        "calculated_margin": "872.217265",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.67816",
+        "unrealized_pnl": "1.68441",
+        "calculated_margin": "14.064482",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2109.024",
+        "unrealized_pnl": "195.5293",
+        "calculated_margin": "575.440368",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "957.5",
+        "notional": "2176.206",
+        "unrealized_pnl": "68.942676",
+        "calculated_margin": "591.812913",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1503.45195",
+        "unrealized_pnl": "46.547986",
+        "calculated_margin": "286.809217",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1283.41",
+        "unrealized_pnl": "-91.91381",
+        "calculated_margin": "365.213048",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "822.7219",
+        "unrealized_pnl": "-33.289186",
+        "calculated_margin": "178.698845",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2521.2",
+        "unrealized_pnl": "8.98746",
+        "calculated_margin": "252.12",
+        "margin_residual": "0.00"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "456.7288",
+        "unrealized_pnl": "-41.84051",
+        "calculated_margin": "81.9651",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1527.64632",
+        "unrealized_pnl": "-5.867208",
+        "calculated_margin": "502.891927",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7046.208",
+        "unrealized_pnl": "1402.604777",
+        "calculated_margin": "704.6208",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2144.7008",
+        "unrealized_pnl": "148.326137",
+        "calculated_margin": "809.298597",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "511.32",
+        "unrealized_pnl": "47.108404",
+        "calculated_margin": "102.264",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "240.919166",
+        "unrealized_pnl": "40.785897",
+        "calculated_margin": "138.671029",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "WLD",
+        "oid": 538919084244,
+        "margin": "2.89130625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084243,
+        "margin": "2.878015"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084242,
+        "margin": "2.8646625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084241,
+        "margin": "2.851310"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084240,
+        "margin": "2.83801875"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084239,
+        "margin": "3.07830975"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084238,
+        "margin": "4.440825"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084237,
+        "margin": "6.144229"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084236,
+        "margin": "8.206252"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084235,
+        "margin": "10.6556685"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084234,
+        "margin": "13.508700"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084233,
+        "margin": "16.81532775"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084232,
+        "margin": "20.580131"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084231,
+        "margin": "24.817278"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084230,
+        "margin": "29.57549025"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084229,
+        "margin": "34.845213"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084228,
+        "margin": "40.67332075"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084227,
+        "margin": "47.0626155"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084226,
+        "margin": "54.012602"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "-1E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-0.000001079187333333333334",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "0.000001069187333333333334",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "1.922934788112148759E-8",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "9.6599300E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "-6.28601190676373076E-11",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.00",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  },
+  {
+    "received_at": "2026-09-08T04:19:43.930Z",
+    "raw_quote_balance": "-19045.260052",
+    "signed_position_value": "26178.601957",
+    "gross_marked_equity": "7133.341905",
+    "borrowed_usdc": "3684.94935479",
+    "unrealized_pnl": "1788.382039",
+    "settled_net_equity": "1660.01051121",
+    "net_balance": "3448.39255021",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "84.061",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5466.4055750402410",
+    "borrow_headroom": "1781.4562202502410",
+    "borrow_health_factor": "1.483441168040629325091099429",
+    "isolated_equity": "5070.411774",
+    "cross_initial_margin": "1072.79389",
+    "position_margin": "6143.205664",
+    "open_order_initial_margin": "977.9434099666666666666666670",
+    "order_buffer": "9.779434099666666666666666670",
+    "order_reservation": "987.7228440663333333333333337",
+    "total_margin_commitment": "7130.928508066333333333333334",
+    "hold": "1664.522933026092333333333334",
+    "available_balance": "1783.869617183907666666666666",
+    "reported_available_balance": "1783.86961799",
+    "free_quote_after_unbuffered_orders": "12.1928310333333333333333330",
+    "hype_held": "67.39677062090136619347549507",
+    "hype_available": "32.64789611909863380652450493",
+    "cross_net_equity": "-1622.01922379",
+    "cross_maintenance_margin": "536.396945",
+    "liquidation_collateral_value": "6938.13015293569050",
+    "maintenance_borrow": "2158.41616879",
+    "available_after_maintenance": "4779.71398414569050",
+    "portfolio_margin_ratio": "0.3605329244888618493449759731",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3069.1844",
+        "unrealized_pnl": "-47.996136",
+        "calculated_margin": "267.716069",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.6549",
+        "unrealized_pnl": "-5.235838",
+        "calculated_margin": "13.56549",
+        "margin_residual": "0.00000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1519.56",
+        "unrealized_pnl": "69.78",
+        "calculated_margin": "282.702787",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "648.9945",
+        "unrealized_pnl": "-3.387077",
+        "calculated_margin": "100.466777",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "7257.1",
+        "notional": "3438.196267",
+        "unrealized_pnl": "-14.582037",
+        "calculated_margin": "874.829821",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.67907",
+        "unrealized_pnl": "1.68532",
+        "calculated_margin": "14.065392",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2109.12",
+        "unrealized_pnl": "195.6253",
+        "calculated_margin": "575.536368",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "957.5",
+        "notional": "2175.91875",
+        "unrealized_pnl": "68.655426",
+        "calculated_margin": "591.525663",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1503.45195",
+        "unrealized_pnl": "46.547986",
+        "calculated_margin": "286.809217",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1283.175",
+        "unrealized_pnl": "-92.14881",
+        "calculated_margin": "364.978048",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "822.6218",
+        "unrealized_pnl": "-33.389286",
+        "calculated_margin": "178.598745",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2521.2",
+        "unrealized_pnl": "8.98746",
+        "calculated_margin": "252.12",
+        "margin_residual": "0.00"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "456.7475",
+        "unrealized_pnl": "-41.82181",
+        "calculated_margin": "81.9838",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1527.47504",
+        "unrealized_pnl": "-6.038488",
+        "calculated_margin": "502.720647",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7048.704",
+        "unrealized_pnl": "1405.100777",
+        "calculated_margin": "704.8704",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2145.4084",
+        "unrealized_pnl": "149.033737",
+        "calculated_margin": "810.006197",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "511.19",
+        "unrealized_pnl": "46.978404",
+        "calculated_margin": "102.238",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "240.72038",
+        "unrealized_pnl": "40.587111",
+        "calculated_margin": "138.472243",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "WLD",
+        "oid": 538919084244,
+        "margin": "2.89130625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084243,
+        "margin": "2.878015"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084242,
+        "margin": "2.8646625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084241,
+        "margin": "2.851310"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084240,
+        "margin": "2.83801875"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084239,
+        "margin": "3.07830975"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084238,
+        "margin": "4.440825"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084237,
+        "margin": "6.144229"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084236,
+        "margin": "8.206252"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084235,
+        "margin": "10.6556685"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084234,
+        "margin": "13.508700"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084233,
+        "margin": "16.81532775"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084232,
+        "margin": "20.580131"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084231,
+        "margin": "24.817278"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084230,
+        "margin": "29.57549025"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084229,
+        "margin": "34.845213"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084228,
+        "margin": "40.67332075"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084227,
+        "margin": "47.0626155"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084226,
+        "margin": "54.012602"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "0E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-8.06092333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "8.06092333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "9.0136619347549507E-10",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "0.00000115569050",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "-1.11381506550240269E-11",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.00000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.00",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  },
+  {
+    "received_at": "2026-09-08T04:19:48.925Z",
+    "raw_quote_balance": "-19045.260052",
+    "signed_position_value": "26179.586462",
+    "gross_marked_equity": "7134.326410",
+    "borrowed_usdc": "3684.94938398",
+    "unrealized_pnl": "1789.366544",
+    "settled_net_equity": "1660.01048202",
+    "net_balance": "3449.37702602",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "84.071",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5467.0558653740510",
+    "borrow_headroom": "1782.1064813940510",
+    "borrow_health_factor": "1.483617628275060006242273313",
+    "isolated_equity": "5071.708339",
+    "cross_initial_margin": "1072.838684",
+    "position_margin": "6144.547023",
+    "open_order_initial_margin": "977.9434099666666666666666670",
+    "order_buffer": "9.779434099666666666666666670",
+    "order_reservation": "987.7228440663333333333333337",
+    "total_margin_commitment": "7132.269867066333333333333334",
+    "hold": "1665.214001692282333333333334",
+    "available_balance": "1784.163024327717666666666666",
+    "reported_available_balance": "1784.16302499",
+    "free_quote_after_unbuffered_orders": "11.8359770333333333333333330",
+    "hype_held": "67.39528477388312503869592522",
+    "hype_available": "32.64938196611687496130407478",
+    "cross_net_equity": "-1622.33131298",
+    "cross_maintenance_margin": "536.419342",
+    "liquidation_collateral_value": "6938.95552143629550",
+    "maintenance_borrow": "2158.75065498",
+    "available_after_maintenance": "4780.20486645629550",
+    "portfolio_margin_ratio": "0.3605397784347471214030437830",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3069.1844",
+        "unrealized_pnl": "-47.996136",
+        "calculated_margin": "267.716069",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.66284",
+        "unrealized_pnl": "-5.227898",
+        "calculated_margin": "13.566284",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1519.8",
+        "unrealized_pnl": "70.02",
+        "calculated_margin": "282.942787",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "648.9945",
+        "unrealized_pnl": "-3.387077",
+        "calculated_margin": "100.466777",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "7257.1",
+        "notional": "3439.284832",
+        "unrealized_pnl": "-13.493472",
+        "calculated_margin": "875.918386",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.69545",
+        "unrealized_pnl": "1.7017",
+        "calculated_margin": "14.081772",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2109.216",
+        "unrealized_pnl": "195.7213",
+        "calculated_margin": "575.632368",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "957.5",
+        "notional": "2175.91875",
+        "unrealized_pnl": "68.655426",
+        "calculated_margin": "591.525663",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1503.3915",
+        "unrealized_pnl": "46.487536",
+        "calculated_margin": "286.748767",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1283.15",
+        "unrealized_pnl": "-92.17381",
+        "calculated_margin": "364.953048",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "822.6218",
+        "unrealized_pnl": "-33.389286",
+        "calculated_margin": "178.598745",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2521.56",
+        "unrealized_pnl": "8.62746",
+        "calculated_margin": "252.156",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "456.7475",
+        "unrealized_pnl": "-41.82181",
+        "calculated_margin": "81.9838",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1527.47504",
+        "unrealized_pnl": "-6.038488",
+        "calculated_margin": "502.720647",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7048.704",
+        "unrealized_pnl": "1405.100777",
+        "calculated_margin": "704.8704",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2145.3968",
+        "unrealized_pnl": "149.022137",
+        "calculated_margin": "809.994597",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "511.23",
+        "unrealized_pnl": "47.018404",
+        "calculated_margin": "102.246",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "240.67305",
+        "unrealized_pnl": "40.539781",
+        "calculated_margin": "138.424913",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "WLD",
+        "oid": 538919084244,
+        "margin": "2.89130625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084243,
+        "margin": "2.878015"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084242,
+        "margin": "2.8646625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084241,
+        "margin": "2.851310"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084240,
+        "margin": "2.83801875"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084239,
+        "margin": "3.07830975"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084238,
+        "margin": "4.440825"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084237,
+        "margin": "6.144229"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084236,
+        "margin": "8.206252"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084235,
+        "margin": "10.6556685"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084234,
+        "margin": "13.508700"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084233,
+        "margin": "16.81532775"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084232,
+        "margin": "20.580131"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084231,
+        "margin": "24.817278"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084230,
+        "margin": "29.57549025"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084229,
+        "margin": "34.845213"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084228,
+        "margin": "40.67332075"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084227,
+        "margin": "47.0626155"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084226,
+        "margin": "54.012602"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "-1E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-6.62282333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "6.52282333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "-6.11687496130407478E-9",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "0.00000146629550",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "-6.52528785969562170E-11",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  },
+  {
+    "received_at": "2026-09-08T04:19:54.020Z",
+    "raw_quote_balance": "-19045.260052",
+    "signed_position_value": "26181.787202",
+    "gross_marked_equity": "7136.527150",
+    "borrowed_usdc": "3684.94941314",
+    "unrealized_pnl": "1791.567284",
+    "settled_net_equity": "1660.01045286",
+    "net_balance": "3451.57773686",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "84.074",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5467.2509524741940",
+    "borrow_headroom": "1782.3015393341940",
+    "borrow_health_factor": "1.483670558129987583051198249",
+    "isolated_equity": "5074.251139",
+    "cross_initial_margin": "1072.886478",
+    "position_margin": "6147.137617",
+    "open_order_initial_margin": "977.9434099666666666666666670",
+    "order_buffer": "9.779434099666666666666666670",
+    "order_reservation": "987.7228440663333333333333337",
+    "total_margin_commitment": "7134.860461066333333333333334",
+    "hold": "1667.609508592139333333333334",
+    "available_balance": "1783.968228267860666666666666",
+    "reported_available_balance": "1783.96822899",
+    "free_quote_after_unbuffered_orders": "11.4461230333333333333333330",
+    "hype_held": "67.40001435011159277876693488",
+    "hype_available": "32.64465238988840722123306512",
+    "cross_net_equity": "-1622.67340214",
+    "cross_maintenance_margin": "536.443239",
+    "liquidation_collateral_value": "6939.20313198647700",
+    "maintenance_borrow": "2159.11664114",
+    "available_after_maintenance": "4780.08649084647700",
+    "portfolio_margin_ratio": "0.3605788377847382406129819079",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3069.1844",
+        "unrealized_pnl": "-47.996136",
+        "calculated_margin": "267.716069",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.67078",
+        "unrealized_pnl": "-5.219958",
+        "calculated_margin": "13.567078",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1520.04",
+        "unrealized_pnl": "70.26",
+        "calculated_margin": "283.182787",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "649.044",
+        "unrealized_pnl": "-3.337577",
+        "calculated_margin": "100.516277",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "7257.1",
+        "notional": "3439.792829",
+        "unrealized_pnl": "-12.985475",
+        "calculated_margin": "876.426383",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.70091",
+        "unrealized_pnl": "1.70716",
+        "calculated_margin": "14.087232",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2109.312",
+        "unrealized_pnl": "195.8173",
+        "calculated_margin": "575.728368",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "957.5",
+        "notional": "2176.3975",
+        "unrealized_pnl": "69.134176",
+        "calculated_margin": "592.004413",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1503.1497",
+        "unrealized_pnl": "46.245736",
+        "calculated_margin": "286.506967",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1283.5",
+        "unrealized_pnl": "-91.82381",
+        "calculated_margin": "365.303048",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "822.67185",
+        "unrealized_pnl": "-33.339236",
+        "calculated_margin": "178.648795",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2521.95",
+        "unrealized_pnl": "8.23746",
+        "calculated_margin": "252.195",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "456.7475",
+        "unrealized_pnl": "-41.82181",
+        "calculated_margin": "81.9838",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1527.73196",
+        "unrealized_pnl": "-5.781568",
+        "calculated_margin": "502.977567",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7048.704",
+        "unrealized_pnl": "1405.100777",
+        "calculated_margin": "704.8704",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2146.0",
+        "unrealized_pnl": "149.625337",
+        "calculated_margin": "810.597797",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "511.27",
+        "unrealized_pnl": "47.058404",
+        "calculated_margin": "102.254",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "240.819773",
+        "unrealized_pnl": "40.686504",
+        "calculated_margin": "138.571636",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "WLD",
+        "oid": 538919084244,
+        "margin": "2.89130625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084243,
+        "margin": "2.878015"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084242,
+        "margin": "2.8646625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084241,
+        "margin": "2.851310"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084240,
+        "margin": "2.83801875"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084239,
+        "margin": "3.07830975"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084238,
+        "margin": "4.440825"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084237,
+        "margin": "6.144229"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084236,
+        "margin": "8.206252"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084235,
+        "margin": "10.6556685"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084234,
+        "margin": "13.508700"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084233,
+        "margin": "16.81532775"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084232,
+        "margin": "20.580131"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084231,
+        "margin": "24.817278"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084230,
+        "margin": "29.57549025"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084229,
+        "margin": "34.845213"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084228,
+        "margin": "40.67332075"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084227,
+        "margin": "47.0626155"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084226,
+        "margin": "54.012602"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "0E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-7.22139333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "7.22139333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "1.011159277876693488E-8",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "0.00000185647700",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "-1.152617593870180921E-10",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  },
+  {
+    "received_at": "2026-09-08T04:19:59.110Z",
+    "raw_quote_balance": "-19045.260052",
+    "signed_position_value": "26182.172433",
+    "gross_marked_equity": "7136.912381",
+    "borrowed_usdc": "3684.94944339",
+    "unrealized_pnl": "1791.952515",
+    "settled_net_equity": "1660.01042261",
+    "net_balance": "3451.96293761",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "84.073",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5467.1859234408130",
+    "borrow_headroom": "1782.2364800508130",
+    "borrow_health_factor": "1.483652898752181976540254267",
+    "isolated_equity": "5074.282690",
+    "cross_initial_margin": "1072.912746",
+    "position_margin": "6147.195436",
+    "open_order_initial_margin": "977.9434099666666666666666670",
+    "order_buffer": "9.779434099666666666666666670",
+    "order_reservation": "987.7228440663333333333333337",
+    "total_margin_commitment": "7134.918280066333333333333334",
+    "hold": "1667.732356625520333333333334",
+    "available_balance": "1784.230580984479666666666666",
+    "reported_available_balance": "1784.23058199",
+    "free_quote_after_unbuffered_orders": "11.7735350333333333333333330",
+    "hype_held": "67.39482523807301774068750388",
+    "hype_available": "32.64984150192698225931249612",
+    "cross_net_equity": "-1622.31975239",
+    "cross_maintenance_margin": "536.456373",
+    "liquidation_collateral_value": "6939.12059513641650",
+    "maintenance_borrow": "2158.77612539",
+    "available_after_maintenance": "4780.34446974641650",
+    "portfolio_margin_ratio": "0.3605383918696904806539486851",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3069.1844",
+        "unrealized_pnl": "-47.996136",
+        "calculated_margin": "267.716069",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.84546",
+        "unrealized_pnl": "-5.045278",
+        "calculated_margin": "13.584546",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1520.04",
+        "unrealized_pnl": "70.26",
+        "calculated_margin": "283.182787",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "649.0935",
+        "unrealized_pnl": "-3.288077",
+        "calculated_margin": "100.565777",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "7257.1",
+        "notional": "3440.300826",
+        "unrealized_pnl": "-12.477478",
+        "calculated_margin": "876.934380",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.714742",
+        "unrealized_pnl": "1.720992",
+        "calculated_margin": "14.101064",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2109.312",
+        "unrealized_pnl": "195.8173",
+        "calculated_margin": "575.728368",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "957.5",
+        "notional": "2176.972",
+        "unrealized_pnl": "69.708676",
+        "calculated_margin": "592.578913",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1503.1497",
+        "unrealized_pnl": "46.245736",
+        "calculated_margin": "286.506967",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1283.35",
+        "unrealized_pnl": "-91.97381",
+        "calculated_margin": "365.153048",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "822.7219",
+        "unrealized_pnl": "-33.289186",
+        "calculated_margin": "178.698845",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2521.86",
+        "unrealized_pnl": "8.32746",
+        "calculated_margin": "252.186",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "456.7475",
+        "unrealized_pnl": "-41.82181",
+        "calculated_margin": "81.9838",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1527.30376",
+        "unrealized_pnl": "-6.209768",
+        "calculated_margin": "502.549367",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7048.704",
+        "unrealized_pnl": "1405.100777",
+        "calculated_margin": "704.8704",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2145.4896",
+        "unrealized_pnl": "149.114937",
+        "calculated_margin": "810.087397",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "511.359",
+        "unrealized_pnl": "47.147404",
+        "calculated_margin": "102.2718",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "240.744045",
+        "unrealized_pnl": "40.610776",
+        "calculated_margin": "138.495908",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "WLD",
+        "oid": 538919084244,
+        "margin": "2.89130625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084243,
+        "margin": "2.878015"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084242,
+        "margin": "2.8646625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084241,
+        "margin": "2.851310"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084240,
+        "margin": "2.83801875"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084239,
+        "margin": "3.07830975"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084238,
+        "margin": "4.440825"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084237,
+        "margin": "6.144229"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084236,
+        "margin": "8.206252"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084235,
+        "margin": "10.6556685"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084234,
+        "margin": "13.508700"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084233,
+        "margin": "16.81532775"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084232,
+        "margin": "20.580131"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084231,
+        "margin": "24.817278"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084230,
+        "margin": "29.57549025"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084229,
+        "margin": "34.845213"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084228,
+        "margin": "40.67332075"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084227,
+        "margin": "47.0626155"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084226,
+        "margin": "54.012602"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "-1E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-0.000001005520333333333334",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "9.95520333333333334E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "-1.92698225931249612E-9",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "7.5641650E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "-3.03095193460513149E-11",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  },
+  {
+    "received_at": "2026-09-08T04:15:57.250Z",
+    "raw_quote_balance": "-19021.384973",
+    "signed_position_value": "26122.193011",
+    "gross_marked_equity": "7100.808038",
+    "borrowed_usdc": "3708.82310377",
+    "unrealized_pnl": "1731.973093",
+    "settled_net_equity": "1660.01184123",
+    "net_balance": "3391.98493423",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "83.919",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5457.1714523001390",
+    "borrow_headroom": "1748.3483485301390",
+    "borrow_health_factor": "1.471402463696085076655653720",
+    "isolated_equity": "5034.204608",
+    "cross_initial_margin": "1070.002712",
+    "position_margin": "6104.207320",
+    "open_order_initial_margin": "977.9434099666666666666666670",
+    "order_buffer": "9.779434099666666666666666670",
+    "order_reservation": "987.7228440663333333333333337",
+    "total_margin_commitment": "7091.930164066333333333333334",
+    "hold": "1634.758711766194333333333334",
+    "available_balance": "1757.226222463805666666666666",
+    "reported_available_balance": "1757.22622399",
+    "free_quote_after_unbuffered_orders": "18.6573080333333333333333330",
+    "hype_held": "67.82997212213486692448548525",
+    "hype_available": "32.21469461786513307551451475",
+    "cross_net_equity": "-1642.21967377",
+    "cross_maintenance_margin": "535.001356",
+    "liquidation_collateral_value": "6926.40992022709950",
+    "maintenance_borrow": "2177.22102977",
+    "available_after_maintenance": "4749.18889045709950",
+    "portfolio_margin_ratio": "0.3634999178253914749641542891",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3064.132",
+        "unrealized_pnl": "-53.048536",
+        "calculated_margin": "262.663669",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.36112",
+        "unrealized_pnl": "-5.529618",
+        "calculated_margin": "13.536112",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1515.96",
+        "unrealized_pnl": "66.18",
+        "calculated_margin": "279.102787",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "648.20943",
+        "unrealized_pnl": "-4.172147",
+        "calculated_margin": "99.681707",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "7257.1",
+        "notional": "3438.704264",
+        "unrealized_pnl": "-14.07404",
+        "calculated_margin": "875.337818",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.57442",
+        "unrealized_pnl": "1.58067",
+        "calculated_margin": "13.960742",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2104.896",
+        "unrealized_pnl": "191.4013",
+        "calculated_margin": "571.312368",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "957.5",
+        "notional": "2169.1205",
+        "unrealized_pnl": "61.857176",
+        "calculated_margin": "584.727413",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1497.4674",
+        "unrealized_pnl": "40.563436",
+        "calculated_margin": "280.824667",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1278.5",
+        "unrealized_pnl": "-96.82381",
+        "calculated_margin": "360.303048",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "821.37055",
+        "unrealized_pnl": "-34.640536",
+        "calculated_margin": "177.347495",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2517.57",
+        "unrealized_pnl": "12.61746",
+        "calculated_margin": "251.757",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "456.2987",
+        "unrealized_pnl": "-42.27061",
+        "calculated_margin": "81.5350",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1528.16016",
+        "unrealized_pnl": "-5.353368",
+        "calculated_margin": "503.405767",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7025.616",
+        "unrealized_pnl": "1382.012777",
+        "calculated_margin": "702.5616",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2141.2208",
+        "unrealized_pnl": "144.846137",
+        "calculated_margin": "805.818597",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "510.74",
+        "unrealized_pnl": "46.528404",
+        "calculated_margin": "102.148",
+        "margin_residual": "0.000"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "240.431667",
+        "unrealized_pnl": "40.298398",
+        "calculated_margin": "138.183530",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "WLD",
+        "oid": 538919084244,
+        "margin": "2.89130625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084243,
+        "margin": "2.878015"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084242,
+        "margin": "2.8646625"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084241,
+        "margin": "2.851310"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084240,
+        "margin": "2.83801875"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084239,
+        "margin": "3.07830975"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084238,
+        "margin": "4.440825"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084237,
+        "margin": "6.144229"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084236,
+        "margin": "8.206252"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084235,
+        "margin": "10.6556685"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084234,
+        "margin": "13.508700"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084233,
+        "margin": "16.81532775"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084232,
+        "margin": "20.580131"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084231,
+        "margin": "24.817278"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084230,
+        "margin": "29.57549025"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084229,
+        "margin": "34.845213"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084228,
+        "margin": "40.67332075"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084227,
+        "margin": "47.0626155"
+      },
+      {
+        "coin": "WLD",
+        "oid": 538919084226,
+        "margin": "54.012602"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "0E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-0.000001526194333333333334",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "0.000001526194333333333334",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "1.213486692448548525E-8",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "4.6709950E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "2.53914749641542891E-11",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  },
+  {
+    "received_at": "2026-09-08T03:42:59.459869+00:00",
+    "raw_quote_balance": "-20057.230961",
+    "signed_position_value": "27173.312611",
+    "gross_marked_equity": "7116.081650",
+    "borrowed_usdc": "3568.01429661",
+    "unrealized_pnl": "1884.285055",
+    "settled_net_equity": "1663.78229839",
+    "net_balance": "3548.06735339",
+    "hype_quantity": "100.04466674",
+    "hype_oracle_price": "84.01",
+    "hype_ltv": "0.65",
+    "borrow_capacity": "5463.089094337810",
+    "borrow_headroom": "1895.074797727810",
+    "borrow_health_factor": "1.531128700781366345882871577",
+    "isolated_equity": "5381.718945",
+    "cross_initial_margin": "1074.069796",
+    "position_margin": "6455.788741",
+    "open_order_initial_margin": "659.4898649666666666666666669",
+    "order_buffer": "6.594898649666666666666666669",
+    "order_reservation": "666.0847636163333333333333336",
+    "total_margin_commitment": "7121.873504616333333333333334",
+    "hold": "1658.784410278523333333333334",
+    "available_balance": "1889.282943111476666666666666",
+    "reported_available_balance": "1889.28294499",
+    "free_quote_after_unbuffered_orders": "0.8030440333333333333333331",
+    "hype_held": "65.44653386000445612396570617",
+    "hype_available": "34.59813287999554387603429383",
+    "cross_net_equity": "-1833.65159161",
+    "cross_maintenance_margin": "537.034898",
+    "liquidation_collateral_value": "6933.9207735826050",
+    "maintenance_borrow": "2370.68648961",
+    "available_after_maintenance": "4563.2342839726050",
+    "portfolio_margin_ratio": "0.3892034052176412853598868716",
+    "positions": [
+      {
+        "coin": "SOL",
+        "mode": "isolated",
+        "size": "29.72",
+        "notional": "3068.59",
+        "unrealized_pnl": "-48.590536",
+        "calculated_margin": "267.091644",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ARB",
+        "mode": "cross",
+        "size": "794.0",
+        "notional": "135.24996",
+        "unrealized_pnl": "-5.640778",
+        "calculated_margin": "13.524996",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "LINK",
+        "mode": "isolated",
+        "size": "120.0",
+        "notional": "1514.76",
+        "unrealized_pnl": "64.98",
+        "calculated_margin": "277.921778",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "AAVE",
+        "mode": "isolated",
+        "size": "4.95",
+        "notional": "649.5885",
+        "unrealized_pnl": "-2.793077",
+        "calculated_margin": "101.06889",
+        "margin_residual": "0.00000"
+      },
+      {
+        "coin": "WLD",
+        "mode": "isolated",
+        "size": "9232.6",
+        "notional": "4439.126406",
+        "unrealized_pnl": "46.397544",
+        "calculated_margin": "1178.719916",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "UNI",
+        "mode": "isolated",
+        "size": "9.1",
+        "notional": "63.97118",
+        "unrealized_pnl": "1.97743",
+        "calculated_margin": "14.358297",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "PENDLE",
+        "mode": "isolated",
+        "size": "960.0",
+        "notional": "2118.912",
+        "unrealized_pnl": "205.4173",
+        "calculated_margin": "585.362882",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "NEAR",
+        "mode": "isolated",
+        "size": "939.3",
+        "notional": "2146.67622",
+        "unrealized_pnl": "80.555816",
+        "calculated_margin": "593.177383",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "JUP",
+        "mode": "isolated",
+        "size": "6045.0",
+        "notional": "1511.4918",
+        "unrealized_pnl": "54.587836",
+        "calculated_margin": "294.8679",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "TAO",
+        "mode": "isolated",
+        "size": "5.0",
+        "notional": "1287.5",
+        "unrealized_pnl": "-87.82381",
+        "calculated_margin": "369.319073",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ENA",
+        "mode": "isolated",
+        "size": "5005.0",
+        "notional": "824.57375",
+        "unrealized_pnl": "-31.437336",
+        "calculated_margin": "180.56097",
+        "margin_residual": "0.00000"
+      },
+      {
+        "coin": "HYPE",
+        "mode": "cross",
+        "size": "-30.0",
+        "notional": "2520.3",
+        "unrealized_pnl": "9.88746",
+        "calculated_margin": "252.03",
+        "margin_residual": "0.00"
+      },
+      {
+        "coin": "MORPHO",
+        "mode": "isolated",
+        "size": "187.0",
+        "notional": "457.6451",
+        "unrealized_pnl": "-40.92421",
+        "calculated_margin": "82.887111",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "VVV",
+        "mode": "isolated",
+        "size": "85.64",
+        "notional": "1527.8176",
+        "unrealized_pnl": "-5.695928",
+        "calculated_margin": "503.082337",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "ZEC",
+        "mode": "cross",
+        "size": "6.24",
+        "notional": "7068.048",
+        "unrealized_pnl": "1424.444777",
+        "calculated_margin": "706.8048",
+        "margin_residual": "0.0000"
+      },
+      {
+        "coin": "LIT",
+        "mode": "isolated",
+        "size": "464.0",
+        "notional": "2125.3984",
+        "unrealized_pnl": "129.023737",
+        "calculated_margin": "789.832166",
+        "margin_residual": "0.000000"
+      },
+      {
+        "coin": "XMR",
+        "mode": "cross",
+        "size": "1.0",
+        "notional": "508.55",
+        "unrealized_pnl": "44.338404",
+        "calculated_margin": "101.71",
+        "margin_residual": "0.00"
+      },
+      {
+        "coin": "CHIP",
+        "mode": "isolated",
+        "size": "4733.0",
+        "notional": "245.713695",
+        "unrealized_pnl": "45.580426",
+        "calculated_margin": "143.468598",
+        "margin_residual": "0.000000"
+      }
+    ],
+    "orders": [
+      {
+        "coin": "VVV",
+        "oid": 538786532284,
+        "margin": "14.6925"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532283,
+        "margin": "14.6450"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532282,
+        "margin": "14.59666666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532281,
+        "margin": "14.54916666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532280,
+        "margin": "14.50166666666666666666666667"
+      },
+      {
+        "coin": "VVV",
+        "oid": 538786532279,
+        "margin": "14.45416666666666666666666667"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193174,
+        "margin": "12.27135"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193173,
+        "margin": "12.144132"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193172,
+        "margin": "12.016732"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193171,
+        "margin": "11.889514"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193170,
+        "margin": "11.762114"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193169,
+        "margin": "11.634714"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193168,
+        "margin": "11.507496"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193167,
+        "margin": "11.380096"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193166,
+        "margin": "11.252878"
+      },
+      {
+        "coin": "UNI",
+        "oid": 538783193165,
+        "margin": "11.00322"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568338,
+        "margin": "5.1567425"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568337,
+        "margin": "5.1289875"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568336,
+        "margin": "5.101005"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568335,
+        "margin": "5.07325"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568334,
+        "margin": "5.045495"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568333,
+        "margin": "5.01774"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568332,
+        "margin": "4.9897575"
+      },
+      {
+        "coin": "NEAR",
+        "oid": 538767568331,
+        "margin": "4.907475"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280758,
+        "margin": "4.36240"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280757,
+        "margin": "4.34160"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280756,
+        "margin": "4.32090"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280755,
+        "margin": "4.30010"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280754,
+        "margin": "4.27930"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280753,
+        "margin": "4.25850"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280752,
+        "margin": "4.23770"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280751,
+        "margin": "4.2170"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280750,
+        "margin": "4.19620"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280749,
+        "margin": "4.17540"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280748,
+        "margin": "4.15460"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280747,
+        "margin": "5.511866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280746,
+        "margin": "6.855166666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280745,
+        "margin": "6.82050"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280744,
+        "margin": "8.14300"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280743,
+        "margin": "9.451866666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280742,
+        "margin": "10.74666666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280741,
+        "margin": "12.02760"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280740,
+        "margin": "13.29466666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280739,
+        "margin": "14.54786666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280738,
+        "margin": "14.47196666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280737,
+        "margin": "17.01310"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280736,
+        "margin": "18.22473333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280735,
+        "margin": "20.71733333333333333333333333"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280734,
+        "margin": "21.89486666666666666666666667"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280733,
+        "margin": "24.3390"
+      },
+      {
+        "coin": "LIT",
+        "oid": 538276280732,
+        "margin": "26.75540"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071957,
+        "margin": "3.2790528"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071956,
+        "margin": "4.7791562"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071955,
+        "margin": "6.7590109"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071954,
+        "margin": "9.3130506"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071953,
+        "margin": "12.5483436"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071952,
+        "margin": "16.5821054"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071951,
+        "margin": "21.5389993"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071950,
+        "margin": "27.551727"
+      },
+      {
+        "coin": "ARB",
+        "oid": 537447071949,
+        "margin": "34.757254"
+      }
+    ],
+    "checks": {
+      "net_balance": {
+        "residual": "0E-8",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "available_balance": {
+        "residual": "-0.000001878523333333333334",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hold": {
+        "residual": "0.000001878523333333333334",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "cross_maintenance_margin": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "hype_hold": {
+        "residual": "2.000445612396570617E-8",
+        "tolerance": "1E-7",
+        "passed": true
+      },
+      "available_after_maintenance": {
+        "residual": "9.826050E-7",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "portfolio_margin_ratio": {
+        "residual": "-8.23587146401131284E-11",
+        "tolerance": "1E-9",
+        "passed": true
+      },
+      "equivalent_available_equations": {
+        "residual": "0E-24",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_SOL": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ARB": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LINK": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_AAVE": {
+        "residual": "0.00000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_WLD": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_UNI": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_PENDLE": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_NEAR": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_JUP": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_TAO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ENA": {
+        "residual": "0.00000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_HYPE": {
+        "residual": "0.00",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_MORPHO": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_VVV": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_ZEC": {
+        "residual": "0.0000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_LIT": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_XMR": {
+        "residual": "0.00",
+        "tolerance": "0.0001",
+        "passed": true
+      },
+      "position_CHIP": {
+        "residual": "0.000000",
+        "tolerance": "0.0001",
+        "passed": true
+      }
+    }
+  }
+]

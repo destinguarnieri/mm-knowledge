@@ -16,6 +16,11 @@ Paths below are relative to the `mm_v04` repo.
 
 ## Strategy inventory
 
+### External model reproductions
+
+- **`memlabs_ar3`** — `MemlabsAR3Strategy` (`memlabs_ar3.py`): frozen MemLabs three-lag linear forecast on 12h close log returns; closes and reopens each bar through MM's mock executor. Params: three `weights`, `bias`, optional predeclared `terminal_close_ms`; static or net-compounding sizing. Source pinned to `memlabs-research/build-a-quant-trading-strategy@c767f20d4eb5c031649e86c1a718b7eee0eaf4dc`. Local originals, isolated environment, executed Part 2 and reconciliation notebook: `mm_v04/.research/memlabs/` (git-ignored; launcher `launch-notebooks.sh`). The reconciliation matches predictions/directions and linear-ledger fills; upstream signed-log short payoff and gross-before-fees compounding explain accounting differences. This is reproduction, not independently validated out-of-sample evidence. No persisted run IDs or DB strategy records were created.
+- Shared `Interval` accepts `12h` with duration maps, generated client, form parsing and backtest selector updated. Live aggregation targets and live selector options remain explicit unchanged subsets. No schema migration required.
+
 ### EMA-crossover family
 
 - **`example`** - `ExampleStrategy` (`example.py`): configurable EMA backtest registered 2026-09-29. Supports fixed/zero/no thresholds, full/continuous/banded sizing, transition/every-bar adjustment, and optional volatility adjustment. Shared SIG_TO_POS_SIZE and VOL_ADJ_POS_SIZE now belong in trade_config; old backtest payloads are rejected rather than translated. Catalog defaults refreshed and five disposable saved configuration groups deleted, retaining historical run/study snapshots. UI exposes structured thresholds and volatility controls. The four legacy EMA implementations and registry names are retired; see the replacement guide below.

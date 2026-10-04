@@ -1,0 +1,339 @@
+{
+  "start_time_ms": 1788838979142,
+  "end_time_ms": 1788840956881,
+  "inputs": {
+    "starting_net_balance": "3548.06735339",
+    "starting_unrealized_pnl": "1884.285055",
+    "ending_unrealized_pnl": "1731.973093",
+    "net_external_transfers": "0",
+    "spot_cash_flow": "0",
+    "realized_perp_pnl": "-3.09",
+    "trading_fees": "0.534845",
+    "funding_received": "-0.125030",
+    "supply_interest": "0.0",
+    "borrow_interest": "0.02048944"
+  },
+  "predicted_end_net": "3391.98502695",
+  "api_end_net": "3391.98493423",
+  "residual_api_minus_predicted": "-0.00009272",
+  "fills": [
+    {
+      "coin": "NEAR",
+      "px": "2.2545",
+      "sz": "9.1",
+      "side": "B",
+      "time": 1788840282669,
+      "startPosition": "948.4",
+      "dir": "Open Long",
+      "closedPnl": "0.0",
+      "hash": "0x1c766784e2418cfd1df00443edd051020847006a7d44abcfc03f12d7a14566e7",
+      "oid": 538767568337,
+      "crossed": false,
+      "fee": "0.005128",
+      "builderFee": "0.002051",
+      "tid": 280423275560268,
+      "feeToken": "USDC",
+      "twapId": null
+    },
+    {
+      "coin": "NEAR",
+      "px": "2.2667",
+      "sz": "9.1",
+      "side": "B",
+      "time": 1788840280309,
+      "startPosition": "939.3",
+      "dir": "Open Long",
+      "closedPnl": "0.0",
+      "hash": "0x4776674c9de5369848f00443edd02e0000b17f3238e8556aeb3f129f5ce91082",
+      "oid": 538767568338,
+      "crossed": false,
+      "fee": "0.005156",
+      "builderFee": "0.002062",
+      "tid": 274704043403716,
+      "feeToken": "USDC",
+      "twapId": null
+    },
+    {
+      "coin": "WLD",
+      "px": "0.47423",
+      "sz": "24.5",
+      "side": "B",
+      "time": 1788839669826,
+      "startPosition": "7232.6",
+      "dir": "Open Long",
+      "closedPnl": "0.0",
+      "hash": "0x4e638b426831d69f4fdd0443edaea502025a00280334f571f22c36952735b089",
+      "oid": 538919084245,
+      "crossed": false,
+      "fee": "0.002903",
+      "builderFee": "0.001161",
+      "tid": 240205670949785,
+      "feeToken": "USDC",
+      "twapId": null
+    },
+    {
+      "coin": "WLD",
+      "px": "0.47424",
+      "sz": "1000.0",
+      "side": "A",
+      "time": 1788839620052,
+      "startPosition": "8232.6",
+      "dir": "Close Long",
+      "closedPnl": "-1.54",
+      "hash": "0xf09b544a96c3f45ef2150443edabe3020175003031c713319463ff9d55c7ce49",
+      "oid": 538918647889,
+      "crossed": true,
+      "fee": "0.260832",
+      "builderFee": "0.047424",
+      "tid": 192640407653823,
+      "feeToken": "USDC",
+      "twapId": null
+    },
+    {
+      "coin": "WLD",
+      "px": "0.47423",
+      "sz": "1000.0",
+      "side": "A",
+      "time": 1788839619800,
+      "startPosition": "9232.6",
+      "dir": "Close Long",
+      "closedPnl": "-1.55",
+      "hash": "0x155a24b2a8a854ca16d30443edabdf020157009843ab739cb922d00567ac2eb4",
+      "oid": 538918645456,
+      "crossed": true,
+      "fee": "0.260826",
+      "builderFee": "0.047423",
+      "tid": 777976571924890,
+      "feeToken": "USDC",
+      "twapId": null
+    }
+  ],
+  "funding": [
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "SOL",
+        "usdc": "0.030025",
+        "szi": "29.72",
+        "fundingRate": "-0.0000097754",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "ARB",
+        "usdc": "-0.00169",
+        "szi": "794.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "LINK",
+        "usdc": "-0.018991",
+        "szi": "120.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "AAVE",
+        "usdc": "-0.008113",
+        "szi": "4.95",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "WLD",
+        "usdc": "-0.091847",
+        "szi": "7257.1",
+        "fundingRate": "0.0000266363",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "UNI",
+        "usdc": "-0.000795",
+        "szi": "9.1",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "PENDLE",
+        "usdc": "-0.034514",
+        "szi": "960.0",
+        "fundingRate": "0.0000164541",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "NEAR",
+        "usdc": "-0.026775",
+        "szi": "939.3",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "JUP",
+        "usdc": "-0.018833",
+        "szi": "6045.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "TAO",
+        "usdc": "-0.016025",
+        "szi": "5.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "ENA",
+        "usdc": "-0.010275",
+        "szi": "5005.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "HYPE",
+        "usdc": "0.031529",
+        "szi": "-30.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "MORPHO",
+        "usdc": "-0.005711",
+        "szi": "187.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "VVV",
+        "usdc": "-0.01913",
+        "szi": "85.64",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "ZEC",
+        "usdc": "-0.088503",
+        "szi": "6.24",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "LIT",
+        "usdc": "0.164031",
+        "szi": "464.0",
+        "fundingRate": "-0.0000768064",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "XMR",
+        "usdc": "-0.006373",
+        "szi": "1.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    },
+    {
+      "time": 1788840000012,
+      "hash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+      "delta": {
+        "type": "funding",
+        "coin": "CHIP",
+        "usdc": "-0.00304",
+        "szi": "4733.0",
+        "fundingRate": "0.0000125",
+        "nSamples": null
+      }
+    }
+  ],
+  "posted_interest": [
+    {
+      "time": 1788840010078,
+      "token": "USDC",
+      "borrow": "0.02048944",
+      "supply": "0.0"
+    }
+  ],
+  "external_ledger_updates": [],
+  "scope": "Historical transfer/fill/funding replay over the captured interval. Interest entries are hourly; not a full reconstruction of continuous accrual at both endpoints. Residual remains unattributed below one ten-thousandth USDC."
+}

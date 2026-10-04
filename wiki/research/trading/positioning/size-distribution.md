@@ -156,6 +156,42 @@ Thirty-one focused deterministic tests pass. They cover curve endpoints and clam
 
 This checkpoint verifies the headless contract; it is not an economic backtest and does not create orders. The backtest lab is not a satisfactory curve-tuning interface. A separate interactive Position Lab UI is desired later for visual fine-tuning, simulated fills, average-entry changes, and schedule rebuilds. Strategy wiring, execution-layer replacement/reservation handling, economic evaluation, and live/capital mutation remain out of scope and unfinished.
 
+## Position Lab replay and policy comparison — 2026-09-23
+
+Status: in progress — stages 1–3 implemented under Destin’s approved plan; policy choice awaits hands-on review.
+
+Position Lab now records ordered price movements including non-fill events, replays/seeks from captured initial inputs and curve samples, reports average-cost realized/unrealized P&L and fees, explains inactive sides, and compares one-pass allocation with rearm-when-flat on the same path. Rearming restores accumulation capacity only on a positive-to-zero exit; partial exits preserve the current schedule. Endpoints remain fixed and new accumulation anchors distribution at the inventory average. This is a local experimental policy comparison, not promotion into live/backtest strategy behavior.
+
+See [[projects/position-lab-stages-1-3-plan|the stages 1–3 plan and delivery evidence]] for the state footprint, 51-test verification, browser checks, import/export recovery, and review steps. Stage 4–6 quote ladders, inventory-aware quoting and realistic execution remain deferred. The notes below describe the earlier one-pass baseline, which remains selectable and is still the default.
+
+## Automatic distribution traversal — 2026-09-16
+
+Side-toggle UX refinement: changing Long/Short in price mode now mirrors both schedule ranges and the current price about the inventory average (or accumulation start when flat), swaps numerical Lower/Higher weighting, and preserves inventory, capacity, curve families, and weight amounts. Like other configuration edits, switching side starts a fresh simulation plan. Switching back restores the prior range geometry; signal mode is not mirrored. This supersedes the earlier requirement to manually re-enter side-appropriate endpoints. Verified in-browser and covered by 32 total focused frontend tests plus lint/build.
+
+Status: in progress — Destin approved the fixed distribution traversal policy; implemented locally for hands-on review.
+
+Price movement now automatically distributes inventory through the distribution range: a long sells as price rises from its inventory average; a short covers as price falls. Each distribution plan freezes its starting average, far endpoint, curve shape, and inventory budget during traversal. Incremental fills preserve average entry while inventory remains, clear it at flat, and never repeat on retracing. The displayed curve retains its frozen budget; its filled counter records consumption separately.
+
+A new accumulation fill replaces distribution with a fresh plan anchored at the updated average and sized to the resulting inventory; the far endpoint stays fixed. This does not replenish the original accumulation budget. Complete undo snapshots include both schedules' progress and the active distribution budget. Signal mode remains explicit-fill. Reset now starts with zero inventory, null average entry, and capacity 10; zero inventory is also normalized when manually configured.
+
+Verification: 28 focused tests, scoped lint, production build, and browser long accumulation → partial distribution → retrace → flat → undo checks pass. Tests also cover short covering, schedule replacement after additional accumulation, and event-frequency-independent fills/proceeds. No live or capital path changed.
+
+## Interactive price-drag simulation — 2026-09-16
+
+Status: in progress — first interactive version implemented locally; accumulation reset policy remains provisional pending Destin's hands-on review.
+
+Destin confirmed that price dragging should immediately simulate accumulation: lower-price buys lower a long inventory average; higher-price short additions raise a short inventory average. Distribution starts at the resulting inventory average and redraws with the available inventory. Both far price endpoints stay fixed until separate endpoint-adjustment logic is designed.
+
+For this first sandbox version, Destin approved retaining the original accumulation start, endpoint, and remaining-capacity budget throughout the plan. Only newly traversed allocation is filled; retracing does not repeat fills or replenish the plan after distribution. This is a provisional UI simulation policy, not a change to the generic stateless allocator or an accepted live/backtest strategy policy.
+
+Implementation uses the existing preview API's unit-quantity sampled curves, with local piecewise integration so slider updates do not wait on network calls and fill totals/averages do not depend on slider event frequency. Destin explicitly accepted keeping this math client-side during prototype exploration, with migration to the backend deferred until the required behavior is settled. The partial-average overlay is retained but relabeled “Schedule average through current price” (signal-aware in signal mode); it remains off by default and may be removed later. The first pass kept distribution explicit; the automatic distribution traversal section above supersedes that behavior. Signal mode remains explicit-fill rather than automatic. Manual configuration edits establish a new plan; an initial coordinate inside a range does not replay prior levels. The default/reset example starts at the accumulation start. Short configurations require an ascending accumulation range and a distribution endpoint below the average; the UI explains mismatches without silently moving endpoints.
+
+The UI now uses an upward price Y axis, a 50/50 chart/action-panel split, and compact terminal-style spacing. The accumulation curve remains visible at its original budget, with a separate filled-quantity readout; distribution start is read-only while anchored to inventory average. Undo restores the cursor, inventory, average, and consumed allocation. State retains 100 fills plus one preceding undo snapshot; query cache entries expire when inactive.
+
+Verification: 18 frontend helper/simulation tests, scoped lint, and production build pass. Browser checks cover long/short accumulation, live average/anchor updates, fixed endpoints, undo, reset, and retracing. No live runtime, order, account, strategy, deployment, commit, or push occurred.
+
+Later discussion topics retained from the UI review: direct chart manipulation, saved scenarios and comparisons, richer lifecycle inspection, economic readouts/costs, and broader interaction/error-path tests. The next product step is Destin trying this frozen-accumulation behavior before deciding a reset/replenishment policy.
+
 ## Interactive Position Lab closure — 2026-08-13
 
 The separate interactive Position Lab is now implemented locally in `mm_v04` and closes the accepted MON-168 evaluation surface:
@@ -190,6 +226,14 @@ The Positions Lab backtest now emits a typed `BacktestDecision` on every scored 
 Commit `ea6ee170` established the model, migration, engine capture, and dense persistence path. Commit `f242a6f3` added the corresponding saved-run read path to `BacktestRunResponse`, regenerated the frontend OpenAPI types, and hydrated decisions into the existing Position Replay artifact state. A read-only smoke against saved Positions Lab run `0fbb2f33-49cf-44b9-b8aa-5a2ad4a71ef5` restored all 896 persisted rows as typed envelopes in timestamp order.
 
 Commit `dc88a91a` removes the remaining Position Replay fixture module. The selected replay candle now uses only its exact recorded decision—never a carried-forward decision—and correlates recorded orders and fills by `decision_id`. The former fixture ladder, urgency bars, inventory readout, curve-weight/capacity sliders, and curve fields are replaced by recorded schedule traversal, per-candle action, decision-to-result inventory, execution evidence, signal-coordinate, inventory-limit, and curve-spec readouts. Warm-up or unscored candles show an explicit no-decision state. The same commit adds a persistent resizable main/selected-chart split and the accepted compact replay-chart polish. Frontend lint and production build pass, and 15 focused replay tests cover exact candle selection, execution correlation, fills, position snapshots, and performance evidence.
+
+## Strategy-integration pause — 2026-09-03
+
+MON-225 strategy integration is intentionally parked. The replay, persistence, and UI infrastructure above remains valid, but it currently visualizes decisions from the earlier Positions Lab strategy and is not evidence that the schedule-to-target policy is correct.
+
+The local uncommitted `positions_lab.py` experiment starts from the normal two-sided EMAC V5 structure, removes unused signal-stat scaffolding, aligns Threshold Engine endpoints with the experimental `0.1`/`0.9` signal coordinates, and evaluates previous/current allocation-curve points on mirrored signed ranges. In that experiment only, accumulation uses full maximum position value and distribution uses absolute current position value as curve totals. Those choices are exploratory and do **not** supersede the confirmed MON-168 fresh-snapshot contract above, where accumulation is bounded by remaining capacity and distribution by current inventory.
+
+No executable target composition is accepted. The experiment deliberately returns a zero target rather than presenting an invented combination of cumulative accumulation and distribution points as strategy truth. Resume only when a concrete strategy policy defines how curve traversal becomes a two-sided target while preserving Threshold Engine V3, the final `constrain_target_notional_usd(...)` step, and Position V2. Do not reconstruct that policy from UI fixtures or the rejected short-only/manual-target implementation.
 
 ## Favorable price orientations
 

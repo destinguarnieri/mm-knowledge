@@ -1,0 +1,4042 @@
+[
+  {
+    "spot": {
+      "portfolioMarginEnabled": true,
+      "balances": [
+        {
+          "coin": "USDC",
+          "token": 0,
+          "total": "3320.49989393",
+          "hold": "1569.91198694",
+          "entryNtl": "0.0",
+          "spotHold": "3320.49989393",
+          "ltv": "0.0",
+          "borrowed": "3714.92401507"
+        },
+        {
+          "coin": "HFUN",
+          "token": 2,
+          "total": "0.20233081",
+          "hold": "0.0",
+          "entryNtl": "37.91007525"
+        },
+        {
+          "coin": "HODL",
+          "token": 38,
+          "total": "2164.35236768",
+          "hold": "0.0",
+          "entryNtl": "22.03304766"
+        },
+        {
+          "coin": "HPEPE",
+          "token": 49,
+          "total": "205.92792",
+          "hold": "0.0",
+          "entryNtl": "10.996692"
+        },
+        {
+          "coin": "OMNIX",
+          "token": 53,
+          "total": "1003.486923",
+          "hold": "0.0",
+          "entryNtl": "14.622912"
+        },
+        {
+          "coin": "MEOW",
+          "token": 61,
+          "total": "381.180824",
+          "hold": "0.0",
+          "entryNtl": "0.02195601"
+        },
+        {
+          "coin": "PEAR",
+          "token": 71,
+          "total": "2236.118735",
+          "hold": "0.0",
+          "entryNtl": "22.04611756"
+        },
+        {
+          "coin": "RICH",
+          "token": 72,
+          "total": "20.43284728",
+          "hold": "0.0",
+          "entryNtl": "22.0238418"
+        },
+        {
+          "coin": "NEIRO",
+          "token": 78,
+          "total": "1522.559768",
+          "hold": "0.0",
+          "entryNtl": "11.03281896"
+        },
+        {
+          "coin": "BERA",
+          "token": 80,
+          "total": "253.898834",
+          "hold": "0.0",
+          "entryNtl": "25.0328744"
+        },
+        {
+          "coin": "VAULT",
+          "token": 106,
+          "total": "99.965",
+          "hold": "0.0",
+          "entryNtl": "124.6"
+        },
+        {
+          "coin": "UP",
+          "token": 115,
+          "total": "226.6428401",
+          "hold": "0.0",
+          "entryNtl": "27.41005261"
+        },
+        {
+          "coin": "NASDAQ",
+          "token": 130,
+          "total": "25.29458022",
+          "hold": "0.0",
+          "entryNtl": "23.02612708"
+        },
+        {
+          "coin": "HYPE",
+          "token": 150,
+          "total": "100.04466674",
+          "hold": "68.02607098",
+          "entryNtl": "0.0",
+          "ltv": "0.65",
+          "supplied": "100.04466674"
+        },
+        {
+          "coin": "FARM",
+          "token": 161,
+          "total": "0.27678708",
+          "hold": "0.0",
+          "entryNtl": "10.4062618"
+        },
+        {
+          "coin": "HYENA",
+          "token": 168,
+          "total": "0.08443958",
+          "hold": "0.0",
+          "entryNtl": "0.00070363"
+        },
+        {
+          "coin": "SENT",
+          "token": 186,
+          "total": "2975.0",
+          "hold": "0.0",
+          "entryNtl": "2975.0"
+        },
+        {
+          "coin": "UBTC",
+          "token": 197,
+          "total": "0.0",
+          "hold": "0.0",
+          "entryNtl": "0.0",
+          "ltv": "0.5"
+        },
+        {
+          "coin": "USDE",
+          "token": 235,
+          "total": "0.0",
+          "hold": "0.0",
+          "entryNtl": "0.0"
+        },
+        {
+          "coin": "USDXL",
+          "token": 239,
+          "total": "0.0",
+          "hold": "0.0",
+          "entryNtl": "0.0"
+        },
+        {
+          "coin": "RAT",
+          "token": 253,
+          "total": "30.555941",
+          "hold": "0.0",
+          "entryNtl": "0.65582216"
+        },
+        {
+          "coin": "USOL",
+          "token": 254,
+          "total": "0.0",
+          "hold": "0.0",
+          "entryNtl": "0.0"
+        },
+        {
+          "coin": "USDT0",
+          "token": 268,
+          "total": "0.0",
+          "hold": "-1751.04317821",
+          "entryNtl": "0.0",
+          "spotHold": "0.0",
+          "ltv": "0.0"
+        },
+        {
+          "coin": "USDHL",
+          "token": 291,
+          "total": "0.0",
+          "hold": "0.0",
+          "entryNtl": "0.0"
+        },
+        {
+          "coin": "USDH",
+          "token": 360,
+          "total": "0.0",
+          "hold": "0.0",
+          "entryNtl": "0.0",
+          "ltv": "0.0"
+        },
+        {
+          "coin": "MAX",
+          "token": 734,
+          "total": "19986.0",
+          "hold": "0.0",
+          "entryNtl": "0.0"
+        }
+      ],
+      "portfolioMarginRatio": "0.3661023849",
+      "tokenToPortfolioBorrowRatio": [
+        [
+          0,
+          "0.0000742985"
+        ]
+      ],
+      "tokenToPortfolioSupplyRatio": [
+        [
+          150,
+          "0.0001000447"
+        ]
+      ],
+      "tokenToAvailableAfterMaintenance": [
+        [
+          0,
+          "4739.68856499"
+        ],
+        [
+          150,
+          "68.30108006"
+        ],
+        [
+          197,
+          "0.0"
+        ],
+        [
+          268,
+          "4740.9212045"
+        ],
+        [
+          360,
+          "0.0"
+        ]
+      ]
+    },
+    "perps": {
+      "marginSummary": {
+        "accountValue": "7035.423909",
+        "totalNtlPos": "31119.314407",
+        "totalRawUsd": "-19038.370498",
+        "totalMarginUsed": "6057.868273"
+      },
+      "crossMarginSummary": {
+        "accountValue": "2046.660316",
+        "totalNtlPos": "10179.3958",
+        "totalRawUsd": "-3087.215484",
+        "totalMarginUsed": "1069.10468"
+      },
+      "crossMaintenanceMarginUsed": "534.55234",
+      "withdrawable": "5.38155",
+      "assetPositions": [
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "SOL",
+            "szi": "29.72",
+            "leverage": {
+              "type": "isolated",
+              "value": 10,
+              "rawUsd": "-2801.468331"
+            },
+            "entryPx": "104.8849",
+            "positionValue": "3062.0516",
+            "unrealizedPnl": "-55.128936",
+            "returnOnEquity": "-0.1768551271",
+            "liquidationPx": "96.6790327156",
+            "marginUsed": "260.583269",
+            "maxLeverage": 20,
+            "cumFunding": {
+              "allTime": "23.214586",
+              "sinceOpen": "14.557501",
+              "sinceChange": "0.282307"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "ARB",
+            "szi": "794.0",
+            "leverage": {
+              "type": "cross",
+              "value": 10
+            },
+            "entryPx": "0.17744",
+            "positionValue": "134.3448",
+            "unrealizedPnl": "-6.545938",
+            "returnOnEquity": "-0.4646109526",
+            "liquidationPx": null,
+            "marginUsed": "13.43448",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "-1.051026",
+              "sinceOpen": "0.055638",
+              "sinceChange": "0.033238"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "LINK",
+            "szi": "120.0",
+            "leverage": {
+              "type": "isolated",
+              "value": 6,
+              "rawUsd": "-1236.857213"
+            },
+            "entryPx": "12.0815",
+            "positionValue": "1515.906",
+            "unrealizedPnl": "66.126",
+            "returnOnEquity": "0.2736663494",
+            "liquidationPx": "10.8496246754",
+            "marginUsed": "279.048787",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "70.698817",
+              "sinceOpen": "5.353133",
+              "sinceChange": "0.448216"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "AAVE",
+            "szi": "4.95",
+            "leverage": {
+              "type": "isolated",
+              "value": 6,
+              "rawUsd": "-548.527723"
+            },
+            "entryPx": "131.7942",
+            "positionValue": "648.252",
+            "unrealizedPnl": "-4.129577",
+            "returnOnEquity": "-0.0379800149",
+            "liquidationPx": "116.6459804359",
+            "marginUsed": "99.724277",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "43.512467",
+              "sinceOpen": "2.873856",
+              "sinceChange": "0.032638"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "WLD",
+            "szi": "7306.1",
+            "leverage": {
+              "type": "isolated",
+              "value": 4,
+              "rawUsd": "-2580.680177"
+            },
+            "entryPx": "0.47574",
+            "positionValue": "3424.149887",
+            "unrealizedPnl": "-51.705702",
+            "returnOnEquity": "-0.0595027045",
+            "liquidationPx": "0.3718133408",
+            "marginUsed": "843.46971",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "58.38376",
+              "sinceOpen": "0.92841",
+              "sinceChange": "0.0"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "UNI",
+            "szi": "9.1",
+            "leverage": {
+              "type": "isolated",
+              "value": 5,
+              "rawUsd": "-49.613678"
+            },
+            "entryPx": "6.8125",
+            "positionValue": "63.45703",
+            "unrealizedPnl": "1.46328",
+            "returnOnEquity": "0.1180183486",
+            "liquidationPx": "5.7390026605",
+            "marginUsed": "13.843352",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "15.154215",
+              "sinceOpen": "0.00318",
+              "sinceChange": "0.00318"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "PENDLE",
+            "szi": "960.0",
+            "leverage": {
+              "type": "isolated",
+              "value": 5,
+              "rawUsd": "-1533.583632"
+            },
+            "entryPx": "1.993223",
+            "positionValue": "2093.26272",
+            "unrealizedPnl": "179.76802",
+            "returnOnEquity": "0.469737439",
+            "liquidationPx": "1.7749810556",
+            "marginUsed": "559.679088",
+            "maxLeverage": 5,
+            "cumFunding": {
+              "allTime": "7.850032",
+              "sinceOpen": "2.288836",
+              "sinceChange": "0.087954"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "NEAR",
+            "szi": "957.5",
+            "leverage": {
+              "type": "isolated",
+              "value": 4,
+              "rawUsd": "-1584.393087"
+            },
+            "entryPx": "2.20079",
+            "positionValue": "2167.014",
+            "unrealizedPnl": "59.750676",
+            "returnOnEquity": "0.1134185278",
+            "liquidationPx": "1.7418090829",
+            "marginUsed": "582.620913",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "3.312641",
+              "sinceOpen": "3.312641",
+              "sinceChange": "0.0"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "JUP",
+            "szi": "6045.0",
+            "leverage": {
+              "type": "isolated",
+              "value": 6,
+              "rawUsd": "-1216.642733"
+            },
+            "entryPx": "0.241009",
+            "positionValue": "1496.56065",
+            "unrealizedPnl": "39.656686",
+            "returnOnEquity": "0.163319012",
+            "liquidationPx": "0.2118571648",
+            "marginUsed": "279.917917",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "44.848421",
+              "sinceOpen": "2.916655",
+              "sinceChange": "0.037597"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "TAO",
+            "szi": "5.0",
+            "leverage": {
+              "type": "isolated",
+              "value": 3,
+              "rawUsd": "-918.196952"
+            },
+            "entryPx": "275.064",
+            "positionValue": "1279.1",
+            "unrealizedPnl": "-96.22381",
+            "returnOnEquity": "-0.2098934287",
+            "liquidationPx": "204.0437671111",
+            "marginUsed": "360.903048",
+            "maxLeverage": 5,
+            "cumFunding": {
+              "allTime": "147.266194",
+              "sinceOpen": "0.584651",
+              "sinceChange": "0.584651"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "ENA",
+            "szi": "5005.0",
+            "leverage": {
+              "type": "isolated",
+              "value": 4,
+              "rawUsd": "-644.023055"
+            },
+            "entryPx": "0.171031",
+            "positionValue": "818.6178",
+            "unrealizedPnl": "-37.393286",
+            "returnOnEquity": "-0.1747327184",
+            "liquidationPx": "0.1354483527",
+            "marginUsed": "174.594745",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "43.539613",
+              "sinceOpen": "2.731801",
+              "sinceChange": "0.061986"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "HYPE",
+            "szi": "-30.0",
+            "leverage": {
+              "type": "cross",
+              "value": 10
+            },
+            "entryPx": "84.3395",
+            "positionValue": "2522.76",
+            "unrealizedPnl": "7.42746",
+            "returnOnEquity": "0.0293553743",
+            "liquidationPx": "234.558303619",
+            "marginUsed": "252.276",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "-0.063089",
+              "sinceOpen": "-0.063089",
+              "sinceChange": "-0.063089"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "MORPHO",
+            "szi": "187.0",
+            "leverage": {
+              "type": "isolated",
+              "value": 4,
+              "rawUsd": "-374.7637"
+            },
+            "entryPx": "2.66614",
+            "positionValue": "455.7003",
+            "unrealizedPnl": "-42.86901",
+            "returnOnEquity": "-0.3439362122",
+            "liquidationPx": "2.2267599525",
+            "marginUsed": "80.9366",
+            "maxLeverage": 5,
+            "cumFunding": {
+              "allTime": "4.038492",
+              "sinceOpen": "0.644702",
+              "sinceChange": "0.644702"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "VVV",
+            "szi": "85.64",
+            "leverage": {
+              "type": "isolated",
+              "value": 3,
+              "rawUsd": "-1024.754393"
+            },
+            "entryPx": "17.9065",
+            "positionValue": "1528.4599",
+            "unrealizedPnl": "-5.053628",
+            "returnOnEquity": "-0.0098863712",
+            "liquidationPx": "14.3590059738",
+            "marginUsed": "503.705507",
+            "maxLeverage": 3,
+            "cumFunding": {
+              "allTime": "8.455286",
+              "sinceOpen": "3.718151",
+              "sinceChange": "0.01913"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "ZEC",
+            "szi": "6.24",
+            "leverage": {
+              "type": "cross",
+              "value": 10
+            },
+            "entryPx": "904.4235",
+            "positionValue": "7010.64",
+            "unrealizedPnl": "1367.036777",
+            "returnOnEquity": "2.4222765545",
+            "liquidationPx": "323.9573947368",
+            "marginUsed": "701.064",
+            "maxLeverage": 10,
+            "cumFunding": {
+              "allTime": "46.685077",
+              "sinceOpen": "21.632452",
+              "sinceChange": "2.11476"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "LIT",
+            "szi": "464.0",
+            "leverage": {
+              "type": "isolated",
+              "value": 3,
+              "rawUsd": "-1335.402203"
+            },
+            "entryPx": "4.302531",
+            "positionValue": "2145.8144",
+            "unrealizedPnl": "149.439737",
+            "returnOnEquity": "0.2245666704",
+            "liquidationPx": "3.1978022102",
+            "marginUsed": "810.412197",
+            "maxLeverage": 5,
+            "cumFunding": {
+              "allTime": "8.852762",
+              "sinceOpen": "4.635984",
+              "sinceChange": "-0.081627"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "XMR",
+            "szi": "1.0",
+            "leverage": {
+              "type": "cross",
+              "value": 5
+            },
+            "entryPx": "464.211",
+            "positionValue": "511.651",
+            "unrealizedPnl": "47.439404",
+            "returnOnEquity": "0.5109674598",
+            "liquidationPx": null,
+            "marginUsed": "102.3302",
+            "maxLeverage": 5,
+            "cumFunding": {
+              "allTime": "113.524261",
+              "sinceOpen": "15.782583",
+              "sinceChange": "5.189996"
+            }
+          }
+        },
+        {
+          "type": "oneWay",
+          "position": {
+            "coin": "CHIP",
+            "szi": "4733.0",
+            "leverage": {
+              "type": "isolated",
+              "value": 2,
+              "rawUsd": "-102.248137"
+            },
+            "entryPx": "0.042284",
+            "positionValue": "241.57232",
+            "unrealizedPnl": "41.439051",
+            "returnOnEquity": "0.4141145668",
+            "liquidationPx": "0.0259238885",
+            "marginUsed": "139.324183",
+            "maxLeverage": 3,
+            "cumFunding": {
+              "allTime": "2.126844",
+              "sinceOpen": "2.126844",
+              "sinceChange": "1.894254"
+            }
+          }
+        }
+      ],
+      "time": 1788841533798
+    },
+    "orders": [
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.4677",
+        "sz": "24.5",
+        "oid": 538919084242,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "24.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.46552",
+        "sz": "24.5",
+        "oid": 538919084241,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "24.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.46335",
+        "sz": "24.5",
+        "oid": 538919084240,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "24.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.46117",
+        "sz": "26.7",
+        "oid": 538919084239,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "26.7",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.459",
+        "sz": "38.7",
+        "oid": 538919084238,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "38.7",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.45682",
+        "sz": "53.8",
+        "oid": 538919084237,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "53.8",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.45464",
+        "sz": "72.2",
+        "oid": 538919084236,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "72.2",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.45247",
+        "sz": "94.2",
+        "oid": 538919084235,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "94.2",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.45029",
+        "sz": "120.0",
+        "oid": 538919084234,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "120.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.44811",
+        "sz": "150.1",
+        "oid": 538919084233,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "150.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.44594",
+        "sz": "184.6",
+        "oid": 538919084232,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "184.6",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.44376",
+        "sz": "223.7",
+        "oid": 538919084231,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "223.7",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.44159",
+        "sz": "267.9",
+        "oid": 538919084230,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "267.9",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.43941",
+        "sz": "317.2",
+        "oid": 538919084229,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "317.2",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.43723",
+        "sz": "372.1",
+        "oid": 538919084228,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "372.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.43506",
+        "sz": "432.7",
+        "oid": 538919084227,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "432.7",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "B",
+        "limitPx": "0.43288",
+        "sz": "499.1",
+        "oid": 538919084226,
+        "timestamp": 1788839666179,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "499.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "A",
+        "limitPx": "4.5988",
+        "sz": "145.0",
+        "oid": 538898468479,
+        "timestamp": 1788837780212,
+        "triggerCondition": "Price below 4.3253",
+        "isTrigger": true,
+        "triggerPx": "4.3253",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "145.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "TAO",
+        "side": "A",
+        "limitPx": "260.7",
+        "sz": "0.0",
+        "oid": 538868221894,
+        "timestamp": 1788835001009,
+        "triggerCondition": "Price below 213.74",
+        "isTrigger": true,
+        "triggerPx": "213.74",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "VVV",
+        "side": "B",
+        "limitPx": "17.631",
+        "sz": "2.5",
+        "oid": 538786532284,
+        "timestamp": 1788827370870,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "2.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "VVV",
+        "side": "B",
+        "limitPx": "17.574",
+        "sz": "2.5",
+        "oid": 538786532283,
+        "timestamp": 1788827370870,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "2.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "VVV",
+        "side": "B",
+        "limitPx": "17.516",
+        "sz": "2.5",
+        "oid": 538786532282,
+        "timestamp": 1788827370870,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "2.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "VVV",
+        "side": "B",
+        "limitPx": "17.459",
+        "sz": "2.5",
+        "oid": 538786532281,
+        "timestamp": 1788827370870,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "2.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "VVV",
+        "side": "B",
+        "limitPx": "17.402",
+        "sz": "2.5",
+        "oid": 538786532280,
+        "timestamp": 1788827370870,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "2.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "VVV",
+        "side": "B",
+        "limitPx": "17.345",
+        "sz": "2.5",
+        "oid": 538786532279,
+        "timestamp": 1788827370870,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "2.5",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.7425",
+        "sz": "9.1",
+        "oid": 538783193174,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.6726",
+        "sz": "9.1",
+        "oid": 538783193173,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.6026",
+        "sz": "9.1",
+        "oid": 538783193172,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.5327",
+        "sz": "9.1",
+        "oid": 538783193171,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.4627",
+        "sz": "9.1",
+        "oid": 538783193170,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.3927",
+        "sz": "9.1",
+        "oid": 538783193169,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.3228",
+        "sz": "9.1",
+        "oid": 538783193168,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.2528",
+        "sz": "9.1",
+        "oid": 538783193167,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.1829",
+        "sz": "9.1",
+        "oid": 538783193166,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "UNI",
+        "side": "B",
+        "limitPx": "6.1129",
+        "sz": "9.0",
+        "oid": 538783193165,
+        "timestamp": 1788827080406,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "B",
+        "limitPx": "2.2422",
+        "sz": "9.1",
+        "oid": 538767568336,
+        "timestamp": 1788825851152,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "B",
+        "limitPx": "2.23",
+        "sz": "9.1",
+        "oid": 538767568335,
+        "timestamp": 1788825851152,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "B",
+        "limitPx": "2.2178",
+        "sz": "9.1",
+        "oid": 538767568334,
+        "timestamp": 1788825851152,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "B",
+        "limitPx": "2.2056",
+        "sz": "9.1",
+        "oid": 538767568333,
+        "timestamp": 1788825851152,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "B",
+        "limitPx": "2.1933",
+        "sz": "9.1",
+        "oid": 538767568332,
+        "timestamp": 1788825851152,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "B",
+        "limitPx": "2.1811",
+        "sz": "9.0",
+        "oid": 538767568331,
+        "timestamp": 1788825851152,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.3624",
+        "sz": "3.0",
+        "oid": 538276280758,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.3416",
+        "sz": "3.0",
+        "oid": 538276280757,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.3209",
+        "sz": "3.0",
+        "oid": 538276280756,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.3001",
+        "sz": "3.0",
+        "oid": 538276280755,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.2793",
+        "sz": "3.0",
+        "oid": 538276280754,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.2585",
+        "sz": "3.0",
+        "oid": 538276280753,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.2377",
+        "sz": "3.0",
+        "oid": 538276280752,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.217",
+        "sz": "3.0",
+        "oid": 538276280751,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.1962",
+        "sz": "3.0",
+        "oid": 538276280750,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.1754",
+        "sz": "3.0",
+        "oid": 538276280749,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.1546",
+        "sz": "3.0",
+        "oid": 538276280748,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "3.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.1339",
+        "sz": "4.0",
+        "oid": 538276280747,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "4.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.1131",
+        "sz": "5.0",
+        "oid": 538276280746,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "5.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.0923",
+        "sz": "5.0",
+        "oid": 538276280745,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "5.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.0715",
+        "sz": "6.0",
+        "oid": 538276280744,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "6.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.0508",
+        "sz": "7.0",
+        "oid": 538276280743,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "7.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.03",
+        "sz": "8.0",
+        "oid": 538276280742,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "8.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "4.0092",
+        "sz": "9.0",
+        "oid": 538276280741,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "9.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.9884",
+        "sz": "10.0",
+        "oid": 538276280740,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "10.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.9676",
+        "sz": "11.0",
+        "oid": 538276280739,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "11.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.9469",
+        "sz": "11.0",
+        "oid": 538276280738,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "11.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.9261",
+        "sz": "13.0",
+        "oid": 538276280737,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "13.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.9053",
+        "sz": "14.0",
+        "oid": 538276280736,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "14.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.8845",
+        "sz": "16.0",
+        "oid": 538276280735,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "16.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.8638",
+        "sz": "17.0",
+        "oid": 538276280734,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "17.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.843",
+        "sz": "19.0",
+        "oid": 538276280733,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "19.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "B",
+        "limitPx": "3.8222",
+        "sz": "21.0",
+        "oid": 538276280732,
+        "timestamp": 1788771729999,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "21.0",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "A",
+        "limitPx": "0.16535",
+        "sz": "0.0",
+        "oid": 538255638141,
+        "timestamp": 1788769372648,
+        "triggerCondition": "Price below 0.14231",
+        "isTrigger": true,
+        "triggerPx": "0.14231",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "WLD",
+        "side": "A",
+        "limitPx": "0.4421",
+        "sz": "0.0",
+        "oid": 538214239147,
+        "timestamp": 1788765689340,
+        "triggerCondition": "Price below 0.34856",
+        "isTrigger": true,
+        "triggerPx": "0.34856",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "LINK",
+        "side": "A",
+        "limitPx": "9.612",
+        "sz": "100.0",
+        "oid": 537453809980,
+        "timestamp": 1788683307470,
+        "triggerCondition": "Price below 10.68",
+        "isTrigger": true,
+        "triggerPx": "10.68",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "100.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.16011",
+        "sz": "204.8",
+        "oid": 537447071957,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "204.8",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.15778",
+        "sz": "302.9",
+        "oid": 537447071956,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "302.9",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.15563",
+        "sz": "434.3",
+        "oid": 537447071955,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "434.3",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.15363",
+        "sz": "606.2",
+        "oid": 537447071954,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "606.2",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.15177",
+        "sz": "826.8",
+        "oid": 537447071953,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "826.8",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.15001",
+        "sz": "1105.4",
+        "oid": 537447071952,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "1105.4",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.14833",
+        "sz": "1452.1",
+        "oid": 537447071951,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "1452.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.1467",
+        "sz": "1878.1",
+        "oid": 537447071950,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "1878.1",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "ARB",
+        "side": "B",
+        "limitPx": "0.1451",
+        "sz": "2395.4",
+        "oid": 537447071949,
+        "timestamp": 1788682438364,
+        "triggerCondition": "N/A",
+        "isTrigger": false,
+        "triggerPx": "0.0",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": false,
+        "orderType": "Limit",
+        "origSz": "2395.4",
+        "tif": "Alo",
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "A",
+        "limitPx": "2.2647",
+        "sz": "100.0",
+        "oid": 537426583379,
+        "timestamp": 1788679877378,
+        "triggerCondition": "Price below 1.9029",
+        "isTrigger": true,
+        "triggerPx": "1.9029",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "100.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "A",
+        "limitPx": "2.2565",
+        "sz": "200.0",
+        "oid": 537426235305,
+        "timestamp": 1788679837717,
+        "triggerCondition": "Price below 2.1538",
+        "isTrigger": true,
+        "triggerPx": "2.1538",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "200.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "ZEC",
+        "side": "A",
+        "limitPx": "1172.4",
+        "sz": "1.0",
+        "oid": 537402242857,
+        "timestamp": 1788677054959,
+        "triggerCondition": "Price below 906.3",
+        "isTrigger": true,
+        "triggerPx": "906.3",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "1.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "ZEC",
+        "side": "A",
+        "limitPx": "1173.8",
+        "sz": "1.0",
+        "oid": 537401987407,
+        "timestamp": 1788677021079,
+        "triggerCondition": "Price below 903.8",
+        "isTrigger": true,
+        "triggerPx": "903.8",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "1.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "SOL",
+        "side": "A",
+        "limitPx": "105.8",
+        "sz": "99.92",
+        "oid": 537393472345,
+        "timestamp": 1788675958902,
+        "triggerCondition": "Price below 95.73",
+        "isTrigger": true,
+        "triggerPx": "95.73",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "99.92",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "PENDLE",
+        "side": "A",
+        "limitPx": "1.5335",
+        "sz": "0.0",
+        "oid": 537227824840,
+        "timestamp": 1788657164963,
+        "triggerCondition": "Price below 1.7039",
+        "isTrigger": true,
+        "triggerPx": "1.7039",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "VVV",
+        "side": "A",
+        "limitPx": "17.741",
+        "sz": "0.0",
+        "oid": 536735102365,
+        "timestamp": 1788595933931,
+        "triggerCondition": "Price below 15.573",
+        "isTrigger": true,
+        "triggerPx": "15.573",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "LIT",
+        "side": "A",
+        "limitPx": "4.6161",
+        "sz": "0.0",
+        "oid": 536712306768,
+        "timestamp": 1788593132533,
+        "triggerCondition": "Price below 3.3422",
+        "isTrigger": true,
+        "triggerPx": "3.3422",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "NEAR",
+        "side": "A",
+        "limitPx": "2.2649",
+        "sz": "0.0",
+        "oid": 536690993781,
+        "timestamp": 1788590547426,
+        "triggerCondition": "Price below 1.7455",
+        "isTrigger": true,
+        "triggerPx": "1.7455",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "ENA",
+        "side": "A",
+        "limitPx": "0.16891",
+        "sz": "0.0",
+        "oid": 535620231996,
+        "timestamp": 1788490347416,
+        "triggerCondition": "Price below 0.12994",
+        "isTrigger": true,
+        "triggerPx": "0.12994",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "ZEC",
+        "side": "A",
+        "limitPx": "938.92",
+        "sz": "3.0",
+        "oid": 535547967991,
+        "timestamp": 1788483563928,
+        "triggerCondition": "Price below 739.47",
+        "isTrigger": true,
+        "triggerPx": "739.47",
+        "children": [],
+        "isPositionTpsl": false,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "3.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "AAVE",
+        "side": "A",
+        "limitPx": "132.98",
+        "sz": "0.0",
+        "oid": 535530797908,
+        "timestamp": 1788482042456,
+        "triggerCondition": "Price below 118.46",
+        "isTrigger": true,
+        "triggerPx": "118.46",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "ZEC",
+        "side": "A",
+        "limitPx": "944.15",
+        "sz": "0.0",
+        "oid": 535524984195,
+        "timestamp": 1788481518429,
+        "triggerCondition": "Price below 644.33",
+        "isTrigger": true,
+        "triggerPx": "644.33",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      },
+      {
+        "coin": "XMR",
+        "side": "A",
+        "limitPx": "486.06",
+        "sz": "0.0",
+        "oid": 531454129666,
+        "timestamp": 1788136534901,
+        "triggerCondition": "Price below 411.7",
+        "isTrigger": true,
+        "triggerPx": "411.7",
+        "children": [],
+        "isPositionTpsl": true,
+        "reduceOnly": true,
+        "orderType": "Stop Market",
+        "origSz": "0.0",
+        "tif": null,
+        "cloid": null
+      }
+    ],
+    "reserves": [
+      [
+        0,
+        {
+          "borrowYearlyRate": "0.05",
+          "supplyYearlyRate": "0.0286003888",
+          "balance": "151703093.2738546729",
+          "utilization": "0.635564196",
+          "oraclePx": "1.0",
+          "ltv": "0.0",
+          "totalSupplied": "416268254.1480153799",
+          "totalBorrowed": "264565198.2649772763"
+        }
+      ],
+      [
+        150,
+        {
+          "borrowYearlyRate": "0.05",
+          "supplyYearlyRate": "0.0",
+          "balance": "9872337.7088912595",
+          "utilization": "0.0",
+          "oraclePx": "84.114",
+          "ltv": "0.65",
+          "totalSupplied": "9872337.7088912595",
+          "totalBorrowed": "0.0"
+        }
+      ],
+      [
+        197,
+        {
+          "borrowYearlyRate": "0.05",
+          "supplyYearlyRate": "0.0",
+          "balance": "1818.1384852491",
+          "utilization": "0.0",
+          "oraclePx": "78730.0",
+          "ltv": "0.5",
+          "totalSupplied": "1818.1384852491",
+          "totalBorrowed": "0.0"
+        }
+      ],
+      [
+        268,
+        {
+          "borrowYearlyRate": "0.05",
+          "supplyYearlyRate": "0.0184244474",
+          "balance": "1188851.3638748",
+          "utilization": "0.4094321646",
+          "oraclePx": "0.99974",
+          "ltv": "0.0",
+          "totalSupplied": "2013064.76068328",
+          "totalBorrowed": "824213.462465"
+        }
+      ],
+      [
+        360,
+        {
+          "borrowYearlyRate": "0.05",
+          "supplyYearlyRate": "0.0049673251",
+          "balance": "152123.01914352",
+          "utilization": "0.1103850022",
+          "oraclePx": "1.0",
+          "ltv": "0.0",
+          "totalSupplied": "170998.33275777",
+          "totalBorrowed": "18875.65133793"
+        }
+      ]
+    ],
+    "meta": {
+      "universe": [
+        {
+          "szDecimals": 5,
+          "name": "BTC",
+          "maxLeverage": 40,
+          "marginTableId": 56
+        },
+        {
+          "szDecimals": 4,
+          "name": "ETH",
+          "maxLeverage": 25,
+          "marginTableId": 55
+        },
+        {
+          "szDecimals": 2,
+          "name": "ATOM",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "MATIC",
+          "maxLeverage": 20,
+          "marginTableId": 20,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "DYDX",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 2,
+          "name": "SOL",
+          "maxLeverage": 20,
+          "marginTableId": 54
+        },
+        {
+          "szDecimals": 2,
+          "name": "AVAX",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 3,
+          "name": "BNB",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 1,
+          "name": "APE",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "OP",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 2,
+          "name": "LTC",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "ARB",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 0,
+          "name": "DOGE",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "INJ",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "SUI",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 0,
+          "name": "kPEPE",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "CRV",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "LDO",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "LINK",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "STX",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "RNDR",
+          "maxLeverage": 20,
+          "marginTableId": 20,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "CFX",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "FTM",
+          "maxLeverage": 10,
+          "marginTableId": 10,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 2,
+          "name": "GMX",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "SNX",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "XRP",
+          "maxLeverage": 20,
+          "marginTableId": 53
+        },
+        {
+          "szDecimals": 3,
+          "name": "BCH",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 2,
+          "name": "APT",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 2,
+          "name": "AAVE",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 2,
+          "name": "COMP",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 4,
+          "name": "MKR",
+          "maxLeverage": 10,
+          "marginTableId": 51,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "WLD",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "FXS",
+          "maxLeverage": 5,
+          "marginTableId": 5,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "HPOS",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "onlyIsolated": true,
+          "isDelisted": true,
+          "marginMode": "strictIsolated"
+        },
+        {
+          "szDecimals": 0,
+          "name": "RLB",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "onlyIsolated": true,
+          "isDelisted": true,
+          "marginMode": "strictIsolated"
+        },
+        {
+          "szDecimals": 3,
+          "name": "UNIBOT",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "onlyIsolated": true,
+          "isDelisted": true,
+          "marginMode": "strictIsolated"
+        },
+        {
+          "szDecimals": 0,
+          "name": "YGG",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "TRX",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 0,
+          "name": "kSHIB",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 1,
+          "name": "UNI",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 0,
+          "name": "SEI",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "RUNE",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "OX",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "onlyIsolated": true,
+          "isDelisted": true,
+          "marginMode": "strictIsolated"
+        },
+        {
+          "szDecimals": 1,
+          "name": "FRIEND",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "onlyIsolated": true,
+          "isDelisted": true,
+          "marginMode": "strictIsolated"
+        },
+        {
+          "szDecimals": 0,
+          "name": "SHIA",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "onlyIsolated": true,
+          "isDelisted": true,
+          "marginMode": "strictIsolated"
+        },
+        {
+          "szDecimals": 1,
+          "name": "CYBER",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "ZRO",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "BLZ",
+          "maxLeverage": 5,
+          "marginTableId": 5,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "DOT",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 1,
+          "name": "BANANA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 2,
+          "name": "TRB",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "FTT",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "LOOM",
+          "maxLeverage": 10,
+          "marginTableId": 10,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "OGN",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "RDNT",
+          "maxLeverage": 5,
+          "marginTableId": 5,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "ARK",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "BNT",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "CANTO",
+          "maxLeverage": 5,
+          "marginTableId": 5,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "REQ",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "BIGTIME",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "KAS",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ORBS",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "BLUR",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "TIA",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 2,
+          "name": "BSV",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ADA",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "TON",
+          "maxLeverage": 10,
+          "marginTableId": 51,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "MINA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "POLYX",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "GAS",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "PENDLE",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "STG",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "FET",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "STRAX",
+          "maxLeverage": 10,
+          "marginTableId": 10,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "NEAR",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 0,
+          "name": "MEME",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 2,
+          "name": "ORDI",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "BADGER",
+          "maxLeverage": 5,
+          "marginTableId": 5,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 2,
+          "name": "NEO",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 2,
+          "name": "ZEN",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "FIL",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "PYTH",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "SUSHI",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 2,
+          "name": "ILV",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "IMX",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "kBONK",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 0,
+          "name": "GMT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "SUPER",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "USTC",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "NFTI",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "onlyIsolated": true,
+          "isDelisted": true,
+          "marginMode": "strictIsolated"
+        },
+        {
+          "szDecimals": 0,
+          "name": "JUP",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 0,
+          "name": "kLUNC",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "RSR",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "GALA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "JTO",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "NTRN",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 2,
+          "name": "ACE",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "MAV",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "WIF",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "CAKE",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "PEOPLE",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 2,
+          "name": "ENS",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 2,
+          "name": "ETC",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "XAI",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "MANTA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "UMA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ONDO",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 0,
+          "name": "ALT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "ZETA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "DYM",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "MAVIA",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "W",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 5,
+          "name": "PANDORA",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "onlyIsolated": true,
+          "isDelisted": true,
+          "marginMode": "strictIsolated"
+        },
+        {
+          "szDecimals": 1,
+          "name": "STRK",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "PIXEL",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "AI",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 3,
+          "name": "TAO",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 2,
+          "name": "AR",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "MYRO",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "kFLOKI",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "BOME",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "ETHFI",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "ENA",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "MNT",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "TNSR",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "SAGA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "MERL",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "HBAR",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "POPCAT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 2,
+          "name": "OMNI",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 2,
+          "name": "EIGEN",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "REZ",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "NOT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "TURBO",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "BRETT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "IO",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ZK",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "BLAST",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "LISTA",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "MEW",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "RENDER",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "kDOGS",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "POL",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "CATI",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "CELO",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "HMSTR",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "SCR",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "NEIROETH",
+          "maxLeverage": 5,
+          "marginTableId": 5,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "kNEIRO",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "GOAT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "MOODENG",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "GRASS",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "PURR",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "PNUT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "XLM",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "CHILLGUY",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "SAND",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "IOTA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ALGO",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 2,
+          "name": "HYPE",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "ME",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "MOVE",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "VIRTUAL",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "PENGU",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "USUAL",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "FARTCOIN",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "AI16Z",
+          "maxLeverage": 5,
+          "marginTableId": 5,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "AIXBT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ZEREBRO",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "BIO",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "GRIFFAIN",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "SPX",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "S",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "MORPHO",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "TRUMP",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 1,
+          "name": "MELANIA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ANIME",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "VINE",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 2,
+          "name": "VVV",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "JELLY",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "BERA",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "TST",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "LAYER",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "IP",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 1,
+          "name": "OM",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "KAITO",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "NIL",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 3,
+          "name": "PAXG",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 0,
+          "name": "PROMPT",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "BABY",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "WCT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "HYPER",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ZORA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "INIT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "DOOD",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "LAUNCHCOIN",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "NXPC",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "SOPH",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "RESOLV",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "SYRUP",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "PUMP",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 0,
+          "name": "PROVE",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "YZY",
+          "maxLeverage": 3,
+          "marginTableId": 3,
+          "isDelisted": true
+        },
+        {
+          "szDecimals": 0,
+          "name": "XPL",
+          "maxLeverage": 10,
+          "marginTableId": 51
+        },
+        {
+          "szDecimals": 0,
+          "name": "WLFI",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "LINEA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "SKY",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "ASTER",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "AVNT",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "STBL",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "0G",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "HEMI",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "APEX",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "2Z",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 2,
+          "name": "ZEC",
+          "maxLeverage": 10,
+          "marginTableId": 52
+        },
+        {
+          "szDecimals": 0,
+          "name": "MON",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "MET",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "MEGA",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "CC",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 1,
+          "name": "ICP",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "AERO",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "STABLE",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "FOGO",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "LIT",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 3,
+          "name": "XMR",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 1,
+          "name": "AXS",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 2,
+          "name": "DASH",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "SKR",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "AZTEC",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "CHIP",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "GRAM",
+          "maxLeverage": 5,
+          "marginTableId": 5
+        },
+        {
+          "szDecimals": 0,
+          "name": "CASHCAT",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        },
+        {
+          "szDecimals": 0,
+          "name": "PONS",
+          "maxLeverage": 3,
+          "marginTableId": 3
+        }
+      ],
+      "marginTables": [
+        [
+          50,
+          {
+            "description": "",
+            "marginTiers": [
+              {
+                "lowerBound": "0.0",
+                "maxLeverage": 50
+              }
+            ]
+          }
+        ],
+        [
+          51,
+          {
+            "description": "tiered 10x",
+            "marginTiers": [
+              {
+                "lowerBound": "0.0",
+                "maxLeverage": 10
+              },
+              {
+                "lowerBound": "3000000.0",
+                "maxLeverage": 5
+              }
+            ]
+          }
+        ],
+        [
+          52,
+          {
+            "description": "tiered 10x (2)",
+            "marginTiers": [
+              {
+                "lowerBound": "0.0",
+                "maxLeverage": 10
+              },
+              {
+                "lowerBound": "20000000.0",
+                "maxLeverage": 5
+              }
+            ]
+          }
+        ],
+        [
+          53,
+          {
+            "description": "tiered 20x",
+            "marginTiers": [
+              {
+                "lowerBound": "0.0",
+                "maxLeverage": 20
+              },
+              {
+                "lowerBound": "40000000.0",
+                "maxLeverage": 10
+              }
+            ]
+          }
+        ],
+        [
+          54,
+          {
+            "description": "tiered 20x (2)",
+            "marginTiers": [
+              {
+                "lowerBound": "0.0",
+                "maxLeverage": 20
+              },
+              {
+                "lowerBound": "70000000.0",
+                "maxLeverage": 10
+              }
+            ]
+          }
+        ],
+        [
+          55,
+          {
+            "description": "tiered 25x",
+            "marginTiers": [
+              {
+                "lowerBound": "0.0",
+                "maxLeverage": 25
+              },
+              {
+                "lowerBound": "100000000.0",
+                "maxLeverage": 15
+              }
+            ]
+          }
+        ],
+        [
+          56,
+          {
+            "description": "tiered 40x",
+            "marginTiers": [
+              {
+                "lowerBound": "0.0",
+                "maxLeverage": 40
+              },
+              {
+                "lowerBound": "150000000.0",
+                "maxLeverage": 20
+              }
+            ]
+          }
+        ]
+      ],
+      "collateralToken": 0
+    },
+    "received_at": "2026-09-08T04:25:36.336710+00:00",
+    "other_dexs_checked": [
+      "xyz",
+      "flx",
+      "vntl",
+      "hyna",
+      "km",
+      "abcd",
+      "cash",
+      "para",
+      "mkts",
+      "io"
+    ],
+    "atomic": false
+  }
+]

@@ -20,6 +20,17 @@
 - First continuous emac divergence reproduced through actual helpers: held size -421.29999999999995 normalizes to -421.2 in Position V2, and subsequent delta rounding also loses a size increment; old order 35.4 LINK versus V2 35.3. Shared helper is unchanged. Destin reviewed and accepted this small V1/V2 execution difference; retain Position V2 and do not block consolidation on exact continuous-sizing parity. This acceptance applies to the tested configurations, not all possible settings.
 - Fixed Example signal identity collision: raw/processed variants were lost by the public DTO; now use separate emac_raw/emac_processed names. Verification run `3c12b85f-a1cb-442f-b0bf-80fea58cdbe1` has distinct signals with unchanged fills. 33 focused tests pass plus scoped lint/format. Backtest manager restarted after reload; no live trading operations.
 
+## 2026-09-16 — Position Lab interactive accumulation prototype
+
+- Removed manual range-entry friction from the price-mode side toggle: mirror ranges/current coordinate about the average (accumulation start if flat), invert Lower/Higher weighting, retain inventory and capacity, and start a fresh plan. Short/Long round-trip browser verification and 32 focused tests, lint/build pass.
+- Added the approved automatic distribution leg: freeze distribution budget/start/endpoint during traversal, consume each allocation only once, preserve average until flat, rebuild distribution after new accumulation, and restore both legs through undo. Signal mode remains explicit; accumulation is not replenished. Reset starts flat with null average. 28 focused tests, lint/build, and browser flow checks pass.
+- Follow-up: Destin accepted client-side prototype calculations for now, deferring backend migration until behavior settles. Relabeled the optional partial-average overlay to clarify that it describes the schedule through the current coordinate; keep it off by default, with possible later removal.
+- Added price-drag accumulation with weighted inventory-average updates, fixed accumulation plan and far endpoints, distribution reanchoring, no repeat fills on retracing, and complete bounded undo snapshots. Destin approved the frozen accumulation policy provisionally to try before choosing reset logic. Preserved explicit distribution fills and price/signal separation. Also delivered the requested compact 50/50 vertical-price chart layout. Eighteen focused frontend tests, scoped lint, production build, and long/short browser verification pass. Details and deferred UI topics are in [[research/trading/positioning/size-distribution|Size Distribution]]. No live/capital mutation, commit, push, or deployment.
+
+## 2026-09-03 — MON-225 strategy integration parked at explicit boundary
+
+- Parked the unfinished Positions Lab strategy integration without disturbing MON-168's verified generic allocator or MON-225's committed replay, persistence, and UI infrastructure. The local experiment now clearly identifies that it evaluates previous/current signed curve points but deliberately emits a zero target because no accepted policy composes accumulation and distribution into an executable two-sided position. Its exploratory full-maximum accumulation total does not supersede MON-168's confirmed remaining-capacity lifecycle. Resume only from a concrete strategy policy that retains Threshold Engine V3, final target constraints, and Position V2. No backtest, live runtime, capital mutation, commit, push, or deploy occurred.
+
 ## 2026-09-01 — MON-225 recorded positioning decisions persisted and exposed for replay
 
 - Committed `ea6ee170` on `feat/work` to add a typed backtest-owned position-schedule decision envelope, migration, full-retention engine capture, and dense `bt_decision` persistence. The Positions Lab records both accumulation/distribution legs and execution-planning fields on every scored candle without storing them as signals. Committed `f242a6f3` to add ordered saved-run retrieval, payload/envelope validation, `BacktestRunResponse.decisions`, generated frontend client types, and hydration into Position Replay's existing artifact state. Committed `dc88a91a` to remove Position Replay's remaining fixture module and render exact-candle schedule traversal, action, inventory decision/result, curve specs, and `decision_id`-correlated order/fill evidence; it deliberately shows no-decision states instead of carrying decisions across candles and includes the accepted resizable/compact replay UI polish. Verification: 24 focused backend tests, frontend lint/build, 15 focused replay tests, diff checks, and a read-only restoration of all 896 decisions from saved run `0fbb2f33-49cf-44b9-b8aa-5a2ad4a71ef5`. Shared-file mypy still reports pre-existing baseline errors outside the decision lines. No live runtime, capital mutation, push, or deploy occurred.
@@ -422,3 +433,23 @@
 ## 2026-07-10 02:48 EDT
 
 - Reset the agent operating system around trading revenue: positive net realized live P&L after costs over a founder-set proof period. Added an always-applied revenue-closure rule; changed Linear intake, role skills, worker/coding-manager templates, and KB hygiene to require current-system evidence, no-build alternatives, work deletion, risk-proportional ceremony, and terminal closure instead of automatic tickets/follow-ups. Capital authorization and high-risk correctness gates remain hard constraints. No Linear issues were mutated.
+
+## 2026-09-23 — Position Lab stages 1–3 execution plan
+
+- Drafted [[projects/position-lab-stages-1-3-plan|the bounded implementation plan]] at Destin’s request, including proposed run/replay contracts, accounting rules, rearm-when-flat comparison, file scope, acceptance checks and autonomous checkpoints. Awaiting approval; no application implementation changes. Stages 4–6 and live/backtest integration remain deferred.
+
+## 2026-09-23 — Position Lab stages 1–3 delivered locally
+
+- Implemented Destin-approved record/replay, inventory/economics/status views, and one-pass versus rearm-when-flat comparison. Shared engine preserves baseline behavior; rearming remains an explicit experimental policy.
+- 51 targeted frontend tests, scoped lint, production build and diff checks pass. Browser verifies long/short cycles, partial exits, fees, playback/branching, valid/invalid imports, copyable export and narrow layout. Embedded-browser native download completion remains unverified; JSON copy fallback is verified.
+- [[projects/position-lab-stages-1-3-plan|Execution plan]] checkpoints and review guide updated. No live/runtime/backend changes, commit, push or deployment. Next: Destin’s final product review; stages 4–6 remain deferred.
+
+## 2026-09-25 — Position Lab UI consolidation
+
+- After confirming stages 1–3 behavior, Destin approved the compact two-column layout. Implemented merged curve editors, toolbar/setup drawer/run actions, persistent result strip, and History/Compare/Fills tabs. Simulation logic unchanged. See [[projects/position-lab-stages-1-3-plan|the delivery plan]] for layout checks and updated navigation.
+
+
+## 2026-10-04 — MemLabs notebook reproduction and backtest port
+
+- Added the approved frozen `memlabs_ar3` reproduction and 12h interval support; see [[engineering/backtest-strategies-index|strategy inventory]] for provenance, local notebook paths and boundaries. Executed upstream Part 2 and independent-ledger/MM comparison on bundled candles; all predictions/directions and fill accounting reconciled within declared tolerances. Original notebook accounting differences are isolated in the comparison notebook.
+- Verification: 50 targeted backend tests, seven frontend planner tests, frontend production build, focused Ruff/mypy and executed/visually checked notebooks. No persisted DB runs, live runtime changes, account operations, commit, push or deployment. Local research artifacts are git-ignored.

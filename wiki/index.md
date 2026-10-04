@@ -35,6 +35,8 @@ Purpose: routing map for Money Machine's agent-readable knowledge graph. Agents 
 
 ## Active Projects
 
+- [[projects/position-lab-stages-1-3-plan|Position Lab stages 1–3]] — record/replay, inventory economics, and rearm-when-flat comparison implemented locally; verification evidence and final review guide.
+
 - [[projects/agentic-research-loop-product-brief|Agentic Research Loop]] — active bounded enablement project; first prove one event-study loop through MCP without Browser Use or generated artifacts in source.
 - [[research/trading/vwap-mean-reversion/vwap-mean-reversion|VWAP Mean Reversion Research]] — active branches for slope/regime filtering, PnL-aware resizing, wide-stop risk, longer history, and later passive-fill modeling.
 - [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200 Research]] — active parent program spanning controls, signal statistics, thresholds, traversal, continuous/nonlinear position control, and selection.
@@ -63,6 +65,7 @@ Canonical markdown lives under `wiki/`:
 - `wiki/vendors/` — vendor/API specs and access notes (exchange limits, geo, market-data hosts). Named `vendors/` because QMD hard-excludes directories named `vendor`.
 
 ## Vendors
+- [[vendors/hyperliquid-portfolio-margin|Hyperliquid Portfolio Margin]] — Net/available balance formulas, runnable account model, API snapshots, and empirical limits.
 
 - [[vendors/hyperliquid-api-weightings|Hyperliquid API Weightings]] — HL rate limits and candleSnapshot weight planning.
 - [[vendors/binance-market-data-access|Binance Market Data Access]] — global Binance spot vs futures hosts, US geo block, `data-api.binance.vision` for research/backtest spot candles; JP trading egress; perps need non-restricted IP.

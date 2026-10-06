@@ -465,3 +465,14 @@
 
 - Closed the approved fill-price measurement issue in [[engineering/backtest-risk-measurement|backtest risk measurement]]: observe immutable inventory after each completed fill at the actual candle close, including intermediate same-bar positions and finalized liquidation cash. Scoped callbacks detach on exceptions. Ledger events, execution behavior and legacy close metrics remain unchanged.
 - 106 focused backend tests and focused Ruff/mypy pass; all 346 MemLabs fills and legacy economics reconcile. Migration remains prepared but unapplied; no live runtime, commit, push or deployment.
+
+
+## 2026-10-06 — Frozen MemLabs model on fresh candles
+
+- Ran the unchanged model and every-bar policy on the first strictly later interval through the latest available daily archive. Independent forecasts and all fills reconcile; the gross signal contribution was near flat and modeled fees dominated the result. See [[engineering/backtest-strategies-index|strategy inventory]] for exact window, local artifact path and the non-persisted execution identifier. No retraining, reduced-turnover implementation, database mutation or live operation.
+
+
+## 2026-10-06 — Backtest strategy folder grouping
+
+- Moved 14 strategy modules into `PX/`, `ema/`, and `labs/`; updated explicit registration imports, dependent imports/tests, and logger paths. All 19 registered names and parameter/config/trade defaults match before and after. The UI/API contract and saved strategy identity are unchanged. See [[trading/backtest-strategies-index|strategy inventory]] for layout and registration rules.
+- Focused verification: 112 tests pass; seven failures reproduce against the original HEAD files (PX defaults/display features, multi-speed EWMAC features, and parked positions-lab schedule tests). Scoped Ruff and diff checks pass. No runtime startup, DB mutation, commit, push, or deployment.

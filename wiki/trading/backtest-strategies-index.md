@@ -2,13 +2,14 @@
 
 Light inventory of the backtest strategy implementations in `mm_v04`. One entry per registered strategy: registered name, class, source file, one-line purpose, and key params. This documents the code surface; live research status lives in the [[research/trading/research_index|Research Board]] and metrics live in the backtest UI / saved runs (not here).
 
-Paths below are relative to the `mm_v04` repo.
+Full paths below are relative to the `mm_v04` repo; inventory filenames are relative to `backend/app/backtest/strategies/`.
 
 ## How the registry works
 
 - All strategies live under `backend/app/backtest/strategies/` and subclass `BacktestStrategy` from `backend/app/backtest/strategies/strategy_base_backtest.py`.
 - Each concrete strategy self-registers with the `@register("name")` decorator, which inserts it into the module-level `_BACKTEST_REGISTRY` keyed by its registered name.
-- `backend/app/backtest/strategies/__init__.py` imports every strategy module so importing the package triggers registration.
+- `backend/app/backtest/strategies/__init__.py` explicitly imports strategy modules, including nested modules, so importing the package triggers registration. `PX/` groups PX strategies, `ema/` groups EMA-specific strategies, and `labs/` groups lab strategies. The base/registry, `example.py`, and remaining standalone strategies stay at the root. Each group has an `__init__.py`; new strategies still need an explicit import in the parent package.
+- Folder paths are independent of registered names. The UI consumes registered names through `/strategies/registry?backtest=true`; source folders do not create UI groups. The 2026-10-06 reorganization preserved all 19 registered names and their defaults.
 - `list_strategies()` and `get_strategy_class(name)` (in `strategy_base_backtest.py`) expose the registry to the UI / Research MCP.
 - A strategy declares its typed contract via class vars: `Params` (a `StrategyParams` subclass), `Config` (a `StrategySignalConfig` subclass), and `TradeConfig` (a `StrategyTradeConfig` subclass). `from_params(...)` builds instances from plain dicts.
 
@@ -19,22 +20,23 @@ Paths below are relative to the `mm_v04` repo.
 ### External model reproductions
 
 - **`memlabs_ar3`** — `MemlabsAR3Strategy` (`memlabs_ar3.py`): frozen MemLabs three-lag linear forecast on 12h close log returns; closes and reopens each bar through MM's mock executor. Params: three `weights`, `bias`, optional predeclared `terminal_close_ms`; static or net-compounding sizing. Source pinned to `memlabs-research/build-a-quant-trading-strategy@c767f20d4eb5c031649e86c1a718b7eee0eaf4dc`. Local originals, isolated environment, executed Part 2 and reconciliation notebook: `mm_v04/.research/memlabs/` (git-ignored; launcher `launch-notebooks.sh`). The reconciliation matches predictions/directions and linear-ledger fills; upstream signed-log short payoff and gross-before-fees compounding explain accounting differences. This is reproduction, not independently validated out-of-sample evidence. No persisted run IDs or DB strategy records were created.
+- Fresh frozen-model check (2026-10-06): evaluated unchanged static sizing and per-bar round trips from 2025-10-10 00:00 UTC through 2026-10-06 00:00 UTC using checksum-verified Binance USD-M archives. All 18 overlapping OHLC bars match the original trade-derived data. The original net result did not carry forward: gross capture was near flat while repeated execution fees dominated; information versus policy attribution remains unresolved. Local artifacts, executed notebook, monthly breakdown and independent reconciliation live in `mm_v04/.research/memlabs/fresh-2026-10-06/`. Local execution UUID `490d3135-ca1f-49cb-a19f-a68fd789f21f` is **not** a persisted database run ID. No retraining or reduced-turnover variant was implemented; funding/slippage remain excluded. Public REST was region-blocked; the archive endpoint is one half-day behind the latest completed candle.
 - Shared `Interval` accepts `12h` with duration maps, generated client, form parsing and backtest selector updated. Live aggregation targets and live selector options remain explicit unchanged subsets. No schema migration required.
 
 ### EMA-crossover family
 
 - **`example`** - `ExampleStrategy` (`example.py`): configurable EMA backtest registered 2026-09-29. Supports fixed/zero/no thresholds, full/continuous/banded sizing, transition/every-bar adjustment, and optional volatility adjustment. Shared SIG_TO_POS_SIZE and VOL_ADJ_POS_SIZE now belong in trade_config; old backtest payloads are rejected rather than translated. Catalog defaults refreshed and five disposable saved configuration groups deleted, retaining historical run/study snapshots. UI exposes structured thresholds and volatility controls. The four legacy EMA implementations and registry names are retired; see the replacement guide below.
 
-- **`emac_slope_v1`** - `EMACSlopeV1Strategy` (`emac_slope_v1.py`): standalone BacktestStrategy that continuously sizes positions from the processed slope of the EMAC signal; owns its params/config, EMA setup, warmup and signal-stat emission. The EMAC event-study pipeline also owns its configuration types in study_types.py, retaining historical V4 run identity without importing the V4 implementation.
-- **`emac_escalation`** - `EMACEscalationStrategy` (`emac_escalation.py`): band-escalation cycle; sets a piecewise-linear target fraction as the signal magnitude moves across the mean / 1-sigma / 2-sigma bands. Params: `fast_window=10`, `slow_window=200`, `signal_stats_lookback=200`; Config band targets `0.75` / `0.25`.
-- **`emac_escalation_v2`** - `EMACEscalationV2Strategy` (`emac_escalation_v2.py`): mean-cycle variant of the escalation strategy (enter when magnitude is below the mean band, exit on cross). Params: `fast_window=10`, `slow_window=200`, `signal_stats_lookback=200`.
+- **`emac_slope_v1`** - `EMACSlopeV1Strategy` (`ema/emac_slope_v1.py`): standalone BacktestStrategy that continuously sizes positions from the processed slope of the EMAC signal; owns its params/config, EMA setup, warmup and signal-stat emission. The EMAC event-study pipeline also owns its configuration types in study_types.py, retaining historical V4 run identity without importing the V4 implementation.
+- **`emac_escalation`** - `EMACEscalationStrategy` (`ema/emac_escalation.py`): band-escalation cycle; sets a piecewise-linear target fraction as the signal magnitude moves across the mean / 1-sigma / 2-sigma bands. Params: `fast_window=10`, `slow_window=200`, `signal_stats_lookback=200`; Config band targets `0.75` / `0.25`.
+- **`emac_escalation_v2`** - `EMACEscalationV2Strategy` (`ema/emac_escalation_v2.py`): mean-cycle variant of the escalation strategy (enter when magnitude is below the mean band, exit on cross). Params: `fast_window=10`, `slow_window=200`, `signal_stats_lookback=200`.
 
 Related research: [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cross 10/200]].
 
 ### Price-extension / slope family
 
-- **`px`** - `PxStrategy` (`px.py`): price-extension (PX) strategy; long when PX > 0, else flat (short if symmetric). Params: `LEN=10`, `LOOKBACK=100`, `SOURCE=CLOSE`, `SYMETRIC=True`.
-- **`px_slope_sniper`** - `PxSlopeSniperStrategy` (`px_slope_sniper.py`): combines PX extension with slope for entry timing. Params: `PX_LEN=10`, `SLOPE_LEN=10`, `PX_LOOKBACK=100`, `SLOPE_LOOKBACK=3`, `SOURCE=CLOSE`, `SYMETRIC=True`.
+- **`px`** - `PxStrategy` (`PX/px.py`): price-extension (PX) strategy; long when PX > 0, else flat (short if symmetric). Params: `LEN=10`, `LOOKBACK=100`, `SOURCE=CLOSE`, `SYMETRIC=True`.
+- **`px_slope_sniper`** - `PxSlopeSniperStrategy` (`PX/px_slope_sniper.py`): combines PX extension with slope for entry timing. Params: `PX_LEN=10`, `SLOPE_LEN=10`, `PX_LOOKBACK=100`, `SLOPE_LOOKBACK=3`, `SOURCE=CLOSE`, `SYMETRIC=True`.
 - **`slope`** - `SlopeStrategy` (`slope.py`): slope-of-EMA signal strategy. Params: `LOOKBACK=3`, `LEN=10`, `SOURCE_1=CLOSE`, `SYMETRIC=True`.
 
 ### Oscillator / volume family
@@ -45,8 +47,8 @@ Related research: [[research/trading/emac-cross-10-200/emac-cross-10-200|EMA Cro
 ### Breakout / discretionary-codified
 
 - **`n_bar_breakout`** - `NBarBreakoutStrategy` (`n_bar_breakout.py`): N-bar channel breakout; enters on a channel break and holds until the opposite channel breaks. Params: `LOOKBACK=20`; TradeConfig `MIN_ADJUSTMENT_VALUE_PCT=0.05`. See [[research/trading/n-bar-breakout/n-bar-breakout|N-Bar Breakout research]].
-- **`ema_hilo_200_reentry`** - `EmaHilo200ReentryStrategy` (`ema_hilo_200_reentry.py`): HYPE 4H discretionary mapping; the 200 close EMA permits direction while the 10 high/low EMAs control close-based stop and re-entry. Params: `fast_window=10`, `slow_window=200`. See [[projects/ema_hilo_200_reentry/hype-ema-hilo-200-reentry-codification|HYPE EMA High/Low 200 Re-entry Codification]].
-- **`ema_px_trend`** - `EmaPxTrendStrategy` (`ema_px_trend.py`): EMA/PX trend-regime strategy codified from discretionary chart-led blind pattern matching (rules R1 regime side, R2 continuation, R3 chop gate, R4 extension exits, R5 long/short asymmetry). Params include `fast_window=10`, `slow_window=200`, `atr_window=14`, plus stress/capitulation/acceleration/extension/chop tuning. See [[research/trading/ema_px_trend/strategy_ema_px_trend|ema_px_trend Strategy Doc]].
+- **`ema_hilo_200_reentry`** - `EmaHilo200ReentryStrategy` (`ema/ema_hilo_200_reentry.py`): HYPE 4H discretionary mapping; the 200 close EMA permits direction while the 10 high/low EMAs control close-based stop and re-entry. Params: `fast_window=10`, `slow_window=200`. See [[projects/ema_hilo_200_reentry/hype-ema-hilo-200-reentry-codification|HYPE EMA High/Low 200 Re-entry Codification]].
+- **`ema_px_trend`** - `EmaPxTrendStrategy` (`ema/ema_px_trend.py`): EMA/PX trend-regime strategy codified from discretionary chart-led blind pattern matching (rules R1 regime side, R2 continuation, R3 chop gate, R4 extension exits, R5 long/short asymmetry). Params include `fast_window=10`, `slow_window=200`, `atr_window=14`, plus stress/capitulation/acceleration/extension/chop tuning. See [[research/trading/ema_px_trend/strategy_ema_px_trend|ema_px_trend Strategy Doc]].
 
 ## Maintenance
 

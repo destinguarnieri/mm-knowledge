@@ -453,3 +453,15 @@
 
 - Added the approved frozen `memlabs_ar3` reproduction and 12h interval support; see [[engineering/backtest-strategies-index|strategy inventory]] for provenance, local notebook paths and boundaries. Executed upstream Part 2 and independent-ledger/MM comparison on bundled candles; all predictions/directions and fill accounting reconciled within declared tolerances. Original notebook accounting differences are isolated in the comparison notebook.
 - Verification: 50 targeted backend tests, seven frontend planner tests, frontend production build, focused Ruff/mypy and executed/visually checked notebooks. No persisted DB runs, live runtime changes, account operations, commit, push or deployment. Local research artifacts are git-ignored.
+
+
+## 2026-10-04 — Backtest risk measurement implementation
+
+- Implemented Destin-approved [[engineering/backtest-risk-measurement|risk contract]]: preserve close-sampled account drawdown, observe carried-position OHLC and pre-exit ROE, publish a separate conservative account bound with liquidation-boundary availability, and version saved/batch measurements. Ledger economics are unchanged; historical values are not rewritten.
+- 93 focused backend tests, 15 frontend tests, production build and focused Ruff/mypy pass; broader suite has documented unrelated/stale/environment blockers. Additive migration `a47c9e21d603` is prepared and DDL-tested, not applied. No live runtime, commit, push or deployment.
+
+
+## 2026-10-06 — Backtest risk fill-price correction
+
+- Closed the approved fill-price measurement issue in [[engineering/backtest-risk-measurement|backtest risk measurement]]: observe immutable inventory after each completed fill at the actual candle close, including intermediate same-bar positions and finalized liquidation cash. Scoped callbacks detach on exceptions. Ledger events, execution behavior and legacy close metrics remain unchanged.
+- 106 focused backend tests and focused Ruff/mypy pass; all 346 MemLabs fills and legacy economics reconcile. Migration remains prepared but unapplied; no live runtime, commit, push or deployment.

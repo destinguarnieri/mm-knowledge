@@ -50,6 +50,7 @@ Canonical markdown lives under `wiki/`:
 - `wiki/agents/templates/` — the optional managed-worker brief and coding-execution reference.
 - `wiki/ops/` — operating runbooks, process notes, Linear operating system.
 - `wiki/engineering/` — stable engineering architecture, contracts, inventories, implementation context, and invariants; not ticket or implementation plans.
+  - [[engineering/backtest-risk-measurement|Backtest Risk Measurement]] — close-sampled account drawdown, OHLC position ROE, conservative account bound, methodology versions and liquidation limits.
   - [[engineering/backtest-strategies-index|Backtest Strategies Index]] — light inventory of registered backtest strategy implementations (registered name, class, file, key params).
 - `wiki/quant/` — quantitative research notes.
 - `wiki/research/trading/` — strategy research protocol and per-project research docs (`research_process_v2` current; per-program research directories).

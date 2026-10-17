@@ -1,5 +1,7 @@
 # Session Change Log
 
+> Historical record, not an active agenda. The 2026-10-06 fresh-start boundary in [[index|Start Here]] supersedes earlier work assignments and next actions.
+
 ## 2026-09-29 — Legacy EMA implementations retired
 
 - Removed emac/emac_cross/emac_v4/emac_v5 implementations and registry exports after consumer separation and approved parity checks; soft-deleted their four catalog entries while preserving historical runs. Ported inverse-saturation and shared sizing regression tests to Example, retained causal emitted-history coverage, and moved infrastructure fixtures to the executable Example name. Verification: 115 focused backtest tests and three event-study artifact tests pass; registry lookup omits all four names and all four saved comparison runs remain readable. Existing research pages now carry retirement notices linking to the explicit replacement settings/limits in [[engineering/backtest-strategies-index]]. Historical research identities, evidence classifications and V4 event-study anchors remain unchanged. No aliases, automatic JSON migration, live trading, commit or push.
@@ -476,3 +478,77 @@
 
 - Moved 14 strategy modules into `PX/`, `ema/`, and `labs/`; updated explicit registration imports, dependent imports/tests, and logger paths. All 19 registered names and parameter/config/trade defaults match before and after. The UI/API contract and saved strategy identity are unchanged. See [[trading/backtest-strategies-index|strategy inventory]] for layout and registration rules.
 - Focused verification: 112 tests pass; seven failures reproduce against the original HEAD files (PX defaults/display features, multi-speed EWMAC features, and parked positions-lab schedule tests). Scoped Ruff and diff checks pass. No runtime startup, DB mutation, commit, push, or deployment.
+
+## 2026-10-06 — Local research board UI
+
+- Added a generated offline HTML view of [[research/trading/research_index|Research Board]], with next-action cards, section navigation, search, lane filters, expandable evidence/dependencies, and source/Linear links. Markdown remains canonical; regenerate using `python3 scripts/build_research_board.py`. Preserved research wording and flagged pending status reconciliation and unavailable source pages. All 19 items/table cells, local link targets, deterministic generation, JavaScript syntax, and DOM-model interaction checks pass. Browser visual/responsive verification was blocked by the browser tool’s local-file URL policy.
+
+## 2026-10-06 — Research agenda reset approved by Destin
+
+- Reset the research home, index, and current checkpoint to no selected focus and no inherited commitments. Added an explicit agent-instruction boundary so old research, processes, tickets, and review gates remain optional history rather than the default agenda. Preserved the previous board/UI, checkpoint, index, and operating context in `archive/research-reset-2026-10-06/`; original evidence pages remain available. External Linear tickets, code, and research findings were not changed. Reconciliation is not a prerequisite for starting new work.
+
+
+## 2026-10-06 — Stale MCP and Linear documentation cleanup
+
+- At Destin's request, deleted the obsolete MCP API inventory, original v1 contract, MCP checkpoint, and Linear operating-system page. Their unchanged originals remain in Git history; no duplicate archives were created.
+- Replaced the KB MCP runbook with [[ops/research-mcp-runbook|a routing reference]] to the maintained repo runbook, agent guide, and implementation. Updated the index, the archived index's retired Linear link, and the repo chief-of-staff skill's input reference. Current Linear metadata should be inspected only when requested work needs it; historical queues do not activate work.
+- No research focus, external Linear state, runtime, or trading behavior changed.
+
+
+## 2026-10-16 — Backtest Engine V2 delivery draft
+
+- Destin selected vectorization → multi-timeframe data → limit orders → cross margin as the desired development sequence. Wrote [[projects/backtest-engine-v2-plan|a local delivery draft]] with bounded stage 1 tickets, later-stage behavior questions, and a mapping to existing Linear material.
+- Detailed scopes remain draft. No Linear tickets/dependencies, application code, runtime, or capital operations were changed. Next: review stage 1 scope before implementation.
+
+
+## 2026-10-16 — Engine V2 ticket export before requested deletion
+
+- Destin explicitly requested exporting then deleting the existing project tickets. Saved and verified all 26 tickets, full descriptions/relations, one comment, project/milestones, and the architecture document in `raw/linear/backtest-engine-v2-tickets-2026-10-16.json`. SHA-256: `2a82216c0ce5e148895bd103716c458565b32c1010f5ee588e293c481dfa0eb0`.
+- No deletion occurred: connector lacks issue deletion; in-app Linear is signed out and Chrome computer access was not approved. Await authenticated UI access to finish.
+
+
+## 2026-10-16 — User cleared the old V2 roadmap
+
+- Destin reports deleting the old tickets. MCP verification excludes all 24 original roadmap tickets from the non-archived listing; MON-212 and MON-223 remain. An include-archived query still returns all 26. Preserved the JSON export; no replacement tickets created.
+
+
+## 2026-10-16 — Replacement Engine V2 tickets created
+
+- At Destin’s request, created MON-228–233 in dependency order: three vectorization tickets, then MTF, limits, and cross margin outlines. Verified milestone assignments, predecessor relations, and statuses; only MON-228 is Ready. Updated the project overview and delivery document; later analytics, remote compute, and live adoption remain deferred.
+- MON-212 and MON-223 remain unchanged outside the ordered sequence. No code or runtime changes. See [[projects/backtest-engine-v2-plan|delivery plan]].
+
+
+## 2026-10-16 — Split small and large backtest baselines
+
+- Narrowed MON-228 to small-load correctness/profiling; created MON-234 for scale measurements up to 96 assets × 50,000 bars. Small baseline stays first and Ready. Large baseline follows it and blocks MON-230, not MON-229. Updated project overview, delivery document, and local plan. No runs or code changes.
+
+
+## 2026-10-16 — MON 228 example baseline completed locally
+
+- Implemented the approved isolated small-load fixture, harness, tests, and profiler using consolidated `example`; corrected active Linear strategy references. Seven configurations, 1,024 synthetic bars, exact reruns/prefixes, retained economics, and independent accounting checks. 22 new + 50 existing tests pass; scoped Ruff/mypy pass.
+- Saved accepted traces, timing/allocation profiles, provenance, and verified source snapshot under `.research/mon228-example-baseline-2026-10-16-final/`. See [[projects/backtest-engine-v2-plan|plan findings]] for hashes and reproduction. Measured repeated features/events and volatility calculation as optimization candidates. No engine behavior change, database run, live operation, commit, push, or deployment.
+
+
+## 2026-10-16 — Backtest baseline 10K timing follow-up
+
+- Compared seven unchanged example configurations at 1,024 and 10,000 bars; all 42 timed trials completed. Saved provenance, source snapshot, runner, and timing evidence locally. See [[projects/backtest-engine-v2-plan|scaling findings]]. No optimization or multiasset ticket started.
+
+
+## 2026-10-16 — MON 229 prepared example path completed locally
+
+- Added approved separate example_vectorized strategy with upfront features and summary event suppression; original example remains unchanged. Minimal preparation hook preserves existing strategies. Exact seven-case economics at 1K/10K; 128 tests and scoped static checks pass. Same-session timing and separate memory/profile evidence are saved under `.research/mon229-vectorized-2026-10-16/`; see [[projects/backtest-engine-v2-plan|plan findings]]. No live operations, commit, push, or deployment.
+
+
+## 2026-10-16 — MON 229 standalone revision
+
+- Applied Destin’s requested independence from ExampleStrategy, local configuration/decision ownership, direct engine index, and single-call EMA. Volatility unchanged pending discussion. 163 tests pass with exact fixture economics and declared feature tolerances; scoped static checks pass. Snapshot `.research/mon229-standalone-2026-10-16/`; no new performance claim. See [[projects/backtest-engine-v2-plan|revision and volatility explanation]].
+
+
+## 2026-10-16 — Remove vectorized reference duplicates
+
+- Removed internal fallback calculations/state from example_vectorized at Destin’s request. Unsupported modes now explicitly reject; original example and volatility behavior remain unchanged. All 31 scoped tests and Ruff/mypy pass. See [[projects/backtest-engine-v2-plan|prepared-only cleanup]].
+
+
+## 2026-10-16 — Move prepared feature serialization out of the bar loop
+
+- Applied Destin’s request while preserving his strategy-file organization. Removed the feature-retention flag and per-bar feature messages; full-mode chart/save rows are built afterward from arrays with decision links preserved. Summary skips serialization. 140 tests and scoped Ruff/mypy pass. Snapshot `.research/mon229-deferred-features-2026-10-16/`; see [[projects/backtest-engine-v2-plan|deferred output notes]].

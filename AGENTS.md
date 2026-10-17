@@ -2,6 +2,16 @@
 
 This is the version-controlled knowledge base for Money Machine Labs. Treat it as the durable agent-readable project memory: an Obsidian-compatible linked markdown wiki, indexed by QMD for search.
 
+## Fresh-start boundary — 2026-10-06
+
+Destin explicitly reset the research agenda. No pre-reset program, hypothesis, experiment, review request, or ticket carries forward as an active commitment. Start with `wiki/index.md`, then the current user request and compact checkpoint. This boundary supersedes historical agenda/process instructions elsewhere in this repo.
+
+- Do not auto-resume, prioritize, reconcile, or repopulate work from old “active,” “ready,” “in progress,” or “next action” labels, including Linear and session logs.
+- Retrieve older research only when it serves the current request. Historical processes and readings are not mandatory prerequisites for starting new work.
+- Retained evidence is reference, not a default premise or proof of current implementation. Verify relevant facts when using it; preserve its original limitations.
+- Only Destin’s explicit selection activates a research focus. Record it in the research home and current checkpoint without reviving unrelated obligations.
+- The reset does not relax live/capital authorization, correctness, or evidence-integrity constraints. Existing external tickets remain unchanged until explicitly addressed.
+
 ## Operating Model
 
 - The **wiki graph** is the source of truth for synthesized durable knowledge.

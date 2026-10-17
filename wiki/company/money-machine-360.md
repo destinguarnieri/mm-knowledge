@@ -1,5 +1,7 @@
 # Money Machine Operating Context
 
+> **Agenda superseded by the 2026-10-06 reset.** The program portfolio, parallel execution defaults, and immediate work loop below describe the earlier operating frame. They are historical context, not current assignments or required priors. Start with [[index|Start Here]] and Destin’s current request. Company background and evidence/safety constraints do not activate a research commitment.
+
 Purpose: give agents the smallest durable company frame needed to make good decisions.
 
 ## Company

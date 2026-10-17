@@ -2,6 +2,8 @@
 
 Version-controlled knowledge base for Money Machine Labs.
 
+**Fresh start, 2026-10-06:** no active research commitments carry forward. [Open Research Home](wiki/research/trading/research_index.html) or [Start Here](wiki/index.md). Past work is preserved as optional reference, not a backlog you need to clear.
+
 This repo is an agent-readable, Obsidian-compatible markdown wiki with QMD indexing/search over it.
 
 ## Canonical Structure

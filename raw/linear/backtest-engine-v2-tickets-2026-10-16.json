@@ -1,0 +1,2124 @@
+{
+  "schema_version": 1,
+  "exported_at_utc": "2026-10-16 05:05:52 UTC",
+  "purpose": "User-requested snapshot before deleting all Backtest Engine V2 project tickets. No deletion has occurred at export time.",
+  "scope": "All 26 project tickets including completed MON-212 and Databento MON-223. Attachments are represented by tool-returned metadata; linked external content is not downloaded.",
+  "project": {
+    "id": "P-MON-13",
+    "uuid": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+    "icon": null,
+    "color": "#5e6ad2",
+    "name": "Backtest Engine V2",
+    "summary": "Synchronized multi-asset, multi-timeframe, cross-margin, limit-order, portfolio, and high-performance backtesting with local/Modal execution.",
+    "description": "## Outcome\n\nReplace isolated per-asset batch semantics with a trustworthy Backtest Engine V2 that shortens time from strategy hypothesis to cost-valid evidence.\n\nThe first user-visible release is one strategy trading many assets through one shared Hyperliquid-style cross-margin perpetual account. The same foundation must support multi-timeframe data, conservative resting-limit simulation, post-hoc separate-account portfolio analytics, an opt-in fast strategy path, and remote Modal compute without later architectural replacement.\n\n## Delivery policy\n\n* Preserve V1 as the correctness oracle and fallback until each strategy proves parity.\n* API and typed agent/research access precede substantial React UI work.\n* Build one coherent set of contracts: synchronized market snapshots, target intents, portfolio allocation, venue/account snapshots, compact valuation series, and local/remote compute backends.\n* Require causal closed-bar semantics, explicit data provenance, negative-path coverage, and reproducible saved results.\n* First performance target: at least 10× V1 engine-compute speed on a warm-cache 96-asset × 50,000-bar summary fixture.\n* Shared-account runs remain within one worker; scale independent runs and parameter variants horizontally.\n* No live runtime, account, order, deployment, or capital mutation is authorized by this project.\n\n## Explicit boundaries\n\n* Hyperliquid cross-perpetual margin is in scope.\n* Hyperliquid spot/borrow portfolio margin and isolated-margin mixtures are out of scope.\n* Candle-level conservative resting-order fills are in scope.\n* Historical L2 replay, queue-position claims, and latency simulation are out of scope.\n* Funding belongs in the accounting contract but may be explicitly omitted when historical rates are unavailable.\n* Live allocator adoption is a separately reviewed shadow/parity/canary gate requiring explicit capital authorization.",
+    "url": "https://linear.app/money-machine/project/backtest-engine-v2-8db3cb02c845",
+    "resourceCount": 1,
+    "createdAt": "2026-08-06T02:55:37.764Z",
+    "updatedAt": "2026-08-06T02:55:37.764Z",
+    "startedAt": null,
+    "completedAt": null,
+    "canceledAt": null,
+    "startDate": null,
+    "startDateResolution": null,
+    "targetDate": null,
+    "targetDateResolution": null,
+    "priority": {
+      "value": 2,
+      "name": "High"
+    },
+    "labels": [],
+    "initiatives": [],
+    "lead": {
+      "id": "9e095908-f036-473a-b9be-74c6b8c42415",
+      "name": "Destin Guarnieri"
+    },
+    "leadTeam": {
+      "id": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+      "name": "Money Machine",
+      "key": "MON"
+    },
+    "status": {
+      "id": "30e5cc3e-72ce-413c-8fc3-d48ded2be0c6",
+      "name": "Backlog",
+      "type": "backlog"
+    },
+    "teams": [
+      {
+        "id": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "name": "Money Machine",
+        "key": "MON"
+      }
+    ],
+    "milestones": [
+      {
+        "id": "581b4e26-7745-41ce-a320-676341edbdd5",
+        "name": "1 — Contracts & Baseline",
+        "description": "Freeze V1 truth, benchmark the canonical workload, and establish V2 interfaces and persistence boundaries.",
+        "targetDate": null,
+        "progress": "8%"
+      },
+      {
+        "id": "28037e4b-b288-4a7b-9f64-f99c6a253607",
+        "name": "2 — Fast Cross-Margin Core",
+        "description": "Ship the first user-visible V2 path: one strategy, many assets, one shared Hyperliquid-style cross-perp account, with the 10× local performance gate.",
+        "targetDate": null,
+        "progress": "25%"
+      },
+      {
+        "id": "fcf6b936-9ac0-46a5-ba15-93c1ada2b0ca",
+        "name": "3 — Post-hoc Portfolio Analytics",
+        "description": "Combine separate-account valuation series into exact and labeled what-if portfolio metrics.",
+        "targetDate": null,
+        "progress": "25%"
+      },
+      {
+        "id": "7ad86bef-e617-4ec1-af44-640e25a2bf1f",
+        "name": "4 — Multi-Timeframe Data",
+        "description": "Support causally aligned higher/lower timeframe streams and Binance aggressor-side volume.",
+        "targetDate": null,
+        "progress": "25%"
+      },
+      {
+        "id": "fca8ed59-7b70-4377-a263-8d21bd8f48a5",
+        "name": "5 — Resting Limit Orders",
+        "description": "Simulate conservative lower-timeframe resting-order lifecycle and fills without L2 claims.",
+        "targetDate": null,
+        "progress": "25%"
+      },
+      {
+        "id": "9f279518-98c4-4462-95ed-3c802bfba49b",
+        "name": "6 — Modal Remote Compute",
+        "description": "Run the proven local kernel remotely through a provider-neutral compute boundary with durable parity and cost controls.",
+        "targetDate": null,
+        "progress": "25%"
+      },
+      {
+        "id": "96f9ecf6-fd52-4540-b4e7-56bf14e4971a",
+        "name": "7 — Live-Parity Bridge",
+        "description": "Shadow the shared intent/allocator contract against live behavior without controlling capital until separately authorized.",
+        "targetDate": null,
+        "progress": "25%"
+      }
+    ],
+    "resources": [
+      {
+        "type": "document",
+        "id": "524ac77e-dfb2-4c78-be9b-3de6cb978789",
+        "title": "Backtest Engine V2 — Architecture and Delivery Map",
+        "icon": null,
+        "color": null,
+        "url": "https://linear.app/money-machine/document/backtest-engine-v2-architecture-and-delivery-map-1679d5102cfd",
+        "createdAt": "2026-08-06T03:06:24.073Z",
+        "updatedAt": "2026-08-06T03:06:26.064Z"
+      }
+    ]
+  },
+  "documents": [
+    {
+      "id": "524ac77e-dfb2-4c78-be9b-3de6cb978789",
+      "title": "Backtest Engine V2 — Architecture and Delivery Map",
+      "content": "# Backtest Engine V2\n\n## Decision\n\nBuild one coherent V2 architecture rather than independent patches. The first user-visible capability is one strategy trading many assets through one shared Hyperliquid-style cross-perpetual account.\n\nV1 remains the correctness oracle and fallback. New strategies opt into the fast path only after parity.\n\n## Core execution model\n\nAt each timestamp:\n\n1. Update every market stream closing at T.\n2. Mark all positions.\n3. Freeze one pre-decision account snapshot.\n4. Collect typed target intents from declared execution intervals.\n5. Resolve the complete batch through proportional allocation with optional explicit priority.\n6. Execute approved targets and account for costs.\n7. Sample compact valuation state on the configured valuation interval.\n\nThis ordering must be invariant to asset iteration order.\n\n## Key decisions\n\n* Multi-timeframe data is native by default with an explicit derived option.\n* Only fully closed bars are visible; incomplete higher-timeframe bars never leak.\n* Binance taker-buy candle fields provide candle-level aggressor volume delta.\n* Cross margin covers Hyperliquid-style perpetual positions sharing USDC collateral.\n* Funding is represented in the accounting contract and explicitly omitted when unavailable.\n* Post-hoc portfolios combine separate-account valuation series over their common overlap.\n* Exact portfolio mode uses tested capital; what-if rescaling is visibly analytical.\n* Resting limits activate after placement and require later-bar trade-through.\n* Default fill capacity is 1% of opposite-aggressor base volume, shared by price-time priority.\n* Historical L2, queue position, latency, isolated-margin mixtures, and Hyperliquid spot/borrow portfolio margin are excluded.\n* Local V2 must prove at least 10× V1 engine-compute speed on the warm 96×50k fixture before Modal.\n* Modal workers are research-only and receive no live credentials.\n* Shared-account runs stay within one worker; independent runs/variants scale horizontally.\n* Live use begins only with a non-controlling shadow comparison and a later explicit human authorization decision.\n\n## Ticket map\n\n### 1 — Contracts & Baseline\n\n* <issue id=\"f1e4edd5-9663-4231-9739-1ee813a39405\" href=\"https://linear.app/money-machine/issue/MON-183/freeze-v1-golden-behavior-and-canonical-9650k-benchmark\">MON-183</issue> — V1 golden behavior and canonical benchmark\n* <issue id=\"447076ce-cea6-4958-bb4b-f3cccc9d4b64\" href=\"https://linear.app/money-machine/issue/MON-184/define-engine-v2-market-intent-account-series-and-compute-contracts\">MON-184</issue> — V2 typed contracts\n* <issue id=\"cb397931-e417-46c0-8e72-6567a95b7a23\" href=\"https://linear.app/money-machine/issue/MON-185/generalize-v2-persistence-around-runs-accounts-strategies-assets-and\">MON-185</issue> — generalized persistence and compact series\n\n### 2 — Fast Cross-Margin Core\n\n* <issue id=\"3ff74ef2-04a2-42f3-82d7-a9a258fc5e63\" href=\"https://linear.app/money-machine/issue/MON-186/implement-deterministic-synchronized-multi-asset-event-scheduler\">MON-186</issue> — synchronized scheduler\n* <issue id=\"59ceeda5-43fb-43a4-bb78-517e133a46c3\" href=\"https://linear.app/money-machine/issue/MON-187/implement-pure-proportional-target-intent-allocator-with-optional\">MON-187</issue> — proportional allocator with optional priority\n* <issue id=\"38db2c62-9a53-4f18-938f-7788ff78117c\" href=\"https://linear.app/money-machine/issue/MON-188/implement-versioned-hyperliquid-cross-perpetual-account-and-margin\">MON-188</issue> — Hyperliquid cross-perpetual accounting\n* <issue id=\"42f15ea0-80a5-4db7-88be-2cc729b70ed3\" href=\"https://linear.app/money-machine/issue/MON-189/build-lean-v2-featuredecision-kernel-and-migrate-emac-cross\">MON-189</issue> — lean kernel and first strategy migration\n* <issue id=\"553d8257-2416-44ab-a9bc-ad1f6b4cdcdc\" href=\"https://linear.app/money-machine/issue/MON-190/expose-durable-v2-shared-cross-margin-runs-through-api-and-research\">MON-190</issue> — durable API and agent-accessible shared-account runs\n* <issue id=\"1caf2554-f26c-40fc-8b3e-d1ed8e7bbfa2\" href=\"https://linear.app/money-machine/issue/MON-191/prove-v2-parity-and-10-local-performance-on-the-canonical-fixture\">MON-191</issue> — parity and 10× performance gate\n\n### 3 — Post-hoc Portfolio Analytics\n\n* <issue id=\"6b80239e-5d73-4822-b33f-1499a13d87c1\" href=\"https://linear.app/money-machine/issue/MON-192/emit-compact-account-valuation-series-for-summary-v2-runs\">MON-192</issue> — compact valuation-series emission\n* <issue id=\"eb22dd30-83f2-4779-87b5-661c42c1476d\" href=\"https://linear.app/money-machine/issue/MON-193/compute-exact-and-labeled-what-if-post-hoc-portfolio-metrics\">MON-193</issue> — exact and what-if portfolio metrics\n* <issue id=\"41122b32-5e2a-4aa2-84f9-e43abe056a13\" href=\"https://linear.app/money-machine/issue/MON-194/expose-versioned-post-hoc-portfolio-definitions-and-results-to-api-and\">MON-194</issue> — versioned portfolio API and agent access\n\n### 4 — Multi-Timeframe Data\n\n* <issue id=\"8609f426-c29c-431e-8480-0d29f4460aee\" href=\"https://linear.app/money-machine/issue/MON-195/load-causally-aligned-native-and-derived-multi-timeframe-streams\">MON-195</issue> — native/derived causally aligned streams\n* <issue id=\"c91c277b-9b8d-497f-9501-09d33450ff80\" href=\"https://linear.app/money-machine/issue/MON-196/persist-binance-taker-buy-candle-fields-and-expose-exact-candle-volume\">MON-196</issue> — Binance taker-buy fields and volume delta\n* <issue id=\"eabecf02-11e5-44ef-9a5f-2d85c6a71864\" href=\"https://linear.app/money-machine/issue/MON-197/prove-1h-execution-with-completed-daily-200-ma-and-lower-timeframe\">MON-197</issue> — 1h + completed daily 200-MA/lower-timeframe vertical slice\n\n### 5 — Resting Limit Orders\n\n* <issue id=\"9d7b8544-02af-412b-9ecc-6ec2409aa96e\" href=\"https://linear.app/money-machine/issue/MON-198/implement-deterministic-pending-order-lifecycle-for-resting-limits\">MON-198</issue> — pending-order lifecycle\n* <issue id=\"1c365c65-9173-4aa3-9443-8d3ef383b2cd\" href=\"https://linear.app/money-machine/issue/MON-199/implement-conservative-trade-through-limit-fills-with-1percent\">MON-199</issue> — conservative trade-through fill model\n* <issue id=\"786a2236-6859-4660-ac6e-b4cfccdaf381\" href=\"https://linear.app/money-machine/issue/MON-200/validate-end-to-end-lower-timeframe-passive-execution-and-cost\">MON-200</issue> — passive execution and cost-sensitivity acceptance\n\n### 6 — Modal Remote Compute\n\n* <issue id=\"47e74a79-bea9-47c6-bdcc-98b03f1d7ad5\" href=\"https://linear.app/money-machine/issue/MON-201/implement-provider-neutral-compute-manifests-and-local-backend\">MON-201</issue> — provider-neutral compute boundary\n* <issue id=\"d123180b-52c9-417a-9a69-1c853ce56f68\" href=\"https://linear.app/money-machine/issue/MON-202/implement-research-only-modal-compute-backend-with-bounded-spend\">MON-202</issue> — bounded-spend Modal backend\n* <issue id=\"2768e59f-0364-4daf-ba9a-c391fdd279d3\" href=\"https://linear.app/money-machine/issue/MON-203/prove-localmodal-parity-elapsed-time-value-and-cost-on-canonical\">MON-203</issue> — local/remote parity, time, and cost decision\n\n### 7 — Live-Parity Bridge\n\n* <issue id=\"7784bdfb-0e6a-4197-8894-53f075ae0a33\" href=\"https://linear.app/money-machine/issue/MON-204/audit-current-live-decision-scheduling-against-the-v2-intentallocator\">MON-204</issue> — read-only live scheduling audit\n* <issue id=\"268e67dd-3d02-41e5-9afb-0d804d7c9e07\" href=\"https://linear.app/money-machine/issue/MON-205/implement-non-controlling-live-shadow-comparison-for-v2-intents-and\">MON-205</issue> — non-controlling shadow comparison\n* <issue id=\"b747ed9a-b52a-4688-b7d3-4397d039558f\" href=\"https://linear.app/money-machine/issue/MON-206/review-shadow-evidence-and-decide-whether-to-authorize-a-live\">MON-206</issue> — human canary-authorization decision\n\n## Queue policy\n\nOnly <issue id=\"f1e4edd5-9663-4231-9739-1ee813a39405\" href=\"https://linear.app/money-machine/issue/MON-183/freeze-v1-golden-behavior-and-canonical-9650k-benchmark\">MON-183</issue> and <issue id=\"447076ce-cea6-4958-bb4b-f3cccc9d4b64\" href=\"https://linear.app/money-machine/issue/MON-184/define-engine-v2-market-intent-account-series-and-compute-contracts\">MON-184</issue> begin in Ready. All other issues are dependency-blocked. Issues are unassigned so one bounded packet can be claimed per agent without implying the entire roadmap is active simultaneously.\n\n## Safety boundary\n\nThis project authorizes research/backtest implementation and read-only investigation. It does not authorize live runtime operations, account/order/position mutation, deployment, secret handling, or capital use.",
+      "icon": null,
+      "color": null,
+      "url": "https://linear.app/money-machine/document/backtest-engine-v2-architecture-and-delivery-map-1679d5102cfd",
+      "slugId": "1679d5102cfd",
+      "createdAt": "2026-08-06T03:06:24.073Z",
+      "updatedAt": "2026-08-06T03:06:26.064Z",
+      "archivedAt": null,
+      "creator": {
+        "id": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "name": "Destin Guarnieri"
+      },
+      "updatedBy": {
+        "id": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "name": "Destin Guarnieri"
+      },
+      "project": {
+        "id": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "name": "Backtest Engine V2"
+      },
+      "initiative": null,
+      "team": null,
+      "issue": null
+    }
+  ],
+  "issue_count": 26,
+  "issues": [
+    {
+      "issue": {
+        "id": "MON-223",
+        "uuid": "abe8379f-b581-452b-a2c1-a5cd448e01f3",
+        "title": "Incorporate Databento US stock data into backtesting",
+        "description": "## Outcome\n\nRun trustworthy Money Machine backtests on a bounded US-stock universe using commercially licensed Databento historical data, with immutable source preservation and stock-specific correctness semantics.\n\n## Why now\n\nStock research cannot currently reach a money test in the existing backtester. The research candle path supports Hyperliquid and Binance USD-M only; it has no stock provider, venue-neutral stock identity, corporate-action handling, or durable archive for purchased source files.\n\n## Current-system attempt and observed blocker\n\nThe existing provider-qualified `backtest_candle` path and Binance/Hyperliquid loaders establish that research and live data can remain separate, but the provider dispatch and asset model are still crypto-specific. They cannot represent a stock across symbol changes, delisting, splits, dividends, and separate market sessions without adding semantics that do not exist today.\n\nRelated prior work: <issue id=\"6a1a75bf-54fc-457a-97c5-42606c2b3e61\" href=\"https://linear.app/money-machine/issue/MON-113/backtest-historical-data-source-evaluate-binance-first\">MON-113</issue> evaluated and implemented Binance as a deeper crypto historical source. Reuse that provider-qualified/cache pattern where it remains valid; do not reopen its Binance decision.\n\n## Decision gate before implementation\n\nUse Databento's metadata cost API and initial credit to price and acquire the smallest discriminating sample:\n\n* Approximately 20 US securities covering liquid/illiquid names, ETF, recent IPO, delisted security, ticker change, split, and dividend cases.\n* A bounded date range with regular and extended-hours observations.\n* Start with unadjusted `OHLCV-1m`; include trades/BBO only for a few representative sessions where execution validation requires them.\n* Confirm commercial/internal-use licensing and post-download retention rights before purchase.\n\nStop or narrow if the sample fails identity, coverage, corporate-action, bar-reconciliation, licensing, or projected-cost checks.\n\n## Accepted scope\n\n1. Select and document the exact Databento dataset, schemas, adjustment policy, session policy, and projected cost.\n2. Preserve original Databento files as immutable raw inputs with request metadata, SHA-256 checksums, dataset/schema/version, retrieval time, and date boundaries.\n3. Store one durable off-machine backup of the purchased raw files with versioning or object lock, and verify one restore. Keep local files as the working copy.\n4. Introduce the minimum venue-neutral instrument identity needed for US stocks without silently treating ticker text as permanent identity.\n5. Represent splits, dividends, symbol changes, mergers/delistings, and session boundaries explicitly. Do not overwrite raw prices with adjusted history.\n6. Add a Databento historical loader behind the backtest-only provider boundary.\n7. Normalize `OHLCV-1m` into the existing backtest candle contract and resample higher timeframes internally.\n8. Make the bounded sample universe runnable through the normal backtest path and persist provider/source provenance with the run.\n9. Reconcile representative outputs against Databento source data and test missing-bar, corporate-action, symbol-change, and session-boundary cases.\n\n## No-build alternative\n\nIf there is not yet a bounded stock strategy question worth testing, retain the vendor/sample decision and defer ingestion. A CSV/manual one-off import is acceptable for a single exploratory experiment if it can preserve point-in-time identity and adjustment semantics. Do not build generalized stock-data infrastructure merely to expand platform coverage.\n\n## Smallest implementation\n\nOne historical provider, one canonical input resolution, one bounded US-stock universe, local execution, and one durable raw-data backup. No generalized data lake, distributed ingestion service, live equities feed, broker integration, fundamentals, options, or full-depth order-book simulator.\n\n## Work displaced\n\nThis is enabling work and should not displace active higher-confidence revenue experiments unless a specific stock hypothesis requires it. Do not expand the issue into cloud compute, generalized storage infrastructure, or live-equity execution.\n\n## Acceptance criteria\n\n- [ ] Exact Databento dataset/schema/license and pre-purchase cost are recorded.\n- [ ] The bounded sample passes documented identity, completeness, session, and corporate-action checks.\n- [ ] Original source files, manifests, and checksums are retained locally and in one independently restorable off-machine copy.\n- [ ] A restored raw object matches its original SHA-256 checksum.\n- [ ] Stable stock identity survives at least one symbol-change fixture and does not rely solely on ticker text.\n- [ ] Raw and adjusted/corporate-action semantics are explicit and tested.\n- [ ] Selected stock symbols run through the normal backtest path from Databento `OHLCV-1m`.\n- [ ] Higher timeframes are derived deterministically from the canonical minute data.\n- [ ] Run metadata identifies provider, source dataset/schema, symbol identity, session policy, adjustment policy, and data boundaries.\n- [ ] Focused tests cover missing minutes, split/dividend handling, ticker change/delisting, regular versus extended hours, duplicate ingestion, and checksum/manifest failure.\n- [ ] No live runtime, account, order, position, deployment, or capital path changes are included.\n\n## Follow-up gate\n\nOnly evaluate live stock data and brokerage providers after a stock strategy survives historical costs and has a justified paper/live test.",
+        "priority": {
+          "value": 3,
+          "name": "Medium"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-223/incorporate-databento-us-stock-data-into-backtesting",
+        "gitBranchName": "destingvls/mon-223-incorporate-databento-us-stock-data-into-backtesting",
+        "createdAt": "2026-08-12T22:45:29.928Z",
+        "updatedAt": "2026-08-12T22:45:29.928Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": null,
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Triage",
+        "statusType": "backlog",
+        "labels": [
+          "Task",
+          "Data-Pipeline",
+          "Research"
+        ],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "3d044818-cf04-4653-98ac-ecbb0534bb28",
+              "name": "Triage",
+              "type": "backlog"
+            },
+            "startedAt": "2026-08-12T22:45:29.928Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [],
+          "blockedBy": [],
+          "relatedTo": [
+            {
+              "id": "MON-113",
+              "title": "Backtest historical data source: evaluate Binance first"
+            }
+          ],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-184",
+        "uuid": "447076ce-cea6-4958-bb4b-f3cccc9d4b64",
+        "title": "Define Engine V2 market, intent, account, series, and compute contracts",
+        "description": "## Outcome\n\nCreate the typed seams that let later milestones extend one architecture rather than replace earlier work.\n\n## Scope\n\nDefine strongly typed, versioned contracts for:\n\n* `MarketStreamSpec` and immutable synchronized `MarketSnapshot`;\n* feature preparation and strategy decision callbacks;\n* `TargetIntent` with strategy/asset identity and optional priority;\n* pure `PortfolioAllocator` input/output;\n* `VenueProfileSnapshot` and scheduled funding cashflows;\n* compact `ValuationSeries`;\n* local/remote `ComputeBackend` manifests and results;\n* execution/decision/valuation interval semantics.\n\nSpecify timestamp phase ordering, close-only causality, idempotency, provenance, and error shapes. Preserve V1 through an explicit compatibility adapter.\n\n## Acceptance\n\n* Interfaces contain no `Any`/unexplained `unknown`.\n* Same-timestamp phase order is unambiguous.\n* Market orders and future resting orders have explicit activation semantics.\n* Shared-account runs cannot be accidentally sharded across workers.\n* V1 endpoints remain unchanged.\n* Contract tests cover serialization, version rejection, and invalid interval relationships.\n\n## Out of scope\n\nFull scheduler, accounting, strategy migration, or remote provider implementation.",
+        "projectMilestone": {
+          "id": "581b4e26-7745-41ce-a320-676341edbdd5",
+          "name": "1 — Contracts & Baseline"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-184/define-engine-v2-market-intent-account-series-and-compute-contracts",
+        "gitBranchName": "destingvls/mon-184-define-engine-v2-market-intent-account-series-and-compute",
+        "createdAt": "2026-08-06T02:57:12.534Z",
+        "updatedAt": "2026-08-12T05:06:49.433Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": null,
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Backlog",
+        "statusType": "backlog",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "3f69e858-99b0-41d1-ba11-1da0ce9367e9",
+              "name": "Ready",
+              "type": "unstarted"
+            },
+            "startedAt": "2026-08-06T02:57:12.534Z",
+            "endedAt": "2026-08-12T05:06:49.428Z"
+          },
+          {
+            "state": {
+              "id": "c5abb8f9-f8c6-47d4-97c4-736f6aaf8b81",
+              "name": "Backlog",
+              "type": "backlog"
+            },
+            "startedAt": "2026-08-12T05:06:49.428Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-189",
+              "title": "Build lean V2 feature/decision kernel and migrate emac_cross"
+            },
+            {
+              "id": "MON-188",
+              "title": "Implement versioned Hyperliquid cross-perpetual account and margin model"
+            },
+            {
+              "id": "MON-187",
+              "title": "Implement pure proportional target-intent allocator with optional priorities"
+            },
+            {
+              "id": "MON-186",
+              "title": "Implement deterministic synchronized multi-asset event scheduler"
+            },
+            {
+              "id": "MON-185",
+              "title": "Generalize V2 persistence around runs, accounts, strategies, assets, and compact series"
+            }
+          ],
+          "blockedBy": [],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-183",
+        "uuid": "f1e4edd5-9663-4231-9739-1ee813a39405",
+        "title": "Freeze V1 golden behavior and canonical 96×50k benchmark",
+        "description": "## Decision supported\n\nEstablish the immutable correctness and performance baseline against which Engine V2 is accepted.\n\n## Scope\n\n* Select deterministic candle fixtures and the existing `emac_cross` strategy as the first real-strategy comparator.\n* Capture V1 metrics, fills, position transitions, costs, liquidation outcomes, retained artifacts, stage timing, peak memory, and status-endpoint responsiveness.\n* Run the warm-cache 96-asset × 50,000-bar summary benchmark three times on one recorded machine/commit and persist the median.\n* Separate data-loading, engine-compute, aggregation, and persistence time.\n* Document numeric comparison tolerances before V2 output is inspected.\n\n## Acceptance\n\n* Fixture identity, data checksums, strategy/version/config, machine, commit, and run IDs are durable.\n* Golden outputs can be executed locally without live runtime or mutation APIs.\n* Median-of-three baseline and peak RSS are recorded.\n* A parity test helper can compare V1 and future V2 results.\n* No claim is made from an estimated 96-asset extrapolation.\n\n## Out of scope\n\nOptimization or Engine V2 implementation.",
+        "projectMilestone": {
+          "id": "581b4e26-7745-41ce-a320-676341edbdd5",
+          "name": "1 — Contracts & Baseline"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-183/freeze-v1-golden-behavior-and-canonical-9650k-benchmark",
+        "gitBranchName": "destingvls/mon-183-freeze-v1-golden-behavior-and-canonical-96×50k-benchmark",
+        "createdAt": "2026-08-06T02:57:08.307Z",
+        "updatedAt": "2026-08-12T05:06:49.393Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": null,
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Backlog",
+        "statusType": "backlog",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "3f69e858-99b0-41d1-ba11-1da0ce9367e9",
+              "name": "Ready",
+              "type": "unstarted"
+            },
+            "startedAt": "2026-08-06T02:57:08.307Z",
+            "endedAt": "2026-08-12T05:06:49.388Z"
+          },
+          {
+            "state": {
+              "id": "c5abb8f9-f8c6-47d4-97c4-736f6aaf8b81",
+              "name": "Backlog",
+              "type": "backlog"
+            },
+            "startedAt": "2026-08-12T05:06:49.388Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-191",
+              "title": "Prove V2 parity and ≥10× local performance on the canonical fixture"
+            },
+            {
+              "id": "MON-189",
+              "title": "Build lean V2 feature/decision kernel and migrate emac_cross"
+            }
+          ],
+          "blockedBy": [],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-212",
+        "uuid": "85fba6d6-474f-4c6b-8397-76ab00cc3418",
+        "title": "Make recursive backtest indicators causal across rolling windows",
+        "description": "## Problem\n\nBacktest strategies receive a rolling candle window capped at 512 bars and recalculate recursive indicators from scratch on every candle. When the window advances, the indicator seed advances too. A historical value recalculated inside the new window can therefore differ from the value actually emitted for that timestamp.\n\nSaved ETH 1d run `8703041c-1398-4edd-bb89-dc2d14d509fd` demonstrates the failure:\n\n* 2023-10-26 emitted EMA 10/200 spread: `-0.215367`\n* 2023-10-27 emitted spread: `+13.137372`\n* 2023-10-26 recalculated inside the Oct 27 shifted window: `+0.142074`\n* `emac_cross` compared positive → positive, emitted `0`, and missed the visible bullish cross.\n\nThis is a backtest-wide state ownership defect, not an `emac_cross`-only defect. Existing strategies already duplicate partial solutions: EMAC V4/V5 and PX threshold keep emitted-signal deques, while multi-speed EWMAC owns recursive EMA state.\n\n## Outcome\n\nMake recursive indicator values and crossing inputs causal and stable while retaining the bounded candle window. Future bars must not revise values previously emitted for decision use.\n\nHistorical-result compatibility does not matter. Do not preserve legacy behavior.\n\n## Implementation plan\n\n1. **Inventory affected strategies**\n   * Find recursive indicators recalculated from bounded windows, beginning with EMA/EWMA users.\n   * Find crossing and threshold decisions consuming recalculated `[-2]` values.\n   * Separate finite-window indicators from recursive indicators.\n2. **Add small shared state helpers**\n   * Add a typed incremental EMA state helper initialized once and updated once per accepted candle.\n   * Add a typed bounded emitted-value history helper returning canonical previous/current values.\n   * Keep memory bounded and reset state with each strategy/run instance. Rely on the candle layer's existing sorted, deduplicated input contract.\n   * Keep helpers strategy-owned; do not build a generalized indicator framework.\n3. **Migrate affected strategies**\n   * Replace recursive EMA recalculation used for decisions with the shared incremental helper.\n   * Replace strategy-specific emitted-pair deques with the shared history helper.\n   * Preserve signal mapping, thresholds, sizing, and execution semantics except behavior caused by revised historical values.\n   * Remove dead duplicated state code.\n4. **Verify causal behavior**\n   * Add a real `BT_WINDOW_CAP=512` regression reproducing the October 2023 missed ETH cross.\n   * Prove a value emitted at T is unchanged after T+1.\n   * Prove incremental EMA equals one continuous causal pass within floating-point tolerance.\n   * Test fresh-run reset, state isolation, and bounded memory. Do not duplicate candle-layer ordering/deduplication tests in strategy state.\n   * Run focused strategy tests, Ruff, and typing checks.\n5. **Run the corrected control**\n   * Rerun the original ETH 1d EMAC-cross configuration with full retention.\n   * Confirm the Oct 27 bullish cross is emitted and acted on.\n   * Record the corrected run ID here and unblock <issue id=\"6729b02a-717c-430c-8222-849b948af120\" href=\"https://linear.app/money-machine/issue/MON-210/complete-the-multi-asset-1d-emac-cross-control\">MON-210</issue>.\n\n## Acceptance criteria\n\n* Recursive EMA/EWMA decision values update incrementally instead of being reseeded from shifted windows.\n* Cross and threshold logic consumes consecutive canonical emitted values.\n* Previously emitted decision values never change after future candles arrive.\n* State is bounded, typed, and isolated by strategy/run. Ordering and deduplication remain owned by the validated candle layer.\n* The October 2023 ETH regression emits the bullish cross.\n* Applicable duplicated emitted-history deques use the shared helper.\n* Focused tests, Ruff, and typing checks pass.\n* A corrected full-retention ETH run ID is recorded and <issue id=\"6729b02a-717c-430c-8222-849b948af120\" href=\"https://linear.app/money-machine/issue/MON-210/complete-the-multi-asset-1d-emac-cross-control\">MON-210</issue> can resume.\n\n## Out of scope\n\n* Preserving or comparing historical backtest results.\n* A legacy compatibility path.\n* Live trading.\n* A generalized indicator registry or engine rewrite.\n* Strategy tuning or economic interpretation.\n* Deployment or capital mutation.\n\n## Related work\n\n* <issue id=\"9d5c000e-8a40-4464-a1cd-e2d5945c4422\" href=\"https://linear.app/money-machine/issue/MON-146/use-emitted-signal-history-for-emac-v4-threshold-crossings\">MON-146</issue> fixed the same canonical emitted-history defect locally in EMAC V4.\n* <issue id=\"42f15ea0-80a5-4db7-88be-2cc729b70ed3\" href=\"https://linear.app/money-machine/issue/MON-189/build-lean-v2-featuredecision-kernel-and-migrate-emac-cross\">MON-189</issue> is a separate performance/kernel project and is not required.\n* This issue blocks <issue id=\"6729b02a-717c-430c-8222-849b948af120\" href=\"https://linear.app/money-machine/issue/MON-210/complete-the-multi-asset-1d-emac-cross-control\">MON-210</issue>.",
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-212/make-recursive-backtest-indicators-causal-across-rolling-windows",
+        "gitBranchName": "destingvls/mon-212-make-recursive-backtest-indicators-causal-across-rolling",
+        "createdAt": "2026-08-07T21:05:59.457Z",
+        "updatedAt": "2026-08-09T03:39:30.790Z",
+        "archivedAt": null,
+        "completedAt": "2026-08-09T03:39:30.775Z",
+        "startedAt": "2026-08-09T02:31:22.574Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Done",
+        "statusType": "completed",
+        "labels": [
+          "Bug",
+          "Strategy",
+          "Dev"
+        ],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "3f69e858-99b0-41d1-ba11-1da0ce9367e9",
+              "name": "Ready",
+              "type": "unstarted"
+            },
+            "startedAt": "2026-08-07T21:05:59.457Z",
+            "endedAt": "2026-08-09T02:31:22.597Z"
+          },
+          {
+            "state": {
+              "id": "c569dcbc-6669-4d12-a154-bc3901ae6630",
+              "name": "In Progress",
+              "type": "started"
+            },
+            "startedAt": "2026-08-09T02:31:22.597Z",
+            "endedAt": "2026-08-09T03:39:30.783Z"
+          },
+          {
+            "state": {
+              "id": "38570944-4924-4172-a04e-cc5ac49c9f0c",
+              "name": "Done",
+              "type": "completed"
+            },
+            "startedAt": "2026-08-09T03:39:30.783Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-210",
+              "title": "Complete the multi-asset 1D EMAC-cross control"
+            }
+          ],
+          "blockedBy": [],
+          "relatedTo": [
+            {
+              "id": "MON-189",
+              "title": "Build lean V2 feature/decision kernel and migrate emac_cross"
+            },
+            {
+              "id": "MON-146",
+              "title": "Use emitted signal history for EMAC V4 threshold crossings"
+            }
+          ],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [
+          {
+            "id": "d7c9ede5-dfc8-4f6c-8efe-39056d3f4b88",
+            "body": "Implementation update — 2026-08-08\n\nImplemented the revised design:\n\n- Indicator state lives in the indicator modules; `BacktestStrategy` is unchanged.\n- `CausalEMAState` retains bounded, `EMA_P_CLEAN`-compatible output and handles NaNs.\n- `EMACState` composes two EMA states, accepts caller-selected numeric arrays, exposes fast/slow arrays, and has no extra EMAC deque.\n- Migrated all direct `EMA_P`, `EMA_P_CLEAN`, `EMA_SRC`, and `emac` calls in backend backtest strategies. A repository scan now returns none.\n- Existing V4/V5 processed-signal histories remain because those track separate threshold-crossing state.\n\nVerification:\n\n- 80 focused tests pass.\n- Focused Ruff checks pass.\n- Indicators and the modern migrated subset pass mypy.\n- Runnable backtest suite: 545 passed, 22 known baseline failures; full collection also has two known missing-strategy-module errors.\n- Exact replay of saved run `8703041c-1398-4edd-bb89-dc2d14d509fd` using its real ETH candles:\n  - Oct 26 spread: `-6.420693`\n  - Oct 27 spread: `+6.639906`\n  - Bullish cross detected on Oct 27.\n\nRemaining acceptance step:\n\n- The backtest manager is stopped, so there is no new persisted full-retention run ID yet.\n- MON-210 should remain blocked until that persisted rerun is completed and recorded.",
+            "attachments": [],
+            "createdAt": "2026-08-09T02:31:18.901Z",
+            "updatedAt": "2026-08-09T02:31:18.870Z",
+            "parentId": null,
+            "resolvedAt": null,
+            "quotedText": null,
+            "author": {
+              "id": "9e095908-f036-473a-b9be-74c6b8c42415",
+              "name": "Destin Guarnieri"
+            },
+            "onBehalfOf": null
+          }
+        ],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-189",
+        "uuid": "42f15ea0-80a5-4db7-88be-2cc729b70ed3",
+        "title": "Build lean V2 feature/decision kernel and migrate emac_cross",
+        "description": "## Outcome\n\nRemove repeated full strategy/account/event work from no-op bars while retaining V1 as the semantic oracle.\n\n## Scope\n\n* Add opt-in vectorized feature preparation over columnar arrays.\n* Add a lean state loop that emits typed intents rather than Pydantic event graphs on every bar.\n* Stream metrics and materialize public events only for transitions/fills or full retention.\n* Migrate `emac_cross` as the first real V2 strategy.\n* Retain the V1 adapter/fallback and the existing vectorbt comparator as diagnostics only.\n\n## Acceptance\n\n* The frozen fixture matches V1 metrics and execution trace within preregistered tolerances.\n* No future values enter prepared feature arrays.\n* Summary mode does not build unused full artifacts.\n* Unsupported strategies fall back explicitly rather than silently changing semantics.\n* Profiling identifies remaining CPU and allocation hotspots.\n\n## Out of scope\n\nMulti-timeframe feature semantics and remote execution.",
+        "projectMilestone": {
+          "id": "28037e4b-b288-4a7b-9f64-f99c6a253607",
+          "name": "2 — Fast Cross-Margin Core"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-189/build-lean-v2-featuredecision-kernel-and-migrate-emac-cross",
+        "gitBranchName": "destingvls/mon-189-build-lean-v2-featuredecision-kernel-and-migrate-emac_cross",
+        "createdAt": "2026-08-06T02:59:01.432Z",
+        "updatedAt": "2026-08-07T21:06:50.189Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T02:59:01.546Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T02:59:01.432Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-197",
+              "title": "Prove 1h execution with completed daily 200-MA and lower-timeframe features"
+            },
+            {
+              "id": "MON-190",
+              "title": "Expose durable V2 shared cross-margin runs through API and research tools"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-184",
+              "title": "Define Engine V2 market, intent, account, series, and compute contracts"
+            },
+            {
+              "id": "MON-183",
+              "title": "Freeze V1 golden behavior and canonical 96×50k benchmark"
+            }
+          ],
+          "relatedTo": [
+            {
+              "id": "MON-212",
+              "title": "Make recursive backtest indicators causal across rolling windows"
+            }
+          ],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-206",
+        "uuid": "b747ed9a-b52a-4688-b7d3-4397d039558f",
+        "title": "Review shadow evidence and decide whether to authorize a live allocator canary",
+        "description": "## Human decision\n\nDestin decides whether the shared allocator has enough shadow evidence to justify a separately scoped live canary.\n\n## Required evidence\n\n* Shadow observation period and population are explicitly stated.\n* Current-live versus shadow differences are summarized by cause and severity.\n* Order/sizing/margin discrepancies and counterexamples are included.\n* Failure isolation, rollback, monitoring, and maximum capital/risk exposure are specified.\n* Any unresolved strategy-priority or same-timestamp policy is presented as a decision, not inferred.\n\n## Acceptance\n\n* Decision is recorded as authorize bounded canary, continue shadowing, revise allocator, or reject.\n* Authorization identifies exact account, strategy, assets, proof period, capital/risk limits, stop conditions, reviewer, and deployment path.\n* If authorization is absent, no canary implementation or live control issue is created.\n\n## Out of scope\n\nThis issue itself performs no deployment, order, account, strategy-lifecycle, or capital mutation.",
+        "projectMilestone": {
+          "id": "96f9ecf6-fd52-4540-b4e7-56bf14e4971a",
+          "name": "7 — Live-Parity Bridge"
+        },
+        "priority": {
+          "value": 4,
+          "name": "Low"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-206/review-shadow-evidence-and-decide-whether-to-authorize-a-live",
+        "gitBranchName": "destingvls/mon-206-review-shadow-evidence-and-decide-whether-to-authorize-a",
+        "createdAt": "2026-08-06T03:05:31.465Z",
+        "updatedAt": "2026-08-06T03:05:32.406Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:05:31.504Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:05:31.465Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [],
+          "blockedBy": [
+            {
+              "id": "MON-205",
+              "title": "Implement non-controlling live shadow comparison for V2 intents and allocation"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-204",
+        "uuid": "7784bdfb-0e6a-4197-8894-53f075ae0a33",
+        "title": "Audit current live decision scheduling against the V2 intent/allocator contract",
+        "description": "## Decision\n\nDetermine the exact semantic gap between current asynchronous live strategy execution and timestamp-batched V2 allocation before any live adapter is built.\n\n## Scope\n\n* Trace live candle consumers, account snapshots, sizing, order paths, concurrent asset decisions, and failure/retry behavior.\n* Identify where scheduler arrival order can affect capital allocation.\n* Map live inputs/outputs onto `MarketSnapshot`, `TargetIntent`, and allocator contracts without changing runtime behavior.\n* Define shadow comparison fields, acceptable differences, safety interlocks, and canary prerequisites.\n* Search durable money-sensitive context and document unresolved capital decisions for Destin.\n\n## Acceptance\n\n* The audit names actual code paths and observed semantics rather than reconstructing intent.\n* Every mismatch is classified as correctness, deliberate live behavior, nondeterminism, or unresolved product decision.\n* Shadow mode cannot submit/cancel/alter orders or positions.\n* Acceptance and stop conditions for a shadow implementation are decision-complete.\n* No live runtime, account, strategy, order, or deployment mutation occurs.\n\n## Out of scope\n\nImplementation or capital authorization.",
+        "projectMilestone": {
+          "id": "96f9ecf6-fd52-4540-b4e7-56bf14e4971a",
+          "name": "7 — Live-Parity Bridge"
+        },
+        "priority": {
+          "value": 3,
+          "name": "Medium"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-204/audit-current-live-decision-scheduling-against-the-v2-intentallocator",
+        "gitBranchName": "destingvls/mon-204-audit-current-live-decision-scheduling-against-the-v2",
+        "createdAt": "2026-08-06T03:04:50.429Z",
+        "updatedAt": "2026-08-06T03:05:11.371Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:04:50.495Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:04:50.429Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-205",
+              "title": "Implement non-controlling live shadow comparison for V2 intents and allocation"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-190",
+              "title": "Expose durable V2 shared cross-margin runs through API and research tools"
+            },
+            {
+              "id": "MON-187",
+              "title": "Implement pure proportional target-intent allocator with optional priorities"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-205",
+        "uuid": "268e67dd-3d02-41e5-9afb-0d804d7c9e07",
+        "title": "Implement non-controlling live shadow comparison for V2 intents and allocation",
+        "description": "## Outcome\n\nObserve how the V2 contract would size simultaneous live decisions without giving it authority over orders or capital.\n\n## Scope\n\n* Build the minimum read-only adapter accepted by <issue id=\"7784bdfb-0e6a-4197-8894-53f075ae0a33\" href=\"https://linear.app/money-machine/issue/MON-204/audit-current-live-decision-scheduling-against-the-v2-intentallocator\">MON-204</issue>.\n* Derive shadow market snapshots/intents and allocator outputs from live-observed data.\n* Compare current live decisions/orders with shadow-approved targets.\n* Emit bounded structured parity diagnostics with strategy/asset/timestamp identity.\n* Add hard interlocks preventing the shadow path from reaching mutation services.\n* Define retention and privacy boundaries for diagnostics.\n\n## Acceptance\n\n* Tests prove the shadow adapter has no callable order/account/position mutation dependency.\n* Shadow failure cannot block or alter current live strategy behavior.\n* Differences in timing, account state, sizing, priority, and rejection reason are queryable.\n* Memory/log state is bounded.\n* Rollback is disabling one feature flag.\n* High-risk review and negative-path tests pass before any deployment request.\n\n## Out of scope\n\nOrder control, capital allocation, canary trading, or deployment without separate authorization.",
+        "projectMilestone": {
+          "id": "96f9ecf6-fd52-4540-b4e7-56bf14e4971a",
+          "name": "7 — Live-Parity Bridge"
+        },
+        "priority": {
+          "value": 3,
+          "name": "Medium"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-205/implement-non-controlling-live-shadow-comparison-for-v2-intents-and",
+        "gitBranchName": "destingvls/mon-205-implement-non-controlling-live-shadow-comparison-for-v2",
+        "createdAt": "2026-08-06T03:05:10.504Z",
+        "updatedAt": "2026-08-06T03:05:11.338Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:05:10.567Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:05:10.504Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-206",
+              "title": "Review shadow evidence and decide whether to authorize a live allocator canary"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-204",
+              "title": "Audit current live decision scheduling against the V2 intent/allocator contract"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-203",
+        "uuid": "2768e59f-0364-4daf-ba9a-c391fdd279d3",
+        "title": "Prove local/Modal parity, elapsed-time value, and cost on canonical workloads",
+        "description": "## Decision\n\nDecide whether Modal materially improves research throughput after accounting for startup, transfer, persistence, and spend.\n\n## Scope\n\n* Run identical local and Modal manifests for the canonical 96×50k workload.\n* Compare result hashes, metrics, traces, failures, and retained valuation series.\n* Measure cold/warm wall time, queue/startup time, transfer time, compute time, persistence time, and total cost.\n* Test parallel independent runs/variants and one multi-core shared-account run.\n* Exercise cancellation, retry, duplicate completion, and budget exhaustion.\n\n## Acceptance\n\n* Required local/remote outputs match exactly or within preregistered numeric tolerance.\n* Every timing and cost component is reported separately.\n* Remote execution shortens the selected research workload enough to justify continued use.\n* Spend/concurrency ceilings prevent runaway jobs.\n* Failure recovery does not duplicate or lose durable run state.\n* Return a proceed, narrow, or reject decision with exact job/run IDs.\n\n## Out of scope\n\nAssuming cloud is faster without measured end-to-end evidence.",
+        "projectMilestone": {
+          "id": "9f279518-98c4-4462-95ed-3c802bfba49b",
+          "name": "6 — Modal Remote Compute"
+        },
+        "priority": {
+          "value": 3,
+          "name": "Medium"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-203/prove-localmodal-parity-elapsed-time-value-and-cost-on-canonical",
+        "gitBranchName": "destingvls/mon-203-prove-localmodal-parity-elapsed-time-value-and-cost-on",
+        "createdAt": "2026-08-06T03:04:27.427Z",
+        "updatedAt": "2026-08-06T03:04:28.168Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:04:27.486Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:04:27.427Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [],
+          "blockedBy": [
+            {
+              "id": "MON-202",
+              "title": "Implement research-only Modal compute backend with bounded spend"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-202",
+        "uuid": "d123180b-52c9-417a-9a69-1c853ce56f68",
+        "title": "Implement research-only Modal compute backend with bounded spend",
+        "description": "## Outcome\n\nRun V2 workloads asynchronously away from the local machine while preserving application authority and reproducibility.\n\n## Scope\n\n* Package the locked Python environment and V2 kernel for Modal CPU workers.\n* Submit detached jobs through the `ComputeBackend` contract.\n* Request explicit CPU/memory resources and cap container concurrency.\n* Transfer content-addressed read-only candle blocks and immutable manifests.\n* Write one distinct result artifact per worker/job; avoid shared-file mutation.\n* Configure environment/workspace spend budget, timeouts, cancellation, retries, and logs.\n* Exclude live runtime modules and credentials from the worker image.\n\n## Acceptance\n\n* A canonical run can be submitted, disconnected, monitored, canceled, and durably ingested.\n* Shared-account assets remain in one multi-core worker.\n* Independent accounts/variants scale horizontally.\n* Budget and concurrency limits are tested.\n* Worker crash and expired/missing result paths are durable and retry-safe.\n* No secret or capital-sensitive service is present in worker inputs.\n\n## Out of scope\n\nGPU acceleration or provider-specific logic in the engine core.",
+        "projectMilestone": {
+          "id": "9f279518-98c4-4462-95ed-3c802bfba49b",
+          "name": "6 — Modal Remote Compute"
+        },
+        "priority": {
+          "value": 3,
+          "name": "Medium"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-202/implement-research-only-modal-compute-backend-with-bounded-spend",
+        "gitBranchName": "destingvls/mon-202-implement-research-only-modal-compute-backend-with-bounded",
+        "createdAt": "2026-08-06T03:04:08.586Z",
+        "updatedAt": "2026-08-06T03:04:09.697Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:04:08.639Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:04:08.586Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-203",
+              "title": "Prove local/Modal parity, elapsed-time value, and cost on canonical workloads"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-201",
+              "title": "Implement provider-neutral compute manifests and local backend boundary"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-201",
+        "uuid": "47e74a79-bea9-47c6-bdcc-98b03f1d7ad5",
+        "title": "Implement provider-neutral compute manifests and local backend boundary",
+        "description": "## Outcome\n\nSeparate run orchestration from execution so the accepted local kernel can move off the laptop without changing semantics.\n\n## Scope\n\n* Implement versioned immutable job manifests with engine/strategy/data/config hashes.\n* Implement matching typed job result/error envelopes.\n* Route V2 local execution through `ComputeBackend`.\n* Enforce that a shared-account run is one indivisible compute unit.\n* Define idempotent submission, cancellation, retry, progress, timeout, and result-ingest semantics.\n* Keep application identity/authorization/persistence authoritative.\n\n## Acceptance\n\n* Local V2 outputs are unchanged after routing through the backend interface.\n* Duplicate result ingest cannot duplicate runs or artifacts.\n* Manifest checksum/version failures fail closed.\n* Independent runs/variants are shardable; one shared account is not.\n* Compute workers require no live trading credentials.\n* Contract tests can host a fake remote backend.\n\n## Out of scope\n\nModal SDK/infrastructure.",
+        "projectMilestone": {
+          "id": "9f279518-98c4-4462-95ed-3c802bfba49b",
+          "name": "6 — Modal Remote Compute"
+        },
+        "priority": {
+          "value": 3,
+          "name": "Medium"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-201/implement-provider-neutral-compute-manifests-and-local-backend",
+        "gitBranchName": "destingvls/mon-201-implement-provider-neutral-compute-manifests-and-local",
+        "createdAt": "2026-08-06T03:03:47.997Z",
+        "updatedAt": "2026-08-06T03:03:48.726Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:03:48.034Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:03:47.997Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-202",
+              "title": "Implement research-only Modal compute backend with bounded spend"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-191",
+              "title": "Prove V2 parity and ≥10× local performance on the canonical fixture"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-200",
+        "uuid": "786a2236-6859-4660-ac6e-b4cfccdaf381",
+        "title": "Validate end-to-end lower-timeframe passive execution and cost sensitivity",
+        "description": "## Decision\n\nDetermine whether V2's passive execution model is correct and useful enough to revisit strategies blocked by fixed adverse slippage.\n\n## Scope\n\n* Add end-to-end fixtures covering higher-timeframe decisions and lower-timeframe fills.\n* Verify account, margin, maker fees, partial fills, cancellations, valuation series, and retained artifacts.\n* Run participation sensitivity around the 1% default.\n* Compare immediate market execution versus modeled passive execution on a frozen control; interpret execution effects without promoting a strategy.\n* Measure performance impact from finer event clocks.\n\n## Acceptance\n\n* Golden ledger reconciles orders, partial fills, fees, positions, cash, and equity.\n* Zero/low/high participation scenarios behave monotonically where expected.\n* No result claims queue realism or L2 fidelity.\n* Saved runs expose fill-model assumptions to API and agents.\n* Runtime/memory remains bounded and any performance regression is quantified.\n* Findings distinguish execution-model capability from strategy profitability.\n\n## Out of scope\n\nStrategy promotion or live limit-order changes.",
+        "projectMilestone": {
+          "id": "fca8ed59-7b70-4377-a263-8d21bd8f48a5",
+          "name": "5 — Resting Limit Orders"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-200/validate-end-to-end-lower-timeframe-passive-execution-and-cost",
+        "gitBranchName": "destingvls/mon-200-validate-end-to-end-lower-timeframe-passive-execution-and",
+        "createdAt": "2026-08-06T03:03:30.809Z",
+        "updatedAt": "2026-08-06T03:03:31.553Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:03:30.868Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:03:30.809Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [],
+          "blockedBy": [
+            {
+              "id": "MON-199",
+              "title": "Implement conservative trade-through limit fills with 1% aggressor-volume cap"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-199",
+        "uuid": "1c365c65-9173-4aa3-9443-8d3ef383b2cd",
+        "title": "Implement conservative trade-through limit fills with 1% aggressor-volume cap",
+        "description": "## Outcome\n\nModel useful candle-level passive fills while making no queue-position or depth claim.\n\n## Scope\n\n* Evaluate only orders active before the lower-timeframe bar.\n* Buy requires later bar low strictly below limit; sell requires high strictly above limit.\n* Fill at submitted limit price.\n* Default participation cap is 1% of opposite-aggressor base volume, configurable per run.\n* Resting buys consume taker-sell volume; resting sells consume taker-buy volume.\n* Share one bar cap across eligible simulator orders using deterministic price-time priority.\n* Apply configured maker fees and persist fill-model/version/provenance.\n\n## Acceptance\n\n* Touch without trade-through does not fill.\n* Same-bar placement never fills.\n* Partial fills and shared volume caps conserve available modeled volume.\n* Better price then earlier time wins allocation.\n* Cancel/replace and multiple-order cases are deterministic.\n* Participation sensitivity can be run without code changes.\n* Output is labeled candle-level conservative simulation, not L2 replay.\n\n## Out of scope\n\nSpread reconstruction, latency, market impact beyond participation, and exact queue position.",
+        "projectMilestone": {
+          "id": "fca8ed59-7b70-4377-a263-8d21bd8f48a5",
+          "name": "5 — Resting Limit Orders"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-199/implement-conservative-trade-through-limit-fills-with-1percent",
+        "gitBranchName": "destingvls/mon-199-implement-conservative-trade-through-limit-fills-with-1",
+        "createdAt": "2026-08-06T03:03:06.173Z",
+        "updatedAt": "2026-08-06T03:03:07.886Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:03:06.229Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:03:06.173Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-200",
+              "title": "Validate end-to-end lower-timeframe passive execution and cost sensitivity"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-198",
+              "title": "Implement deterministic pending-order lifecycle for resting limits"
+            },
+            {
+              "id": "MON-196",
+              "title": "Persist Binance taker-buy candle fields and expose exact candle volume delta"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-198",
+        "uuid": "9d7b8544-02af-412b-9ecc-6ec2409aa96e",
+        "title": "Implement deterministic pending-order lifecycle for resting limits",
+        "description": "## Outcome\n\nRepresent resting orders as durable state rather than immediate market fills.\n\n## Scope\n\n* Add place, activate, partial-fill, full-fill, cancel, replace, reject, and terminal-cancel states.\n* Support GTC and post-only resting semantics needed by the first fill model.\n* Make orders created/changed at T eligible only after T.\n* Keep order identity, strategy/asset attribution, remaining size, placement time, limit price, and fee class.\n* Define cancel/replace ordering relative to market-data and fill phases.\n\n## Acceptance\n\n* An order cannot consume the bar used to decide/place it.\n* Cancel-before-next-event prevents a fill.\n* Replace preserves explicit new priority/time semantics.\n* Duplicate commands are idempotent.\n* Terminal runs have no silently orphaned active orders.\n* Lifecycle events serialize through summary/full retention rules.\n\n## Out of scope\n\nExchange queue position, latency, or L2 ingestion.",
+        "projectMilestone": {
+          "id": "fca8ed59-7b70-4377-a263-8d21bd8f48a5",
+          "name": "5 — Resting Limit Orders"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-198/implement-deterministic-pending-order-lifecycle-for-resting-limits",
+        "gitBranchName": "destingvls/mon-198-implement-deterministic-pending-order-lifecycle-for-resting",
+        "createdAt": "2026-08-06T03:02:33.886Z",
+        "updatedAt": "2026-08-06T03:02:34.668Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:02:33.945Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:02:33.886Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-199",
+              "title": "Implement conservative trade-through limit fills with 1% aggressor-volume cap"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-197",
+              "title": "Prove 1h execution with completed daily 200-MA and lower-timeframe features"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-197",
+        "uuid": "eabecf02-11e5-44ef-9a5f-2d85c6a71864",
+        "title": "Prove 1h execution with completed daily 200-MA and lower-timeframe features",
+        "description": "## Decision\n\nProve the general MTF contract with auditable higher- and lower-timeframe vertical slices before migrating broader strategy logic.\n\n## Scope\n\n* Add a deterministic fixture strategy executing on 1h closes while reading a completed 200-day moving average.\n* Add a lower-timeframe feature fixture using Binance candle volume delta without allowing 5m closes to trigger 1h decisions.\n* Verify same-timestamp daily/1h/5m phase ordering.\n* Persist feature provenance and MTF manifests for inspection.\n* Compare native daily and explicitly derived daily results on a coherent dataset.\n\n## Acceptance\n\n* The 1h decision at T cannot see a daily bar closing after T.\n* A daily bar closing exactly at T is visible after the timestamp's stream-update phase.\n* 5m inputs update state but do not place strategy orders unless declared executable.\n* Warmup, insufficient history, gaps, and boundary dates have negative tests.\n* Native versus derived differences are reported, never silently merged.\n* Full-retention charts identify feature timeframe/provenance.\n\n## Out of scope\n\nChanging an existing revenue strategy's thesis based on fixture results.",
+        "projectMilestone": {
+          "id": "7ad86bef-e617-4ec1-af44-640e25a2bf1f",
+          "name": "4 — Multi-Timeframe Data"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-197/prove-1h-execution-with-completed-daily-200-ma-and-lower-timeframe",
+        "gitBranchName": "destingvls/mon-197-prove-1h-execution-with-completed-daily-200-ma-and-lower",
+        "createdAt": "2026-08-06T03:02:11.799Z",
+        "updatedAt": "2026-08-06T03:02:12.493Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:02:11.838Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:02:11.799Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-198",
+              "title": "Implement deterministic pending-order lifecycle for resting limits"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-189",
+              "title": "Build lean V2 feature/decision kernel and migrate emac_cross"
+            },
+            {
+              "id": "MON-186",
+              "title": "Implement deterministic synchronized multi-asset event scheduler"
+            },
+            {
+              "id": "MON-195",
+              "title": "Load causally aligned native and derived multi-timeframe streams"
+            },
+            {
+              "id": "MON-196",
+              "title": "Persist Binance taker-buy candle fields and expose exact candle volume delta"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-196",
+        "uuid": "c91c277b-9b8d-497f-9501-09d33450ff80",
+        "title": "Persist Binance taker-buy candle fields and expose exact candle volume delta",
+        "description": "## Outcome\n\nProvide aggressor-side candle volume without individual-trade storage or an OHLCV heuristic.\n\n## Scope\n\n* Extend Binance USD-M candle/cache schema with quote volume, taker-buy base volume, and taker-buy quote volume.\n* Parse REST/archive payloads without dropping the fields.\n* Include fields in typed V2 candle views while preserving V1 compatibility.\n* Define base and quote volume delta; base delta = taker buy base − (total base − taker buy base).\n* Extend conflict detection, checksums, merge/upsert, completeness, and provenance handling.\n\n## Acceptance\n\n* Official Binance fixture rows round-trip exactly.\n* Cached and freshly fetched rows produce identical delta.\n* Old rows missing new fields are distinguishable from genuine zero.\n* Conflicts in any new field fail closed.\n* Storage and loading overhead are measured.\n* No signed-trade or L2 claim is made.\n\n## Out of scope\n\nAggregate-trade ingestion.",
+        "projectMilestone": {
+          "id": "7ad86bef-e617-4ec1-af44-640e25a2bf1f",
+          "name": "4 — Multi-Timeframe Data"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-196/persist-binance-taker-buy-candle-fields-and-expose-exact-candle-volume",
+        "gitBranchName": "destingvls/mon-196-persist-binance-taker-buy-candle-fields-and-expose-exact",
+        "createdAt": "2026-08-06T03:01:42.960Z",
+        "updatedAt": "2026-08-06T03:01:43.945Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:01:43.005Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:01:42.960Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-199",
+              "title": "Implement conservative trade-through limit fills with 1% aggressor-volume cap"
+            },
+            {
+              "id": "MON-197",
+              "title": "Prove 1h execution with completed daily 200-MA and lower-timeframe features"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-191",
+              "title": "Prove V2 parity and ≥10× local performance on the canonical fixture"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-195",
+        "uuid": "8609f426-c29c-431e-8480-0d29f4460aee",
+        "title": "Load causally aligned native and derived multi-timeframe streams",
+        "description": "## Outcome\n\nLet a strategy consume higher and lower timeframe data while executing only on declared intervals.\n\n## Scope\n\n* Resolve required history independently per asset/stream/feature warmup.\n* Fetch each requested interval natively by default.\n* Support explicit higher-timeframe derivation from a base interval.\n* Validate gaps, boundaries, duplicate/conflicting candles, and provider provenance.\n* Expose only completed candles with close time ≤ the current event time.\n* Persist execution, data, derivation, and valuation interval manifests.\n\n## Acceptance\n\n* A 200-day input loads 200 completed daily bars regardless of the 1h execution range.\n* Native/derived source choice is reproducible and visible.\n* Daily/1h boundary fixtures have no partial-daily leakage.\n* Missing auxiliary history fails before strategy execution with stream-specific diagnostics.\n* Legacy single-interval requests translate explicitly to V2 semantics.\n\n## Out of scope\n\nNew strategy trading logic or limit fills.",
+        "projectMilestone": {
+          "id": "7ad86bef-e617-4ec1-af44-640e25a2bf1f",
+          "name": "4 — Multi-Timeframe Data"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-195/load-causally-aligned-native-and-derived-multi-timeframe-streams",
+        "gitBranchName": "destingvls/mon-195-load-causally-aligned-native-and-derived-multi-timeframe",
+        "createdAt": "2026-08-06T03:01:34.637Z",
+        "updatedAt": "2026-08-06T03:01:35.666Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:01:35.029Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:01:34.637Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-197",
+              "title": "Prove 1h execution with completed daily 200-MA and lower-timeframe features"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-191",
+              "title": "Prove V2 parity and ≥10× local performance on the canonical fixture"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-194",
+        "uuid": "41122b32-5e2a-4aa2-84f9-e43abe056a13",
+        "title": "Expose versioned post-hoc portfolio definitions and results to API and agents",
+        "description": "## Outcome\n\nLet Destin and research agents save, rerun, inspect, and compare separate-account portfolios.\n\n## Scope\n\n* Add create/update/read/list operations for versioned portfolio definitions.\n* Add asynchronous portfolio-evaluation status and saved-result reads.\n* Return alignment manifest, exact/what-if mode, constituent allocations, contribution metrics, correlations, and warnings.\n* Add typed agent/research operations and generated frontend types.\n* Keep UI work to a minimal inspectable result surface.\n\n## Acceptance\n\n* A portfolio definition remains reproducible when constituent runs are immutable.\n* Authorization applies to every referenced run/account.\n* Changing constituents or allocations creates a new version/result identity.\n* API and agent outputs expose all assumptions and rejected gaps.\n* Existing batch aggregate endpoints remain unchanged and clearly independent-account statistics.\n\n## Out of scope\n\nA full portfolio-builder React experience.",
+        "projectMilestone": {
+          "id": "fcf6b936-9ac0-46a5-ba15-93c1ada2b0ca",
+          "name": "3 — Post-hoc Portfolio Analytics"
+        },
+        "priority": {
+          "value": 3,
+          "name": "Medium"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-194/expose-versioned-post-hoc-portfolio-definitions-and-results-to-api-and",
+        "gitBranchName": "destingvls/mon-194-expose-versioned-post-hoc-portfolio-definitions-and-results",
+        "createdAt": "2026-08-06T03:00:57.188Z",
+        "updatedAt": "2026-08-06T03:00:58.467Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:00:57.233Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:00:57.188Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [],
+          "blockedBy": [
+            {
+              "id": "MON-193",
+              "title": "Compute exact and labeled what-if post-hoc portfolio metrics"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-193",
+        "uuid": "eb22dd30-83f2-4779-87b5-661c42c1476d",
+        "title": "Compute exact and labeled what-if post-hoc portfolio metrics",
+        "description": "## Outcome\n\nCombine separate-account saved runs into one synchronized portfolio curve rather than averaging independent metrics.\n\n## Scope\n\n* Define constituents by durable simulated-account reference and allocation.\n* Default to the common overlapping date window in UTC.\n* Default reporting clock to the coarsest constituent valuation interval.\n* Forward-fill only inside validated cadence; reject excessive internal gaps.\n* Exact mode uses tested capital.\n* What-if mode rescales dollar P&L to requested capital and records that fills/sizing were not rerun.\n* Recompute combined return, P&L, volatility, Sharpe/HAC Sharpe, CAGR, drawdown, fees, funding, turnover, gross/net exposure, correlations, and constituent contributions.\n\n## Acceptance\n\n* Mixed 15m/1h example aligns correctly over its common period.\n* Exact results equal the synchronized sum of constituent accounts.\n* What-if output is impossible to confuse with execution-exact output.\n* Missing/failed/liquidated constituents have explicit inclusion rules and diagnostics.\n* Metrics are calculated from the combined curve, never averaged from constituent ratios.\n\n## Out of scope\n\nCapital transfers, dynamic rebalancing, or shared-account cross-strategy execution.",
+        "projectMilestone": {
+          "id": "fcf6b936-9ac0-46a5-ba15-93c1ada2b0ca",
+          "name": "3 — Post-hoc Portfolio Analytics"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-193/compute-exact-and-labeled-what-if-post-hoc-portfolio-metrics",
+        "gitBranchName": "destingvls/mon-193-compute-exact-and-labeled-what-if-post-hoc-portfolio-metrics",
+        "createdAt": "2026-08-06T03:00:43.055Z",
+        "updatedAt": "2026-08-06T03:00:43.801Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:00:43.103Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:00:43.055Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-194",
+              "title": "Expose versioned post-hoc portfolio definitions and results to API and agents"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-192",
+              "title": "Emit compact account valuation series for summary V2 runs"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-192",
+        "uuid": "6b80239e-5d73-4822-b33f-1499a13d87c1",
+        "title": "Emit compact account valuation series for summary V2 runs",
+        "description": "## Outcome\n\nMake exact net portfolio metrics possible without requiring row-heavy full retention.\n\n## Scope\n\n* Sample account equity, cumulative realized P&L, cumulative fees/funding, gross notional, and net notional on the configured valuation interval.\n* Store timestamps and numeric arrays in the V2 compressed-series artifact with schema version and checksum.\n* Avoid per-point ORM/Pydantic object creation in the engine hot loop.\n* Add bounded range reads and manifest metadata.\n\n## Acceptance\n\n* Summary runs persist valuation series while omitting full orders/fills/signals.\n* Series values reproduce the run's account metrics.\n* Timestamp cadence, gaps, first/last point, schema version, and checksum are inspectable.\n* Corruption and interrupted writes fail closed.\n* Storage and write-time overhead are benchmarked and bounded.\n\n## Out of scope\n\nPortfolio alignment or combined metrics.",
+        "projectMilestone": {
+          "id": "fcf6b936-9ac0-46a5-ba15-93c1ada2b0ca",
+          "name": "3 — Post-hoc Portfolio Analytics"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-192/emit-compact-account-valuation-series-for-summary-v2-runs",
+        "gitBranchName": "destingvls/mon-192-emit-compact-account-valuation-series-for-summary-v2-runs",
+        "createdAt": "2026-08-06T03:00:24.538Z",
+        "updatedAt": "2026-08-06T03:00:26.122Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T03:00:24.592Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T03:00:24.538Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-193",
+              "title": "Compute exact and labeled what-if post-hoc portfolio metrics"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-190",
+              "title": "Expose durable V2 shared cross-margin runs through API and research tools"
+            },
+            {
+              "id": "MON-185",
+              "title": "Generalize V2 persistence around runs, accounts, strategies, assets, and compact series"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-191",
+        "uuid": "1caf2554-f26c-40fc-8b3e-d1ed8e7bbfa2",
+        "title": "Prove V2 parity and ≥10× local performance on the canonical fixture",
+        "description": "## Decision\n\nDecide whether the local V2 kernel is trustworthy and fast enough to become the foundation for MTF, limits, portfolios, and remote execution.\n\n## Scope\n\n* Run median-of-three warm-cache 96×50k trials against the frozen baseline.\n* Compare metrics, fills, transitions, errors, peak RSS, stage timing, and status latency.\n* Investigate any difference outside preregistered tolerances.\n* Profile remaining hotspots and apply only changes required to pass the gate.\n* Record the exact accepted engine/data/config hashes.\n\n## Acceptance\n\n* V2 engine-compute median is ≤10% of V1 on the canonical fixture.\n* Required metrics and execution traces match within preregistered tolerances.\n* No API status request exceeds the accepted responsiveness boundary during compute.\n* Peak memory is bounded and recorded.\n* Negative/failure fixtures remain deterministic.\n* A decision note says proceed, narrow, or reject with exact evidence and run IDs.\n\n## Out of scope\n\nCloud scaling or performance claims for strategies not migrated to V2.",
+        "projectMilestone": {
+          "id": "28037e4b-b288-4a7b-9f64-f99c6a253607",
+          "name": "2 — Fast Cross-Margin Core"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-191/prove-v2-parity-and-10-local-performance-on-the-canonical-fixture",
+        "gitBranchName": "destingvls/mon-191-prove-v2-parity-and-10×-local-performance-on-the-canonical",
+        "createdAt": "2026-08-06T02:59:38.624Z",
+        "updatedAt": "2026-08-06T02:59:39.297Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T02:59:38.676Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T02:59:38.624Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-201",
+              "title": "Implement provider-neutral compute manifests and local backend boundary"
+            },
+            {
+              "id": "MON-196",
+              "title": "Persist Binance taker-buy candle fields and expose exact candle volume delta"
+            },
+            {
+              "id": "MON-195",
+              "title": "Load causally aligned native and derived multi-timeframe streams"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-190",
+              "title": "Expose durable V2 shared cross-margin runs through API and research tools"
+            },
+            {
+              "id": "MON-183",
+              "title": "Freeze V1 golden behavior and canonical 96×50k benchmark"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-190",
+        "uuid": "553d8257-2416-44ab-a9bc-ad1f6b4cdcdc",
+        "title": "Expose durable V2 shared cross-margin runs through API and research tools",
+        "description": "## Outcome\n\nDeliver the first usable Engine V2 capability: one strategy trading many assets through one durable shared cross-margin account.\n\n## Scope\n\n* Add V2 submit, status, cancel, saved-run detail, account metrics, asset attribution, and artifact-read APIs.\n* Generate frontend client types but defer substantial React controls.\n* Add equivalent typed research-agent/MCP operations.\n* Persist immutable inputs, data checksums, venue profile, engine version, allocation diagnostics, account results, and errors.\n* Preserve queue responsiveness and retry-safe saves.\n\n## Acceptance\n\n* A multi-asset `emac_cross` run completes under one account and returns account-level metrics.\n* Independent V1 routes and saved runs remain unchanged.\n* Unauthorized reads and cross-user access fail.\n* Worker failure, cancellation, persistence failure, and partial data return durable typed states.\n* Status calls remain responsive during active compute.\n* Agent tools can discover and inspect the saved run without browser use.\n\n## Out of scope\n\nReact workflow polish, multi-timeframe features, limits, or remote compute.",
+        "projectMilestone": {
+          "id": "28037e4b-b288-4a7b-9f64-f99c6a253607",
+          "name": "2 — Fast Cross-Margin Core"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-190/expose-durable-v2-shared-cross-margin-runs-through-api-and-research",
+        "gitBranchName": "destingvls/mon-190-expose-durable-v2-shared-cross-margin-runs-through-api-and",
+        "createdAt": "2026-08-06T02:59:18.449Z",
+        "updatedAt": "2026-08-06T02:59:19.837Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T02:59:18.513Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T02:59:18.449Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-204",
+              "title": "Audit current live decision scheduling against the V2 intent/allocator contract"
+            },
+            {
+              "id": "MON-192",
+              "title": "Emit compact account valuation series for summary V2 runs"
+            },
+            {
+              "id": "MON-191",
+              "title": "Prove V2 parity and ≥10× local performance on the canonical fixture"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-185",
+              "title": "Generalize V2 persistence around runs, accounts, strategies, assets, and compact series"
+            },
+            {
+              "id": "MON-189",
+              "title": "Build lean V2 feature/decision kernel and migrate emac_cross"
+            },
+            {
+              "id": "MON-187",
+              "title": "Implement pure proportional target-intent allocator with optional priorities"
+            },
+            {
+              "id": "MON-188",
+              "title": "Implement versioned Hyperliquid cross-perpetual account and margin model"
+            },
+            {
+              "id": "MON-186",
+              "title": "Implement deterministic synchronized multi-asset event scheduler"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-188",
+        "uuid": "38db2c62-9a53-4f18-938f-7788ff78117c",
+        "title": "Implement versioned Hyperliquid cross-perpetual account and margin model",
+        "description": "## Outcome\n\nSimulate many perpetual positions sharing one USDC collateral pool with reproducible Hyperliquid-style margin triggers.\n\n## Scope\n\n* Persist and consume immutable venue-profile snapshots.\n* Model cash, realized/unrealized P&L, fees, optional scheduled funding, notional, initial margin, maintenance tiers/deductions, and margin utilization.\n* Check capacity on opens/adds and recompute account maintenance after every mark/fill/cashflow.\n* Trigger account-level terminal liquidation when equity falls below maintenance.\n* Record the selected mark source; label candle close as a proxy when Hyperliquid mark history is absent.\n* Produce account metrics plus per-asset attribution.\n\n## Acceptance\n\n* Tier boundaries and maintenance deductions match frozen official fixtures.\n* Simultaneous winning/losing positions share collateral correctly.\n* Fees and funding alter cash/equity once.\n* Liquidation is account-level, deterministic, and queryable.\n* Missing venue inputs fail closed or are explicitly recorded as omitted.\n* No isolated margin, spot collateral, borrowing, or live account access is introduced.\n\n## Out of scope\n\nHyperliquid portfolio margin, live reconciliation, and exact book/backstop liquidation sequencing.",
+        "projectMilestone": {
+          "id": "28037e4b-b288-4a7b-9f64-f99c6a253607",
+          "name": "2 — Fast Cross-Margin Core"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-188/implement-versioned-hyperliquid-cross-perpetual-account-and-margin",
+        "gitBranchName": "destingvls/mon-188-implement-versioned-hyperliquid-cross-perpetual-account-and",
+        "createdAt": "2026-08-06T02:58:54.525Z",
+        "updatedAt": "2026-08-06T02:58:55.231Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T02:58:54.600Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T02:58:54.525Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-190",
+              "title": "Expose durable V2 shared cross-margin runs through API and research tools"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-184",
+              "title": "Define Engine V2 market, intent, account, series, and compute contracts"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-187",
+        "uuid": "59ceeda5-43fb-43a4-bb78-517e133a46c3",
+        "title": "Implement pure proportional target-intent allocator with optional priorities",
+        "description": "## Outcome\n\nResolve simultaneous multi-asset target requests against shared account/risk capacity without arbitrary loop-order capital consumption.\n\n## Scope\n\n* Accept one frozen account snapshot and a complete timestamp batch of target intents.\n* Net intents by strategy/asset identity.\n* Apply per-asset caps, gross/net exposure limits, initial-margin capacity, rounding, and minimum-notional rules.\n* Scale equal-priority intents proportionally.\n* Honor explicit priorities deterministically.\n* Return approved, reduced, and rejected intents with reason codes.\n\n## Acceptance\n\n* Reordering input intents cannot change results.\n* Two equal $8k requests against $10k capacity resolve to equal $5k approvals.\n* Priority, ties, flips, reductions, close-only intents, and insufficient-margin cases are covered.\n* Pure-function tests require no database, network, or live service.\n* Allocation diagnostics are persisted-ready and strongly typed.\n\n## Out of scope\n\nLive order submission or strategy-specific ranking logic.",
+        "projectMilestone": {
+          "id": "28037e4b-b288-4a7b-9f64-f99c6a253607",
+          "name": "2 — Fast Cross-Margin Core"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-187/implement-pure-proportional-target-intent-allocator-with-optional",
+        "gitBranchName": "destingvls/mon-187-implement-pure-proportional-target-intent-allocator-with",
+        "createdAt": "2026-08-06T02:58:48.011Z",
+        "updatedAt": "2026-08-06T02:58:48.662Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T02:58:48.048Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T02:58:48.011Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-204",
+              "title": "Audit current live decision scheduling against the V2 intent/allocator contract"
+            },
+            {
+              "id": "MON-190",
+              "title": "Expose durable V2 shared cross-margin runs through API and research tools"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-184",
+              "title": "Define Engine V2 market, intent, account, series, and compute contracts"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-186",
+        "uuid": "3ff74ef2-04a2-42f3-82d7-a9a258fc5e63",
+        "title": "Implement deterministic synchronized multi-asset event scheduler",
+        "description": "## Outcome\n\nDrive many assets and intervals through one deterministic timeline without lookahead or asset-order bias.\n\n## Scope\n\n* Merge market events by timestamp and explicit phase.\n* Update every stream closing at T before decisions.\n* Mark all open positions before freezing the pre-decision account snapshot.\n* Trigger decisions only on declared execution intervals.\n* Keep fill clocks and valuation clocks independent from decision clocks.\n* Bound in-memory windows and state.\n\n## Acceptance\n\n* Asset-order permutations produce identical snapshots and outputs.\n* Only fully closed bars with close time ≤ T are visible.\n* Same-time higher/lower interval closes follow the contract.\n* Missing, duplicate, out-of-order, and conflicting bars fail with typed diagnostics.\n* One shared-account run remains indivisible across workers.\n* Scheduler fixtures cover single- and multi-asset compatibility.\n\n## Out of scope\n\nAccounting, allocation policy, or provider fetching.",
+        "projectMilestone": {
+          "id": "28037e4b-b288-4a7b-9f64-f99c6a253607",
+          "name": "2 — Fast Cross-Margin Core"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-186/implement-deterministic-synchronized-multi-asset-event-scheduler",
+        "gitBranchName": "destingvls/mon-186-implement-deterministic-synchronized-multi-asset-event",
+        "createdAt": "2026-08-06T02:58:41.588Z",
+        "updatedAt": "2026-08-06T02:58:42.244Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T02:58:41.635Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T02:58:41.588Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-197",
+              "title": "Prove 1h execution with completed daily 200-MA and lower-timeframe features"
+            },
+            {
+              "id": "MON-190",
+              "title": "Expose durable V2 shared cross-margin runs through API and research tools"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-184",
+              "title": "Define Engine V2 market, intent, account, series, and compute contracts"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    },
+    {
+      "issue": {
+        "id": "MON-185",
+        "uuid": "cb397931-e417-46c0-8e72-6567a95b7a23",
+        "title": "Generalize V2 persistence around runs, accounts, strategies, assets, and compact series",
+        "description": "## Outcome\n\nMake shared-account and post-hoc portfolio results durable without forcing them into V1's one-run-asset/one-account assumptions.\n\n## Scope\n\n* Define V2 persistence relationships: run → simulated accounts → strategies → assets/attribution.\n* Add engine version, account mode, data manifest, venue-profile snapshot, interval semantics, artifact state, and immutable input hashes.\n* Add compressed columnar valuation-series storage with checksums and bounded reads.\n* Provide a legacy read adapter; do not rewrite historical V1 rows.\n* Define retry-safe/idempotent save transitions and partial-failure behavior.\n\n## Acceptance\n\n* Migrations upgrade/downgrade cleanly on test data.\n* One cross-margin account can own many assets.\n* Independent V1 batch assets remain independently readable.\n* Corrupt/truncated series fail closed with a typed artifact error.\n* Summary retention can persist valuation series without full orders/fills/signals.\n* Authorization tests preserve current owner/shared-run rules.\n\n## Out of scope\n\nPortfolio metric computation or V2 engine execution.",
+        "projectMilestone": {
+          "id": "581b4e26-7745-41ce-a320-676341edbdd5",
+          "name": "1 — Contracts & Baseline"
+        },
+        "priority": {
+          "value": 2,
+          "name": "High"
+        },
+        "url": "https://linear.app/money-machine/issue/MON-185/generalize-v2-persistence-around-runs-accounts-strategies-assets-and",
+        "gitBranchName": "destingvls/mon-185-generalize-v2-persistence-around-runs-accounts-strategies",
+        "createdAt": "2026-08-06T02:57:51.612Z",
+        "updatedAt": "2026-08-06T02:57:52.289Z",
+        "archivedAt": null,
+        "completedAt": null,
+        "startedAt": "2026-08-06T02:57:51.649Z",
+        "canceledAt": null,
+        "dueDate": null,
+        "slaStartedAt": null,
+        "slaMediumRiskAt": null,
+        "slaHighRiskAt": null,
+        "slaBreachesAt": null,
+        "status": "Blocked",
+        "statusType": "started",
+        "labels": [],
+        "attachments": [],
+        "documents": [],
+        "stateHistory": [
+          {
+            "state": {
+              "id": "43429e8e-3fc2-4259-8ddb-9d2c04ffc009",
+              "name": "Blocked",
+              "type": "started"
+            },
+            "startedAt": "2026-08-06T02:57:51.612Z",
+            "endedAt": null
+          }
+        ],
+        "createdBy": "Destin Guarnieri",
+        "createdById": "9e095908-f036-473a-b9be-74c6b8c42415",
+        "project": "Backtest Engine V2",
+        "projectId": "e5a74ea9-ebcc-4a75-9965-77f8be06815e",
+        "team": "Money Machine",
+        "teamId": "33ccfd95-ad7e-46ad-8c51-5336c56e1e6f",
+        "relations": {
+          "blocks": [
+            {
+              "id": "MON-192",
+              "title": "Emit compact account valuation series for summary V2 runs"
+            },
+            {
+              "id": "MON-190",
+              "title": "Expose durable V2 shared cross-margin runs through API and research tools"
+            }
+          ],
+          "blockedBy": [
+            {
+              "id": "MON-184",
+              "title": "Define Engine V2 market, intent, account, series, and compute contracts"
+            }
+          ],
+          "relatedTo": [],
+          "duplicateOf": null
+        }
+      },
+      "comments": {
+        "comments": [],
+        "hasNextPage": false
+      }
+    }
+  ]
+}

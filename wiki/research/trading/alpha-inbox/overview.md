@@ -14,6 +14,24 @@ Purpose: capture potentially valuable trading ideas without interrupting funded 
 
 ## Inbox
 
+### AI-20261024-01 — Candle close location reversal
+
+- **Captured:** 2026-10-24
+- **Status:** inbox; untested
+- **Formula:** `ls_10/90(mult(div(minus(low,close),minus(high,low)),div(open,close)))`
+- **Reproduce:** score = `(low-close)/(high-low) * (open/close)`. At each timestamp, short scores strictly below the cross-sectional 10th percentile, long scores strictly above the 90th, otherwise flat (`-1/+1/0`). Original Python replaces infinities with NaN, aligns to a supplied timestamp index, then forward-fills scores before ranking.
+- **Observation:** tends to buy closes near the candle low and sell closes near the high; open/close scales the negative score. Rankings are across instruments, not historical percentiles.
+- **Pickup:** choose universe/timeframe and a nonempty index; review zero ranges and stale forward-filled scores. Use completed candles and causally available execution prices. Source: user-provided Python in chat.
+
+### AI-20261024-02 — Smoothed volatility adjusted return reversal
+
+- **Captured:** 2026-10-24
+- **Status:** inbox; untested interpretation
+- **Formula:** `ls_10/90(neg(mean_5(csrank(div(logret_5(),volatility_12())))))`
+- **Reproduce (assumed operators):** compute 5-bar log return divided by 12-bar volatility; rank across instruments each timestamp; take each instrument’s trailing 5-bar mean rank; negate; apply the same strict 10th/90th-percentile short/long rule as above.
+- **Observation:** assuming ascending ranks, buys persistently low-ranked volatility-adjusted losers and shorts high-ranked winners. Average ranks first, then negate; do not average raw ratios before ranking.
+- **Pickup:** confirm log-return and volatility definitions, rank direction/ties, rolling warmup/NaN rules, universe, timeframe, and causal execution timing. Windows count bars, not necessarily days. Source: user-provided expression; operator implementation not supplied.
+
 ### AI-YYYYMMDD-01 — Short descriptive name
 
 - **Captured:** YYYY-MM-DD

@@ -1,12 +1,18 @@
 # Research Home
 
-Status: confirmed
+Status: in progress
 
 Browser view: [Open Research Home](research_index.html). Markdown is the source; regenerate with `python3 scripts/build_research_board.py`.
 
 ## Current focus
 
-**Nothing selected yet.**
+**Candle inventory execution prototype — selected 2026-10-31.**
+
+Destin requested a strategy-independent Python notebook: add long inventory on negative candles under a positive signal, mirror for shorts, and distribute on aligned candles only when position return exceeds EPS. He explicitly selected immediate flattening on an opposite signal, including losses, then following the new direction.
+
+Local artifact: `mm_v04/notebooks/candle_inventory_execution.ipynb`. All 12 code cells execute with hand-calculated checks; the saved chart was visually inspected. Full notebook HTML preview was blocked by the browser file-URL policy. Constructed candles only; no historical evidence or Research MCP run IDs.
+
+Prototype defaults, not settled product policy: fixed-unit capped additions, full distribution, net return on entry notional after fees/slippage, neutral-signal hold, and idealized same-close fills. Next: work through sizing, distribution fraction, profit-candle eligibility, and realistic execution timing with Destin. No live/backtest-runtime integration.
 
 Destin approved a fresh start on 2026-10-06. No past research program, experiment, review request, or ticket carries forward as an active commitment.
 

@@ -98,7 +98,7 @@ Paths below are relative to `mm_v04`; use existing neighboring conventions and k
 | `frontend/src/components/PositionLab/PositionLabHistoryPanel.tsx` | Ledger fields and selection-to-seek. |
 | `frontend/src/components/PositionLab/PositionLabChart.tsx` | Selected replay snapshot and status overlays; preserve existing axes/layout. |
 | `frontend/src/components/PositionLab/positionLabLifecycle.ts`, `positionLabCurve.ts`, `positionLabSide.ts` | Reuse current arithmetic/mirroring; change only for demonstrated integration needs. |
-| `frontend/tests/position-lab.spec.ts` plus focused replay/accounting/policy specs | Regression and new behavioral tests; update `frontend/playwright.unit.config.ts` matching only if necessary. |
+| `frontend/tests/position-lab.spec.ts` plus focused replay/accounting/policy specs | Regression and new behavioral tests; run `cd frontend && npm test` (Vitest). |
 
 Proposed pure interfaces: `applyLabEvent(state, event, context) -> transition`, `replayLabRun(run, cursor, policy) -> replayResult`, `accountLabFill(account, fill) -> account`, and `parseLabRun(json) -> validatedRun | validationError`. Exact names can follow local conventions without changing the contract. Reuse Recharts and current UI controls; no new runtime dependency is planned.
 
@@ -163,3 +163,7 @@ Destin reviewed stages 1–3 and confirmed they function as described, then appr
 UI verification: at 1148px viewport, columns measure 549px each and the chart, both editors, playback and history charts fit the first screen. At 390px, panels stack without horizontal page overflow. Setup, result tabs, Run/Export dialog and ledger controls were checked in the running browser. Temporary viewport override reset. Existing 51 regression tests pass; scoped lint/build verification accompanies the change. No new behavior tests added for presentation-only changes.
 
 Navigation update: setup inputs are under **Setup**; import/export/reset under **Run**; detailed results under **History / Compare / Fills**. Curve inputs now sit beside their own fill/status summaries. Existing export-download limitation and all simulation policy boundaries still apply.
+
+## Test tooling update — 2026-11-03
+
+Destin approved uninstalling Playwright from the main `mm_v04` checkout and user caches while retaining tests. Ten non-browser spec files now use Vitest 5.1.0 via `cd frontend && npm test`; all 82 tests pass with assertions preserved. Four browser suites plus authentication setup/helpers are retained under `frontend/tests/browser-archive/`, excluded from execution and TypeScript checks. Playwright package/configuration/Docker/CI integration was removed and CI now runs the browser-free tests. Historical Playwright commands above describe earlier verification only. Production TypeScript and the new config lint pass; the wider test-inclusive typecheck still reports existing Position Lab `.at()`/ES2020 and fixture optional-field errors. No live runtime or backend changes were made by this cleanup.

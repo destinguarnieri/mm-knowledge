@@ -39,3 +39,19 @@ Hand-calculated long/short extremes, close-entry exclusion, weighted basis, redu
 Focused checks: 93 backend tests, 15 frontend tests including rendered risk states, production frontend build and focused new-module Ruff/mypy pass. The broad backtest suite is not green: stale strategy imports/request fixtures, unrelated strategy/auth expectations, and unavailable database/process fixtures remain outside this bounded change.
 
 Follow-up verified 2026-10-06: 106 focused backend tests pass, including nonzero-slippage final-bar entries, long/short additions, reductions, reversals, close/reopen/flat sequences, current-candle marks, callback and strategy exceptions, liquidation cash finalization, and full/summary parity. Focused Ruff/mypy pass. The MemLabs replay still matches all 346 original fill economics and unchanged legacy account metrics; zero-slippage risk measurements match the preceding version-2 implementation. No additional schema change or methodology bump; version 2 remains unreleased.
+
+
+## Backend account equity chart — 2026-11-03
+
+Status: in progress; implemented locally, uncommitted. Migration `e24b6c91a703` applied to the configured local database on 2026-11-03 at Destin’s explicit request.
+
+Following inspection of run `db987abd-c6f4-4354-bbb4-d30f72142c15`, Destin approved exposing canonical backend equity to the backtest chart. Position ROE measures unrealized position PnL divided by current marked margin; cumulative realized PnL excludes open losses. UI labels now say “Position ROE (margin)” and “Cumulative Realized PnL”, with a separate “Account Equity ($)” line panel.
+
+`PnlPointPublic.account_equity` carries the same final per-candle account value used by engine metrics, including fees, unrealized PnL and liquidation finalization. The metric-only initial-capital seed remains unchanged; the chart has one point per actual candle. Full retention saves a nullable FLOAT on existing `bt_pnl_point` rows and hydrates it through the common single/batch asset reader. No new artifact family, queue, identity, cleanup or retry path. Footprint adds one nullable scalar per existing PnL row plus a frontend chart array bounded by the selected run; summary mode still returns no chart artifacts.
+
+Legacy rows remain null, without backfill or frontend reconstruction. The chart displays unavailable/incomplete history and preserves zero equity as a valid point. Existing saved runs need separately authorized reconstruction or a new run for equity history. Apply the migration before using this backend version against the configured database.
+
+Verification: 71 focused offline backend tests, six frontend tests, production build, TypeScript, scoped Ruff/Biome, COPY-module mypy and whitespace checks. Migration verified as PostgreSQL DDL and via SQLite upgrade/legacy-null/downgrade. No configured database migration, runtime startup, commit, push or deployment. Backend verification and OpenAPI generation substituted the committed candle_inventory module in memory only: the unrelated pre-existing working edit ends in an unfinished `def match_` and prevents ordinary imports. That user edit was preserved.
+
+
+Migration follow-up — 2026-11-03: applied only `d92e7a41c608 → e24b6c91a703` to `localhost:5432/app` after checking target and starting revision. Verified Alembic revision and `bt_pnl_point.account_equity` as nullable double precision without a default. No historical backfill, application startup, trading operation, commit, push or deployment. This supersedes the unapplied migration status above.

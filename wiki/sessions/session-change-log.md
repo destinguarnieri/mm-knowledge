@@ -1287,3 +1287,23 @@ After the merge, prestart failed before migrations: position.py imported Self fr
 ### Terminal execution commit and metadata discovery — 2026-11-11
 
 2026-11-11 checkpoint: Terminal execution/sizing committed in mm_v04 feat/terminal as `19e78138`. Limit/market/stops/scale arrays, Cancel/Close and USD sizing wired; percentage/MAX deleted. OM and old scale helper unchanged. Order-metadata discovery remains unresolved: IF an exchange fetch is necessary, not WHEN. No separate frontend order registry, retained placement requests, or unfamiliar-ID tracking. No metadata implementation approved. See [[projects/trading-terminal-ui#Execution checkpoint and order metadata discovery — 2026-11-11]].
+
+
+### V1 sizing baseline pinned; V2 discussion — 2026-11-12
+
+Destin confirmed V1 uses one snapshotted maximum in units for both signal mapping and position capping: selected capital × allocation fraction × configured leverage / boundary price. Strategy controls refresh timing/source and target transition; volatility adjustment stays dynamic. A continuously recalculated equity/price cap is not part of this V1 snapshot model. Generic leveraged-capital semantics in V2 are rejected; volatility-target budget and signal-reference meaning are next. Concept recorded in [sizing.md](../../raw/research/concepts/sizing.md#v1-one-snapshotted-maximum-quantity--pinned-2026-11-12). No code changes, runs, runtime operations or commits; application work remains read-only.
+
+
+### V2 sizing semantics clarified — 2026-11-12
+
+Updated [sizing.md](../../raw/research/concepts/sizing.md#v2-volatility-targeting--clarified-2026-11-12): V1 max_position_percent is not automatically a V2 constraint. A clipped forecast implies the bound: B at signal 10 gives 2B at signal 20; M=2B with division by 20 is equivalent when the full-signal risk target is doubled. One retained quantity suffices. Destin leans full-signal terminology but has not selected it. Risk-target capital basis and amplification/final capping after volatility adjustment remain unresolved. Supersedes the assistant's proposed hybrid capacity cap; no code changes, runs or commits.
+
+
+### V1/V2 sizing calculation cleanup — 2026-11-12
+
+Implemented the authorized single-helper change across Example/Kitchen Sink/MACD/Combo, building on Destin's working edit. V1 reference equals its allocation maximum; V2 no longer multiplies capital by leverage or inherits V1 max_position_percent. V2 retains reference mapping and derives post-adjustment bounds from signal clipping/mapping; unclipped continuous V2 has no finite sizing cap. Removed SIZING_BASE with explicit saved-config rejection/UI guidance. No snapshot scheduler or broker changes. 638 offline backend + 11 frontend tests, scoped type/lint and whitespace checks pass; 16 unrelated feature-output failures reproduce on committed HEAD. No runtime operations or commits. See [sizing.md](../../raw/research/concepts/sizing.md#v1v2-calculation-separation--2026-11-12).
+
+
+### Sizing cleanup committed — 2026-11-12
+
+At Destin's request, committed the verified V1/V2 sizing cleanup in mm_v04 as `810e7dbc` (Separate allocation and volatility reference sizing). Snapshot scheduling is next; interval alignment is being clarified. No push or runtime operations.

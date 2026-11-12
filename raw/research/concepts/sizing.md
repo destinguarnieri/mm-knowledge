@@ -1,9 +1,9 @@
 # Sizing, capital feedback, and explicit position management
 
 Status: in progress
-Updated: 2026-11-07
+Updated: 2026-11-12
 
-Working synthesis of Destin’s positioning discussion. This records observations and a framework for further design, not a settled replacement policy or authorization to change the trading runtime. Kept at the explicitly requested concept-note path.
+Working synthesis of Destin’s positioning discussion. This records observations and a framework for further design, with a V1 baseline pinned on 2026-11-12 and V2 still under discussion. It is not authorization to change the trading runtime. Kept at the explicitly requested concept-note path.
 
 ## 1. Observation: an unchanged forecast can still generate orders
 
@@ -131,6 +131,8 @@ This permits compounding at allocation reviews without requiring compounding-dri
 
 ### Candidate: snapshot the sizing base in units at the compounding boundary
 
+Historical proposal from 2026-11-07. The V1 decision below supersedes the assumption that a separate normal base and maximum are always required. V2 also need not have two independent quantities: its forecast clip can imply a maximum from the reference quantity, as clarified below.
+
 On 2026-11-07, Destin proposed a simple way to stabilize the mandate: calculate a sizing snapshot **in asset units** when the compounding period starts, then retain that base quantity throughout the period. Destin identified stabilizing units as the likely missing piece. This is a design candidate to develop, not an implemented or fully specified policy.
 
 For direct continuous signal mapping:
@@ -160,7 +162,92 @@ This is a concrete expression of the desk example: establish the normal trade sc
 - At the next boundary, inspect how capital, price, and any volatility inputs jointly change the new base. Positive returns do not automatically imply more units, nor negative returns fewer units.
 - Decide whether a changed base immediately rebalances existing holdings or applies only to subsequent position-management decisions. A periodic snapshot can concentrate an adjustment at rollover rather than eliminate it.
 
-Still open: period duration and alignment; initial snapshot timing; which inputs and limits are frozen versus dynamic; exceptional refresh conditions; and restart/replay handling that preserves the intended period snapshot. No cadence, gain/loss response, or rollover trading rule has been selected. The next design discussion should start from this unit-snapshot candidate while keeping those questions explicit.
+Still open: period duration and alignment; initial snapshot timing; which inputs and limits are frozen versus dynamic; exceptional refresh conditions; and restart/replay handling that preserves the intended period snapshot. No cadence, gain/loss response, or rollover trading rule has been selected. These were the open questions on 2026-11-07; use the 2026-11-12 decision below for the current V1 direction.
+
+
+### V1: one snapshotted maximum quantity — pinned 2026-11-12
+
+Status: confirmed as the conceptual baseline. The V1 calculation is implemented in the 2026-11-12 patch below; retaining its maximum as a period snapshot is still pending. Destin first pinned this baseline, then authorized the scoped calculation cleanup after discussing V2.
+
+V1 has no separate normal/base position size. Each instrument has a leverage setting and maximum position percentage. At a strategy-defined sizing/compounding boundary:
+
+```text
+allocated_margin_budget = selected_capital × max_position_percent / 100
+maximum_notional = allocated_margin_budget × configured_leverage
+snapshot_maximum_units = maximum_notional / boundary_price
+```
+
+For $10,000 capital, BTC at 40×/50%, ETH at 25×/30%, and SOL at 20×/20% yield assigned margin budgets of $5,000/$3,000/$2,000 and maximum notionals of $200,000/$75,000/$40,000. Multiplying the assigned margin budget by leverage converts it to notional capacity; it does not multiply account capital. This is an allocation policy, not a complete available-margin or maintenance-margin model.
+
+Within the period:
+
+```text
+signal_to_position(signal, snapshot_maximum_units)
+    → dynamic volatility adjustment
+    → strategy rebalance/transition policy
+    → clamp to ±snapshot_maximum_units
+    → executable order delta against actual inventory
+```
+
+The SAME retained maximum quantity is both the signal-sizing reference and the enforced position ceiling. Checks continue on every decision; the threshold is fixed until refresh. Do not reintroduce a moving account-value/price cap under the label of live enforcement. Price/account-value changes alone do not move either reference. Exchange margin requirements and any separately explicit risk rules remain independently applicable.
+
+Strategy configuration selects refresh timing and the existing capital source; no universal two-week default was chosen. Strategy owns movement toward its target. Dynamic volatility adjustment remains allowed. At rollover, enforcing a lower maximum can require a reduction; the current Example over-limit branch bypasses its deadband/buffer, so its interaction with strategy transition speed needs explicit treatment in implementation. Initialization, alignment, exceptional refresh and replay details are not yet specified.
+
+Signal mapping and final capping must have explicit semantics when forecasts can exceed their reference scale. V1 does not require a separate Carver-style normal quantity. Static margin allocations are a starting policy, not a claim of optimal portfolio risk allocation: leverage, volatility and correlation produce unequal risk; full utilization leaves no initial-margin reserve for costs/other commitments. Snapshotting stabilizes units but permits marked exposure and risk to drift.
+
+### V2: volatility targeting — clarified 2026-11-12
+
+Status: in progress. V1 remains pinned separately. Destin leaned toward full-signal terminology during design, then explicitly selected keeping the existing reference convention for this patch to reduce simultaneous changes. Full-signal terminology remains a possible future option; it is not implemented.
+
+**Do not import V1's `max_position_percent` maximum into V2 by default.** The earlier proposal to combine a volatility-sized reference with a separate allocation/margin-derived “capacity cap” mixed the two models. “Capacity cap” was an assistant label for V1's existing maximum, not a requested new setting. That hybrid is not the agreed V2 design.
+
+#### Reference-signal and full-signal formulations
+
+In the reference-signal construction under discussion, scale forecasts toward average absolute magnitude 10 and clip at ±20. Let B be the snapshotted volatility-sized quantity at reference signal 10:
+
+```text
+f = signal clipped to [-20, 20]
+target_units = (f / 10) × B
+implied position range = [-2B, +2B]
+```
+
+The signal clip supplies the implied maximum. There is no independently selected position maximum in this construction. This describes the forecast-sizing map, not a claim that a complete trading system has no other controls. Carver describes the average-absolute-10 / clip-at-20 convention in [Do non binary forecasts work?](https://qoppac.blogspot.com/2020/07/do-non-binary-forecasts-work.html).
+
+The equivalent full-signal formulation is:
+
+```text
+M = 2 × B
+target_units = (f / 20) × M
+implied position range = [-M, +M]
+```
+
+For B = 25 units and M = 50 units, signals 5, 10 and 20 produce 12.5, 25 and 50 units in BOTH formulations. With the same capital, price and volatility inputs, a 20% risk target at reference signal 10 corresponds to a 40% risk target at full signal 20. The equivalence requires matching snapshot timing, adjustments and constraint placement. A 20% target at full signal is not equivalent to 20% at reference signal: it produces half the units in this example.
+
+The 10 and 20 are illustrative configured signal scales, not hardcoded requirements. Generally, M = B × (signal_clip / reference_signal). One snapshot quantity is sufficient because the other is derived; V2 does not inherently need two independent sizing quantities or a moving account-value cap.
+
+#### Volatility-sizing semantics
+
+For one linear instrument, the underlying calculation is:
+
+```text
+annual_dollar_volatility_target = capital_basis × annual_volatility_target
+volatility_sized_units = annual_dollar_volatility_target /
+                         (estimated_annual_instrument_volatility × snapshot_price)
+```
+
+This yields B or M depending on whether the configured volatility target applies at reference or full signal. The capital basis and any portfolio allocation weights must be explicitly defined; do not silently reuse V1's margin-allocation percentage for that purpose. The dollar volatility target expresses estimated PnL standard deviation, not maximum loss or margin deposited.
+
+Exchange leverage does not multiply capital in this risk-sizing formula. Exchange margin requirements remain independently applicable; they do not imply importing V1's maximum into the forecast map. The 2026-11-12 patch removes the leveraged-risk-capital branch and inherited V1 allocation cap from calculate_sizing; see implementation scope below.
+
+Average absolute forecast 10 calibrates forecast magnitude, not exact realized strategy volatility. Signal variation, squared exposures, estimation errors, constraints and portfolio correlations affect realized risk. A full-signal risk target will generally exceed the typical signal-scaled risk level when signals spend most of their time below maximum; changing the configured target can account for the reference/full-signal scale difference, without guaranteeing a particular realized volatility.
+
+#### Snapshot and post-mapping adjustment
+
+Snapshot the chosen unit reference at strategy-defined refresh boundaries using the selected capital source and boundary sizing inputs. Hold that unit reference within the period. Dynamic volatility adjustment remains a distinct downstream policy; snapshot-based targeting establishes risk at the boundary and does not continuously maintain it.
+
+The ±2B / ±M bound above applies BEFORE subsequent volatility adjustment. If that adjustment can amplify positions, the final target may exceed the signal-implied range. The current patch enforces the mapping-derived bound after adjustment, as in the proposed max_size return and existing callers. Amplification can use remaining headroom but cannot exceed that bound when one exists. This is a separate choice from adding V1's allocation cap. Avoid accidentally applying the same volatility-targeting rule twice.
+
+The current patch retains portfolio sizing capital × instrument_weight × instrument_diversification_multiplier as the risk-capital basis, with no leverage multiplier. Further allocation/terminology changes are separate work. Next implementation scope: snapshot initialization, refresh alignment, rollover enforcement and replay. Broker-margin redesign is not included.
 
 ## 5. Broader concepts that inform the discussion
 
@@ -185,11 +272,26 @@ No full market-making model, stochastic-control solution, or rejection of target
 - Which risk events block additions, and which require reductions?
 - How should decisions record their causes so forecast, allocation, rebalancing, and risk effects are distinguishable?
 
-The working direction is to define these policies before choosing implementation machinery. “Constant signal means hold” is not yet a selected rule. Neither Carver-style continuous sizing nor its alternatives should be adopted solely by convention.
+V1 now has the pinned unit reference and ceiling described above. It does not promise zero orders from an unchanged signal: volatility adjustments, unfinished transitions and explicit risk actions can still trade. Remaining broad questions apply to V2 and implementation details; do not reopen the settled V1 distinction by assuming a separate normal base is mandatory.
 
 ## 7. Implementation and verification context
 
-The backtest compounding-source setting is implemented and verified. It does not implement the mandate framework described above. Existing strategy sizing and allocation caps follow the selected capital source; broker margin/liquidation checks remain based on marked equity.
+
+### V1/V2 calculation separation — 2026-11-12
+
+Implemented after Destin approved the single-helper approach, building on his existing edit to `positions_v2.py`. Committed at his request as `810e7dbc` (Separate allocation and volatility reference sizing). No runtime starts, live operations or Research MCP runs.
+
+- `calculate_sizing` remains one function. V1 converts its allocation maximum notional into units and returns that quantity in both `base_size` and `max_size`; the shared base field is the signal-mapping input, not an independent V1 budget. V2 calls `normal_risk_quantity` with selected capital unchanged, and derives its final limit from the signal mapping. V2 callers do not compute or pass V1 maximum notional.
+- Removed `sizing_base`/`leverage` arguments and `SIZING_BASE` configuration from Example, Kitchen Sink, MACD and Combo. Leverage remains upstream in V1's maximum-notional calculation. V1 therefore uses the full allocation maximum, unlike the previous unlevered base. Existing saved configurations containing `SIZING_BASE` are rejected and must be explicitly reviewed/updated; the UI explains this for all four callers. No silent config migration.
+- V2 retains reference-signal semantics. With direct absolute mapping, the actual configured clip/reference ratio determines the limit (10/20 implies 2×). Non-absolute clipping uses the shared signal clip definition. Continuous inverse mapping uses the bound of its existing sign(f) × (1 − abs(f/scale)) map, preserving its sign-reversal behavior. Kitchen Sink full/banded paths use a 1× reference bound.
+- With clipping disabled, continuous V2 has no configured finite sizing cap (`max_size=None`); cap/over-limit helpers explicitly support that absence. This does not implement exchange admission checks or change broker liquidation. Full/banded V2 remain bounded by their mapping. The normal post-adjustment cap and over-limit buffer bypass are retained wherever a limit exists.
+- `get_sizing_capital`, forecast normalization/divisor, volatility adjustment and rebalance algorithms are unchanged. `calculate_position_sizing` and multi-speed EWMAC retain their legacy sizing policy. Runtime registry schemas expose the removed field automatically; no API DTO generation or database migration is needed.
+- No unit snapshot or refresh scheduler is implemented yet. Sizing is still recalculated on each decision; this patch separates the formulas before stabilizing their outputs. No new retained state or memory-footprint growth.
+
+Verification: 638 backend checks passed, including cross-caller V2 sizing, long/short post-adjustment capping, over-limit buffer bypass, absent clipping, V1 leverage dependence, V2 independence from V1 allocation/leverage, and schema rejection. Sixteen unrelated Combo/MACD feature-output failures reproduced on an isolated committed-HEAD baseline and were deselected in the final passing suite. Eleven frontend config tests, frontend TypeScript, scoped backend mypy/Ruff and frontend lint passed. Comparison JSON fixtures were refreshed for removal of `SIZING_BASE` and the existing default compounding source. Whitespace checks passed. Tests are offline; no saved-run performance comparison was performed.
+
+
+The backtest compounding-source setting is implemented and verified. It does not implement the mandate framework described above. The earlier verified runs below used the prior mixed sizing/cap policy. The 2026-11-12 formula changes above supersede that policy for the four migrated strategies; the capital-source getter and broker accounting are unchanged.
 
 Paired Example BTC daily runs, differing only in compounding source:
 

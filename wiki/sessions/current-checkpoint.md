@@ -379,3 +379,8 @@ Destin approved continuing after API/client chunk 2. Real /terminal now selects 
 ### Periodic unit sizing snapshot candidate — 2026-11-07
 
 Destin proposed snapshotting the sizing base in asset units at each compounding-period start, retaining that base within the period. Added the candidate and positive/negative return scenarios to [sizing.md](../../raw/research/concepts/sizing.md#candidate-snapshot-the-sizing-base-in-units-at-the-compounding-boundary). Freezing dollars alone does not stabilize quantity. Period cadence, rollover trades, dynamic risk/volatility layers, and exceptional refresh remain open; no implementation change.
+
+
+### V1/V2 sizing calculation cleanup — 2026-11-12
+
+Destin authorized the single-helper cleanup while retaining V2 reference-signal mapping. Implemented locally in Example, Kitchen Sink, MACD and Combo: V1 maps/caps at its allocation maximum; V2 uses unmultiplied capital and a signal-derived cap, with no V1 allocation limit. Removed SIZING_BASE; old saved configs require review/removal. Unclipped continuous V2 explicitly has no finite sizing cap. Post-volatility-adjustment limits remain enforced where configured. No snapshot scheduler yet; next is stable unit references and refresh semantics. 638 offline backend + 11 frontend tests pass, scoped types/lint pass; 16 unrelated Combo/MACD feature failures reproduced on committed HEAD. Committed at Destin's request as `810e7dbc`; no runtime operations or runs. Snapshot scheduling is the next requested work, with interval alignment being clarified. Details in [sizing.md](../../raw/research/concepts/sizing.md#v1v2-calculation-separation--2026-11-12).

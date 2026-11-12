@@ -1,7 +1,7 @@
 # Sizing, capital feedback, and explicit position management
 
 Status: in progress
-Updated: 2026-11-06
+Updated: 2026-11-07
 
 Working synthesis of Destin’s positioning discussion. This records observations and a framework for further design, not a settled replacement policy or authorization to change the trading runtime. Kept at the explicitly requested concept-note path.
 
@@ -128,6 +128,39 @@ A separate question remains: when should that figure revise an asset’s allocat
 Potential review events include a session boundary, a scheduled allocation review, a new investment decision, or an exceptional risk event. None is selected yet. Updating a mandate also need not immediately require trading existing inventory to its new capacity.
 
 This permits compounding at allocation reviews without requiring compounding-driven orders every candle. It also permits continuous compounding where a strategy deliberately chooses it.
+
+### Candidate: snapshot the sizing base in units at the compounding boundary
+
+On 2026-11-07, Destin proposed a simple way to stabilize the mandate: calculate a sizing snapshot **in asset units** when the compounding period starts, then retain that base quantity throughout the period. Destin identified stabilizing units as the likely missing piece. This is a design candidate to develop, not an implemented or fully specified policy.
+
+For direct continuous signal mapping:
+
+```text
+At period start:
+    base_units = sizing calculation using the selected capital source,
+                 reference price, and applicable sizing inputs at that boundary
+
+Within the period:
+    proposed_target_units = (signal / signal_scale) × base_units
+```
+
+The snapshot is the normal sizing base, not the actual held position or the maximum permitted exposure. For example, a base of 100 units and signal scale 10 maps signals 5, 10, and 15 to proposed targets of 50, 100, and 150 units before separate adjustments and limits.
+
+**Freezing units is different from freezing capital.** A fixed dollar budget divided by each new price still changes the target quantity. Retaining the already-converted base quantity removes that price denominator, as well as changing account value, from the within-period base calculation. If volatility targeting contributes to the base, its boundary-time effect would be captured in the snapshot; any subsequent volatility adjustment must be treated as a separate policy.
+
+With an unchanged signal and no other active adjustment, the proposed unit target stays constant through both gains and losses. Dollar exposure, P&L, leverage, and portfolio weight can still move. Marked risk must continue to be measured, and independent constraints may still block additions or require reductions. The snapshot therefore does not promise that every unchanged signal produces zero orders.
+
+This is a concrete expression of the desk example: establish the normal trade scale for a period, manage inventory using that scale, and revise it deliberately. It does not require resolving every broader architecture question first.
+
+#### Positive and negative return scenarios still to work through
+
+- Test rising and falling prices for both long and short holdings, including below-1× and above-1× exposure, under unchanged and changing forecasts.
+- Compare account-equity and booked-P&L snapshots after open gains/losses, partial closes, and fees. Booked profits during the period would not change the retained base unless an explicit refresh rule permits it.
+- Follow marked exposure and remaining risk capacity during the period, especially when losses reduce equity while units remain fixed.
+- At the next boundary, inspect how capital, price, and any volatility inputs jointly change the new base. Positive returns do not automatically imply more units, nor negative returns fewer units.
+- Decide whether a changed base immediately rebalances existing holdings or applies only to subsequent position-management decisions. A periodic snapshot can concentrate an adjustment at rollover rather than eliminate it.
+
+Still open: period duration and alignment; initial snapshot timing; which inputs and limits are frozen versus dynamic; exceptional refresh conditions; and restart/replay handling that preserves the intended period snapshot. No cadence, gain/loss response, or rollover trading rule has been selected. The next design discussion should start from this unit-snapshot candidate while keeping those questions explicit.
 
 ## 5. Broader concepts that inform the discussion
 

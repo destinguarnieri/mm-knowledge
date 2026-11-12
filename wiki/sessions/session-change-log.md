@@ -1161,3 +1161,129 @@ Paired saved Example runs `0aaac038-6670-4873-b77d-d8cd131776cd` (equity) and `5
 ### Sizing mandate working framework — 2026-11-06
 
 Destin requested a synthesis in [sizing.md](../../raw/research/concepts/sizing.md): continuous equity-driven rebalancing, exposure-dependent feedback, booked-P&L limitations, and a PM/desk framework separating mandate, state, and action. Status remains in progress. Capital source and allocation-review timing are separate decisions; no replacement controller or review cadence selected. Existing compounding implementation is unchanged.
+
+
+### Strategy-backed Terminal MVP plan — 2026-11-06
+
+Destin selected mainnet via existing backend accounts, explicitly through a strategy: one strategy per workspace, new terminal_example file, manual-order hook with optional preflight. Independent account execution was rejected. Read-only discovery confirms runtime OrderManager/fill consumers and reusable Monitor hooks; proposed code plan awaits approval. No code changes or live operations. See [[projects/trading-terminal-ui#Strategy-backed terminal MVP plan — 2026-11-06]].
+
+
+### Terminal plan refinement: existing DTOs and latency — 2026-11-06
+
+Destin accepts overall direction but requires reuse of existing exchange order DTOs/generated frontend types and moving configuration validation to startup. Revised plan removes duplicate DTO creation and targets no added data fetches in manual-command dispatch. Agent proposes retaining existing authentication and in-memory checks for mutable state; that distinction awaits agreement. No implementation or live operations. See [[projects/trading-terminal-ui]].
+
+
+### Terminal strategy foundation, chunk 1 — 2026-11-06
+
+Implemented registered terminal_example, opt-in manual hooks using existing exchange DTOs, and cached runtime dispatch. Priced order/cancel forwarding only; market price construction, API/client/UI remain next. 26 focused checks pass; existing manager suite has the same 7 failures on committed source. New-strategy strict typing, scoped lint and whitespace pass. No live/DB/network operation, commit or push. Awaiting Destin review. See [[projects/trading-terminal-ui#Terminal strategy foundation, chunk 1 — 2026-11-06]].
+
+
+### Terminal strategy API/client, chunk 2 — 2026-11-06
+
+Following Destin's chunk-1 approval, added authenticated strategy order/cancel routes using existing exchange DTOs and generated frontend client. Cached runtime errors separated from unknown execution outcomes; no retries. 47 focused tests, TypeScript, scoped lint/new-file types pass; unchanged nuke-route mypy issues confirmed on baseline. Terminal remains disconnected, duplicate/identity handling pending. No live operations or commit. See [[projects/trading-terminal-ui#Terminal strategy API and client, chunk 2 — 2026-11-06]].
+
+
+### Terminal workspace/data integration, chunk 3 — 2026-11-06
+
+Added strategy selection/context and dynamic markets to the real terminal route, reuse of Monitor candle REST/WS feeds, explicit demo mode, dynamic bounded watchlists/drawings and sparse timestamp ray mapping. Configured margin/leverage shown; account tables/balances and execution remain pending. 6 new checks plus 28 prior terminal checks pass across runs; scoped lint/types/build and visual inspection pass. No live operations or commit. See [[projects/trading-terminal-ui#Strategy workspace and connected candles, chunk 3 — 2026-11-06]].
+
+
+### Terminal connected review preview — 2026-11-06
+
+Added opt-in interactive connected fixture with simulated strategies and updating candles; unmocked HTTP is blocked. Seven connected browser checks, scoped types/lint and screenshot inspection pass. Real backend entry remains authenticated /terminal. No live operations or commit. See [[projects/trading-terminal-ui#Connected workspace review preview — 2026-11-06]].
+
+
+### Terminal branch handoff — 2026-11-06
+
+Destin requested moving all current terminal work onto feat/terminal for use in the main checkout with its existing environment. The worktree was already on that branch; committed 59 files as 7bdca573 (saved chart workspaces and strategy-backed integration), then detached /Users/destinguarnieri/.codex/worktrees/a137/mm_v04 at that commit to release the branch. Both checkouts are clean; main checkout remains feat/work, ready for Destin to run git switch feat/terminal there. No merge needed, no push, no env/secret handling or backend startup. Production TypeScript and staged whitespace checks pass; prior focused test results remain applicable. Subsequent work must account for this chat's detached checkout and the user's intended main-checkout branch switch. Account tables/balances and order-button wiring remain pending.
+
+
+### Terminal account panels, chunk 4 — 2026-11-06
+
+Implemented primary-account positions/open orders/fills/balances in main feat/terminal checkout, with shared streams, bounded REST overlays, existing DTOs, read-only account seed, and optional account filters before row limits. 64 backend and 39 UI checks pass across runs; scoped types/lint/build pass. No execution actions enabled or live calls made. Changes uncommitted. See [[projects/trading-terminal-ui#Account panels and balances, chunk 4 — 2026-11-06]].
+
+### Terminal reconciliation discovery — 2026-11-06
+
+Recorded Destin’s backend-owned synchronization direction and exchange-confirmed UI requirement. Verified no periodic full exchange reconciliation in inspected managers, limited clearinghouse enrichment, destructive boot reconciliation, and global rather than per-topic sequences. Planning only; no application edits/live operations. See [[projects/trading-terminal-ui#Reconciliation discovery — 2026-11-06]].
+
+
+### Periodic unit sizing snapshot candidate — 2026-11-07
+
+Destin proposed snapshotting the sizing base in asset units at each compounding-period start, retaining that base within the period. Added the candidate and positive/negative return scenarios to [sizing.md](../../raw/research/concepts/sizing.md#candidate-snapshot-the-sizing-base-in-units-at-the-compounding-boundary). Freezing dollars alone does not stabilize quantity. Period cadence, rollover trades, dynamic risk/volatility layers, and exceptional refresh remain open; no implementation change.
+
+### Terminal session committed — 2026-11-11
+
+2026-11-11: At Destin’s request, committed all 29 remaining terminal-session files in the main checkout on feat/terminal as 9c7e84d5 (connect account panels and refine workspace controls). Includes account REST/WS wiring and tests, fullscreen/compact toolbar/sidebar changes, npm lockfile and generated route tree, and test-report ignore. Working tree verified clean. Fresh production TypeScript, dotenv-isolated Vite build and staged whitespace checks pass; build retains dependency annotation/chunk-size warnings. Backend/browser suites were not rerun for packaging; prior results remain recorded above. No push, DB/schema change, backend startup or live operation. a137 remains detached at 7bdca573. Reconciliation remains deferred and execution controls disabled. See [[projects/trading-terminal-ui]].
+
+
+### Terminal merge resolution — 2026-11-11
+
+User initiated merging feat/work into feat/terminal after local Compose prestart failed because DB revision e24b6c91a703 was absent from terminal migration history. Read-only checks confirmed both instrument_weight and account_equity columns exist. At user direction, resolved the sole textual conflict in frontend/package-lock.json retaining Vitest and removing Playwright; archived the three terminal browser suites under tests/browser-archive and removed playwright.terminal.config.ts. Dependencies installed without lifecycle scripts; production TypeScript passes; no unresolved Git conflicts remain. Resolution is staged, merge uncommitted. No DB mutations or service startup. Whole-merge whitespace check reports existing incoming whitespace in macd_hist.py and candle_inventory.py.
+
+
+### Terminal merge committed — 2026-11-11
+
+At Destin’s explicit request, completed the resolved feat/work merge into feat/terminal as 86ca5f74. Working tree is clean and MERGE_HEAD is cleared. No push, database mutation, or service startup.
+
+
+### Python 3.10 prestart import repair — 2026-11-11
+
+After the merge, prestart failed before migrations: position.py imported Self from typing, unavailable in Docker’s Python 3.10. Changed the import to existing typing_extensions, matching neighboring code. Verified position/decision DTO imports and VolSetting validation in the existing Python 3.10.22 image with network disabled, no secrets or DB access, and only the repaired source bind-mounted read-only. Patch uncommitted; actual prestart not rerun.
+
+### Terminal limit submission — 2026-11-11
+
+2026-11-11 chunk 5: GTC/post-only limit submission wired through terminal_example in main feat/terminal, uncommitted after 2de102d2. Independent clicks, existing rounding/cloid, REST errors only, account tables remain on existing snapshots/WS; up to five workspace errors. No submission locks/retries/extra identity layer. 54 offline backend + 15 Vitest cases and mocked UI check pass; scoped types/lint/build pass. Other execution modes, cancel/close and sizing pending; reconciliation deferred. No live operations. See [[projects/trading-terminal-ui#Limit-order submission, chunk 5 — 2026-11-11]].
+
+### Base-owned manual command context — 2026-11-11
+
+2026-11-11 follow-up: At Destin’s direction, moved manual context preparation/halt handling into BaseStrategy before calling on_manual_order(order_ctx, request), matching candle dispatch. TerminalExample startup/cache removed; it retains rounding/preflight/submission and accepts prepared metadata/client. 56 focused + 7 neighboring live Example tests pass offline, scoped lint/types pass. No frontend or live-operation changes; still uncommitted. See [[projects/trading-terminal-ui#Base-owned manual context — 2026-11-11]].
+
+
+### Terminal single-order cancellation — 2026-11-11
+
+2026-11-11 chunk 6: Single-order Cancel wired through existing strategy hooks using row symbol/oid, with independent clicks and REST errors only. Fixed OrderManager swallowing order-level cancel errors; rows still follow existing snapshots/WS. Errors now appear once above the dock even with the ticket hidden (latest five, bounded display). 66 offline backend + 17 frontend tests, mocked cancellation UI, scoped types/lint and whitespace checks pass. Main feat/terminal remains uncommitted; no live operations. Market/stop/scale, position closing and sizing pending; reconciliation deferred. See [[projects/trading-terminal-ui#Single-order cancellation, chunk 6 — 2026-11-11]].
+
+
+### Terminal market orders and position closing — 2026-11-11
+
+2026-11-11 chunk 7: Market Long/Short and reduce-only position Close wired through existing manual strategy/HLOrderRequest. Slippage control defaults to 0.1%; Close uses row side/remaining size, independent clicks, REST errors only. OrderManager market entry now preserves reduce_only via SDK-priced IOC, without position rereads; existing halt policy remains. 80 offline backend + 30 frontend tests and mocked UI pass, scoped types/lint pass. Uncommitted in main feat/terminal; no live operations. Stop/scale and sizing next; reconciliation deferred. See [[projects/trading-terminal-ui#Market orders and position closing, chunk 7 — 2026-11-11]].
+
+
+### Terminal OrderManager rollback — 2026-11-11
+
+2026-11-11 correction: Destin explicitly instructed that OrderManager must not be changed. Restored backend/app/services/order/order_manager.py exactly to HEAD, removing all agent edits (market reduce-only branch, cancellation response parsing and exception-message fallbacks). Removed tests specific to those reverted changes. Ordinary market/limit submission and cancellation wiring remain; Close is disabled and TerminalExample rejects reduce-only market requests before submission, with ticket buttons disabled for that combination. Those paths depended on the removed behavior; do not silently route reduce-only into SDK market_open. Prior chunk-6/7 OrderManager and completed-close claims are superseded. No alternative execution implementation or live operations this correction.
+
+
+### Existing terminal market-close routing — 2026-11-11
+
+2026-11-11 follow-up: Destin directed routing through existing OrderManager functions. TerminalExample now selects async_place_order for explicit order types, async_place_market_open for ordinary market requests, and async_place_market_close for reduce-only market requests (including Positions Close). Removed the temporary reduction rejection and re-enabled Close/reduce-only market buttons. OrderManager remains byte-for-byte HEAD, with its existing behavior unchanged. Existing SDK market_close reads the current exchange position and determines the closing direction; request.is_buy does not control that direction. The ticket explains this for reduce-only market mode. Requested size/slippage and existing rounding/cloid flow are retained. No live operations or commit. Supersedes the rollback note only regarding disabled Close/reduce-only controls.
+
+
+### Explicit terminal order types — 2026-11-11
+
+2026-11-11 correction: At Destin’s direction, TerminalExample now identifies immediate market requests by equality with existing HLOrderTypes.MARKET, not order_type=None. Frontend market/Close requests send the matching existing constant shape {trigger: {isMarket: true, triggerPx: "0", tpsl: "tp"}} in HLOrderRequest. Missing order_type is rejected. Stop-market/stop-limit trigger configurations continue through async_place_order rather than immediate market open/close; tests cover this distinction. Existing market open/close dispatch and rounding remain; OrderManager is unchanged. Earlier notes identifying null order_type as a market selector are superseded.
+
+
+### Terminal stop orders — 2026-11-11
+
+2026-11-11 stop-order chunk: Stop Market/Stop Limit submission is wired through existing HLOrderRequest trigger payloads, HLOrderTypes.stop_market/stop_limit and async_place_order. TerminalExample rounds trigger/size and separate limit price; Stop Market uses its rounded trigger as px, matching momo_prod. Side/reduce-only and existing cloid are preserved; immediate market functions are never called for stop triggers. Fixed only stop_limit's incorrect str parameter annotation to float in the shared helper. No OrderManager, API schema or migration changes. Post-only/TIF controls disabled/hidden for stops; brackets remain disconnected. Existing chart clicks set stop trigger by default, or the focused trigger/limit field for Stop Limit. Independent clicks and REST-errors-only/account-feed-owned rows remain. 83 focused offline backend tests, 42 frontend tests, scoped types/lint and mocked Chrome chart-click/submission checks pass; no live order or commit. Scale orders and sizing remain next; reconciliation deferred.
+
+
+### Terminal scale order arrays — 2026-11-11
+
+2026-11-11 scale chunk: Destin explicitly requires scale placement to accept an array of existing HLOrderRequest objects, not a template plus end/count/distribution parameters. Removed the abandoned template/query implementation. New frontend terminalScaleOrders.ts builds even/increasing/decreasing size-weighted ladders including both endpoints; preview and submitted payload use the same function. POST /trading/strategy/{id}/scale accepts a bare array of 2–50 HLOrderRequest and returns existing BulkOrderResult; generated SDK refreshed offline. No new order DTO or request ID. Base prepares shared metadata/client for the batch market and applies the existing halt rule; TerminalExample rounds each leg with existing helpers, preserves or generates each cloid, runs preflight on all legs before submitting once through async_bulk_place_orders. Per-leg rounding may leave the submitted aggregate slightly below the raw draft total; no hidden redistribution or dropped legs. A leg rounded to zero rejects the batch before submission. Existing scale_orders.py and OrderManager are unchanged, verified with zero diff. Independent clicks, error-only REST handling, indexed partial failures, account-feed-owned rows remain. 100 focused offline backend tests, 55 frontend tests, scoped typing/lint and mocked Chrome scale-array checks pass. No live operations or commit. Remaining: USD/percentage/MAX sizing and MVP review; reconciliation deferred.
+
+
+### Terminal USD sizing — 2026-11-11
+
+2026-11-11 sizing work in progress: USD input now converts to base quantity using limit price, stop trigger for Stop Market, separate limit for Stop Limit, or the scale distribution-weighted average. Immediate market USD uses the latest candle close from the existing REST-seeded/WS-overlaid monitoring hook, explicitly labeled as an estimate; quote changes update displayed USD but never resize the entered base quantity. No price means USD entry is disabled. Quantity precision remains in the strategy. Market-only sizing adds at most one bounded candle-hook owner while the ticket is mounted, using the shortest supported configured interval, existing shared REST keys and deduplicated WS transport (up to 3,000 candles). Selection/strategy changes isolate state; no new exchange quote or reconciliation API. 60 frontend tests and mocked browser USD/WS checks pass; scoped lint and typing checked. Percentage/MAX remain disabled in connected mode pending Destin’s answer: existing strategy position budget (cross account equity × max_position_percent × leverage) versus estimated unused margin × leverage. This is an unresolved sizing meaning, not authorization to modify order/position managers. No backend changes or live orders in this sizing step.
+
+
+### Terminal percentage/MAX controls removed — 2026-11-11
+
+2026-11-11 decision: Destin chose to delete percentage/MAX controls instead of settling a capacity formula. Removed MAX, percentage slider/buttons/badge, their calculations/styles, and obsolete automatic-sizing copy. Asset quantity and USD conversion remain. The prior percentage/MAX question is closed; do not treat those controls as pending MVP work.
+
+
+### Terminal execution commit and metadata discovery — 2026-11-11
+
+2026-11-11 checkpoint: Terminal execution/sizing committed in mm_v04 feat/terminal as `19e78138`. Limit/market/stops/scale arrays, Cancel/Close and USD sizing wired; percentage/MAX deleted. OM and old scale helper unchanged. Order-metadata discovery remains unresolved: IF an exchange fetch is necessary, not WHEN. No separate frontend order registry, retained placement requests, or unfamiliar-ID tracking. No metadata implementation approved. See [[projects/trading-terminal-ui#Execution checkpoint and order metadata discovery — 2026-11-11]].

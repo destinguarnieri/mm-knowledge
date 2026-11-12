@@ -313,3 +313,23 @@ Paired Example BTC daily runs, differing only in compounding source:
 Signals were identical and every order/hold across 2,307 scored bars per run matched reconstructed targets, precision, and minimum-order filtering. Equity mode reproduced the original run’s metrics. These establish implementation correctness for those settings, not the desirability of either policy. Metrics remain in saved-run tools and the backtest UI.
 
 See [[engineering/bounded-ema-history#Backtest compounding source and absolute-sizing note — 2026-11-06]] for implementation continuity.
+
+
+### Snapshot scheduling verified through Research MCP — 2026-11-12
+
+After Destin started the manager, ran six Example BTC daily backtests against stored Binance USD-M candles from 2021-01-01 through exclusive 2024-01-01. Shared assumptions: initial capital 10,000; leverage 2; allocation 100%; instrument weight/IDM 1; absolute forecast reference 10 / clip 20; direct mapping; zero rebalance deadband; 5 bps fee and 5 bps slippage; post-mapping volatility adjustment disabled. V2 uses the default RMS targeting settings and 20% risk target. Compare continuous sizing (null interval) with 14-day unit snapshots (1,209,600 seconds). These are behavior checks, not parameter optimization or performance recommendations.
+
+Saved run IDs:
+
+- V1 / equity / continuous: `c5ce09d1-e49e-44ba-8147-e46ee7fa14a5`.
+- V1 / equity / 14-day snapshot: `aa153864-28a4-4c97-a9d1-5601fde82f36`.
+- V1 / booked / continuous: `a04bd1c9-7144-4396-9b59-e9e9604276a6`.
+- V1 / booked / 14-day snapshot: `ca6e89cf-01d9-4af4-9d50-5368a286e643`.
+- V2 / equity / continuous: `c04fec45-ed5b-4076-9e4b-9732f74e49e4`.
+- V2 / equity / 14-day snapshot: `5eca2f52-e99e-479e-9bb3-0fa2206bf974`.
+
+All six completed, with full artifacts available, identical processed signals, no missing candles and no provider fetch. Independent reconstruction from persisted candles, fills and position state matched every order/hold across 842 scored bars per run. Reconstruction used pre-decision marked equity or booked cash, the elapsed unit snapshot, signal mapping/cap, five-decimal quantity truncation and the $10 minimum-order filter; V2 RMS/blended volatility was independently reconstructed from the 512-bar price window. The first scored decision is 2021-09-11 UTC; 61 retained periods follow the original 14-day anchor. Refreshes include both quantity increases and reductions.
+
+There were 81 unchanged-signal comparisons away from refresh boundaries (68 long, 13 short). All three snapshot runs placed no orders on these bars, while the paired continuous runs continued resizing. On the constant -20 signal from 2022-06-18 through 2022-07-01, the equity V1 snapshot entered the period at -1.65765 BTC and held it throughout despite price/equity movement; continuous V1 equity sizing traded every day. Changing signals still generated within-period trades as intended. No evidence of the original account/price-driven resizing remained within these snapshot periods.
+
+Scope: runtime verification covers Example, V1 equity/booked and V2 equity, with post-mapping adjustment disabled. Other callers, V2 booked, live adjustment and execution-gate behavior retain the earlier offline regression coverage. No live-system operations or code changes were needed. Standard metrics remain in saved-run tools/UI.

@@ -1317,3 +1317,13 @@ Implemented locally after Destin selected elapsed timing anchored to the first e
 ### Snapshot scheduler committed — 2026-11-12
 
 At Destin’s request, committed the verified scheduler/UI/tests in mm_v04 as `68b667c6` (Add elapsed unit snapshots to backtest sizing). No push or runtime operations. Destin will start the backend and confirm readiness before the requested Research MCP verification.
+
+
+### Snapshot behavior verified through Research MCP — 2026-11-12
+
+Destin started the manager and authorized backtests. Six saved Example BTC daily runs compare continuous with 14-day snapshots for V1 equity/booked and V2 equity. Full artifacts independently reconcile all order/hold decisions; constant-signal bars away from refreshes stop generating orders in snapshot mode, including long and short stretches. No code change or live-system operation. Run IDs, fixed assumptions and scope: [sizing.md](../../raw/research/concepts/sizing.md#snapshot-scheduling-verified-through-research-mcp--2026-11-12). Standard metrics remain in the UI.
+
+
+### Backtest configuration UI polished and committed — 2026-11-12
+
+At Destin’s request, committed UI polish as `3fe37944`: labels replace clipped key inputs, controls use full width, sizing explanations live in info popovers, and refresh presets include every two weeks with exact custom seconds retained. Destin confirmed the improved spacing in his browser. Production TypeScript, 15 targeted frontend tests, scoped lint and whitespace checks passed. Unrelated generated routeTree.gen.ts changes were left untouched/uncommitted. No push or additional backtests. Sizing work is complete for this session.

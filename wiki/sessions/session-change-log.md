@@ -1307,3 +1307,13 @@ Implemented the authorized single-helper change across Example/Kitchen Sink/MACD
 ### Sizing cleanup committed — 2026-11-12
 
 At Destin's request, committed the verified V1/V2 sizing cleanup in mm_v04 as `810e7dbc` (Separate allocation and volatility reference sizing). Snapshot scheduling is next; interval alignment is being clarified. No push or runtime operations.
+
+
+### Elapsed sizing snapshots — 2026-11-12
+
+Implemented locally after Destin selected elapsed timing anchored to the first eligible decision. Four migrated backtest strategies can retain base/maximum units via SIZING_REFRESH_INTERVAL_SECONDS; null retains continuous behavior. Added schema-driven UI, bounded per-asset cache, refresh diagnostics and 30-day long/short equity/booked V1/V2 regressions. 675 offline backend and 14 frontend checks pass; 16 unrelated baseline feature failures excluded. Scheduler remains uncommitted; prior calculation cleanup is app 810e7dbc / KB d8c7358. No runtime operations or MCP runs. Details: [sizing.md](../../raw/research/concepts/sizing.md#elapsed-unit-snapshots--2026-11-12).
+
+
+### Snapshot scheduler committed — 2026-11-12
+
+At Destin’s request, committed the verified scheduler/UI/tests in mm_v04 as `68b667c6` (Add elapsed unit snapshots to backtest sizing). No push or runtime operations. Destin will start the backend and confirm readiness before the requested Research MCP verification.

@@ -1327,3 +1327,37 @@ Destin started the manager and authorized backtests. Six saved Example BTC daily
 ### Backtest configuration UI polished and committed — 2026-11-12
 
 At Destin’s request, committed UI polish as `3fe37944`: labels replace clipped key inputs, controls use full width, sizing explanations live in info popovers, and refresh presets include every two weeks with exact custom seconds retained. Destin confirmed the improved spacing in his browser. Production TypeScript, 15 targeted frontend tests, scoped lint and whitespace checks passed. Unrelated generated routeTree.gen.ts changes were left untouched/uncommitted. No push or additional backtests. Sizing work is complete for this session.
+
+
+## Candle inventory ADX features and Example sizing — 2026-11-19
+
+At Destin's request, integrated ADX S_A processing and Example volatility/sizing into existing candle_inventory, with DTO-owned configs. Fractional additions use mapped/adjusted magnitude; full exits bypass rebalance. No new strategy/shared base. Destin also requested keeping stream/duplicate guards removed; tests and tracking state updated accordingly. 192 focused tests and scoped lint/types pass; 45 broader legacy failures exactly match untouched HEAD. Local/uncommitted, no historical run or live operation. See [[engineering/bounded-ema-history#Candle inventory ADX features and sizing — 2026-11-19]].
+
+
+## Opposite Bid Trend strategy note and rename — 2026-11-19
+
+Status: in progress
+
+Destin reframed Candle Inventory as Opposite Bid Trend: direction from a TBD trend signal, likely Combo; execution and required after-cost profit BPS are the main dials. Fixed fractions/full exits and fixed BPS are provisional, with adaptive execution and volatility/risk-based reward requirements intended. Added [[research/trading/opposite-bid-trend|strategy note]] and docstring pointer. Renamed strategy/module/DTOs and test references to opposite_bid_trend; generic candle decision helper retained. Preserved Destin's rearranged implementation exactly apart from names/docstrings (AST comparison). Current target routing needs review; prior behavioral test results predate his rearrangement. No saved-run/catalog mutation, historical backtest, commit, or live operation.
+
+
+## Opposite Bid Trend example and working registry — 2026-11-19
+
+Registered Destin's two copies separately: top-level opposite_bid_trend_example / OppositeBidTrendExampleStrategy, and bid_algo/opposite_bid_trend.py / opposite_bid_trend / OppositeBidTrendStrategy. Normalized bid-algo to the Python package bid_algo; updated discovery exports and test imports. Both algorithm bodies preserved (AST comparison), shared DTOs unchanged. Offline discovery/default/name-identity checks pass. Updated [[research/trading/opposite-bid-trend|strategy note]] links. No database catalog mutation, runtime operation, or commit.
+
+
+Opposite Bid Trend configuration placement — 2026-11-19: At Destin's request, moved Params/Config/TradeConfig into each strategy file with identical fields/defaults and preserved his current validator removals. Follow-up at Destin's request: moved InventorySide to dto/trade.py and deleted dto/opposite_bid_trend.py. Updated all consumers and test imports; registry names unchanged. AST checks confirm unchanged strategy bodies and config definitions; seven focused registry/schema checks pass. See [[research/trading/opposite-bid-trend]].
+
+
+Opposite Bid Trend static example — 2026-11-19: Restored a configurable static signal in the example only: config.signal=1.0, used directly, with static_signal output version 3. Removed unused ADX inputs/calculation and indicator warmup; volatility features remain. Working bid_algo strategy keeps ADX. Execution rearrangement preserved. Ten focused static-signal/discovery checks pass. See [[research/trading/opposite-bid-trend]].
+
+
+Opposite Bid Trend static-signal lookup fix — 2026-11-19: Destin moved signal into Params; _features still read config.signal and raised AttributeError. Reproduced offline, then changed the lookup to params.signal, preserving his placement and trading logic. Updated regression inputs and strategy note. Twelve focused checks pass, including 50 daily synthetic candles with zero warmup in full/summary engine modes. No runtime restart or historical rerun.
+
+
+## Opposite Bid Trend example execution repair — 2026-11-19
+
+Compared cca6f11a/e10f789c/44f2b666. Helper unchanged except type import; uncommitted example routing ignored its desired target unless over-cap. Restored decision target → cap → delta and removed the competing signal-target/dead adjustment path, preserving fixed-fraction additions and full exits. Added explicit finite-cap requirement for accumulation. 98 focused tests plus scoped Ruff/mypy pass; tests verify actual fills and full/summary synthetic replay. ADX working clone remains unchanged and still needs the same routing repair. No historical run or live operation. See [[research/trading/opposite-bid-trend]].
+
+
+Opposite Bid Trend checkpoint committed — 2026-11-19: At Destin's request, committed the current strategy work as `f82dfe45` in mm_v04. Code working tree clean; nothing pushed. Static example repair verified with 98 focused offline checks and scoped lint/types. ADX working clone preserved as-is with its execution-routing repair still pending.

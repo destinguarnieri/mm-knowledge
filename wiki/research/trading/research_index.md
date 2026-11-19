@@ -6,13 +6,11 @@ Browser view: [Open Research Home](research_index.html). Markdown is the source;
 
 ## Current focus
 
-**Candle inventory execution prototype — selected 2026-10-31.**
+**[[research/trading/opposite-bid-trend|Opposite Bid Trend]] — current working name, 2026-11-19.**
 
-Destin requested a strategy-independent Python notebook: add long inventory on negative candles under a positive signal, mirror for shorts, and distribute on aligned candles only when position return exceeds EPS. He explicitly selected immediate flattening on an opposite signal, including losses, then following the new direction.
+“Get me on the right side of the trend and let execution handle the rest.” The signal remains TBD, likely a Combo of trend signals; custom ADX is the provisional input. Main dials are execution and required profit BPS after costs. Fixed-fraction accumulation, full distribution, and fixed BPS are starting points for adaptive execution and risk-dependent reward requirements.
 
-Local artifact: `mm_v04/notebooks/candle_inventory_execution.ipynb`. All 12 code cells execute with hand-calculated checks; the saved chart was visually inspected. Full notebook HTML preview was blocked by the browser file-URL policy. Constructed candles only; no historical evidence or Research MCP run IDs.
-
-Prototype defaults, not settled product policy: fixed-unit capped additions, full distribution, net return on entry notional after fees/slippage, neutral-signal hold, and idealized same-close fills. Next: work through sizing, distribution fraction, profit-candle eligibility, and realistic execution timing with Destin. No live/backtest-runtime integration.
+The existing backtest strategy is now registered as `opposite_bid_trend`. Destin's in-progress code rearrangement is preserved; the strategy note distinguishes intended policy from current wiring. Next: work through execution and adaptive reward requirements with Destin, then select a historical backtest. No new research run was executed for this rename/documentation step.
 
 Destin approved a fresh start on 2026-10-06. No past research program, experiment, review request, or ticket carries forward as an active commitment.
 

@@ -4,6 +4,16 @@ Status: in progress
 
 Date: 2026-10-30
 
+## Hyperliquid fresh-fetch boundary repair — 2026-11-20
+
+Diagnosed and reproduced an extra end-boundary candle causing loader-complete / engine-reject inconsistency. At Destin's approval, added per-span half-open filtering before backtest caching/merging. 61 focused offline tests and scoped checks pass; committed at Destin's request as `316ac7ed`. Unrelated strategy/position DTO edits remain untouched; nothing pushed. Prior running-manager checks were cache-only. Existing potentially unfinished cached candles remain a separate follow-up; no database or runtime operations. See [[engineering/backtest-date-windows]].
+
+## Backtest scoring dates and Latest N — 2026-11-18
+
+Explicit-date fix committed at Destin's request as `4d8b9839`. Earlier running-manager verification passed: saved run `8256221e-4a8b-411a-8518-be91f3305500` preserves selected dates, preceding warmup and saved artifacts (cache only).
+
+Latest N follow-up now implemented locally: N completed scoring candles plus warmup, excluding the forming candle; batches freeze a shared cutoff. Frozen worker inputs and version-2 saved reports preserve exact bounds; original null-date requests and historical results remain intact. 120 targeted backend tests, scoped lint/types and frontend production build pass. Latest N running-manager verification now passes: saved run `e28447ab-3b23-44f7-92f6-98efba0faf63` confirms the completed-candle cutoff, exact N plus warmup, no warmup trading and matching saved artifacts (cache only). Latest N committed at Destin's request as `7269ac88`; code working tree clean, nothing pushed. See [[engineering/backtest-date-windows]].
+
 ## Account equity chart — 2026-11-03
 
 Implemented Destin's approved backend-derived equity series, nullable per-bar persistence, regenerated API types, Account Equity panel, and clearer realized-PnL/position-ROE labels. Migration `e24b6c91a703` is applied to `localhost:5432/app` at Destin’s explicit request; revision and nullable double-precision column verified. Changes remain uncommitted. Old runs show unavailable equity. 71 backend tests and six frontend tests pass; production build and scoped checks pass. Backend checks used the committed inventory module in memory because the user's unrelated unfinished `def match_` blocks imports; their file is untouched. See [[engineering/backtest-risk-measurement#Backend account equity chart — 2026-11-03]]. Migration prerequisite is complete. The previously observed unfinished user edit remains a separate runtime-import concern; no runtime was started.
@@ -386,6 +396,126 @@ Destin proposed snapshotting the sizing base in asset units at each compounding-
 Sizing cleanup committed as `810e7dbc` (app) and `d8c7358` (KB). Subsequent scheduler is committed as `68b667c6` for Example/Kitchen Sink/MACD/Combo. Destin selected elapsed intervals from the first eligible sizing decision; positive `SIZING_REFRESH_INTERVAL_SECONDS` retains both unit outputs, null preserves continuous calculation. Signal/vol-adjustment/execution remain live; missing periods do not shift the anchor. UI controls and bounded per-asset state included. 675 offline backend + 14 frontend checks pass; same 16 baseline feature failures excluded, no new base-class typing errors. Research MCP verification completed after Destin started the manager: six Example BTC daily runs covering V1 equity/booked and V2 equity, continuous versus 14-day snapshots. All 5,052 scored order/hold decisions match independent reconstruction; no within-period trades on unchanged-signal bars in snapshot runs. Run IDs and limits are in the sizing note. No live-system operations or further code changes. Destin accepted the results. UI polish is committed as `3fe37944`: readable labels, full-width controls, help popovers and refresh presets preserving seconds. Destin verified the spacing in his browser; TypeScript and 15 targeted frontend tests passed. Session complete; no verification blocker remains. See [sizing.md](../../raw/research/concepts/sizing.md#elapsed-unit-snapshots--2026-11-12) and [[engineering/bounded-ema-history#Elapsed sizing snapshot footprint — 2026-11-12]].
 
 
+### Sizing propagation preparation — 2026-11-14
+
+Removed per-strategy `_sizing_for_decision` wrappers across the four migrated callers; shared resolver accepts their bound sizing method and candle inputs. Nested sizing calculations are named locals. 75 focused tests plus scoped types/lint pass; wider failures reference concurrently removed legacy config fields. User edits preserved. Uncommitted; ready for Destin’s review before further strategy propagation. See [sizing.md](../../raw/research/concepts/sizing.md#sizing-caller-cleanup--2026-11-14).
+
+
+## RSI and slope padding fixed — 2026-11-16
+
+Destin authorized only RSI/slope padding using the existing EMA pattern. Delivered mm_v04 commit `3da05787`: RSI gets its additional seed; both slope variants pad and restore output alignment. 123 selected tests pass; 10 existing failures reproduced against old code (stale signal names/removed sizing field). Both new Combo affine+transform tests fail on old indicators and pass through simulated orders with the fix. Scalers/transforms/sizing unchanged; broad policy redesign deferred. Untracked transform-units experiment excluded. See [[projects/nan-handling-positioning-audit]]. No push or live operations.
+
+
+## Uniform scaler input cleanup — 2026-11-16
+
+Destin selected NaN/±infinity → zero before scaling. All five scalers, percent denominators and optimized min/max last-value path now share cleanup; finite-input results match HEAD. 125 targeted tests pass; eight known stale Combo-name cases deselected. Scoped lint/whitespace pass. Committed as `15cb8800` at Destin’s request; ATR files/registration/tests and unrelated transform-units test excluded. No push or runtime operations. See [[projects/nan-handling-positioning-audit#Uniform scaler input cleanup — 2026-11-16]].
+
+### ATR v1 feature scaffold — 2026-11-16
+
+Status: in progress. Destin simplified ATR v1 to ATR_P(candle_view) plus one direct feature_state map. Mode now accepts -1/0/+1, starts neutral and holds until a nonzero breakout. Focused offline callbacks verify neutral/bearish/bullish behavior and empty orders. Previous streaming tests are stale after Destin's simplification; no full-suite passing claim. No trading rules, runtime operations or commits. Details: [[engineering/bounded-ema-history#ATR v1 feature state — 2026-11-16]].
+
+
+### Indicator package organization — 2026-11-17
+
+Moved 20 indicators into six domain subpackages and updated repository import/logging references; calculations unchanged. 247 offline checks pass; all nine VFTI/Combo failures reproduce on original HEAD. Existing missing linregslope import left unchanged. Local/uncommitted, no runtime operations. Layout: [[engineering/bounded-ema-history#Indicator package layout — 2026-11-17]].
+
+
+## Custom ADX import — 2026-11-17
+
+Custom ADX and reusable RMA_P implemented locally; 83 targeted offline tests pass. Destin requires no Python loops in imported indicators and reuse of padded helpers. Outputs use immediate padded smoothing (early values differ from Pine seeds), retain zero-strength agreement NaN, and have no strategy/UI integration. See [[engineering/bounded-ema-history#Custom ADX and padded RMA — 2026-11-17]]. No commit or live operations.
+
+
+## DPO import — 2026-11-17
+
+Non-centered DPO(source, length=21) added using SMA_P and NumPy slices; no Python loops. 27 tests pass; TradingView CSV parity within 7.28e-11 from index 31. Reused cached BTC chart with DPO and signed ADX columns. TA-Lib stays at current version. Local/uncommitted; see [[engineering/bounded-ema-history#DPO import and CSV parity — 2026-11-17]].
+
+
+## Range ratio imported — 2026-11-17
+
+Added loop-free range ratio with both range modes, three independent direction modes and prior-bar RMA_P baseline. 32 tests pass; supplied CSV default values match within 2.74e-12 over final300 bars. Scratch chart updated on same cached candles. No upgrade/commit/live operations. See [[engineering/bounded-ema-history#Range ratio import — 2026-11-17]].
+
+
+## Range Z added — 2026-11-17
+
+Extended range_ratio result with prior-window mean/population std/Z, using SMA_P and NumPy. abc_score uses different EMA/EWMA semantics and remains unchanged. Supplied CSV parity from index20 within 1.43e-14; 37 focused tests pass. Local/uncommitted. See [[engineering/bounded-ema-history#Prior-window range Z — 2026-11-17]].
+
+
+### Range standard deviation wrapper — 2026-11-17
+
+Replaced range Z sliding windows with reusable TA-Lib STDDEV_P + pad_ta. 46 tests and lint pass; CSV parity within 1.03e-12. Explicit exhaustive mode branches retained; no Unsigned direction option. Local/uncommitted. See [[engineering/bounded-ema-history#Range std wrapper revision — 2026-11-17]].
+
+
+### Padded ROC/MOM added — 2026-11-17
+
+Added ROC_P and MOM_P via TA-Lib + pad_ta, default length10, preserving legacy ROC callers. 23 targeted tests and scoped lint pass. Local/uncommitted. See [[engineering/bounded-ema-history#Padded ROC and MOM — 2026-11-17]].
+
+
+### Log-return imports — 2026-11-17
+
+Added reusable aligned log_return, rolling_sum, rolling_log_return and two-leg log_blend with blend/trend/diff. Explicit lengths, default weights .7/.3 and EMA9. Derived EMA gaps handled via EMA_P_CLEAN(preserve_nans=True). 11 tests and lint pass; local/uncommitted. See [[engineering/bounded-ema-history#Reusable log returns and blend — 2026-11-17]].
+
+
+### Candle-body imports — 2026-11-17
+
+Added directional_body_fill and candle_body_stats in one module, shared validation and existing SMA/EMA helpers. 11 targeted tests/lint pass. Local/uncommitted. See [[engineering/bounded-ema-history#Candle-body measurements — 2026-11-17]].
+
+
+### Candle stats cleanup — 2026-11-17
+
+Merged directional_body_fill into candle_body_stats output and removed factor10; shared ohlc_values helper now serves candle stats and range ratio. 40 targeted tests/lint pass. See [[engineering/bounded-ema-history#Candle-body API consolidated — 2026-11-17]].
+
+
+### Import-session cleanup — 2026-11-17
+
+Extracted shared candle_direction (range/body/PRI consumers) and typed prior_window_stats; removed duplicate private implementations. 219 targeted tests and scoped lint pass. Existing concurrent PRI relocation and other user edits preserved. Local/uncommitted; no runtime operations. See [[engineering/bounded-ema-history#Indicator helper cleanup — 2026-11-17]].
+
+
+### ATR anomaly replaced — 2026-11-17
+
+Removed old module; migrated Indicator Lab/PX Signal Bands to range_ratio with prior-bar baseline. Renamed lookback accepts legacy saved key; default14 preserved. 36 tests pass, three unrelated PX failures remain (absorption mock, removed trade setting); lint passes. No runtime/commit. See [[engineering/bounded-ema-history#ATR anomaly retired — 2026-11-17]].
+
+## Custom ADX backtest clone — 2026-11-17
+
+Added registered `custom_adx` backtest strategy cloned from example, with signed strength processed signal only; indicators and raw signal are omitted per Destin’s follow-up. Six targeted checks and scoped lint pass for this revision. Targeted run: 72 passed; 12 existing example fixture failures from removed MIN_ADJUSTMENT_VALUE_PCT. No live operations or commit. See [[engineering/bounded-ema-history#Custom ADX backtest strategy — 2026-11-17]].
+
+Custom ADX follow-up — 2026-11-17: strategy now computes S_A = signed_strength * agreement as processor input, superseding signed_strength alone. Output remains custom_adx_processed only, signal_version=2; no indicators/raw emission. Undefined zero-strength agreement is retained until shared signal processing. Eight offline strategy checks (including mixed-direction SMA/RMA) and scoped lint pass.
+
+Signal-scale follow-up — 2026-11-17: `SIG_SCALE="none"` now skips normalization while retaining non-finite cleanup and later processing. 161 focused offline tests pass. See [[projects/nan-handling-positioning-audit#No signal scaling — 2026-11-17]]. Local/uncommitted; no runtime operations.
+
+
+## Shared trade decisions — 2026-11-18
+
+Destin approved generalizing ThresholdEvent to TradeEvent in dto/trade.py and adopting it in candle inventory. Added LONG_ADD/SHORT_ADD and LONG_SIGNAL_EXIT/SHORT_SIGNAL_EXIT; retained existing values and migrated both older threshold engines. Threshold-specific result/configuration and V3 types retain their names. execution_action now returns entry/add, take-profit, opposite-signal exit, or hold events; event side names the affected position. These are decisions before sizing/capping/order validation, not executed fills. Candle strategy explicitly maps supported events to its existing sizing policy and rejects unsupported events. Opposite-signal exits still precede re-entry on a later candle; sizing, caps, EPS/ROE and small-order behavior are unchanged. Removed obsolete InventoryAction and unused NumPy import. Updated stale validation test to use an existing unsupported setting. 159 focused offline tests, scoped Ruff, six-file strict mypy and diff checks pass. Local/uncommitted; no live operations. Further policy/sizing changes and integration with a generated signal remain deferred.
+
+
+Trade-event refactor commit — 2026-11-18: Destin approved and committed the tested nine-file change as `cca6f11a` in mm_v04. No push. Remaining discussion: return/EPS semantics, hold versus cap enforcement, small exits, and execution timing; sizing remains deferred.
+
+
+## Candle inventory net profit gate — 2026-11-18
+
+Destin explicitly requires BPS throughout the decision comparison and a fixed cost floor independent of leverage. Strategy reads stored percentage-point ROE * 100 to BPS; cost_bps = 2 * ctx.fee_rate * 10000 + ctx.slippage_bps; floor = cost_bps + trade_config.bps. At Destin’s direction, the buffer field and helper parameter are renamed bps. execution_action compares position_return and bps in BPS. Config bps defaults to 10 (0.1%); the legacy eps key is rejected explicitly to prevent silently using the default. Prior fractional values require conversion by 10000 and the bps key before rerun. Saved configs/artifacts were not mutated. No conversion back to fractions and no leverage scaling. Both extra estimators are removed; mock_services.py remains unchanged from HEAD. Entry slippage is already in stored ROE; cost floor adds configured round-trip fees plus exit slippage as a fixed allowance.
+
+66 focused offline tests, scoped Ruff/mypy and diff checks pass, including 10 BPS default, strict threshold and identical cost floors at 1x/3x for both sides. No added state or database/client migration. Local/uncommitted; no live operations. Remaining topics: hold/cap enforcement, small exits, neutral/doji policy, fill timing; sizing deferred.
+
+
+BPS cost-floor commit — 2026-11-18: Destin requested commit; created `e10f789c` in mm_v04 after 66 tests and scoped lint/types passed. Includes Destin’s take-profit _distribute(current_size, max_size) versus signal-exit _flatten() split; wired the distribution arguments, both still target zero. Code tree clean, not pushed. Profit-gate step complete. Next discussion: cap enforcement during hold, then small exits, neutral/doji behavior and fill timing. Sizing remains deferred.
+
+
+## Candle inventory hold cap enforcement — 2026-11-18
+
+Destin selected cap reduction even on HOLD, using Example as reference. HOLD now selects current_size and proceeds through the existing cap → delta → executable-order path. No early return before capping. Within-cap inventory stays unchanged; excess long/short inventory is reduced, including neutral, doji and profit-gated holds. Existing precision/minimum-order constraints still apply; no sizing, BPS or broker changes. 172 focused offline tests and scoped Ruff/mypy/diff checks pass, including 12 hold-policy regressions. Local/uncommitted; no live operations. Profit-gate and cap-policy steps complete; next: small exits, then neutral/doji policy and fill timing. Sizing remains deferred.
+
+
+## Neutral/doji profit-taking — 2026-11-18
+
+Destin approved taking available profit on neutral signals and dojis. execution_action now names sig_side, is_neutral_signal and is_doji explicitly. Non-neutral opposite signal exits first regardless of return. Neutral/doji open inventory takes profit only when stored return exceeds the existing cost + bps floor, otherwise holds; flat stays flat. Take-profit event names the position side. Existing accumulation/aligned-candle rules and HOLD cap enforcement remain. position_return is now a required float at Destin’s request; flat callers pass 0.0. Removed the missing-return branch; ordinary finite-value validation remains. Preserved Destin’s sig_side rename and repaired its accidental substring changes to InventorySide/position_side/candle_side so callers retain their contract. 106 focused offline tests and scoped lint/types/diff checks pass after removing four obsolete missing-return cases. Local/uncommitted, alongside HOLD cap changes; no live operations. Small exits and fill timing were identified as shared execution/engine topics and set aside from this strategy cleanup; sizing remains deferred.
+
+
+## Candle inventory ADX integration — 2026-11-19
+
+Committed execution cleanup remains at 44f2b666, not pushed. Destin rejected the subsequent ADX implementation and requested undo. Restored all four modified files and removed the new ADX strategy and tests; mm_v04 working tree is clean. The shared execution base and ADX DTO relocation are fully reverted. ADX remains the selected signal, but its integration is not implemented. No historical run or live operation occurred.
+
+
 ## Candle inventory ADX features and Example sizing — 2026-11-19
 
 Status: in progress
@@ -397,18 +527,18 @@ Destin requested ADX features in existing candle_inventory and explicitly includ
 
 Status: in progress
 
-Destin reframed Candle Inventory as Opposite Bid Trend: direction from a TBD trend signal, likely Combo; execution and required after-cost profit BPS are the main dials. Fixed fractions/full exits and fixed BPS are provisional, with adaptive execution and volatility/risk-based reward requirements intended. Added [[research/trading/opposite-bid-trend|strategy note]] and docstring pointer. Renamed strategy/module/DTOs and test references to opposite_bid_trend; generic candle decision helper retained. Preserved Destin's rearranged implementation exactly apart from names/docstrings (AST comparison). Current target routing needs review; prior behavioral test results predate his rearrangement. No saved-run/catalog mutation, historical backtest, commit, or live operation.
+Destin reframed Candle Inventory as Opposite Bid Trend: direction from a TBD trend signal, likely Combo; execution and required after-cost profit BPS are the main dials. Fixed fractions/full exits and fixed BPS are provisional, with adaptive execution and volatility/risk-based reward requirements intended. Added [[research/trading/opposite_bid_trend/opposite-bid-trend|strategy note]] and docstring pointer. Renamed strategy/module/DTOs and test references to opposite_bid_trend; generic candle decision helper retained. Preserved Destin's rearranged implementation exactly apart from names/docstrings (AST comparison). Current target routing needs review; prior behavioral test results predate his rearrangement. No saved-run/catalog mutation, historical backtest, commit, or live operation.
 
 
 ## Opposite Bid Trend example and working registry — 2026-11-19
 
-Registered Destin's two copies separately: top-level opposite_bid_trend_example / OppositeBidTrendExampleStrategy, and bid_algo/opposite_bid_trend.py / opposite_bid_trend / OppositeBidTrendStrategy. Normalized bid-algo to the Python package bid_algo; updated discovery exports and test imports. Both algorithm bodies preserved (AST comparison), shared DTOs unchanged. Offline discovery/default/name-identity checks pass. Updated [[research/trading/opposite-bid-trend|strategy note]] links. No database catalog mutation, runtime operation, or commit.
+Registered Destin's two copies separately: top-level opposite_bid_trend_example / OppositeBidTrendExampleStrategy, and bid_algo/opposite_bid_trend.py / opposite_bid_trend / OppositeBidTrendStrategy. Normalized bid-algo to the Python package bid_algo; updated discovery exports and test imports. Both algorithm bodies preserved (AST comparison), shared DTOs unchanged. Offline discovery/default/name-identity checks pass. Updated [[research/trading/opposite_bid_trend/opposite-bid-trend|strategy note]] links. No database catalog mutation, runtime operation, or commit.
 
 
-Opposite Bid Trend configuration placement — 2026-11-19: At Destin's request, moved Params/Config/TradeConfig into each strategy file with identical fields/defaults and preserved his current validator removals. Follow-up at Destin's request: moved InventorySide to dto/trade.py and deleted dto/opposite_bid_trend.py. Updated all consumers and test imports; registry names unchanged. AST checks confirm unchanged strategy bodies and config definitions; seven focused registry/schema checks pass. See [[research/trading/opposite-bid-trend]].
+Opposite Bid Trend configuration placement — 2026-11-19: At Destin's request, moved Params/Config/TradeConfig into each strategy file with identical fields/defaults and preserved his current validator removals. Follow-up at Destin's request: moved InventorySide to dto/trade.py and deleted dto/opposite_bid_trend.py. Updated all consumers and test imports; registry names unchanged. AST checks confirm unchanged strategy bodies and config definitions; seven focused registry/schema checks pass. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
 
 
-Opposite Bid Trend static example — 2026-11-19: Restored a configurable static signal in the example only: config.signal=1.0, used directly, with static_signal output version 3. Removed unused ADX inputs/calculation and indicator warmup; volatility features remain. Working bid_algo strategy keeps ADX. Execution rearrangement preserved. Ten focused static-signal/discovery checks pass. See [[research/trading/opposite-bid-trend]].
+Opposite Bid Trend static example — 2026-11-19: Restored a configurable static signal in the example only: config.signal=1.0, used directly, with static_signal output version 3. Removed unused ADX inputs/calculation and indicator warmup; volatility features remain. Working bid_algo strategy keeps ADX. Execution rearrangement preserved. Ten focused static-signal/discovery checks pass. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
 
 
 Opposite Bid Trend static-signal lookup fix — 2026-11-19: Destin moved signal into Params; _features still read config.signal and raised AttributeError. Reproduced offline, then changed the lookup to params.signal, preserving his placement and trading logic. Updated regression inputs and strategy note. Twelve focused checks pass, including 50 daily synthetic candles with zero warmup in full/summary engine modes. No runtime restart or historical rerun.
@@ -416,7 +546,50 @@ Opposite Bid Trend static-signal lookup fix — 2026-11-19: Destin moved signal 
 
 ## Opposite Bid Trend example execution repair — 2026-11-19
 
-Compared cca6f11a/e10f789c/44f2b666. Helper unchanged except type import; uncommitted example routing ignored its desired target unless over-cap. Restored decision target → cap → delta and removed the competing signal-target/dead adjustment path, preserving fixed-fraction additions and full exits. Added explicit finite-cap requirement for accumulation. 98 focused tests plus scoped Ruff/mypy pass; tests verify actual fills and full/summary synthetic replay. ADX working clone remains unchanged and still needs the same routing repair. No historical run or live operation. See [[research/trading/opposite-bid-trend]].
+Compared cca6f11a/e10f789c/44f2b666. Helper unchanged except type import; uncommitted example routing ignored its desired target unless over-cap. Restored decision target → cap → delta and removed the competing signal-target/dead adjustment path, preserving fixed-fraction additions and full exits. Added explicit finite-cap requirement for accumulation. 98 focused tests plus scoped Ruff/mypy pass; tests verify actual fills and full/summary synthetic replay. ADX working clone remains unchanged and still needs the same routing repair. No historical run or live operation. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
 
 
 Opposite Bid Trend checkpoint committed — 2026-11-19: At Destin's request, committed the current strategy work as `f82dfe45` in mm_v04. Code working tree clean; nothing pushed. Static example repair verified with 98 focused offline checks and scoped lint/types. ADX working clone preserved as-is with its execution-routing repair still pending.
+
+
+Opposite Bid Trend ADX execution repair — 2026-11-19: Applied the example’s decision target → cap → delta fix to the ADX variant, preserving ADX/features/sizing and deliberately excluding rebalancing. Fixed-fraction additions require a finite cap. Updated stale execution tests; 168 focused offline checks and scoped Ruff/mypy pass, including real ADX synthetic replay. Broader registry comparison checks have 12 pre-existing obsolete MIN_ADJUSTMENT_VALUE_PCT fixture failures. No historical run, live operation, or commit. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
+
+
+Opposite Bid Trend neutral execution — 2026-11-20: At Destin’s request, zero signal now targets flat through the shared signal-exit branch in both variants, regardless of profit/candle; directional dojis retain profit-or-hold behavior. Updated regressions and ADX test inputs for his existing Params placement. 136 execution-focused offline checks and scoped Ruff/mypy pass. No live operation or commit. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
+
+
+Opposite Bid Trend fractional distribution — 2026-11-20: Added ADX params.distribution_fraction (default 1.0), closing a fraction of current inventory on profit-taking; zero/opposing signal exits remain full. Static example unchanged. 167 focused offline checks plus scoped lint/types pass; eight stale feature-count cases excluded. Uncommitted. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
+
+
+## Browser-free chart snapshot MCP — 2026-11-23
+
+Status: in progress (implemented; refreshed MCP connection verified end to end).
+
+Registered `render_backtest_snapshot`: authenticated saved-single-run reads → typed
+SVG → reviewed upstream resvg 0.50.0 → native MCP PNG plus provenance receipt.
+Preview is ephemeral; explicit saves require the expected canonical strategy and
+write deduplicated lossless PNG/JSON to its KB images folder. Operating instructions
+and storage policy now live in the implementation-side MCP runbook at Destin's request;
+[[ops/research-mcp-runbook#Chart snapshot storage]] is a routing pointer.
+
+Verification: 167 offline Research MCP tests plus scoped lint/types pass. The registered
+tool rendered captured artifacts from supplied run `d7cfc05b-32d8-44d8-93b4-08a7ac9e0723`
+(HYPE, 1h, opposite_bid_trend); image visually inspected, preview cleanup and repeated
+save deduplication checked. Native-image response verified through FastMCP locally;
+after Destin refreshed Codex, the actual MCP call returned a visible native PNG and
+warning-free receipt for the supplied run with save=false. No new run, backend/live operation,
+package dependency, commit, or push. The already-reviewed native binary is provisioned
+in ignored local `.tools/resvg/resvg`; fresh checkouts need operator provisioning.
+UI-local studies/zones and batch snapshots remain unsupported. The registered tool is now available through the refreshed connection.
+
+
+## Worktree packaging — 2026-11-23
+
+At Destin's request, committed the fractional-distribution change as `da3b5e28` and
+browser-free snapshot MCP as `6943c2ce` in mm_v04. Corrected stale one-signal test
+assertions; 156 focused backend tests and scoped lint pass. MCP verification remains
+167 offline tests plus native-image verification through the refreshed connection.
+Packaged pending KB research/engineering notes, the moved strategy page, and its
+retained PNG/receipt together; repaired links to the moved page. No push or runtime
+operation. This packaging checkpoint supersedes earlier uncommitted status for these
+changes; unrelated historical notes retain their original dates and limitations.

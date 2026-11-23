@@ -6,7 +6,7 @@ Destin approved keeping the current implementation after reviewing initializatio
 
 ## Retention contract and footprint
 
-`app/lib/indicators/ema_state.py::CausalEMAState` requires positive keyword-only `history_size`. It stores two scalar calculation values and a `deque(maxlen=history_size)` of visible outputs. Initialization streams the input, retaining at most that many outputs throughout; it does not build an input-sized EMA output array. Returned copies use O(history_size) memory. `EMACState` owns three such states (fast, slow, and signal), each with the supplied capacity, plus an initialization flag.
+`app/lib/indicators/moving_averages/ema_state.py::CausalEMAState` requires positive keyword-only `history_size`. It stores two scalar calculation values and a `deque(maxlen=history_size)` of visible outputs. Initialization streams the input, retaining at most that many outputs throughout; it does not build an input-sized EMA output array. Returned copies use O(history_size) memory. `EMACState` owns three such states (fast, slow, and signal), each with the supplied capacity, plus an initialization flag.
 
 - `update(value)` consumes one observation and returns its EMA; `latest` reads the latest visible output (NaN before observations).
 - `advance(window)` seeds from the whole first input, then consumes only the last observation per call. It returns the retained suffix up to the input length. A shorter input does not reduce stored retention. A requested output longer than retained history cannot be supplied.
@@ -213,6 +213,100 @@ Status: in progress; committed at Destin’s request as `68b667c6`.
 BacktestStrategy now owns a sizing snapshot dictionary, populated only by callers opting into periodic sizing. At most one immutable SizingSnapshot is retained per configured asset: anchor/capture timestamps, elapsed period index, interval seconds and PositionSizing (reference units plus optional maximum units). Rollover replaces the prior entry; no per-candle sizing history is retained. Space is O(configured assets) per strategy instance, independent of run length. Continuous mode removes any entry and uses fresh sizing; fresh runs start empty. No mid-run persistence/recovery was added.
 
 Example, Kitchen Sink, MACD and Combo opt in through SIZING_REFRESH_INTERVAL_SECONDS (positive seconds; null continuous default). Kitchen Sink refreshes before its execution gate; all four retain current signal, post-mapping volatility adjustment and execution behavior. Capital and broker accounting remain live. Calculation failures do not replace retained state. Details and verification: [sizing.md](../../raw/research/concepts/sizing.md#elapsed-unit-snapshots--2026-11-12).
+
+## ATR v1 feature state — 2026-11-16
+
+Status: in progress (local, uncommitted; simplified by Destin).
+
+Destin replaced the custom streaming ATR implementation with existing ATR_P over candle_view. All strategy-specific code remains in backend/app/backtest/strategies/atr/atr_v1.py. feature_state[(asset_id, tf_sec)] directly stores AtrFeatures: ATR, current upper/lower levels, signed breakout and mode. There is no AtrState, private ATR memory map, seed bookkeeping or timestamp deduplication. Retention is one immutable feature snapshot per run asset/timeframe; caller candle arrays are not retained.
+
+ATR_P supplies the current ATR; prior snapshot levels determine strict close-based breakout (-1/0/+1). At Destin's request, mode also accepts -1/0/+1 and now starts neutral (0), changes on nonzero breakout, and holds between breakouts. Only already-processed callbacks contribute prior mode/levels; the first callback starts neutral even when its candle window contains warmup history. Drawing visibility does not gate feature calculation. No trading rules or orders.
+
+A focused offline check through actual strategy callbacks verifies mode sequence [0, -1, -1, 1, 1, 1] and empty orders. The old 19-test suite targets the removed streaming methods and needs adaptation; its earlier passing result does not validate the current simplified implementation. No exported TradingView parity fixture or saved run. Next: continue feature review and choose trading semantics with Destin.
+
+
+### Indicator package layout — 2026-11-17
+
+Reorganized all 20 indicator modules under `backend/app/lib/indicators/` into `moving_averages` (EMA/SMA, EMA state, EMAC, MA cross stats), `momentum` (RSI, ROC, slope), `volatility` (ATR padded/anomaly/targeting), `volume` (absorption, RVWAP, VFTI, volume anomalies), `price_extension` (price_extension, px_v2), and `signal_statistics` (sig_extension, sig_extension_decomposed, sig_stats). Import directly from the grouped module; old flat module paths are removed. Updated all repository consumers, internal imports, scratch/test code, and logger paths. Calculation bodies are unchanged. 247 selected offline tests pass; nine VFTI/Combo failures reproduce on HEAD. Existing example_v3 import of absent linregslope remains unrelated. Local/uncommitted; no live operations.
+
+
+### Custom ADX and padded RMA — 2026-11-17
+
+Status: in progress (local, uncommitted).
+
+Imported custom_adx under indicators/momentum with seven aligned fractional series: dx_signed, signed_strength, strength, agreement, cancellation_gap, positive and negative. Types live in data_models/dto/custom_adx.py. Zero first-bar DM and strict directional comparisons match the supplied Pine formulas. DM ratios use RMA_P on both sides; the common scale cancels. Agreement remains NaN for zero strength. No retained state or strategy/UI wiring.
+
+Destin requires no Python loops in imported indicator implementations and reuse of existing padded helpers. New moving_averages/rma_padded.py RMA_P delegates to EMA_P with period 2*span-1 (alpha=1/span), inheriting pad_ta. Custom ADX reuses SMA_P or RMA_P. Both emit immediately; early results intentionally differ from Pine full-window SMA / SMA-seeded RMA. SMA_P now calls pad_ta instead of duplicating padding. RMA_P is dense-series only; internal NaNs propagate. ADX converts missing price differences to zero, as in the supplied nz expressions, and rejects infinity.
+
+83 focused offline tests pass, including independent recurrence/formula references, prefix causality, missing/flat/trending/tied movement, invalid inputs, RMA long-series stability and existing SMA tests. Scoped new-file lint and whitespace checks pass. No TradingView export parity fixture or runtime operations.
+
+
+### DPO import and CSV parity — 2026-11-17
+
+Status: in progress (local, uncommitted). Added momentum/dpo.py DPO(source, length=21): current source minus SMA_P lagged by floor(length/2)+1, with no centered option, future access or Python loop. Initial lag slots remain NaN; padded SMA differs from full-window Pine until index length-1+lag (31 at length 21). Dense-series missing-data behavior follows SMA_P. 27 targeted tests pass.
+
+Validated on Destin’s BINANCE_BTCUSDT.P, 60_99489.csv: 817 hourly candles, all DPO outputs from index 31 match within 7.28e-11 price units. Earlier ADX comparison on the same export identifies DM14/SMA14: all seven series match within 7.22e-15 over final 300 bars; initial exported state predates CSV history. Scratch plot_imports.py retains the original 720 Hyperliquid BTC hourly candles, adds DPO, and renders signed ADX as columns. Comparison artifacts are local scratch cache, not durable metric records. No upgrade or live operations.
+
+
+### Range ratio import — 2026-11-17
+
+Status: in progress (local/uncommitted). volatility/range_ratio.py exposes current_range, range_baseline, range_ratio and independent int8 bar_direction; types/modes in dto/range_ratio.py. Defaults: True Range, lookback20, Candle Body. High-Low and Unsigned/Close-to-Close supported. Vectorized TR falls back to high-low for missing previous close. Baseline is RMA_P(range)[1], excluding current bar. First ratio and nonpositive baseline ratios remain NaN; padded seed differs from Pine early values. No Python loops, retained state or trading integration. 32 focused offline tests and scoped lint pass. CSV default-mode comparison on the prior Binance export matches within 2.74e-12 over final300 bars. Scratch chart reuses fixed BTC candles, with range ratio colored columns.
+
+
+### Prior-window range Z — 2026-11-17
+
+Status: in progress (local/uncommitted). Existing range_ratio now also returns range_mean, range_stdev and range_z. Mean reuses SMA_P; population standard deviation uses NumPy sliding windows on pad_ta input, with exact flat windows set to zero. Both statistics are lagged one bar. Z is NaN for zero std and retains above/below-range sign independent of direction. abc_score z_score_array was not reused because it uses current-inclusive EMA/EWMA estimators. No Python indicator loops. Full-window CSV Z parity from index20 is within 1.43e-14; 37 focused tests pass. Padding differs from Pine during initial history.
+
+
+### Range std wrapper revision — 2026-11-17
+
+Status: in progress (local/uncommitted). Supersedes NumPy sliding-window implementation above: volatility/stddev_padded.py STDDEV_P wraps TA-Lib STDDEV with pad_ta, output alignment, empty/all-nonfinite guards and span1 handling. range_ratio now reuses it for prior-window std. Dense missing-data behavior follows TA-Lib; no cleaning or changes to abc_score/ewma_vol_sig. 46 focused wrapper/range tests pass; CSV Z maximum error from index20 is 1.03e-12. Direction options are only Candle Body and Close-to-Close; both direction and range-mode helpers use explicit branches ending in assert_never.
+
+
+### Padded ROC and MOM — 2026-11-17
+
+Status: in progress (local/uncommitted). Added ROC_P alongside legacy ROC in momentum/roc.py and MOM_P in momentum/mom.py. Both default to length10, call TA-Lib with pad_ta(source, length+1), and remove length padding bars. No Python indicator loops or gap cleaning. Empty/all-nonfinite inputs preserve shape. ROC uses percent units and TA-Lib zero-denominator result0; MOM uses source units. Existing ROC/ROC_SIGNAL behavior remains unchanged. 23 targeted tests pass (formulas, prefix causality, raw TA-Lib tail, zero denominators, missing recovery, invalid inputs); scoped lint/whitespace pass. No live operations.
+
+
+### Reusable log returns and blend — 2026-11-17
+
+Status: in progress (local/uncommitted). Added utils/log_returns.py: log_return(source,length=1,offset=0) computes aligned log endpoints, rolling_sum requires a complete finite contiguous window and recovers after gaps, rolling_log_return sums lag-length returns (overlapping when length>1). Missing/nonpositive/nonfinite endpoints give NaN; logs are subtracted to avoid ratio overflow. No price filling or Python indicator loops.
+
+momentum/log_blend.py log_blend(source,length_1,length_2,fast_weight=.7,slow_weight=.3,trend_length=9) returns blend/trend/diff with types in dto/log_blend.py. Requires 1<=length_1<length_2; recent leg is log(x/x[length_1]), older leg log(x[length_1]/x[length_2]). Finite weights used literally, no normalization. EMA_P_CLEAN(preserve_nans=True) handles derived gaps; internal gaps forward-fill EMA state but remain NaN outputs. Leading outputs remain NaN. 11 targeted tests verify formulas, seeded EMA, prefix causality, history/missing recovery and validation; scoped lint/whitespace pass. No TradingView parity claim without specified leg/window settings.
+
+
+### Candle-body measurements — 2026-11-17
+
+Status: in progress (local/uncommitted). Added volatility/candle_body.py with shared local OHLC conversion/validation and two loop-free functions. directional_body_fill replaces the requested CSI name: unsigned0–10 body divided by open-to-directional-extreme; doji/zero denominator yields0. candle_body_stats(candles,length,smooth_length) returns body_size,candle_range,body_to_range,avg_body_size,relative_body_size,body_to_range_ema,relative_body_ema; typed output in dto/candle_body.py. Prior body baseline is shifted SMA_P, excluding current candle; zero range/nonpositive baseline yields NaN. EMA_P_CLEAN(preserve_nans=True) masks undefined values while forward-filling gaps for state. 11 focused formula/edge/prefix tests and scoped lint pass. No exported parity fixture, live operations or changes to legacy CSI DTO.
+
+Related addition: momentum/log_ret_ema.py composes log_return(source,length_1) and EMA_P_CLEAN with explicit ema_length, no Python loops. 22 combined log-family tests passed.
+
+
+### Candle-body API consolidated — 2026-11-17
+
+Status: in progress (local/uncommitted). Supersedes initial candle-body API: directional_body_fill is now a 0–1 field returned by candle_body_stats, with no separate public function. Private array helper avoids repeated OHLC conversion. Shared helpers/ohlc.py ohlc_values supplies matching-shape float arrays and infinity validation for both candle_body_stats and range_ratio. Existing neutral/zero-denominator behavior retained. 40 combined candle-body/range tests and scoped lint pass.
+
+
+### Indicator helper cleanup — 2026-11-17
+
+Status: in progress (local/uncommitted). Extracted helpers/candle_direction.py candle_direction(open,close,mode) with exhaustive explicit branches, neutral doji/missing comparisons and integer-preserving comparisons. Shared by range_ratio, candle_body fill and PRI v1/v2/v3; scalar PRI variants pass only final2 bars. DirectionMode/PriceArray live in dto/candle_direction.py; range_ratio DTO re-exports DirectionMode for existing callers. Reversal conditions and ATR targets/stops retained.
+
+Extracted utils/rolling_stats.py prior_window_stats(source,lookback), returning typed mean/stdev/z from dto/rolling_stats.py. Uses prior padded SMA/STDDEV, excludes current observation, NaN zero-std Z; replaces range_ratio private prior-statistics code. Shared OHLC conversion stays in helpers/ohlc.py. Range-mode selection and directional-body-fill formulas remain local because their current use is indicator-specific. No broad rewrite of older estimator families or repository changes made concurrently by Destin.
+
+219 targeted tests pass across imported indicators, padded helpers, shared utilities and PRI. Includes precise int64 comparison above2^53, causality, and unchanged PRI bullish/bearish levels, targets and stops. Scoped lint/whitespace pass. No commit/push/runtime operations.
+
+
+### ATR anomaly retired — 2026-11-17
+
+Status: in progress (local/uncommitted). Destin approved replacing atr_anomaly with range_ratio after reviewing current-inclusive vs preceding ATR and distinct Z estimators. Removed volatility/atr_anomaly.py; Indicator Lab and PX Signal Bands consume range_ratio[range_ratio] and emit range_ratio signal labels. Defaults remain14 in these callers, using True Range. Params renamed range_ratio_lookback, ge2; validation alias accepts old atr_anomaly_lookback saved settings and serialization uses new name. No migration/database changes or runtime operations.
+
+36 focused tests pass with three unrelated PX tests deselected: stale absorption mock and two MIN_ADJUSTMENT_VALUE_PCT references. Initial wider run exposed those failures; these paths were not changed. Coverage includes both parameter classes preserving legacy lookback37 and PX actual prior-baseline spike ratio10. Scoped lint/whitespace pass. Old saved runs retain historical outputs; reruns use the new formula.
+
+### Custom ADX backtest strategy — 2026-11-17
+
+Cloned the lightweight example into `backend/app/backtest/strategies/custom_adx.py`, registered as `custom_adx`. Uses signed_strength (S) as raw signal through the existing processor; returns only the processed custom_adx_processed signal (no indicators or raw signal), per Destin’s follow-up. Six targeted offline checks and scoped lint pass for this output contract. Parameters: length=14, smooth_length=14, smooth_method=SMA (or RMA). Example sizing/execution retained. Stateless indicator recomputes on the bounded engine window; seeds follow the first supplied bar, not full-history parity. No live runtime wiring. Six new feature/execution checks pass across SMA/RMA and rising/falling/flat inputs; discovery/default-schema checks pass.
+
+Custom ADX follow-up — 2026-11-17: strategy now computes S_A = signed_strength * agreement as processor input, superseding signed_strength alone. Output remains custom_adx_processed only, signal_version=2; no indicators/raw emission. Undefined zero-strength agreement is retained until shared signal processing. Eight offline strategy checks (including mixed-direction SMA/RMA) and scoped lint pass.
 
 
 ### Candle inventory ADX features and sizing — 2026-11-19

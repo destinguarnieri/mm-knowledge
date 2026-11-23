@@ -6,7 +6,7 @@ Browser view: [Open Research Home](research_index.html). Markdown is the source;
 
 ## Current focus
 
-**[[research/trading/opposite-bid-trend|Opposite Bid Trend]] — current working name, 2026-11-19.**
+**[[research/trading/opposite_bid_trend/opposite-bid-trend|Opposite Bid Trend]] — current working name, 2026-11-19.**
 
 “Get me on the right side of the trend and let execution handle the rest.” The signal remains TBD, likely a Combo of trend signals; custom ADX is the provisional input. Main dials are execution and required profit BPS after costs. Fixed-fraction accumulation, full distribution, and fixed BPS are starting points for adaptive execution and risk-dependent reward requirements.
 

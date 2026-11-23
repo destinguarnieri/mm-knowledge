@@ -1,0 +1,46 @@
+{
+  "run_id": "d7cfc05b-32d8-44d8-93b4-08a7ac9e0723",
+  "asset_id": "b3d5af99-44e7-4fb6-b140-a3e30ceaa78e",
+  "symbol": "HYPE",
+  "interval": "1h",
+  "window_start_ms": 1794628800000,
+  "window_end_exclusive_ms": 1795132800000,
+  "bars": 140,
+  "fills": 54,
+  "missing_points": {
+    "cumPnl": 0,
+    "pnlHist": 0,
+    "upnl": 0,
+    "positionQuantity": 0,
+    "signal:custom_adx_processed": 0,
+    "signal:historical_volatility": 0
+  },
+  "cumulative_pnl_verified_against_full_history": true,
+  "pnl_clipping": false,
+  "signal_components": "value only; UI-local study/zone settings not applied",
+  "config": {
+    "width": 1600,
+    "last_n": 140,
+    "price_height": 320,
+    "panel_height": 110,
+    "candle_mode": "neutral",
+    "fill_dots": true,
+    "average_entry_price": true,
+    "panels": [
+      "cumPnl",
+      "pnlHist",
+      "upnl",
+      "positionQuantity",
+      "signal:custom_adx_processed",
+      "signal:historical_volatility"
+    ]
+  },
+  "renderer": "resvg 0.50.0",
+  "strategy_name": "opposite_bid_trend",
+  "strategy_id": "cd21a748-4c99-49ed-8498-9a51cfb0b0aa",
+  "verification": "get_saved_run.raw.request_snapshot",
+  "image_sha256": "3bf56c531bd4cad7c65edc47bd7a9ae6ce07bdad491c6b62e2b673b76ff842ac",
+  "image_bytes": 87086,
+  "format": "image/png",
+  "compression": "lossless; original was already smaller than zlib level-9 recompression"
+}

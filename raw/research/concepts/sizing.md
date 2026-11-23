@@ -263,6 +263,15 @@ No full market-making model, stochastic-control solution, or rejection of target
 
 ## 6. Open design questions
 
+### Candidate: time or threshold refresh, whichever comes first — 2026-11-12
+
+Status: in progress; future design consideration, not implemented.
+
+Destin noted that time-based base resizing as the exclusive refresh method may not be optimal. Consider combining the scheduled interval with a buffer/threshold trigger: refresh the retained sizing base when either the time boundary arrives or the threshold is crossed, whichever happens first. Keep units stable until one of those explicit triggers fires.
+
+The trigger metric, buffer/threshold definition, and whether an early refresh resets the time schedule remain open. This would govern refreshing the sizing base; it is distinct from the existing rebalance buffer that controls trades toward a target. The current implementation remains time-based, and this note does not select or authorize a new implementation.
+
+
 - What exactly is assigned: capital, normal quantity, risk budget, maximum exposure, or a combination?
 - What remains stable between reviews, and which measurements remain dynamic?
 - When and by whom is the mandate revised? Which P&L source enters that review?
@@ -333,3 +342,10 @@ All six completed, with full artifacts available, identical processed signals, n
 There were 81 unchanged-signal comparisons away from refresh boundaries (68 long, 13 short). All three snapshot runs placed no orders on these bars, while the paired continuous runs continued resizing. On the constant -20 signal from 2022-06-18 through 2022-07-01, the equity V1 snapshot entered the period at -1.65765 BTC and held it throughout despite price/equity movement; continuous V1 equity sizing traded every day. Changing signals still generated within-period trades as intended. No evidence of the original account/price-driven resizing remained within these snapshot periods.
 
 Scope: runtime verification covers Example, V1 equity/booked and V2 equity, with post-mapping adjustment disabled. Other callers, V2 booked, live adjustment and execution-gate behavior retain the earlier offline regression coverage. No live-system operations or code changes were needed. Standard metrics remain in saved-run tools/UI.
+
+
+### Sizing caller cleanup — 2026-11-14
+
+At Destin’s request, removed the duplicated `_sizing_for_decision` wrapper from Example, Kitchen Sink, MACD and Combo. Callers pass candle context, price, volatility, interval and their bound `_calculate_sizing` method directly to the shared backtest `resolve_position_sizing`. The resolver extracts asset/timestamp and defers calculation until refresh; no per-strategy lambda is needed. Maximum notional, signal clip limit and signal limit multiple are named locals before `calculate_sizing`. Kitchen Sink retains its pre-execution-gate refresh and full/banded bounds. Timing, formulas and bounded snapshot state are unchanged.
+
+Verification: 75 focused snapshot/sizing-mode tests and scoped mypy/Ruff passed. The wider selection passed 353 checks and failed 46 because Destin’s concurrent removal of legacy trade-config fields leaves older strategy reads and two old config fixtures unresolved. That edit was preserved; this cleanup does not propagate the new pipeline to other strategies. Changes uncommitted; no runtime operations.

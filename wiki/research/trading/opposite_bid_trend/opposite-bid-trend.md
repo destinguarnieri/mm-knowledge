@@ -4,7 +4,15 @@ Status: in progress
 
 Working name: Opposite Bid Trend (formerly Candle Inventory)
 
-Updated: 2026-11-23
+Updated: 2026-11-24
+
+## Next session
+
+Start with **how much to add or take off on a qualifying candle**. Commit `7258a969` in mm_v04 implements the selected direction-only approach. Set `params.signal_feature = "emac_10_200"` on `opposite_bid_trend`. Example supplies the direction and Opposite Bid owns the position. All 2,308 processed scores matched the saved BTC daily Example reference, and 37 focused offline checks passed at closeout. A historical Opposite Bid performance result for this EMA signal is still pending.
+
+Pick a target risk size between flat and the exposure cap. On a qualifying candle, compare current risk size with that target to decide how quickly to accumulate or distribute. Additions currently use a fraction of the cap and distributions use a fraction of the inventory held. Preserve those units when sketching the curves. At flat there is nothing to distribute, at the cap there is no room to add, and a zero or opposing signal still calls for a full exit. The target level and the curve shapes are open.
+
+Destin originally used internal urgency to decide when to cross the spread. Here the same intuition can pace order size. Candle streaks could help estimate how many qualifying candles remain, while the market-making model could price the value of one more unit. Both are ideas for later. For the first replay, the current fixed fractions give a reference for seeing when urgency changes inventory and how much open profit is subsequently booked or given back.
 
 ## Core idea
 
@@ -14,15 +22,67 @@ The trend signal chooses direction. Execution manages when and how much inventor
 
 ## Main dials
 
-- **Trend signal:** still TBD. Custom ADX (`signed_strength × agreement`, then shared processing) is the working strategy input. The example instead uses `params.signal` directly, default +1, to isolate execution. The likely direction is a Combo of complementary trend signals; components, weights, and combination rules remain open.
+- **Trend signal.** Use `params.signal_feature` to run one feature through the inventory policy. Custom ADX (`signed_strength × agreement`, then shared processing) is the default. The static example uses `params.signal` directly to isolate execution. The eventual blend, including its components and weights, remains open.
 - **Execution:** entry timing, accumulation size, distribution size, and exposure control. A constant accumulation fraction (default 10% of the cap) and distribution fraction (default 100% of current inventory in the ADX variant) are starting points. The static example retains full profit exits. The aim is to make accumulation and distribution adaptive.
 - **Required profit after costs:** the reward demanded before distributing inventory. The additional buffer currently defaults to 10 BPS. It will likely become adaptive to asset volatility and risk: how much reward is needed to compensate for the risk taken? The risk measure, horizon, and mapping to required BPS remain undecided.
+
+## Active research — 2026-11-24
+
+The working focus is a prospective trend signal, accumulation and distribution fractions, and position sizing. The static example remains useful for isolating execution. A blend of trend features is the likely direction. The components, weights, and neutral band are open research choices.
+
+Use saved ADX run `d7cfc05b-32d8-44d8-93b4-08a7ac9e0723` as a reference. It scored 1,200 hourly Binance HYPEUSDT candles from 2026-10-01 to 2026-11-20 exclusive (UTC) and was profitable after simulated costs. The saved request used ADX length 50 and SMA smoothing 50, a 0.20 signal clip buffer, 10% of the cap per qualifying add, 50% of remaining inventory per profit-take, and equity-compounding sizing with a 40% Centered volatility target. Fee and slippage were 5 bps each. The saved signal repeatedly entered the neutral band, where the strategy targets flat. Future signal comparisons should measure neutral-triggered exits and turnover alongside net returns and drawdown.
+
+The combined signal is the unit of interest. Destin reported weak results from several solo features and chose to skip the solo-feature test sequence. The selector remains available for diagnostics. Its current choices are `adx`, `emac_10_200`, `vfti`, `slope`, `rsi`, and `px`. Combo v1 and Opposite Bid Trend share the raw calculations and defaults. Destin listed `emac_10_200`, `px_ema_200`, `px_ema_10_smooth_3`, `slope_ema_200`, `multi_speed_emac`, `log_ret_blend_3_9`, `ROC`, `MACD_12_26_9`, `MACD_10_200_50`, and `DPO` as future feature candidates.
+
+Destin chose the existing BTC daily Example forecast as the starting point for execution work. The longer-term trend blend is deferred. Earlier saved BTC daily candidates from [[engineering/bounded-ema-history]] include Example equity `0aaac038-6670-4873-b77d-d8cd131776cd` (reproduced original `481bce23-80b5-4a80-a954-438521bbcaea`) and Carver multi-speed EWMAC `fb9d9729-5f4e-4f82-9d9e-7315fc254b9a`. The first scored UTC dates were 2020-07-11 and 2020-07-14 respectively, both ending exclusive 2026-11-04.
+
+### Example execution baseline — 2026-11-24
+
+Saved BTCUSDT daily Example run `51d606b5-a69e-4d76-be8b-fe7b1aa204ef` uses close EMA 10/200, signed-magnitude min-max over 252 bars, scalar 1, direct sizing, and a 100% allocation at 1× leverage. It scored 2,308 bars from 2020-07-11 through 2026-11-05 exclusive with $100,000 initial capital, equity compounding, daily sizing refresh, zero deadband, volatility targeting off, and 5 bps each for fees and slippage. The processed forecast maps directly to a signed fraction of the daily base quantity. This is the reference for comparing Opposite Bid execution.
+
+Destin flagged a possible absolute-scale sizing issue. In nearby absolute run `e34875c9-5263-4838-be4b-063dd8dc256e`, the saved forecast exceeded the 0.5 scalar in magnitude on 1,051 of 2,308 bars. With volatility targeting off, the allocation cap can map distinct forecasts to the same maximum units. This explains saturation under that configuration. A specific erroneous fill remains unverified.
+
+### Volatility-targeted Example comparison
+
+Destin reports that enabling volatility targeting resolved the absolute-scaler behavior he observed. Further sizing work is deferred. BTC daily Example run `95181dd0-3944-433d-9559-00f42d114edc` used absolute scalar 0.5, a 50% annual risk target with Centered 35/200 volatility blended 70/30, a 10% rebalance buffer, and daily sizing refresh. It used the same scored dates, capital and costs as the min-max baseline. Destin calibrated the risk target against the original Example drawdown on this history. The new run delivered higher net return and Sharpe with a shallower close-to-close drawdown than the original absolute Example. Its OHLC drawdown bound approached 59%. The min-max run above remains the recorded execution baseline.
+
+### Direction-only execution — selected
+
+Destin selected option A, reusing the sign of the daily EMA 10/200 forecast, with Opposite Bid deciding when to accumulate and distribute. The alternative would carry forward Example’s forecast-to-position sizing. For intuition, run `95181dd0-3944-433d-9559-00f42d114edc` supplies a common forecast and an execution reference. Positive forecasts preceded a stronger average next-day BTC return than negative forecasts over this window. On December 18, 2024 the forecast stayed long and the account booked profit while marked equity fell. Read time in profit among active closes, the open P&L series, and candle-to-candle equity changes together. A capture-ratio denominator and the sizing rule for a direction-only replay are still open.
+
+The working strategy accepts `params.signal_feature = "emac_10_200"`. On the saved candle history, the processed scores matched all 2,308 BTC daily scores from Example run `95181dd0-3944-433d-9559-00f42d114edc` with its signal configuration. The December snapshot displays Example fills. The Opposite Bid feature routes the sign through the existing candle rules and fixed fractions.
+
+Destin proposed consecutive candle duration as an input to accumulation and distribution, bounded urgency based on distance to target inventory, and a possible inventory skew from market-making quotes. The target, response to streak length, and specific quoting function remain open. One candidate is the utilization-based skew in [HFT Stack](../../../../raw/research/concepts/hft-stack.md). For a market-order strategy, its potential use is to influence trade size or eligibility. No quote-placement rule has been selected.
+
+### Internal urgency
+
+![Internal urgency as current risk size moves from flat to the cap](images/internal-urgency-2026-11-24.png)
+
+Destin’s sketch places the target risk size inside the range from flat to the cap. Below target, accumulation has higher urgency. Near target both curves are low and close together. Above target, distribution urgency rises steeply as the position approaches the cap. The drawing leaves the target level and curve parameters open. Destin confirmed Guéant, Lehalle and Fernandez-Tapia’s [inventory-risk paper](https://arxiv.org/abs/1105.3115) as a related source for valuing another unit of inventory.
+
+### Latest ADX references
+
+- HYPE run `f0cae01c-2174-4c06-b0e1-5bef1b287ba5`.
+- ETH run `83935537-3c52-4739-930a-ec000fb367f6`.
+- BTC run `32ad0ecf-7d82-4624-b984-5426f1de9817`.
+
+All three scored 1,200 hourly Binance candles from 2026-10-01 to 2026-11-20 exclusive (UTC). They used equity compounding with weekly sizing snapshots (`604800` seconds), disabled volatility targeting, 10% adds, full distributions, a 10 bps profit buffer, and 5 bps each for fees and slippage. ADX used length 50 and RMA smoothing of 14 for HYPE and 50 for BTC and ETH. All three were profitable after simulated costs. HYPE led on net return and Sharpe (3.00), ETH had the deepest close-to-close drawdown (8.86%), and BTC had the lowest net return. The differing HYPE ADX settings and the other changes relative to the earlier HYPE reference prevent isolating the effect of the weekly sizing refresh.
+
+### BTC and ETH short references
+
+- BTC run `0fe377cd-7ed1-4ab5-ab77-0d76cb4313ba`.
+- ETH run `6bdcbe48-c8e8-4b49-a44a-c9a4b234f78c`.
+
+Both saved runs scored 480 hourly Binance candles from 2026-10-31 to 2026-11-20 exclusive (UTC) and were profitable after simulated costs. Their ADX signals were negative or zero throughout. They used ADX length 100 and RMA smoothing 100, no signal scaling, a 0.10 clip buffer, a 20 bps profit buffer, 20% accumulation, and compounding equity with a 40% Centered volatility target. Both paid 5 bps each in fees and modeled slippage. The saved requests omit the distribution fraction. Both recorded annualized Sharpes above 10 with close-to-close drawdowns around 1.5–1.6% over the same 20-day short/flat window. Read those values in the context of the shared window and regime.
 
 ## Starting policy and assumptions
 
 The intended policy accumulates on candles opposite the signal, distributes on aligned candles when the profit floor is exceeded, and flattens on a zero or opposing signal even at a loss. A zero signal means zero target exposure, regardless of candle direction or profit threshold; already-flat inventory stays flat. Dojis with an aligned directional signal can take available profit; otherwise they hold. New-side accumulation follows on a later qualifying candle.
 
 ### Sizing
+
+Choose the sizing refresh cadence relative to the decision timeframe and record it alongside results. A snapshot holds base and maximum units until the first candle-close decision in the next elapsed interval. `null` recalculates on every close. Daily candles allow one sizing refresh per day at most. A strategy that refreshes sizing more often needs a shorter decision interval, which can consume a daily trend signal.
+
 Options:
 1) Let fractions use % of Capital.
 2) Use Sig-to-Position Sizing for target, then Fraction of Target.

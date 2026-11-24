@@ -4,6 +4,12 @@ Status: in progress
 
 Date: 2026-10-30
 
+## Opposite Bid Trend — recorded 2026-11-24
+
+- Code checkpoint `7258a969` adds the direction-only Example EMA 10/200 selector. It reproduced all 2,308 processed scores from the volatility-targeted BTC daily Example. The closeout ran 37 focused offline checks successfully. Historical EMA Opposite Bid execution performance is still unmeasured.
+- Pickup is to choose the target risk size within the cap and sketch how distance from it changes the add and distribution fractions on eligible candles. The strategy note holds the urgency drawing, saved Example comparisons, and capture measures.
+- Context [[research/trading/opposite_bid_trend/opposite-bid-trend]].
+
 ## Hyperliquid fresh-fetch boundary repair — 2026-11-20
 
 Diagnosed and reproduced an extra end-boundary candle causing loader-complete / engine-reject inconsistency. At Destin's approval, added per-span half-open filtering before backtest caching/merging. 61 focused offline tests and scoped checks pass; committed at Destin's request as `316ac7ed`. Unrelated strategy/position DTO edits remain untouched; nothing pushed. Prior running-manager checks were cache-only. Existing potentially unfinished cached candles remain a separate follow-up; no database or runtime operations. See [[engineering/backtest-date-windows]].

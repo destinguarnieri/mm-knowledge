@@ -6,6 +6,22 @@
 
 
 
+## 2026-11-24 — Direction-only EMA execution
+
+Opposite Bid Trend can use the processed sign of Example’s close EMA 10/200. Committed the selector as `7258a969`. All 2,308 saved scores on the BTC daily volatility-targeted reference matched in local replay. Recorded Destin’s internal urgency sketch and the open target and fraction choices. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
+
+## 2026-11-24 — Opposite Bid Trend blend and saved ADX references
+
+Destin prioritized the combined signal and dropped the solo-feature trial sequence. Recorded three hourly ADX runs using weekly sizing snapshots, the sizing cadence guidance, and both routes under consideration. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
+
+## 2026-11-24 — Individual Opposite Bid Trend features
+
+Added a single-feature selector for ADX, VFTI, RVWAP slope, centered RSI, and price extension. Combo v1 and Opposite Bid Trend share the component calculations. Verified the selector through synthetic engine replay and recorded two saved hourly short references. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
+
+## 2026-11-24 — Opposite Bid Trend research focus
+
+Destin selected trend signal, inventory fractions, and position sizing as the active research focus. Saved HYPE ADX run `d7cfc05b-32d8-44d8-93b4-08a7ac9e0723` anchors the comparison. The static example remains an execution control. See [[research/trading/opposite_bid_trend/opposite-bid-trend]].
+
 ## 2026-10-18 — Core rewrite removed by Destin
 
 Destin stopped the current rewrite process and reported removing all core code. Updated [[projects/backtest-engine-v2-plan]] and the checkpoint to mark the core attempt and its integration next steps as superseded historical work. No replacement task selected; do not restore or resume without new direction. Documentation only; no code changes, tests, commits or Linear updates.

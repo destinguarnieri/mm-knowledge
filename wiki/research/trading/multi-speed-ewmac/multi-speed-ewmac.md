@@ -71,7 +71,7 @@ Registered strategy: `multi_speed_ewmac`.
 - Eligible rules must be one of the documented cost-filtered suffix sets; each set uses Carver's supplied forecast diversification multiplier (FDM).
 - Each EMA gap is divided by Carver price-unit volatility, multiplied by its fixed source forecast scalar, and capped to `[-20, 20]` before equal-weight averaging.
 - The equal-weight forecast is multiplied by the suffix set's FDM and capped again to `[-20, 20]`.
-- Position sizing targets annualized risk continuously: forecast `+10/-10` is one normal-risk long/short position and `+20/-20` is twice normal risk before the external per-asset cap.
+- Position sizing targets annualized risk continuously: with default `SIG_SCALAR=10`, forecast `+10/-10` is one normal-risk long/short position and `+20/-20` reaches the maximum of twice normal risk, before buffering.
 - The no-trade buffer is symmetric around the optimal target and has width `10%` of the current normal-risk position. When outside the band, the strategy trades only to the nearest boundary.
 - Annualization is derived from bar duration by default. An explicit factor of `16` reproduces the book's daily convention.
 - The ten-year volatility component uses only causal history available at each bar; fewer than 2,560 bars does not cause failure.
@@ -85,7 +85,7 @@ Registered strategy: `multi_speed_ewmac`.
 - volatility span approximately `35` bars
 - trailing annual-volatility window `2,560` bars, using finite causal history when shorter
 - compounding sizing uses current marked equity; static sizing uses initial equity
-- the existing per-asset maximum is an external safety cap, not part of Carver's forecast construction
+- the maximum is twice the normal-risk size; the independent per-asset allocation sizing cap was removed at Destin's request on 2026-11-24 (his crypto-leverage adaptation). Earlier saved runs retain the old behavior. Implementation and synthetic verification: [[engineering/bounded-ema-history#Single sizing function, including Carver — 2026-11-24]].
 
 ## Current Decision
 

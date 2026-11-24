@@ -1,127 +1,72 @@
 # mm-knowledge
 
-This is the version-controlled knowledge base for Money Machine Labs. Treat it as the durable agent-readable project memory: an Obsidian-compatible linked markdown wiki, indexed by QMD for search.
+Money Machine Labs' durable project knowledge: an Obsidian-compatible markdown wiki indexed by QMD. Use relevant pages for continuity; verify implementation claims against the current code.
 
-## Fresh-start boundary — 2026-10-06
+## Retrieve only what the task needs
 
-Destin explicitly reset the research agenda. No pre-reset program, hypothesis, experiment, review request, or ticket carries forward as an active commitment. Start with `wiki/index.md`, then the current user request and compact checkpoint. This boundary supersedes historical agenda/process instructions elsewhere in this repo.
+Start from Destin's current request. `wiki/index.md` is an optional directory, not required reading. Do not load the index, goals, checkpoint, and changelog as a startup bundle.
 
-- Do not auto-resume, prioritize, reconcile, or repopulate work from old “active,” “ready,” “in progress,” or “next action” labels, including Linear and session logs.
-- Retrieve older research only when it serves the current request. Historical processes and readings are not mandatory prerequisites for starting new work.
-- Retained evidence is reference, not a default premise or proof of current implementation. Verify relevant facts when using it; preserve its original limitations.
-- Only Destin’s explicit selection activates a research focus. Record it in the research home and current checkpoint without reviving unrelated obligations.
-- The reset does not relax live/capital authorization, correctness, or evidence-integrity constraints. Existing external tickets remain unchanged until explicitly addressed.
+- Planning or prioritization: read `wiki/goals.md` for desired outcomes and completion criteria.
+- Resuming work: read the relevant section of `wiki/sessions/current-checkpoint.md` and its linked project page.
+- Architecture, behavior, or procedures: search QMD for the specific question, then read the matching source pages. Follow links only when needed to resolve the question.
+- Past decisions or verification: search `wiki/sessions/session-change-log.md`; do not read the full log by default.
+- Use filesystem search/read tools when the path is known or QMD results are stale, sparse, or unavailable. Search snippets alone are not enough when precision matters.
 
-## Operating Model
+## Goals, state, and history
 
-- The **wiki graph** is the source of truth for synthesized durable knowledge.
-- **QMD** is the retrieval/index layer over the markdown graph.
-- **Linear** is the execution/backlog system, not the long-term context store.
-- Built-in agent memory is only for compact global facts/preferences. Do not rely on it for project continuity.
+- `wiki/goals.md` records forward-looking outcomes selected by Destin, their priority, and what counts as done. Keep it short; link to project detail and Linear rather than copying a backlog.
+- `wiki/sessions/current-checkpoint.md` records where relevant work stands, verification, blockers, and the next pickup action. Replace superseded state for the same topic instead of stacking progress reports.
+- `wiki/sessions/session-change-log.md` records material changes and decisions over time.
+- Domain pages hold reusable knowledge; `wiki/projects/` holds bounded project plans. Linear remains the execution/backlog system.
+- A goal is direction, not authorization for live operations, implementation, or a new task. Do not infer priorities from old checkpoint, ticket, or project labels. Record proposed goals as proposals until Destin selects them.
+- Do not rely on built-in agent memory or chat history for project continuity.
 
-Money Machine's operating objective is positive net realized live P&L after costs over the active founder-set proof period. Preserve durable context only when it helps close that revenue loop; documentation volume is not progress.
+Money Machine's operating objective is positive net realized live P&L after costs over the active founder-set proof period. Preserve context when it helps that objective; documentation volume is not progress.
 
-## Required Agent Flow
+## Historical boundary and safety
 
-Before answering project/context questions or doing Money Machine work:
+Destin reset the research agenda on **2026-10-06**. No pre-reset program, hypothesis, experiment, review request, or ticket carries forward as an active commitment. This boundary supersedes historical agenda/process instructions elsewhere in this repo.
 
-1. Start with `wiki/index.md` when it exists; use it as the routing map.
-2. Use QMD for search when available:
-   - `/Users/destinguarnieri/.bun/bin/qmd query "<question>"`
-   - `/Users/destinguarnieri/.bun/bin/qmd search "<keyword>"`
-   - `/Users/destinguarnieri/.bun/bin/qmd get "<path-or-docid>"`
-3. If QMD is broken, sparse, or missing embeddings, use filesystem search/read tools directly.
-4. Follow relevant `[[wikilinks]]` and backlinks instead of stopping at the first matching page.
-5. Retrieve source pages before summarizing; do not answer from search snippets alone when precision matters.
+- Do not auto-resume or repopulate work from old active/ready/in-progress/next-action labels, including Linear and session logs.
+- Retrieve older evidence only when relevant; preserve its limitations and verify current implementation claims. Historical reading and reconciliation are not prerequisites for new work.
+- Only Destin's explicit selection activates a research focus. Record the selected outcome in goals and relevant research/project context, with pickup state in the checkpoint, without reviving unrelated obligations.
+- Existing external tickets remain unchanged until explicitly addressed. Live/capital authorization, correctness, and evidence-integrity constraints remain in force; follow `mm_v04/AGENTS.md` for code and runtime work.
 
-After work that materially changes durable state:
+## Maintain only material changes
 
-1. Update an existing relevant page when possible; create a page only for reusable cross-session knowledge.
-2. Update `wiki/sessions/current-checkpoint.md` only when the objective, state, decision, blocker, verification, or next action changed.
-3. Append to `wiki/sessions/session-change-log.md` only for durable ticketing, implementation, verification, or product/engineering decisions.
-4. Update `wiki/index.md` only when routing or page inventory changed.
-5. Run `/Users/destinguarnieri/.bun/bin/qmd update` after KB edits, then `/Users/destinguarnieri/.bun/bin/qmd embed`. Treat these as one step: `update` re-indexes text, `embed` vectorizes it, and a document that is indexed but not embedded is invisible to `qmd query` even though `qmd search` can still find it. Skip `embed` only when it reports nothing pending.
-6. Commit or push only when Destin explicitly authorized it for the current execution session.
+1. Update the relevant existing page; create a page only for reusable cross-session knowledge.
+2. Update goals only when Destin selects, changes, completes, or drops an outcome. Update checkpoint state only for affected work. Do not duplicate detailed evidence across them. Keep checkpoint and changelog each under roughly 100 lines; archive older detail with a concise routing summary, preserving run IDs, decisions, and verification limits. Archive history stays outside QMD.
+3. Add a brief changelog entry for durable implementation, verification, ticketing, or product/engineering decisions. Link to detail.
+4. Change the index only when a stable navigation destination changes. Keep project status, current focus, and individual implementation references out of it.
+5. Check changed links. Run `/Users/destinguarnieri/.bun/bin/qmd update`, then `/Users/destinguarnieri/.bun/bin/qmd embed` to refresh text and semantic retrieval. Report any incomplete refresh.
+6. Commit or push only when Destin explicitly authorizes it for the current execution session.
 
-If no durable state changed, close the loop without creating a page, changelog entry, index edit, commit, or push.
+If no durable state changed, do not create a page, changelog entry, or other continuity edit.
 
-### Research continuity (metrics vs notes)
+## Page conventions
 
-Persisted backtest `run_id` values are the metric source of truth. Destin's backtest UI is the default place for standard tables and metrics.
+- Canonical Markdown belongs in `wiki/`; sources in `raw/`; historical/deprecated material in `archive/`. Do not create duplicate top-level topic trees.
+- Pages covering in-progress work carry `Status: draft | in progress | confirmed | superseded` near the top. Missing status means draft. `confirmed` means Destin explicitly confirmed the specific claim as settled; merely transcribing a statement does not confirm it.
+- Use descriptive filenames and Obsidian-style wikilinks for important relationships. Keep pages concise; headings name topics, status lines carry confidence.
+- `wiki/engineering/` holds stable architecture, contracts, inventories, runbooks, and invariants. Put active execution plans in `wiki/projects/`; after delivery, promote durable conclusions to domain pages or decision records.
+- Decision records capture what changed, why, date, and supersession. Checkpoints capture current state and links, not a second chronology.
+- Vendor specifications belong in `wiki/vendors/`, not `vendor/` (QMD excludes directories named `vendor`).
 
-- Research wiki pages may record run IDs, experiment intent, fixed assumptions, interpretation, and decisions.
-- Do not paste standard metric tables, per-asset result grids, or full MCP payloads into wiki, checkpoint, changelog, or canvas.
-- Checkpoint and changelog are agent pickup aids. Keep them thin; do not use them as a metrics archive.
-- Canvas is optional for a unique visual explanation Destin cannot get from the UI. It is not the default for ordinary batch/result tables.
-- When numbers are needed again, re-fetch via Research MCP saved-run tools or open the UI.
+## Research continuity
 
-## Structure
+Follow `mm_v04/.cursor/rules/research-continuity.mdc` when running Research MCP or writing research notes. Persisted backtest `run_id` values are the metric source of truth; the backtest UI is the default for standard tables and metrics.
 
-Canonical structure:
+- Record run IDs, intent, fixed assumptions, interpretation, and decisions in research notes.
+- Do not paste standard metric tables, per-asset grids, or full MCP payloads into wiki, checkpoint, changelog, or canvas. Re-fetch numbers through saved-run tools or the UI.
+- Use canvas only when a unique visual explanation helps; it is optional.
 
-```text
-AGENTS.md             # operating contract for agents
-README.md             # human-readable repo overview
-raw/                  # immutable or lightly-normalized source dumps
-archive/              # deprecated or historical material kept out of canonical routing
-scripts/              # maintenance scripts such as link checkers
-wiki/                 # synthesized Obsidian-compatible markdown graph
-  index.md            # routing map and page inventory
-  company/            # company context and narrative
-  ops/                # operating procedures and process docs
-  engineering/        # stable architecture, contracts, implementation context, invariants
-  quant/              # quantitative research notes
-  trading/            # strategy/research/trading concepts
-  concepts/           # cross-cutting concepts and domain language
-  decisions/          # decision records and supersession chains
-  projects/           # active initiatives, project-level context, and bounded execution plans
-  sessions/           # compact session summaries/checkpoints promoted from chat
-  vendors/            # vendor specifications and documentation
-                      # (named `vendors/` not `vendor/` — QMD hard-excludes dirs named `vendor`)
-```
+## QMD
 
-Canonical markdown belongs under `wiki/`. Do not keep duplicate top-level `company/`, `ops/`, `engineering/`, `research/`, or `trading/` markdown trees. If old/source material should be retained but not treated as canonical, move it under `archive/` or `raw/` with a note.
+Use the QMD tools when available, or `/Users/destinguarnieri/.bun/bin/qmd`:
 
-## Wiki Rules
+- `search "<keywords>" -c mm-knowledge` for lexical lookup; `query "<question>" -c mm-knowledge` for semantic retrieval; `get "<path-or-docid>"` to read a source.
+- `mm-knowledge` indexes `wiki/`; `mm-raw` indexes `raw/`. Raw hits are third-party or draft material, not confirmed Money Machine practice. Synthesize and explicitly qualify them in the wiki before treating them as durable project knowledge.
+- `archive/` stays unindexed. Do not create collections nested within another collection's path; overlapping collections duplicate results.
+- For weak results, inspect `status` and pending embeddings, refresh with `update` and `embed` as needed, then check files directly before concluding knowledge is absent.
 
-- Any page covering in-progress work carries an explicit status line near the top: `Status: draft | in progress | confirmed | superseded`. A page with no status line is draft.
-- `confirmed` means Destin confirmed the specific claim and considers it settled. Recording something Destin said once is `in progress` — a faithful transcript of a work-in-progress statement is still work in progress.
-- Never imply maturity with a heading. Headings name the topic; the status line carries the confidence.
-- Use Obsidian-style `[[wikilinks]]` for important relationships.
-- Prefer stable, descriptive filenames.
-- Keep pages concise but useful; split only when a page becomes hard to route or maintain.
-- Raw sources belong in `raw/`; synthesized agent-readable knowledge belongs in `wiki/`.
-- Keep `wiki/engineering/` for stable engineering knowledge: architecture, contracts, inventories, runbooks, and invariants. Do not create ticket or implementation-plan files there.
-- Put bounded, active project or ticket execution plans in `wiki/projects/`; retain execution/backlog truth in Linear. After delivery, promote only durable conclusions to the relevant stable wiki page or decision record.
-- Decision pages should say what changed, why, date, and superseded decisions if any.
-- Session pages should capture objective, decisions, verification, blockers, next actions, and links to Linear/issues/PRs when relevant.
-
-## QMD Notes
-
-QMD repo: https://github.com/tobi/qmd
-
-Useful commands:
-
-```bash
-/Users/destinguarnieri/.bun/bin/qmd status
-/Users/destinguarnieri/.bun/bin/qmd update
-/Users/destinguarnieri/.bun/bin/qmd embed
-/Users/destinguarnieri/.bun/bin/qmd query "quarterly planning process"
-/Users/destinguarnieri/.bun/bin/qmd search "API"
-/Users/destinguarnieri/.bun/bin/qmd get "wiki/index.md"
-/Users/destinguarnieri/.bun/bin/qmd search "authentication" --json -n 10
-/Users/destinguarnieri/.bun/bin/qmd query "error handling" --all --files --min-score 0.4
-```
-
-There are two sibling collections:
-
-- `mm-knowledge` → `wiki/` (51 docs) — synthesized canonical graph.
-- `mm-raw` → `raw/` (80 docs) — unsynthesized source dumps: book extracts, papers, concept drafts. Added 2026-08-29.
-
-They share no files. `mm-knowledge` previously overlapped five per-topic collections rooted at subdirectories of the *same* tree, which double-indexed those files and let duplicate hits consume result slots; the topic collections were removed on 2026-07-25. The rule that prevents recurrence is: **do not create a collection whose path sits inside another collection's path.** Sibling trees such as `wiki/` and `raw/` are safe and do not double-index.
-
-Treat provenance as load-bearing. A `mm-raw` hit is third-party or draft material, not a Money Machine decision. Never cite one as confirmed practice; promote it into `wiki/` first if it should become durable. Both collections carry a `qmd context` description stating this, which the reranker and result payloads surface.
-
-`archive/` (4 docs) remains deliberately unindexed.
-
-If search results look weak, check `qmd status` for pending embeddings first, then run `update` and `embed`, then inspect files directly before concluding knowledge is absent. `qmd query` is semantic and needs embeddings; `qmd search` is BM25 keyword and does not.
+QMD does not validate wikilinks. Use `python3 scripts/check_wikilinks.py` for local Markdown/wiki links, attachments, and heading checks. Pass repo-relative archive paths to check changed historical material too; code examples are ignored and remote URLs are not fetched.

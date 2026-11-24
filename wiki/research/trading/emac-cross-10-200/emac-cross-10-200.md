@@ -1,12 +1,21 @@
 # EMA Cross 10/200 Research
 
-> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [[engineering/backtest-strategies-index#Retired EMA strategies → Example (2026-09-29)|replacement guide and verification limits]]. The historical V4 event-study fixture contract remains supported.
+> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [replacement guide and verification limits — archived](../../../../archive/history-compaction-2026-11-23/retired-pages/trading/backtest-strategies-index.md#retired-ema-strategies--example-2026-09-29). The historical V4 event-study fixture contract remains supported.
 
 
 Status: in progress
 
 Related process: [[research/trading/research_process_v2|Research Process V2]]
 Signal-stats event study: [[event_study_anchor_findings|Anchor + Holdout Findings]] · label definitions [[event_labels_v1|Event Labels V1]]
+
+## BTC daily and four-hour Example with volatility targeting
+
+On 2026-11-24 Destin flagged plain EMA 10/200 for another look now that Example supports volatility targeting and buffered rebalancing. These saved BTCUSDT runs use the processed close EMA 10/200 forecast to size positions directly. Both use absolute scalar 0.5, a 50% annual volatility target (Centered 35/200, weighted 70/30), a 10% rebalance buffer, daily sizing refresh, $100,000 starting capital, and 5 bps each for fees and slippage.
+
+- **4H** · `287994b6-1ab1-4c2b-94d6-7f007dc86bf7` scored 2,172 candles from 2025-11-27 to 2026-11-24 exclusive (UTC). It returned 155.2% net with a 1.90 Sharpe and 29.3% maximum close-to-close drawdown.
+- **1D** · `95181dd0-3944-433d-9559-00f42d114edc` scored 2,308 candles from 2020-07-11 to 2026-11-05 exclusive (UTC). Sharpe was 1.01 and maximum close-to-close drawdown was 56.3%.
+
+The same settings produced profitable backtests on both intervals. The four-hour sample spans 362 days, mostly within the daily sample. EMA and volatility spans are measured in candles, so the four-hour forecast and volatility estimate respond over shorter calendar horizons. The runs leave open how much of the performance difference came from the interval, the market window, or the sizing controls. Destin flagged the direct-sized strategy as a research lead in its own right. The direction-only execution work is tracked in [[research/trading/opposite_bid_trend/opposite-bid-trend]].
 
 <!-- ================= LIVING HEAD — rewrite in place each session ================= -->
 

@@ -6,7 +6,7 @@ This is a catalog of indicators, signals, and concepts used in manually trading 
 
 ## Implementation and evaluation queue
 
-This glossary is the wording and maturity source for the canonical [[research/trading/catalog_queue|Trading Catalog Implementation and Evaluation Queue]]. The queue records type, implementation evidence, smallest first-pass measurement/evaluation, dependencies, Destin review questions, candidate uses, and execution state without rewriting the source entries below.
+This glossary is the wording and maturity source for the historical [Trading Catalog Implementation and Evaluation Queue — archived](../../archive/history-compaction-2026-11-23/retired-pages/research/trading/catalog_queue.md). The deleted queue is retained as an archive reference, not an active backlog. It records type, implementation evidence, smallest first-pass measurement/evaluation, dependencies, Destin review questions, candidate uses, and execution state without rewriting the source entries below.
 
 Independent primitives may be measured and evaluated by separate agents. Recommended measurements for underspecified entries are provisional until Destin reviews whether they capture his intent. PRI, PRL, PRZ, and PRB are independently testable parts and one combined Price Reversal System. Queueing any primitive does not assert alpha, and combining primitives into a strategy still requires an explicit hypothesis and protected evaluation.
 

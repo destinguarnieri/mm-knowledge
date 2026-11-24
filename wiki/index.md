@@ -1,38 +1,15 @@
-# Start Here
+# Knowledge Index
 
-Status: confirmed
+Optional navigation. Start from the current request and open only the relevant destination; use QMD for topic-specific pages.
 
-Destin approved a fresh start on 2026-10-06. **No active research commitments carry forward by default.**
+| Need | Destination |
+| --- | --- |
+| Desired outcomes and completion criteria | [[goals|Goals]] |
+| Resume work from its recorded state | [[sessions/current-checkpoint|Current checkpoint]] — relevant sections only |
+| Find past changes or decisions | [[sessions/session-change-log|Session changelog]] — search by topic |
+| Research context | [[research/trading/research_index|Research Home]] |
+| KB retrieval and editing rules | [Agent instructions](../AGENTS.md) |
 
-- [Open Research Home](research/trading/research_index.html) — the human-facing starting point.
-- [[research/trading/research_index|Research Home source]] — current focus, once selected.
-- [[sessions/current-checkpoint|Current Checkpoint]] — compact agent pickup state.
-- [[ops/research-mcp-runbook|Research MCP Reference]] — links to the maintained implementation-side instructions.
+Domain knowledge lives in `engineering/`, `trading/`, `research/`, `company/`, and `ops/`; bounded plans in `projects/`. Search for the topic instead of loading these trees.
 
-## For agents
-
-Start from Destin’s current request. The current strategy focus is [[research/trading/opposite_bid_trend/opposite-bid-trend|Opposite Bid Trend]], renamed from Candle Inventory on 2026-11-19; see [[research/trading/research_index|Research Home]]. Do not derive an agenda from old programs, tickets, hypotheses, review gates, or “next action” sections. Do not make historical reading or reconciliation a prerequisite for new work.
-
-Search QMD and follow relevant source links only when useful to the current task. Older pages remain reference material; their active/ready/in-progress labels do not activate work after the reset. Current implementation facts and safety constraints still need verification when relevant.
-
-## Current engineering draft
-
-- [[projects/backtest-engine-v2-plan|Backtest Engine V2 delivery draft]] — vectorization, multi-timeframe data, limit orders, then cross margin; proposed ticket scopes for review.
-
-## Signal and positioning audit
-
-- [[projects/nan-handling-positioning-audit|NaN handling and positioning audit]] — RSI/slope padding fix and verification; separate transform-units issue and broader missing-data policy remain deferred.
-
-## Frontend UI in progress
-
-- [[projects/trading-terminal-ui|Trading terminal UI]] — separate route, perpetuals, dockable panels, frontend-only order previews.
-
-## Implementation references
-
-- [[engineering/backtest-date-windows|Backtest scoring dates and warmup]] — selected dates are scored; prehistory, saved-run compatibility, and Latest N follow-up.
-- [[ops/backend-testing|Backend testing]] — offline defaults, disposable PostgreSQL, explicit public candles, coverage and CI commands.
-- [[engineering/bounded-ema-history|Bounded EMA history]] — retention API, backtest capacity alignment, footprint, and migration verification.
-
-## Optional history
-
-[Pre-reset board, checkpoint, and routing map](../archive/research-reset-2026-10-06/README.md). Original research and evidence remain available in the wiki; source dumps remain in `raw/`. There is no requirement to reconcile or resume them.
+Project status belongs in linked pages, not this directory. Historical labels do not activate work: the **2026-10-06 research reset** remains in force; see [agent instructions](../AGENTS.md#historical-boundary-and-safety). [Archived routing and checkpoint](../archive/research-reset-2026-10-06/README.md) remain optional reference.

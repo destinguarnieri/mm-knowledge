@@ -1,6 +1,6 @@
 # EMAC 10/200 Event Study — Anchor + Holdout Findings (2026-07-20/21)
 
-> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [[engineering/backtest-strategies-index#Retired EMA strategies → Example (2026-09-29)|replacement guide and verification limits]]. The historical V4 event-study fixture contract remains supported.
+> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [replacement guide and verification limits — archived](../../../../archive/history-compaction-2026-11-23/retired-pages/trading/backtest-strategies-index.md#retired-ema-strategies--example-2026-09-29). The historical V4 event-study fixture contract remains supported.
 
 
 Interpretation of the conditioned statistics from the [[event_labels_v1|frozen label grammar]] on the anchor fixture, read in the synthesis test order. Provisional until the disjoint Binance 5m holdout reproduces the signs and rankings.

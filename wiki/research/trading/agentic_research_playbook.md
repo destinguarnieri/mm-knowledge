@@ -14,7 +14,7 @@ Status: **first draft — not current process. Do not follow for today's work.**
 
 The operating idea is simple: every finding must earn a scope, every iteration must explain what worked and what did not, and every strategy change must move through a documented loop from concept to evidence.
 
-Related operating context: [[research/trading/research_process_v2|Research Process V2]] · [[research/trading/research_index|Research Board]] · [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]] · [[research/trading/alpha-inbox/overview|Alpha Inbox]]
+Related operating context: [[research/trading/research_process_v2|Research Process V2]] · [[research/trading/research_index|Research Board]] · [Agentic Research Loop Product Brief — archived](../../../archive/history-compaction-2026-11-23/retired-pages/projects/agentic-research-loop-product-brief.md) · [[research/trading/alpha-inbox/overview|Alpha Inbox]]
 
 ### Applicability and precedence
 
@@ -28,7 +28,7 @@ Before using this playbook, the agent must have a bounded Linear issue or explic
 
 The autonomous research interface is typed MCP evidence access, not the browser UI. Agents use the approved run-description, bounded-series, chart-rendering, and annotation tools for the research loop. The existing UI is for Destin's manual review; Browser Use is forbidden as a routine fallback and is allowed only when Destin explicitly requests UI inspection or the UI itself is under test.
 
-If a required research type cannot expose its permitted numerical and visual evidence through the approved tool surface, classify that as a tool gap and block the affected playbook step. Do not bypass the contract with arbitrary output directories, unregistered scripts, or browser navigation. The product contract and first vertical slice are defined in the [[projects/agentic-research-loop-product-brief|Agentic Research Loop Product Brief]].
+If a required research type cannot expose its permitted numerical and visual evidence through the approved tool surface, classify that as a tool gap and block the affected playbook step. Do not bypass the contract with arbitrary output directories, unregistered scripts, or browser navigation. The product contract and first vertical slice are defined in the [Agentic Research Loop Product Brief — archived](../../../archive/history-compaction-2026-11-23/retired-pages/projects/agentic-research-loop-product-brief.md).
 
 ---
 

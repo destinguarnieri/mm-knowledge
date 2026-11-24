@@ -24,7 +24,7 @@ Skill: None
 
 # EMA Signal Stats — Condensed Synthesis (3-Agent Merge)
 
-> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [[engineering/backtest-strategies-index#Retired EMA strategies → Example (2026-09-29)|replacement guide and verification limits]]. The historical V4 event-study fixture contract remains supported.
+> **Strategy retirement, 2026-09-29:** `emac`, `emac_cross`, `emac_v4`, and `emac_v5` implementations/catalog entries are retired. Use `example` with explicit replacement settings for new runs; historical names/run IDs below remain provenance. See [replacement guide and verification limits — archived](../../../../archive/history-compaction-2026-11-23/retired-pages/trading/backtest-strategies-index.md#retired-ema-strategies--example-2026-09-29). The historical V4 event-study fixture contract remains supported.
 
 
 Sources merged: `ema_stats_pattern_trail_ff74e053` (GPT 5.6 Sol, no skill), `ema_stats_comparison_7ae09594` (no model tag), `rolling_vs_magnitude_stats_63361ce6` (Fable 5, Discretionary Strategy Codifier). Observation-only; no strategy or runtime changes implied.
@@ -36,7 +36,7 @@ Sources merged: `ema_stats_pattern_trail_ff74e053` (GPT 5.6 Sol, no skill), `ema
   - First pass: `rolling_stats.png`, `magnitude_stats.png` (symmetric, bands exactly mirrored ±0.8397/±0.5034/±0.1671), `mag_asym_stats.png` (asymmetric). Rolling and asym shared last bar (signal 0.4463); symmetric was one bar earlier (0.4349).
   - 4-panel set: `rolling_4panel.png`, `mag_sym_4panel.png`, `mag_asym_4panel.png` — all three share the same last bar (signal 0.4463; rolling mean −0.0355 bands 0.1717/0.3789; sym mean 0.1647 bands 0.5034/0.8421; asym pos mean 0.0646 bands 0.2914/0.5182). Trade panels are identical across the three images (one run, three stat lenses). Panels top→bottom: price + EMA cloud, PnL per bar ($), position ROE (%), position size (signed $), signal stats. Cumulative PnL is not rendered in this set.
 - Code: `rolling` → `sig_stats.py` (signed rolling mean ± 1σ/2σ, envelope drifts with the signal); `magnitude` → `sig_extension.py` (zero-anchored excursion bands; symmetric mirrors shared |signal| stats, asymmetric computes per-side stats via `SMA_PINE`).
-- Code drift resolved (Destin, 2026-07-20): not drift — `symetric` is not yet exposed in config, so Destin flips it by hand in [backend/app/backtest/strategies/emac_v4.py](backend/app/backtest/strategies/emac_v4.py) per render. The screenshot filenames label which config produced each image (`mag_sym_*` = `symetric=True`, `mag_asym_*` = `symetric=False`).
+- Code drift resolved (Destin, 2026-07-20): not drift — `symetric` is not yet exposed in config, so Destin flips it by hand in `backend/app/backtest/strategies/emac_v4.py` (retired historical source path) per render. The screenshot filenames label which config produced each image (`mag_sym_*` = `symetric=True`, `mag_asym_*` = `symetric=False`).
 - Destin rulings (2026-07-19): asymmetric occupancy dilution is intended as-is; no fixed interpretation of the three modes (flexible, combinable, each a strategy-variant axis); experiment design delegated.
 - All "z" values below are derived from panel geometry (band spacing), not emitted; `z_score` arrays exist in the helpers but `emac_v4` does not emit them.
 

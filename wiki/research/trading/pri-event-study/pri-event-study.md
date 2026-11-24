@@ -4,7 +4,7 @@ Status: in progress — measurement reset
 
 Related process: [[research/trading/research_process_v2|Research Process V2]]  
 Source glossary: [[trading/catalog_v1|Trading Catalog]]  
-Catalog work inventory: [[research/trading/catalog_queue|Trading Catalog Implementation and Evaluation Queue]]  
+Historical catalog work inventory (not an active queue): [Trading Catalog Implementation and Evaluation Queue — archived](../../../../archive/history-compaction-2026-11-23/retired-pages/research/trading/catalog_queue.md)
 Linear: [Price Reversal System Research](https://linear.app/money-machine/project/price-reversal-system-research-1b1579ea6126) · [MON-226](https://linear.app/money-machine/issue/MON-226/validate-pri-and-run-the-initial-prb-censored-event-study)
 
 ## Active scope

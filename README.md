@@ -15,7 +15,8 @@ raw/                  # immutable or lightly-normalized source dumps
 archive/              # historical/deprecated material, not canonical routing
 scripts/              # maintenance scripts
 wiki/                 # canonical linked markdown graph
-  index.md            # start here: routing map and page inventory
+  index.md            # optional directory of stable entry points
+  goals.md            # selected outcomes and completion criteria
   log.md              # chronological KB operation log
   company/            # company context and narrative
   ops/                # operating procedures and process docs
@@ -33,9 +34,9 @@ Canonical markdown belongs under `wiki/`. Avoid duplicate top-level category fol
 ## How to Use
 
 1. Read `AGENTS.md` for the operating contract.
-2. Start navigation from `wiki/index.md`.
-3. Follow Obsidian-style `[[wikilinks]]` for graph traversal.
-4. Use QMD for search/retrieval when exact routing is unclear.
+2. Start from the current request; use `wiki/index.md` only when you need navigation.
+3. Read `wiki/goals.md` for planning, relevant checkpoint sections for pickup, or search the changelog for history.
+4. Use QMD and relevant links to retrieve only the context the task needs.
 
 ## QMD
 
@@ -51,7 +52,7 @@ Common commands:
 /Users/destinguarnieri/.bun/bin/qmd status
 /Users/destinguarnieri/.bun/bin/qmd update
 /Users/destinguarnieri/.bun/bin/qmd query "backtesting correctness"
-/Users/destinguarnieri/.bun/bin/qmd search "Linear" -c mm-ops
+/Users/destinguarnieri/.bun/bin/qmd search "Linear" -c mm-knowledge
 /Users/destinguarnieri/.bun/bin/qmd get "wiki/index.md"
 ```
 

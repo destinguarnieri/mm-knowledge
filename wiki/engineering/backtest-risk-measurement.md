@@ -2,7 +2,7 @@
 
 Status: in progress
 
-Implemented locally on 2026-10-04; migration `a47c9e21d603` is prepared and tested as PostgreSQL DDL but has not been applied. No live or deployment operation. Related: [[engineering/backtest-strategies-index|Backtest Strategies Index]].
+Implemented locally on 2026-10-04; migration `a47c9e21d603` is prepared and tested as PostgreSQL DDL but has not been applied. No live or deployment operation. Related: [Backtest Strategies Index — archived](../../archive/history-compaction-2026-11-23/retired-pages/trading/backtest-strategies-index.md).
 
 ## Definitions
 

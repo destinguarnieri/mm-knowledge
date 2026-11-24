@@ -41,8 +41,8 @@ The indicators are recalculated over the supplied candle window, so unavailable 
 
 Sources in `mm_v04`:
 
-- [Slope warmup arithmetic](../../../mm_v04/backend/app/lib/indicators/slope.py), `lr_slope`.
-- [RSI padding and slicing](../../../mm_v04/backend/app/lib/indicators/rsi.py), `RSI_P`; [padding helper](../../../mm_v04/backend/app/lib/utils/pad_ta.py).
+- [Slope warmup arithmetic](../../../mm_v04/backend/app/lib/indicators/momentum/slope.py), `lr_slope`.
+- [RSI padding and slicing](../../../mm_v04/backend/app/lib/indicators/momentum/rsi.py), `RSI_P`; [padding helper](../../../mm_v04/backend/app/lib/utils/pad_ta.py).
 - [Affine scaling](../../../mm_v04/backend/app/lib/utils/signal_scale.py), `affine_scale`.
 - [Array and scalar processing](../../../mm_v04/backend/app/lib/utils/signal_processing.py).
 - [Strict transforms](../../../mm_v04/backend/app/lib/utils/signal_clamp.py).
@@ -67,7 +67,7 @@ Sources in `mm_v04`:
 | Rebalance, exposure cap, order checks | `positions_v2` validates finite targets/deltas and rejects invalid values. | Rejection occurs downstream, unless an earlier stage has silently replaced the invalid value. |
 | Volatility sizing | `normal_risk_quantity` returns zero for unavailable/nonpositive volatility or a non-finite computed quantity; other inputs have explicit validation. | An unavailable sizing input can become zero sizing. Inventory consequences need evaluation. |
 
-Additional sources: [buffers](../../../mm_v04/backend/app/lib/utils/signal_buffer.py), [EMA helpers](../../../mm_v04/backend/app/lib/indicators/ema_padded.py), [position mapping](../../../mm_v04/backend/app/helpers/signal_position.py), and [position and execution checks](../../../mm_v04/backend/app/helpers/positions_v2.py).
+Additional sources: [buffers](../../../mm_v04/backend/app/lib/utils/signal_buffer.py), [EMA helpers](../../../mm_v04/backend/app/lib/indicators/moving_averages/ema_padded.py), [position mapping](../../../mm_v04/backend/app/helpers/signal_position.py), and [position and execution checks](../../../mm_v04/backend/app/helpers/positions_v2.py).
 
 ## Original offline reproduction (before uniform scaler cleanup)
 

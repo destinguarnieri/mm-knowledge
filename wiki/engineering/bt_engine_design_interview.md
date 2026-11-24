@@ -839,7 +839,7 @@ None; I recommend the scope below.
 
 Approve this scope and I’ll implement it.
 
-The [coding-agent skill](~/.codex/skills/coding-agent/SKILL.md) explicitly requires: “Do not edit files … until the user approves it.” That is why I’m pausing at this concrete checkpoint; implementation has not started.
+The coding-agent skill (historical local source unavailable: `~/.codex/skills/coding-agent/SKILL.md`) explicitly requires: “Do not edit files … until the user approves it.” That is why I’m pausing at this concrete checkpoint; implementation has not started.
 
 > Alright Prakesh, scope looks good. Go ahead and build it in the folder I gave you.
 
@@ -2489,7 +2489,7 @@ The demo produces:
 
 Fair-value P&L starts at **$23.10** and becomes **$30.121** when the observed mid rises to $100.07. These are unrealized marks before fees.
 
-[View the demo report](./outputs/crossing-demo/report.html)
+Demo report unavailable (historical generated artifact: `./outputs/crossing-demo/report.html`).
 
 To rerun from your folder:
 

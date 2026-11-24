@@ -38,7 +38,7 @@ This is not a shallow summary or a transcript. Preserve the reasoning and operat
 Before writing:
 
 1. Read the knowledge base’s `AGENTS.md`.
-2. Start with `wiki/index.md`.
+2. Use `wiki/index.md` only if navigation is needed for this task.
 3. Search the existing knowledge base for the source, author, major concepts, and likely destination pages.
 4. Retrieve the relevant existing pages before deciding whether to create or update content.
 5. Follow important `[[wikilinks]]` and backlinks where needed to understand existing knowledge.
@@ -460,8 +460,8 @@ Do not present this section as an adopted plan or decision.
 
 ## Related Knowledge
 
-- [[existing/page|Descriptive relationship]]
-- [[another/page|Descriptive relationship]]
+- `[[existing/page|Descriptive relationship]]`
+- `[[another/page|Descriptive relationship]]`
 
 ## Glossary
 
